@@ -42,14 +42,24 @@
         <ion-icon name="people-outline" class="empty-icon"></ion-icon>
         <h3>No Members Found</h3>
         <p>Add members to your Action Unit classes</p>
-        <ion-button (click)="addMember()" color="primary">
+        <!-- <ion-button (click)="addMember()">
             <ion-icon slot="start" name="add"></ion-icon>
             Add First Member
         </ion-button>
-        <ion-button (click)="bulkImportMembers()" color="primary">
+        <ion-button (click)="addBulkMember()">
             <ion-icon slot="start" name="add"></ion-icon>
             Bulk Load Members
-        </ion-button>
+        </ion-button> -->
+
+        <button class="fixed-add-btn" shape="round" (click)="addBulkMember()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+    </button>
+
+
+        <!-- Fixed Action Button -->
+        <button class="fixed-add-btn-2" shape="round" (click)="addMember()">
+        <ion-icon slot="icon-only" name="folder-outline"></ion-icon>
+    </button>
     </div>
 
     <div *ngIf="!isLoading && members.length > 0">
@@ -97,13 +107,13 @@
     </div>
 
     <!-- Fixed Action Button -->
-    <button *ngIf="members.length > 0" class="fixed-add-btn" shape="round" (click)="addBulkMember()">
+    <button class="fixed-add-btn" shape="round" (click)="addBulkMember()">
         <ion-icon slot="icon-only" name="add"></ion-icon>
     </button>
 
 
     <!-- Fixed Action Button -->
-    <button *ngIf="members.length > 0" class="fixed-add-btn-2" shape="round" (click)="addMember()">
+    <button class="fixed-add-btn-2" shape="round" (click)="addMember()">
         <ion-icon slot="icon-only" name="folder-outline"></ion-icon>
     </button>
 

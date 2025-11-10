@@ -108,6 +108,7 @@ ion-content {
                 }
             }
             .permission-message {
+                background: moccasin;
                 margin-top: 1rem;
                 @media (min-width: 481px) {
                     margin-top: 1.25rem;
@@ -297,7 +298,7 @@ ion-content {
                     }
                     ion-label {
                         font-size: 0.875rem;
-                        color: var(--ion-color-dark);
+                        color: rgba(29, 29, 29, 0.764);
                         @media (min-width: 481px) {
                             font-size: 0.9375rem;
                         }

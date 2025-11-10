@@ -235,7 +235,6 @@ select {
 /* Custom dropdown arrow enhancement */
 
 .select-wrapper::after {
-    content: '▼';
     position: absolute;
     right: clamp(12px, 1.5vw, 16px);
     top: 50%;

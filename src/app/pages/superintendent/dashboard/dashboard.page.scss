@@ -60,7 +60,7 @@ ion-toolbar {
     background: linear-gradient(165deg, rgba(0, 128, 128, 0.15), rgba(0, 160, 160, 0.1));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     padding: clamp(20px, 2.5vw, 28px);
     box-shadow: 0 4px 20px rgba(0, 128, 128, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -172,7 +172,7 @@ ion-toolbar {
 
 .action-card {
     margin: 0;
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
     cursor: pointer;
     transition: var(--transition-smooth);

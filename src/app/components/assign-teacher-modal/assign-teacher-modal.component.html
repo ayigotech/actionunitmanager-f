@@ -31,7 +31,7 @@
                     <option value="">Select Teacher</option>
                     @if (!isLoading) {
                         <option *ngFor="let teacher of availableTeachers" [value]="teacher.id">
-                        {{ teacher.name }} ({{ teacher.phone }})
+                        {{ teacher.name }}
                         </option>
                     } @else {
                         <option value="" disabled>Loading teachers...</option>
@@ -48,7 +48,7 @@
                     <option value="">Select Class</option>
                     @if (!isLoading) {
                         <option *ngFor="let class of availableClasses" [value]="class.id">
-                            {{ class.name }} ({{ class.location }})
+                            {{ class.name }} 
                         </option>
                     } @else {
                         <option value="" disabled>Loading classes...</option>
