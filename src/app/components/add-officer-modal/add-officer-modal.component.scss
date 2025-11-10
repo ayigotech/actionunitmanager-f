@@ -1,52 +1,269 @@
+:root {
+    --spacing-unit: 1rem;
+    --max-content-width: 800px;
+    --card-border-radius: 16px;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 .form-input {
     width: 100%;
-    padding: 12px 0;
+    padding: clamp(12px, 1.5vw, 14px) 0;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: clamp(16px, 1.5vw, 18px);
+    color: #2d3436;
+    transition: var(--transition-smooth);
+    border-bottom: 2px solid transparent;
     &:focus {
         outline: none;
+        border-bottom-color: #008080;
+        color: #008080;
+        background: rgba(0, 128, 128, 0.02);
+    }
+    &::placeholder {
+        color: #9ca3af;
+        font-weight: 400;
     }
 }
 
 .button-content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: clamp(8px, 1vw, 12px);
 }
 
 ion-spinner {
-    width: 16px;
-    height: 16px;
+    width: clamp(16px, 1.5vw, 18px);
+    height: clamp(16px, 1.5vw, 18px);
 }
 
 ion-button[disabled] {
     opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
 }
 
 .form-item.invalid {
     --background: #fef2f2;
-    border: 1px solid #ef4444;
-    border-radius: 8px;
+    border: 2px solid #ef4444;
+    border-radius: var(--card-border-radius);
+    padding: clamp(12px, 1.5vw, 16px);
+    margin-bottom: clamp(16px, 2vw, 20px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #ef4444, #f87171);
+    }
+    .input-icon {
+        color: #ef4444;
+    }
+    .form-input {
+        color: #dc2626;
+        &:focus {
+            border-bottom-color: #ef4444;
+            background: rgba(239, 68, 68, 0.02);
+        }
+    }
+}
+
+.form-item.valid {
+    --background: #f0fdf4;
+    border: 2px solid #10b981;
+    border-radius: var(--card-border-radius);
+    padding: clamp(12px, 1.5vw, 16px);
+    margin-bottom: clamp(16px, 2vw, 20px);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #10b981, #34d399);
+    }
+    .input-icon {
+        color: #10b981;
+    }
+    .form-input {
+        color: #059669;
+        &:focus {
+            border-bottom-color: #10b981;
+            background: rgba(16, 185, 129, 0.02);
+        }
+    }
 }
 
 .officer-form {
+    max-width: var(--max-content-width);
+    margin: 0 auto;
+    padding: clamp(20px, 3vw, 32px);
     .form-item {
         --inner-padding-end: 0;
         --padding-start: 0;
-        margin-bottom: 16px;
+        margin-bottom: clamp(16px, 2vw, 20px);
+        transition: var(--transition-smooth);
+        border-radius: var(--card-border-radius);
+        padding: clamp(12px, 1.5vw, 16px);
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f3f4f6;
+        &:focus-within {
+            border-color: #008080;
+            box-shadow: 0 4px 16px rgba(0, 128, 128, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        &:hover:not(:focus-within) {
+            border-color: #e5e7eb;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.12);
+        }
     }
     .input-icon {
         color: #6b7280;
-        margin-right: 12px;
+        margin-right: clamp(12px, 1.5vw, 16px);
+        font-size: clamp(1.2rem, 1.5vw, 1.3rem);
+        transition: var(--transition-smooth);
+        .form-item:focus-within & {
+            color: #008080;
+            transform: scale(1.1);
+        }
+        .form-item.invalid & {
+            color: #ef4444;
+        }
+        .form-item.valid & {
+            color: #10b981;
+        }
     }
 }
 
 ion-note {
-    margin-top: 24px;
+    margin-top: clamp(24px, 3vw, 32px);
+    padding: clamp(16px, 2vw, 20px);
+    background: #f8fafc;
+    border-radius: var(--card-border-radius);
+    border-left: 4px solid #008080;
     p {
-        margin: 8px 0;
-        font-size: 14px;
-        line-height: 1.4;
+        margin: clamp(8px, 1vw, 10px) 0;
+        font-size: clamp(14px, 1.2vw, 16px);
+        line-height: 1.5;
+        color: #4b5563;
+        &:first-child {
+            margin-top: 0;
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+/* Form validation messages */
+
+.validation-message {
+    font-size: clamp(12px, 1.1vw, 13px);
+    margin-top: clamp(6px, 0.8vw, 8px);
+    padding: clamp(6px, 0.8vw, 8px) clamp(8px, 1vw, 10px);
+    border-radius: clamp(6px, 0.8vw, 8px);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: clamp(6px, 0.8vw, 8px);
+    &.invalid {
+        color: #dc2626;
+        background: rgba(239, 68, 68, 0.08);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        &::before {
+            content: '⚠';
+            font-size: clamp(14px, 1.3vw, 15px);
+        }
+    }
+    &.valid {
+        color: #059669;
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        &::before {
+            content: '✓';
+            font-size: clamp(14px, 1.3vw, 15px);
+            font-weight: bold;
+        }
+    }
+}
+
+
+/* Form actions section */
+
+.form-actions {
+    display: flex;
+    gap: clamp(12px, 1.5vw, 16px);
+    justify-content: flex-end;
+    margin-top: clamp(24px, 3vw, 32px);
+    padding-top: clamp(20px, 2.5vw, 28px);
+    border-top: 1px solid #f3f4f6;
+    &.center {
+        justify-content: center;
+    }
+    &.space-between {
+        justify-content: space-between;
+    }
+}
+
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .officer-form {
+        padding: 16px;
+    }
+    .form-actions {
+        flex-direction: column;
+        ion-button {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .officer-form {
+        padding: 32px 40px;
+    }
+}
+
+
+/* Touch device optimizations */
+
+@media (hover: none) and (pointer: coarse) {
+    .form-item:hover:not(:focus-within) {
+        transform: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+}
+
+
+/* High-density displays */
+
+@media (min-resolution: 192dpi) {
+    .form-item {
+        border-width: 0.5px;
+    }
+}
+
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+    .form-item,
+    .input-icon,
+    .form-input {
+        transition: none;
     }
 }

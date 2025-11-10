@@ -1,12 +1,21 @@
+/* Button Content - Enhanced for touch and desktop */
+
 .button-content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
+    /* Converted to rem for scalability */
+    /* Mobile-first touch targets */
+    min-height: 44px;
+    padding: 0.75rem 1rem;
 }
 
+
+/* Responsive spinner */
+
 .spinner-small {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     border: 2px solid transparent;
     border-top: 2px solid currentColor;
     border-radius: 50%;
@@ -22,53 +31,138 @@
     }
 }
 
+
+/* Enhanced Form Input with responsive sizing */
+
 .form-input {
     width: 100%;
-    padding: 12px 0;
+    padding: 0.75rem 0;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 1rem;
+    /* Base mobile size */
+    transition: all 0.2s ease-in-out;
     &:focus {
         outline: none;
+        transform: translateY(-1px);
+    }
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        /* ~15px */
+        padding: 0.875rem 0;
+    }
+    /* Desktop scaling */
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+        /* ~16px */
+        padding: 1rem 0;
+        /* Add hover states for desktop */
+        &:hover {
+            background-color: rgba(0, 128, 128, 0.02);
+        }
+    }
+    /* Large desktop scaling */
+    @media (min-width: 1025px) {
+        font-size: 1.214rem;
+        /* ~17px */
     }
 }
+
+
+/* Form validation states */
 
 .form-item.invalid {
     --background: #fef2f2;
     border: 1px solid #ef4444;
-    border-radius: 8px;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
 }
+
+
+/* Select wrapper with responsive enhancements */
 
 .select-wrapper {
     width: 100%;
+    position: relative;
 }
 
 .form-select {
     width: 100%;
-    padding: 12px 0;
+    padding: 0.75rem 0;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    /* Improved focus state */
     &:focus {
         outline: none;
+        transform: translateY(-1px);
+    }
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        padding: 0.875rem 0;
+    }
+    /* Desktop enhancements */
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+        padding: 1rem 0;
+        /* Desktop hover state */
+        &:hover {
+            background-color: rgba(0, 128, 128, 0.03);
+            border-radius: 0.25rem;
+        }
+        /* Better cursor for desktop */
+        cursor: pointer;
+    }
+    /* Large desktop */
+    @media (min-width: 1025px) {
+        font-size: 1.214rem;
     }
 }
+
+
+/* Enhanced Toggle Switch with responsive sizing */
 
 .toggle-switch {
     position: relative;
     display: inline-block;
-    width: 44px;
-    height: 24px;
+    /* Mobile-first sizing */
+    width: 2.75rem;
+    height: 1.5rem;
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        width: 3rem;
+        height: 1.625rem;
+    }
+    /* Desktop scaling */
+    @media (min-width: 769px) {
+        width: 3.25rem;
+        height: 1.75rem;
+    }
     input {
         opacity: 0;
         width: 0;
         height: 0;
         &:checked+.slider {
             background-color: #10b981;
+            /* Your teal theme alternative */
+            background-color: #008080;
         }
         &:checked+.slider:before {
-            transform: translateX(20px);
+            transform: translateX(1.25rem);
+            @media (min-width: 481px) {
+                transform: translateX(1.375rem);
+            }
+            @media (min-width: 769px) {
+                transform: translateX(1.5rem);
+            }
+        }
+        /* Better focus accessibility */
+        &:focus+.slider {
+            box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.3);
         }
     }
     .slider {
@@ -80,29 +174,84 @@
         bottom: 0;
         background-color: #d1d5db;
         transition: .4s;
-        border-radius: 24px;
+        border-radius: 1.5rem;
+        /* Enhanced transition for smoother animation */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         &:before {
             position: absolute;
             content: "";
-            height: 18px;
-            width: 18px;
-            left: 3px;
-            bottom: 3px;
+            height: 1.125rem;
+            width: 1.125rem;
+            left: 0.1875rem;
+            bottom: 0.1875rem;
             background-color: white;
             transition: .4s;
             border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Tablet scaling */
+            @media (min-width: 481px) {
+                height: 1.25rem;
+                width: 1.25rem;
+                left: 0.1875rem;
+                bottom: 0.1875rem;
+            }
+            /* Desktop scaling */
+            @media (min-width: 769px) {
+                height: 1.375rem;
+                width: 1.375rem;
+            }
         }
     }
 }
+
+
+/* Enhanced Book Form with responsive spacing */
 
 .book-form {
     .form-item {
         --inner-padding-end: 0;
         --padding-start: 0;
-        margin-bottom: 16px;
+        margin-bottom: 1rem;
+        /* Base mobile spacing */
+        /* Responsive spacing */
+        @media (min-width: 481px) {
+            margin-bottom: 1.25rem;
+        }
+        @media (min-width: 769px) {
+            margin-bottom: 1.5rem;
+        }
     }
     .input-icon {
         color: #6b7280;
-        margin-right: 12px;
+        margin-right: 0.75rem;
+        /* Converted to rem */
+        /* Responsive icon sizing */
+        font-size: 1.25rem;
+        @media (min-width: 481px) {
+            font-size: 1.375rem;
+            margin-right: 0.875rem;
+        }
+        @media (min-width: 769px) {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+        }
+    }
+}
+
+
+/* Additional responsive utility classes you might need */
+
+@media (min-width: 769px) {
+    /* Desktop-only hover effects */
+    .desktop-hover-lift {
+        transition: transform 0.2s ease-in-out;
+        &:hover {
+            transform: translateY(-2px);
+        }
+    }
+    /* Better focus states for keyboard navigation */
+    .form-input:focus,
+    .form-select:focus {
+        box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.1);
     }
 }

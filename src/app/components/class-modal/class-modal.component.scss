@@ -1,33 +1,101 @@
+/* Enhanced Base Styles with Responsive Background */
+
 ion-content,
 ion-card {
     --background: #f8f9fa;
 }
 
+
+/* Responsive Header with Enhanced Gradient */
+
 ion-toolbar,
 ion-header {
-    --background: linear-gradient(135deg, #008080, #00a0a0)
+    --background: linear-gradient(135deg, #008080, #00a0a0);
+    /* Desktop enhancements */
+    @media (min-width: 769px) {
+        --background: linear-gradient(135deg, #008080, #00a0a0, #008080);
+        background-attachment: fixed;
+        /* Add subtle shadow for depth on desktop */
+        box-shadow: 0 2px 12px rgba(0, 128, 128, 0.15);
+    }
 }
+
+
+/* Responsive Form Container */
 
 .class-form {
     max-width: 600px;
     margin: 0 auto;
+    padding: 1rem;
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        max-width: 80%;
+        padding: 1.5rem;
+    }
+    /* Desktop scaling */
+    @media (min-width: 769px) {
+        max-width: 700px;
+        padding: 2rem;
+        /* Add subtle elevation for desktop */
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin: 2rem auto;
+    }
+    /* Large desktop */
+    @media (min-width: 1025px) {
+        max-width: 750px;
+        margin: 3rem auto;
+    }
 }
+
+
+/* Enhanced Button Content */
 
 .button-content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 0.5rem;
+    /* Responsive spacing */
+    @media (min-width: 481px) {
+        gap: 0.625rem;
+    }
+    @media (min-width: 769px) {
+        gap: 0.75rem;
+    }
 }
+
+
+/* Responsive Spinner */
 
 ion-spinner {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
+    @media (min-width: 481px) {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+    @media (min-width: 769px) {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
 }
 
-// Optional: Style the disabled state
+
+/* Enhanced Disabled State */
+
 ion-button[disabled] {
     opacity: 0.6;
+    cursor: not-allowed;
+    /* Desktop refinement */
+    @media (min-width: 769px) {
+        opacity: 0.5;
+    }
 }
+
+
+/* Responsive Form Items */
 
 .form-item {
     --background: transparent;
@@ -35,13 +103,42 @@ ion-button[disabled] {
     --padding-start: 0;
     --inner-padding-end: 0;
     margin-bottom: 1rem;
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        margin-bottom: 1.25rem;
+        --border-color: #d0d7de;
+    }
+    /* Desktop enhancements */
+    @media (min-width: 769px) {
+        margin-bottom: 1.5rem;
+        /* Add hover effect for desktop */
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: translateX(4px);
+        }
+    }
 }
+
+
+/* Enhanced Input Icons */
 
 .input-icon {
     color: #008080;
     font-size: 1.2rem;
-    margin-right: 12px;
+    margin-right: 0.75rem;
+    /* Responsive scaling */
+    @media (min-width: 481px) {
+        font-size: 1.3rem;
+        margin-right: 0.875rem;
+    }
+    @media (min-width: 769px) {
+        font-size: 1.4rem;
+        margin-right: 1rem;
+    }
 }
+
+
+/* Enhanced Custom Input */
 
 .custom-input {
     width: 100%;
@@ -50,87 +147,207 @@ ion-button[disabled] {
     border-bottom: 1px solid #008080;
     background: transparent;
     color: #0a0a0a;
-    font-size: 16px;
-    padding: 10px;
-    // box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
-    outline: none;
-}
-
-.form-input {
-    width: 100%;
-    padding: 12px 0;
-    border: none;
-    background: transparent;
-    font-size: 16px;
+    font-size: 1rem;
+    padding: 0.625rem;
+    transition: all 0.3s ease;
+    /* Improved focus state */
     &:focus {
-        outline: none;
+        border-bottom-width: 2px;
+        border-bottom-color: #006666;
+        background-color: rgba(0, 128, 128, 0.03);
+    }
+    /* Tablet scaling */
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        padding: 0.75rem;
+    }
+    /* Desktop enhancements */
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+        padding: 0.875rem;
+        /* Hover state for desktop */
+        &:hover {
+            background-color: rgba(0, 128, 128, 0.02);
+            border-bottom-color: #009999;
+        }
+    }
+    /* Large desktop */
+    @media (min-width: 1025px) {
+        font-size: 1.214rem;
+        padding: 1rem;
     }
 }
 
 
-/* Wrapper for custom select */
+/* Enhanced Form Input */
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 0;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+    }
+    /* Responsive scaling */
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        padding: 0.875rem 0;
+    }
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+        padding: 1rem 0;
+        /* Desktop hover state */
+        &:hover {
+            background-color: rgba(0, 128, 128, 0.02);
+        }
+    }
+}
+
+
+/* Enhanced Select Wrapper */
 
 .select-wrapper {
     position: relative;
     width: 100%;
-    margin: 12px 0;
+    margin: 0.75rem 0;
+    @media (min-width: 481px) {
+        margin: 1rem 0;
+    }
+    @media (min-width: 769px) {
+        margin: 1.25rem 0;
+    }
 }
 
 
-/* Label styling */
+/* Responsive Select Label */
 
 .select-label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 0.375rem;
     font-weight: 600;
     color: #333;
-    font-size: 14px;
+    font-size: 0.875rem;
+    @media (min-width: 481px) {
+        font-size: 0.9375rem;
+        margin-bottom: 0.5rem;
+    }
+    @media (min-width: 769px) {
+        font-size: 1rem;
+        margin-bottom: 0.625rem;
+    }
 }
 
 
-/* Style the select box */
+/* Enhanced Select Box */
 
 select {
     width: 100%;
-    padding: 12px 40px 12px 12px;
-    /* space for arrow */
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
     border: 1px solid #ccc;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     appearance: none;
-    /* remove default arrow */
     background-color: #fff;
     color: #333;
-    transition: border 0.2s, box-shadow 0.2s;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    /* Focus effect */
+    &:focus {
+        border-color: #008080;
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
+        outline: none;
+        transform: translateY(-1px);
+    }
+    /* Responsive scaling */
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        padding: 0.875rem 2.75rem 0.875rem 0.875rem;
+    }
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+        padding: 1rem 3rem 1rem 1rem;
+        /* Desktop hover state */
+        &:hover {
+            border-color: #009999;
+            background-color: rgba(0, 128, 128, 0.02);
+        }
+    }
+    @media (min-width: 1025px) {
+        font-size: 1.214rem;
+    }
 }
 
 
-/* Focus effect */
-
-select:focus {
-    border-color: #008080;
-    /* matches teal theme */
-    box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
-    outline: none;
-}
-
-
-/* Custom dropdown arrow */
+/* Enhanced Custom Dropdown Arrow */
 
 .select-wrapper::after {
     content: '▼';
     position: absolute;
-    right: 12px;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
     color: #555;
-    font-size: 12px;
+    font-size: 0.75rem;
+    transition: transform 0.3s ease;
+    @media (min-width: 481px) {
+        right: 1.125rem;
+        font-size: 0.8rem;
+    }
+    @media (min-width: 769px) {
+        right: 1.25rem;
+        font-size: 0.85rem;
+    }
 }
 
 
-/* Option hover (works on some browsers) */
+/* Animate arrow on focus */
 
-select option:hover {
-    background-color: #f0f0f0;
+select:focus+.select-wrapper::after {
+    transform: translateY(-50%) rotate(180deg);
+    color: #008080;
+}
+
+
+/* Enhanced option styling (works on modern browsers) */
+
+select option {
+    padding: 0.75rem;
+    font-size: 1rem;
+    @media (min-width: 481px) {
+        font-size: 1.071rem;
+        padding: 0.875rem;
+    }
+    @media (min-width: 769px) {
+        font-size: 1.143rem;
+    }
+}
+
+
+/* Additional Desktop-only Enhancements */
+
+@media (min-width: 769px) {
+    /* Smooth scrolling for desktop */
+    ion-content {
+        --overflow: auto;
+    }
+    /* Enhanced card appearance */
+    ion-card {
+        border-radius: 12px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+    }
+    /* Better focus management for keyboard users */
+    .custom-input:focus,
+    .form-input:focus,
+    select:focus {
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+    }
 }

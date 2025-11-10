@@ -1,3 +1,10 @@
+:root {
+    --spacing-unit: 1rem;
+    --max-content-width: 800px;
+    --card-border-radius: 16px;
+    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
 ion-content,
 ion-card {
     --background: #f8f9fa;
@@ -5,27 +12,38 @@ ion-card {
 
 ion-toolbar,
 ion-header {
-    --background: linear-gradient(135deg, #008080, #00a0a0)
+    --background: linear-gradient(135deg, #008080, #00a0a0);
+    --border-width: 0;
+    --min-height: 70px;
+    ion-title {
+        font-weight: 600;
+        font-size: clamp(18px, 2vw, 20px);
+        letter-spacing: 0.5px;
+    }
 }
 
 .button-content {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: clamp(8px, 1vw, 12px);
 }
 
 ion-spinner {
-    width: 16px;
-    height: 16px;
+    width: clamp(16px, 1.5vw, 18px);
+    height: clamp(16px, 1.5vw, 18px);
 }
 
 ion-button[disabled] {
     opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
 }
 
 .class-form {
-    max-width: 600px;
+    max-width: var(--max-content-width);
     margin: 0 auto;
+    padding: clamp(20px, 3vw, 32px);
 }
 
 .form-item {
@@ -33,103 +51,376 @@ ion-button[disabled] {
     --border-color: #e0e0e0;
     --padding-start: 0;
     --inner-padding-end: 0;
-    margin-bottom: 1rem;
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    transition: var(--transition-smooth);
+    &:focus-within {
+        --border-color: #008080;
+        transform: translateY(-2px);
+    }
 }
 
 .form-input {
     width: 100%;
-    padding: 12px 0;
+    padding: clamp(12px, 1.5vw, 14px) 0;
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: clamp(16px, 1.5vw, 18px);
+    color: #2d3436;
+    transition: var(--transition-smooth);
     &:focus {
         outline: none;
+        color: #008080;
+    }
+    &::placeholder {
+        color: #9ca3af;
+        font-weight: 400;
     }
 }
 
 .input-icon {
     color: #008080;
-    font-size: 1.2rem;
-    margin-right: 12px;
+    font-size: clamp(1.2rem, 1.5vw, 1.3rem);
+    margin-right: clamp(12px, 1.5vw, 16px);
+    transition: var(--transition-smooth);
+    .form-item:focus-within & {
+        transform: scale(1.1);
+        color: #006666;
+    }
 }
 
 .custom-input {
     width: 100%;
     border: none;
     outline: none;
-    border-bottom: 1px solid #008080;
+    border-bottom: 2px solid #e5e7eb;
     background: transparent;
-    color: #0a0a0a;
-    font-size: 16px;
-    padding: 10px;
-    // box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
-    outline: none;
+    color: #1f2937;
+    font-size: clamp(16px, 1.5vw, 18px);
+    padding: clamp(10px, 1.2vw, 12px);
+    transition: var(--transition-smooth);
+    border-radius: 4px 4px 0 0;
+    &:focus {
+        border-bottom-color: #008080;
+        background: rgba(0, 128, 128, 0.02);
+        box-shadow: 0 2px 8px rgba(0, 128, 128, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+        transform: translateY(-2px);
+    }
+    &:hover:not(:focus) {
+        border-bottom-color: #9ca3af;
+        background: rgba(0, 128, 128, 0.01);
+    }
+    &::placeholder {
+        color: #9ca3af;
+        font-weight: 400;
+    }
 }
 
 
-/* Wrapper for custom select */
+/* Enhanced Wrapper for custom select */
 
 .select-wrapper {
     position: relative;
     width: 100%;
-    margin: 12px 0;
+    margin: clamp(12px, 1.5vw, 16px) 0;
+    transition: var(--transition-smooth);
+    &:hover {
+        transform: translateY(-2px);
+    }
+    &:focus-within {
+        transform: translateY(-2px);
+    }
 }
 
 
-/* Label styling */
+/* Enhanced Label styling */
 
 .select-label {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: clamp(6px, 0.8vw, 8px);
     font-weight: 600;
-    color: #333;
-    font-size: 14px;
+    color: #374151;
+    font-size: clamp(14px, 1.2vw, 16px);
+    transition: var(--transition-smooth);
+    .select-wrapper:focus-within & {
+        color: #008080;
+    }
 }
 
 
-/* Style the select box */
+/* Enhanced Style the select box */
 
 select {
     width: 100%;
-    padding: 12px 40px 12px 12px;
-    /* space for arrow */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: clamp(12px, 1.5vw, 14px) clamp(40px, 4vw, 48px) clamp(12px, 1.5vw, 14px) clamp(12px, 1.5vw, 14px);
+    border: 2px solid #e5e7eb;
+    border-radius: var(--card-border-radius);
+    font-size: clamp(16px, 1.5vw, 18px);
     appearance: none;
-    /* remove default arrow */
-    background-color: #fff;
-    color: #333;
-    transition: border 0.2s, box-shadow 0.2s;
+    background-color: white;
+    color: #1f2937;
+    transition: var(--transition-smooth);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    /* Focus effect */
+    &:focus {
+        border-color: #008080;
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1), 0 4px 12px rgba(0, 128, 128, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+        outline: none;
+        background-color: #fafdfc;
+    }
+    /* Hover effect */
+    &:hover:not(:focus) {
+        border-color: #9ca3af;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
+        background-color: #f9fafb;
+    }
+    /* Disabled state */
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        background-color: #f3f4f6;
+        border-color: #d1d5db;
+        color: #6b7280;
+    }
 }
 
 
-/* Focus effect */
-
-select:focus {
-    border-color: #008080;
-    /* matches teal theme */
-    box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
-    outline: none;
-}
-
-
-/* Custom dropdown arrow */
+/* Enhanced Custom dropdown arrow */
 
 .select-wrapper::after {
     content: '▼';
     position: absolute;
-    right: 12px;
+    right: clamp(12px, 1.5vw, 16px);
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    color: #555;
-    font-size: 12px;
+    color: #6b7280;
+    font-size: clamp(12px, 1.1vw, 13px);
+    transition: var(--transition-smooth);
+    z-index: 2;
+    .select-wrapper:focus-within & {
+        color: #008080;
+        transform: translateY(-50%) rotate(180deg);
+    }
+    select:hover:not(:focus)+& {
+        color: #4b5563;
+    }
 }
 
 
-/* Option hover (works on some browsers) */
+/* Enhanced option styling (works on some browsers) */
 
-select option:hover {
-    background-color: #f0f0f0;
+select option {
+    padding: clamp(12px, 1.5vw, 14px);
+    font-size: clamp(14px, 1.2vw, 16px);
+    color: #1f2937;
+    background: white;
+    border: none;
+    transition: var(--transition-smooth);
+    &:hover {
+        background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+        color: #008080;
+    }
+    &:checked {
+        background: linear-gradient(135deg, #008080, #00a0a0);
+        color: white;
+        font-weight: 600;
+    }
+    &:focus {
+        background: #f0fdfa;
+        color: #008080;
+    }
+}
+
+
+/* Additional form enhancements */
+
+.form-section {
+    background: white;
+    border-radius: var(--card-border-radius);
+    padding: clamp(24px, 3vw, 32px);
+    margin-bottom: clamp(20px, 3vw, 32px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: var(--transition-smooth);
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 40px rgba(0, 128, 128, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
+    }
+}
+
+.form-header {
+    margin-bottom: clamp(20px, 3vw, 32px);
+    h2 {
+        font-size: clamp(20px, 2.2vw, 24px);
+        color: #1f2937;
+        margin: 0 0 clamp(8px, 1vw, 12px) 0;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+    p {
+        font-size: clamp(14px, 1.2vw, 16px);
+        color: #6b7280;
+        margin: 0;
+        line-height: 1.5;
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: clamp(16px, 2vw, 24px);
+    margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.form-actions {
+    display: flex;
+    gap: clamp(12px, 1.5vw, 16px);
+    justify-content: flex-end;
+    margin-top: clamp(24px, 3vw, 32px);
+    padding-top: clamp(20px, 2.5vw, 28px);
+    border-top: 1px solid #f3f4f6;
+    ion-button {
+        --border-radius: #{clamp(12px, 1.5vw, 16px)};
+        --padding-start: #{clamp(20px, 2.5vw, 24px)};
+        --padding-end: #{clamp(20px, 2.5vw, 24px)};
+        height: clamp(48px, 5vw, 52px);
+        font-size: clamp(16px, 1.5vw, 18px);
+        font-weight: 600;
+        transition: var(--transition-smooth);
+        &:hover:not([disabled]) {
+            transform: translateY(-2px);
+        }
+        &.submit-btn {
+            --background: linear-gradient(135deg, #008080, #00a0a0);
+            --box-shadow: 0 4px 16px rgba(0, 128, 128, 0.3);
+            &:hover:not([disabled]) {
+                --background: linear-gradient(135deg, #006666, #008080);
+                --box-shadow: 0 8px 25px rgba(0, 102, 102, 0.4);
+            }
+        }
+        &.cancel-btn {
+            --background: #f3f4f6;
+            --color: #6b7280;
+            --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            &:hover:not([disabled]) {
+                --background: #e5e7eb;
+                --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            }
+        }
+    }
+}
+
+
+/* Validation states */
+
+.form-item {
+    &.valid {
+        --border-color: #10b981;
+        .input-icon {
+            color: #10b981;
+        }
+        .custom-input {
+            border-bottom-color: #10b981;
+            background: rgba(16, 185, 129, 0.02);
+        }
+    }
+    &.invalid {
+        --border-color: #ef4444;
+        .input-icon {
+            color: #ef4444;
+        }
+        .custom-input {
+            border-bottom-color: #ef4444;
+            background: rgba(239, 68, 68, 0.02);
+        }
+    }
+}
+
+.validation-message {
+    font-size: clamp(12px, 1.1vw, 13px);
+    margin-top: clamp(4px, 0.5vw, 6px);
+    padding: clamp(4px, 0.5vw, 6px) clamp(8px, 1vw, 10px);
+    border-radius: clamp(4px, 0.5vw, 6px);
+    font-weight: 500;
+    &.valid {
+        color: #10b981;
+        background: rgba(16, 185, 129, 0.05);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+    &.invalid {
+        color: #ef4444;
+        background: rgba(239, 68, 68, 0.05);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .class-form {
+        padding: 16px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    .form-actions {
+        flex-direction: column;
+        ion-button {
+            width: 100%;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .class-form {
+        padding: 32px 40px;
+    }
+}
+
+
+/* Touch device optimizations */
+
+@media (hover: none) and (pointer: coarse) {
+    .form-section:hover,
+    .select-wrapper:hover,
+    .form-item:hover,
+    ion-button:hover:not([disabled]) {
+        transform: none;
+    }
+    select:hover:not(:focus) {
+        border-color: #e5e7eb;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        background-color: white;
+    }
+}
+
+
+/* High-density displays */
+
+@media (min-resolution: 192dpi) {
+    .form-section {
+        border-width: 0.5px;
+    }
+}
+
+
+/* Reduced motion support */
+
+@media (prefers-reduced-motion: reduce) {
+    .form-section,
+    .select-wrapper,
+    .form-item,
+    .input-icon,
+    .custom-input,
+    select,
+    ion-button,
+    .select-label {
+        transition: none;
+    }
+    .select-wrapper::after {
+        transition: none;
+    }
 }
