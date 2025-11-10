@@ -5,36 +5,50 @@
     </div>
 
     <div class="login-wrapper">
-        <div class="logo">
+        <div class="welcome-section">
             <div class="logo-circle">
                 <ion-icon name="school" class="logo-icon"></ion-icon>
             </div>
-            <h1 class="app-title">ActionUnitManager</h1>
-            <p class="app-subtitle">Sabbath School Class Management</p>
+            <h1 class="welcome-title">Welcome to ActionUnitManager</h1>
+            <p class="welcome-subtitle">Sabbath School Class Management System</p>
         </div>
 
-        <div class="login-card">
-            <div class="login-type-toggle">
-                <button class="toggle-btn" [class.active]="selectedLoginType === 'superintendent'" (click)="selectLoginType('superintendent')">
-          Superintendent
-        </button>
-                <button class="toggle-btn" [class.active]="selectedLoginType === 'teacher'" (click)="selectLoginType('teacher')">
-          Teacher
-        </button>
-                <button class="toggle-btn" [class.active]="selectedLoginType === 'member'" (click)="selectLoginType('member')">
-          Officer
-        </button>
-            </div>
+        <div class="actions-section">
+            <!-- Superintendent Login Button -->
+            <button class="custom-btn btn-outline action-btn" (click)="navigateToSuperintendentLogin()">
+                <div class="btn-content">
+                    <ion-icon name="person-circle-outline" class="btn-icon"></ion-icon>
+                    <div class="btn-text">
+                        <span class="btn-title">Superintendent</span>
+                        <span class="btn-subtitle">Manage classes and teachers</span>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="btn-arrow"></ion-icon>
+                </div>
+            </button>
 
-            <div class="login-form-container">
-                @if (selectedLoginType === 'superintendent') {
-                <app-superintendent-login></app-superintendent-login>
-                } @else if (selectedLoginType === 'teacher') {
-                <app-teacher-login></app-teacher-login>
-                } @else if (selectedLoginType === 'member') {
-                <app-member-login></app-member-login>
-                }
-            </div>
+            <!-- Teacher Login Button -->
+            <button class="custom-btn btn-outline action-btn" (click)="navigateToTeacherLogin()">
+                <div class="btn-content">
+                    <ion-icon name="people-outline" class="btn-icon"></ion-icon>
+                    <div class="btn-text">
+                        <span class="btn-title">Teacher</span>
+                        <span class="btn-subtitle">Access class and student info</span>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="btn-arrow"></ion-icon>
+                </div>
+            </button>
+
+            <!-- Officer Login Button -->
+            <button class="custom-btn btn-outline action-btn" (click)="navigateToOfficerLogin()">
+                <div class="btn-content">
+                    <ion-icon name="briefcase-outline" class="btn-icon"></ion-icon>
+                    <div class="btn-text">
+                        <span class="btn-title">Officer</span>
+                        <span class="btn-subtitle">Administrative access</span>
+                    </div>
+                    <ion-icon name="chevron-forward-outline" class="btn-arrow"></ion-icon>
+                </div>
+            </button>
         </div>
 
         <div class="footer">

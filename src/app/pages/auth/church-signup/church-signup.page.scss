@@ -4,9 +4,13 @@
 }
 
 .form-container {
-    max-width: 500px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 16px 0;
+}
+
+.error-text {
+    color: darkorange;
 }
 
 .input-text {
@@ -15,9 +19,10 @@
     background: transparent;
     font-size: 16px;
     color: #1c1f1f;
+    /* Removed focus effects */
     &:focus {
         outline: none;
-        border-bottom: 1px solid #006666 !important;
+        /* Remove the border-bottom change */
     }
 }
 
@@ -50,7 +55,9 @@
     margin: 0 0 8px 0;
 }
 
-// Header Section
+
+/* Header Section */
+
 .header-section {
     text-align: center;
     margin-bottom: 32px;
@@ -87,7 +94,9 @@
     }
 }
 
-// Card Styling
+
+/* Card Styling */
+
 .signup-card {
     border-radius: 16px;
     box-shadow: 0 4px 20px rgba(0, 128, 128, 0.1);
@@ -112,7 +121,9 @@
     }
 }
 
-// Form Sections
+
+/* Form Sections */
+
 .form-section {
     margin-bottom: 24px;
     .section-header {
@@ -127,7 +138,7 @@
             margin-right: 8px;
         }
         .section-title {
-            margin: 0;
+            margin: 20px;
             font-size: 1em;
             font-weight: 300;
             color: rgba(62, 57, 6, 0.793);
@@ -135,8 +146,35 @@
     }
 }
 
-// Form Items
-.form-itemmm {
+
+/* Form Items - Updated with consistent borders */
+
+.form-item {
+    --background: transparent;
+    margin-bottom: 1.5rem;
+    border: 2px solid #008080;
+    border-radius: 16px;
+    padding: 0.5rem;
+    background: rgba(248, 249, 250, 0.8);
+    /* Remove transform and focus effects */
+    transition: none;
+    &:focus-within {
+        transform: none;
+        .input-icon {
+            color: #008080;
+            /* Keep original color */
+        }
+    }
+}
+
+.input-container {
+    border: 1px solid #008080;
+    padding-left: 5px;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.form-item {
     --padding-start: 0;
     --inner-padding-end: 0;
     margin-bottom: 10px;
@@ -161,8 +199,10 @@
     border: none;
     background: transparent;
     font-size: 16px;
+    /* Remove focus effects */
     &:focus {
         outline: none;
+        /* No border changes on focus */
     }
 }
 
@@ -172,7 +212,9 @@
     margin-right: 12px;
 }
 
-// Benefits Section
+
+/* Benefits Section */
+
 .benefits-section {
     background: var(--ion-color-light);
     border-radius: 12px;
@@ -214,101 +256,34 @@
     }
 }
 
-// Submit Button
-.submit-button {
-    --border-radius: 12px;
-    --padding-top: 20px;
-    --padding-bottom: 20px;
-    margin: 24px 0 16px;
-    font-weight: 600;
-    text-transform: none;
-    ion-icon {
-        font-size: 1.1em;
-    }
-}
 
-// Error Item
-.error-item {
-    --background: rgba(var(--ion-color-danger-rgb), 0.1);
-    border-radius: 8px;
-    margin-bottom: 16px;
-    ion-icon {
-        color: var(--ion-color-danger);
-    }
-}
+/* Submit Button - Remove hover transform */
 
-// Login Link
-.login-link {
-    text-align: center;
-    margin-top: 5px;
-    p {
-        margin: 0;
-        color: var(--ion-color-medium);
-        font-size: 0.9em;
-    }
-    .login-text {
-        color: var(--ion-color-primary);
-        font-weight: 600;
-        text-decoration: none;
-        cursor: pointer;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-}
-
-// Responsive Design
-@media (min-width: 768px) {
-    .form-container {
-        padding: 32px 0;
-    }
-    .signup-card {
-        margin: 0 auto;
-    }
-}
-
-// Animation for better UX
-.form-item {
-    transition: transform 0.2s ease;
-    &:focus-within {
-        transform: translateX(4px);
-        .input-icon {
-            color: var(--ion-color-primary);
-        }
-    }
-}
-
-// Loading state
-ion-button[disabled] {
-    opacity: 0.7;
-}
-
-// Submit Button
 .submit-button {
     width: 100%;
     background: #004d4d;
     color: white;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: 12px;
     padding: 20px;
     font-size: 1em;
     font-weight: 600;
     cursor: pointer;
-    transition: var(--transition);
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     margin: 24px 0 16px;
+    /* Remove hover transform and shadow effects */
     &:hover:not(:disabled) {
         background: #004d4d;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(0, 102, 102, 0.3);
+        /* Remove transform and shadow */
+        transform: none;
+        box-shadow: none;
     }
     &:disabled {
         opacity: 0.7;
         cursor: not-allowed;
-        transform: none;
     }
     .spinner {
         width: 16px;
@@ -325,5 +300,75 @@ ion-button[disabled] {
         100% {
             transform: rotate(360deg);
         }
+    }
+}
+
+
+/* Error Item */
+
+.error-item {
+    --background: rgba(var(--ion-color-danger-rgb), 0.1);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    ion-icon {
+        color: var(--ion-color-danger);
+    }
+}
+
+
+/* Login Link - Remove hover effects */
+
+.login-link {
+    text-align: center;
+    margin-top: 5px;
+    p {
+        margin: 0;
+        color: var(--ion-color-medium);
+        font-size: 0.9em;
+    }
+    .login-text {
+        color: var(--ion-color-primary);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        /* Remove hover effects */
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+
+/* Responsive Design */
+
+@media (min-width: 768px) {
+    .form-container {
+        padding: 32px 0;
+    }
+    .signup-card {
+        margin: 0 auto;
+    }
+}
+
+
+/* Remove the animation section since we're removing focus effects */
+
+
+/* Loading state */
+
+ion-button[disabled] {
+    opacity: 0.7;
+}
+
+
+/* Remove the bounceLogo animation if you want to remove all animations */
+
+@keyframes bounceLogo {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
     }
 }

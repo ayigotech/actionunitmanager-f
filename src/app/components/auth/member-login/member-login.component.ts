@@ -5,14 +5,14 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth';
 import { Notification } from 'src/app/services/notification';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IonItem, IonIcon } from "@ionic/angular/standalone";
+import { IonItem, IonIcon, IonContent, IonButtons, IonBackButton } from "@ionic/angular/standalone";
 
 @Component({
   selector: 'app-member-login',
   templateUrl: './member-login.component.html',
   styleUrls: ['./member-login.component.scss'],
  standalone: true,
-   imports: [CommonModule, FormsModule, IonIcon, IonItem,ReactiveFormsModule]
+   imports: [CommonModule, FormsModule, IonIcon, IonItem, ReactiveFormsModule, IonContent, IonButtons, IonBackButton]
 })
 export class MemberLoginComponent {
   isLoading: boolean = false;

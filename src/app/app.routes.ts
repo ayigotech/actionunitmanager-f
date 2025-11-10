@@ -14,6 +14,18 @@ export const routes: Routes = [
     path: 'auth',
     loadComponent: () => import('./components/auth/login/login.component').then(m => m.LoginComponent)
   },
+   {
+    path: 'auth/superintendent-login',
+    loadComponent: () => import('./components/auth/superintendent-login/superintendent-login.component').then(m => m.SuperintendentLoginComponent)
+  },
+   {
+    path: 'auth/teacher-login',
+    loadComponent: () => import('./components/auth/teacher-login/teacher-login.component').then(m => m.TeacherLoginComponent)
+  },
+   {
+    path: 'auth/officer-login',
+    loadComponent: () => import('./components/auth/member-login/member-login.component').then(m => m.MemberLoginComponent)
+  },
   {
     path: 'superintendent',
     loadComponent: () => import('./pages/superintendent/dashboard/dashboard.page').then( m => m.SuperintendentDashboardPage)

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/services/auth';
 import { Router } from '@angular/router';
 import { Notification } from 'src/app/services/notification';
-import { IonItem, IonIcon} from "@ionic/angular/standalone"
+import { IonItem, IonIcon, IonButtons, IonBackButton, IonContent } from "@ionic/angular/standalone"
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -13,11 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './superintendent-login.component.html',
   styleUrls: ['./superintendent-login.component.scss'],
   standalone: true,
-  imports: [CommonModule, 
+  imports: [CommonModule,
     IonItem, IonIcon,
-    FormsModule, ReactiveFormsModule, 
-    // IonicModule
-  ]
+    FormsModule, ReactiveFormsModule, IonButtons, IonBackButton, IonContent]
 })
 export class SuperintendentLoginComponent {
   email: string = '';

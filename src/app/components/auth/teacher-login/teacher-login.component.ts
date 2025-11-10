@@ -7,7 +7,7 @@ import { AuthService } from 'src/app/services/auth';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Notification } from 'src/app/services/notification';
-import { IonIcon, IonItem, IonButton, IonSpinner } from "@ionic/angular/standalone";
+import { IonIcon, IonItem, IonButton, IonSpinner, IonContent, IonButtons, IonBackButton } from "@ionic/angular/standalone";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './teacher-login.component.html',
   styleUrls: ['./teacher-login.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, IonIcon, IonItem,ReactiveFormsModule]
+  imports: [CommonModule, FormsModule, IonIcon, IonItem, ReactiveFormsModule, IonContent, IonButtons, IonBackButton]
 })
 export class TeacherLoginComponent {
   phoneNumber: string = '';

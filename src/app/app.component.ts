@@ -58,6 +58,8 @@ import {
   chevronDownCircleOutline,
   folderOutline,
   documentAttach,
+  briefcaseOutline,
+  chevronForwardOutline,
   
 } from 'ionicons/icons';
 
@@ -107,6 +109,8 @@ export class AppComponent {
     'person-outline': personOutline, call, chatbubble,document, 'location-outline': locationOutline, 'person-add': personAdd,
   'person-circle': personCircle,'document-text-outline': documentTextOutline, 'swap-horizontal': swapHorizontal,
   'remove-circle': removeCircle, 'trending-down':trendingDown, 'trending-up': trendingUp,
+    "chevron-forward-outline":chevronForwardOutline, "briefcase-outline":briefcaseOutline,
+
   'calendar-outline': calendarOutline,  'book-outline': bookOutline, remove,download,timer,warning,
   'business-outline': businessOutline, trash, 'ellipsis-vertical':ellipsisVertical,'construct-outline':constructOutline,
     'navigate-outline': navigateOutline, 'rocket-outline':rocketOutline, 'warning-outline':warningOutline,
