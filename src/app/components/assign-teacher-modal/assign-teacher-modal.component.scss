@@ -1,0 +1,105 @@
+ion-content,
+ion-card {
+    --background: #f8f9fa;
+}
+
+ion-toolbar,
+ion-header {
+    --background: linear-gradient(135deg, #008080, #00a0a0)
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+ion-spinner {
+    width: 16px;
+    height: 16px;
+}
+
+ion-button[disabled] {
+    opacity: 0.6;
+}
+
+.class-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-item2 {
+    --background: transparent;
+    --border-color: #e0e0e0;
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 1rem;
+}
+
+.input-icon {
+    color: #008080;
+    font-size: 1.2rem;
+    margin-right: 12px;
+}
+
+.custom-input2 {
+    width: 100%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #008080;
+    background: transparent;
+    color: #0a0a0a;
+    font-size: 16px;
+    padding: 10px;
+    // box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
+    outline: none;
+}
+
+
+/* Wrapper for custom select */
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 12px 0;
+    color: #0a0a0a;
+}
+
+
+/* Label styling */
+
+.select-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+
+/* Style the select box */
+
+select {
+    width: 100%;
+    padding: 12px 40px 12px 12px;
+    /* space for arrow */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    // appearance: none;
+    /* remove default arrow */
+    background-color: transparent;
+    color: #333;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+
+/* Focus effect */
+
+select:focus {
+    border-color: #008080;
+    /* matches teal theme */
+    // box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
+    outline: none;
+    color: #0a0a0a;
+}

@@ -1,0 +1,155 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Subscribe Now</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <!-- Input Step -->
+    <div *ngIf="paymentStep === 'input'" class="payment-content">
+        <div class="payment-header">
+            <ion-icon name="card-outline" class="payment-icon"></ion-icon>
+            <h2>Choose Your Plan</h2>
+            <p class="description">Unlock all features for your church</p>
+        </div>
+
+        <!-- Plan Selection -->
+        <ion-item class="form-item">
+            <ion-icon name="calendar-outline" slot="start" class="input-icon"></ion-icon>
+            <ion-select [(ngModel)]="selectedPlan" (ionChange)="onPlanChange($event.detail.value)" placeholder="Select Plan" class="custom-input">
+                <ion-select-option value="monthly">Quarterly - GHS 100</ion-select-option>
+                <ion-select-option value="annual">Annual - GHS 350</ion-select-option>
+            </ion-select>
+        </ion-item>
+
+        <!-- Phone Number Input -->
+        <ion-item class="form-item">
+            <ion-icon name="phone-portrait-outline" slot="start" class="input-icon"></ion-icon>
+            <ion-input type="tel" placeholder="MTN Mobile Money Number" [(ngModel)]="phoneNumber" class="custom-input">
+            </ion-input>
+        </ion-item>
+
+        <!-- Order Summary -->
+        <div class="payment-summary">
+            <h4>Order Summary</h4>
+            <div class="summary-details">
+                <div class="summary-row">
+                    <span>{{ currentPlan.name }} Plan</span>
+                    <span>GHS {{ currentPlan.amount }}</span>
+                </div>
+                <div class="summary-row total">
+                    <strong>Total</strong>
+                    <strong>GHS {{ currentPlan.amount }}</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Info -->
+        <div class="payment-info">
+            <ion-item lines="none" color="light">
+                <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+                <ion-label class="ion-text-wrap">
+                    <small>You will receive a USSD prompt on your phone to complete the payment</small>
+                </ion-label>
+            </ion-item>
+        </div>
+
+        <!-- Submit Button -->
+        <ion-button expand="block" color="primary" size="large" (click)="processPayment()" [disabled]="isLoading || !phoneNumber || !selectedPlan">
+            @if (isLoading) {
+            <ion-spinner name="crescent" slot="start"></ion-spinner>
+            Processing... } @else {
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+            Pay GHS {{ currentPlan.amount }} }
+        </ion-button>
+
+        <!-- Annual Plan Savings Note -->
+        <div *ngIf="selectedPlan === 'annual'" class="savings-note">
+            <ion-item lines="none" color="success" class="savings-item">
+                <ion-icon name="star" slot="start" color="success"></ion-icon>
+                <ion-label class="ion-text-wrap">
+                    <small>Save GHS 100 per year with annual billing!</small>
+                </ion-label>
+            </ion-item>
+        </div>
+    </div>
+
+    <!-- Processing Step -->
+    <div *ngIf="paymentStep === 'processing'" class="payment-content">
+        <div class="processing-state">
+            <ion-spinner name="crescent" color="primary"></ion-spinner>
+            <h3>Processing Payment</h3>
+            <p>Please check your phone for USSD prompt</p>
+            <p class="note">Do not close this window</p>
+
+            <!-- Transaction Details -->
+            <div class="transaction-details" *ngIf="phoneNumber">
+                <ion-item lines="none" color="light">
+                    <ion-icon name="phone-portrait-outline" slot="start"></ion-icon>
+                    <ion-label>
+                        <small>Payment sent to: {{ phoneNumber }}</small>
+                    </ion-label>
+                </ion-item>
+                <ion-item lines="none" color="light">
+                    <ion-icon name="card-outline" slot="start"></ion-icon>
+                    <ion-label>
+                        <small>Amount: GHS {{ currentPlan.amount }}</small>
+                    </ion-label>
+                </ion-item>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Step -->
+    <div *ngIf="paymentStep === 'success'" class="payment-content">
+        <div class="success-state">
+            <ion-icon name="checkmark-circle" color="success" class="success-icon"></ion-icon>
+            <h3>Payment Successful!</h3>
+            <p>Your {{ currentPlan.name.toLowerCase() }} subscription is now active</p>
+            <p class="success-details">Full access has been activated for your church</p>
+
+            <div class="success-features">
+                <ion-item lines="none">
+                    <ion-icon name="checkmark" slot="start" color="success"></ion-icon>
+                    <ion-label>Unlimited Members & Classes</ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-icon name="checkmark" slot="start" color="success"></ion-icon>
+                    <ion-label>Advanced Analytics</ion-label>
+                </ion-item>
+                <ion-item lines="none">
+                    <ion-icon name="checkmark" slot="start" color="success"></ion-icon>
+                    <ion-label>Bulk SMS & Data Export</ion-label>
+                </ion-item>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error Step -->
+    <div *ngIf="paymentStep === 'error'" class="payment-content">
+        <div class="error-state">
+            <ion-icon name="close-circle" color="danger" class="error-icon"></ion-icon>
+            <h3>Payment Failed</h3>
+            <p>We couldn't process your payment. This could be due to:</p>
+            <ul class="error-reasons">
+                <li>Insufficient balance</li>
+                <li>Network issues</li>
+                <li>Incorrect phone number</li>
+            </ul>
+            <div class="error-actions">
+                <ion-button expand="block" color="primary" (click)="paymentStep = 'input'">
+                    <ion-icon name="refresh" slot="start"></ion-icon>
+                    Try Again
+                </ion-button>
+                <ion-button expand="block" color="medium" fill="outline" (click)="dismiss()">
+                    Cancel
+                </ion-button>
+            </div>
+        </div>
+    </div>
+</ion-content>

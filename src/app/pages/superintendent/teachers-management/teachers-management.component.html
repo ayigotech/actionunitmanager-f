@@ -1,0 +1,109 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Manage Teachers</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="addTeacher()">
+                <ion-icon slot="icon-only" name="person-add"></ion-icon>
+            </ion-button>
+            <ion-button (click)="assignTeacher()">
+                <ion-icon slot="icon-only" name="link"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <div class="teachers-container">
+
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Class Teachers</h1>
+            <p>Assign and manage class teachers</p>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading teachers...</p>
+        </div>
+
+        <!-- Teachers List -->
+        <div *ngIf="!isLoading" class="teachers-list">
+
+            <!-- Empty State -->
+            <div *ngIf="teachers.length === 0" class="empty-state">
+                <div class="empty-icon">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <h3>No Teachers Added</h3>
+                <p>Add teachers to your Action Unit system</p>
+                <ion-button (click)="addTeacher()" fill="solid">
+                    Add First Teacher
+                </ion-button>
+            </div>
+
+            <!-- Teachers Grid -->
+            <div *ngIf="teachers.length > 0" class="teachers-grid">
+                <ion-card *ngFor="let teacher of teachers" class="teacher-card">
+                    <ion-card-content>
+                        <div class="teacher-header">
+                            <div class="teacher-avatar">
+                                <ion-icon name="person-circle"></ion-icon>
+                            </div>
+                            <div class="teacher-info">
+                                <h3>{{ teacher.name }}</h3>
+                                <p class="teacher-class">{{ teacher.assignedClass }}</p>
+                            </div>
+                            <div class="teacher-status" [class.active]="teacher.isActive">
+                                {{ teacher.isActive ? 'Active' : 'Inactive' }}
+                            </div>
+                        </div>
+
+                        <div class="teacher-details">
+                            <div class="detail-item">
+                                <ion-icon name="call-outline"></ion-icon>
+                                <span>{{ teacher.phone }}</span>
+                            </div>
+
+                            <div class="detail-item" *ngIf="teacher.email">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <span>{{ teacher.email }}</span>
+                            </div>
+
+                            <div class="detail-item">
+                                <ion-icon name="calendar-outline"></ion-icon>
+                                <span>Since {{ teacher.joinDate | date:'MMM yyyy' }}</span>
+                            </div>
+                        </div>
+
+                        <div class="teacher-actions">
+                            <ion-button fill="clear" size="small" (click)="reassignTeacher(teacher)">
+                                <ion-icon slot="start" name="swap-horizontal"></ion-icon>
+                                Reassign
+                            </ion-button>
+                            <ion-button fill="clear" size="small" (click)="editTeacher(teacher)">
+                                <ion-icon slot="start" name="create-outline"></ion-icon>
+                                Edit
+                            </ion-button>
+                            <ion-button fill="clear" size="small" color="danger" (click)="deactivateTeacher(teacher)">
+                                <ion-icon slot="start" name="remove-circle"></ion-icon>
+                                Remove
+                            </ion-button>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+        </div>
+
+    </div>
+</ion-content>

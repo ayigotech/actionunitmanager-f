@@ -1,0 +1,223 @@
+// src/app/pages/test-offline/test-offline.page.scss
+// Main container styling
+.test-container {
+    padding: 16px;
+}
+
+// Card styling enhancements
+ion-card {
+    margin: 16px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    ion-card-header {
+        padding-bottom: 8px;
+        ion-card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            // Icon spacing
+            &::before {
+                margin-right: 8px;
+                font-size: 1.2rem;
+            }
+        }
+    }
+    ion-card-content {
+        padding-top: 8px;
+    }
+}
+
+// Network status card specific styling
+.network-status-card {
+    ion-badge {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        border-radius: 20px;
+    }
+}
+
+// Storage status card
+.storage-status-card {
+    ion-badge {
+        background: var(--ion-color-primary);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+    }
+}
+
+// Test actions card
+.test-actions-card {
+    ion-button {
+        margin: 8px 0;
+        --border-radius: 8px;
+        --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        &:first-of-type {
+            margin-top: 0;
+        }
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Sync results card
+.sync-results-card {
+    ion-badge {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+}
+
+// Log output styling
+.log-output-card {
+    ion-textarea {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 12px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        border: 1px solid #e9ecef;
+        // Scrollbar styling for web
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    }
+}
+
+// Status indicators
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    &.online::before {
+        content: "●";
+        color: var(--ion-color-success);
+        font-size: 1.2rem;
+    }
+    &.offline::before {
+        content: "●";
+        color: var(--ion-color-danger);
+        font-size: 1.2rem;
+    }
+}
+
+// Progress bar for sync (if you add one later)
+.sync-progress {
+    margin: 12px 0;
+    .progress-bar {
+        height: 6px;
+        background: #e9ecef;
+        border-radius: 3px;
+        overflow: hidden;
+        .progress-fill {
+            height: 100%;
+            background: var(--ion-color-primary);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+    }
+    .progress-text {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--ion-color-medium);
+        margin-top: 4px;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .test-container {
+        padding: 12px;
+    }
+    ion-card {
+        margin: 12px 0;
+        ion-card-header {
+            ion-card-title {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+    .log-output-card ion-textarea {
+        background: #2a2a2a;
+        border-color: #444;
+        color: #e0e0e0;
+    }
+}
+
+// Animation for status changes
+.status-change {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+// Loading states
+.loading {
+    opacity: 0.7;
+    pointer-events: none;
+    &::after {
+        content: " (Loading...)";
+        font-style: italic;
+        color: var(--ion-color-medium);
+    }
+}
+
+// Error states
+.error-message {
+    color: var(--ion-color-danger);
+    font-size: 0.9rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &::before {
+        content: "⚠";
+        font-size: 1rem;
+    }
+}
+
+// Success states
+.success-message {
+    color: var(--ion-color-success);
+    font-size: 0.9rem;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &::before {
+        content: "✓";
+        font-size: 1rem;
+        font-weight: bold;
+    }
+}

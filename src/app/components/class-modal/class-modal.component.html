@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ mode === 'add' ? 'Add New Class' : 'Edit Class' }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="saveClass()" [strong]="true" [disabled]="isLoading">
+                <div class="button-content">
+                    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+                    <span *ngIf="!isLoading">
+        {{ mode === 'add' ? 'Create' : 'Update' }}
+      </span>
+                </div>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="classForm" (ngSubmit)="saveClass()" class="class-form">
+
+        <!-- Class Name -->
+        <ion-item class="form-item">
+            <ion-icon name="school" slot="start" class="input-icon"></ion-icon>
+            <input type="text" class="form-control form-input" placeholder="Class Name" formControlName="name" required />
+        </ion-item>
+
+        <!-- Location -->
+        <ion-item class="form-item">
+            <ion-icon name="location-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" class="form-control form-input" placeholder="Class Location" formControlName="location" />
+        </ion-item>
+
+        <!-- Teacher -->
+        <!-- <ion-item class="form-item"> -->
+        <!-- <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon> -->
+
+        <!-- <div class="select-wrapper"> -->
+        <!-- <label for="classId" class="select-label">Select Class</label> -->
+        <!-- <select id="teacherId" formControlName="teacherId" [disabled]="isFormDisabled">
+                    <option value="">Select Teacher</option>
+                    <option *ngFor="let teacher of availableTeachers" [value]="teacher.id">
+                     {{ teacher.name }}
+                    </option>
+                </select> -->
+        <!-- </div> -->
+
+        <!-- </ion-item> -->
+
+        <!-- Hidden submit -->
+        <button type="submit" class="btn btn-primary d-none"></button>
+
+    </form>
+
+
+</ion-content>

@@ -1,0 +1,207 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/auth" text="Back"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Church Registration</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+    <div class="form-container">
+        <!-- Header Section -->
+        <div class="header-section">
+
+            <div class="logo-wrapper">
+                <div class="logo-circle">
+                    <ion-icon name="school" class="logo-icon"></ion-icon>
+                </div>
+                <div class="logo-pulse"></div>
+                <h1 class="app-name">ActionUnitManager</h1>
+            </div>
+            <p class="app-subtitle">Register your church to start managing Action Unit classes</p>
+        </div>
+
+        <div class="signup-card">
+            <div class="card-header">
+                <h2 class="card-title">Create Church Account</h2>
+                <p class="card-subtitle">2 months free trial • Professional management tools</p>
+            </div>
+
+            <div class="card-content">
+                <!-- Error Message -->
+                @if (errorMessage) {
+                <div class="error-message">
+                    <ion-icon name="warning-outline"></ion-icon>
+                    <span>{{ errorMessage }}</span>
+                </div>
+                }
+
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-form">
+                    <!-- Church Information Section -->
+                    <div class="form-section" formGroupName="church">
+                        <div class="section-header">
+                            <ion-icon name="business-outline" class="section-icon"></ion-icon>
+                            <h3 class="section-title">Church Information</h3>
+                        </div>
+
+                        <div class="form-field" [class.error]="churchForm.get('name')?.invalid && churchForm.get('name')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="business-outline" class="input-icon"></ion-icon>
+                                <input type="text" formControlName="name" placeholder="Church name" class="input-text">
+                            </div>
+                            @if (churchForm.get('name')?.invalid && churchForm.get('name')?.touched) {
+                            <small class="error-text">Church name is required</small> }
+                        </div>
+
+                        <div class="form-field" [class.error]="churchForm.get('email')?.invalid && churchForm.get('email')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                                <input type="email" formControlName="email" placeholder="Church email address" class="input-text">
+                            </div>
+                            @if (churchForm.get('email')?.invalid && churchForm.get('email')?.touched) {
+                            <small class="error-text">Valid email is required</small> }
+                        </div>
+
+                        <div class="form-field">
+                            <div class="input-container">
+                                <ion-icon name="call-outline" class="input-icon"></ion-icon>
+                                <input type="tel" formControlName="phone" placeholder="Church phone number" class="input-text">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <div class="input-container">
+                                <ion-icon name="location-outline" class="input-icon"></ion-icon>
+                                <input type="text" formControlName="address" placeholder="Church address" class="input-text">
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <div class="input-container">
+                                <ion-icon name="navigate-outline" class="input-icon"></ion-icon>
+                                <input type="text" formControlName="district" placeholder="District" class="input-text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Superintendent Information Section -->
+                    <div class="form-section" formGroupName="superintendent">
+                        <div class="section-header">
+                            <ion-icon name="person" class="section-icon"></ion-icon>
+                            <h3 class="section-title">Superintendent Information</h3>
+                        </div>
+
+                        <div class="form-field" [class.error]="superintendentForm.get('name')?.invalid && superintendentForm.get('name')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="person-circle-outline" class="input-icon"></ion-icon>
+                                <input type="text" formControlName="name" placeholder="Your full name" class="input-text">
+                            </div>
+                            @if (superintendentForm.get('name')?.invalid && superintendentForm.get('name')?.touched) {
+                            <small class="error-text">Name is required</small> }
+                        </div>
+
+                        <div class="form-field" [class.error]="superintendentForm.get('email')?.invalid && superintendentForm.get('email')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="mail-open-outline" class="input-icon"></ion-icon>
+                                <input type="email" formControlName="email" placeholder="Your email address" class="input-text">
+                            </div>
+                            @if (superintendentForm.get('email')?.invalid && superintendentForm.get('email')?.touched) {
+                            <small class="error-text">Valid email is required</small> }
+                        </div>
+
+                        <div class="form-field" [class.error]="superintendentForm.get('phone')?.invalid && superintendentForm.get('phone')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="phone-portrait-outline" class="input-icon"></ion-icon>
+                                <input type="tel" formControlName="phone" placeholder="Your phone number" class="input-text">
+                            </div>
+                            @if (superintendentForm.get('phone')?.invalid && superintendentForm.get('phone')?.touched) {
+                            <small class="error-text">Phone number is required</small> }
+                        </div>
+
+                        <div class="form-field" [class.error]="superintendentForm.get('password')?.invalid && superintendentForm.get('password')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                                <input type="password" formControlName="password" placeholder="Create password" class="input-text">
+                            </div>
+                            @if (superintendentForm.get('password')?.invalid && superintendentForm.get('password')?.touched) {
+                            <small class="error-text">Password must be at least 6 characters</small> }
+                        </div>
+
+                        <div class="form-field" [class.error]="superintendentForm.get('confirmPassword')?.invalid && superintendentForm.get('confirmPassword')?.touched">
+                            <div class="input-container">
+                                <ion-icon name="lock-closed" class="input-icon"></ion-icon>
+                                <input type="password" formControlName="confirmPassword" placeholder="Confirm password" class="input-text">
+                            </div>
+                            @if (superintendentForm.get('confirmPassword')?.invalid && superintendentForm.get('confirmPassword')?.touched) {
+                            <small class="error-text">Please confirm your password</small> }
+                        </div>
+                    </div>
+
+                    <!-- Benefits Section -->
+                    <div class="benefits-section">
+                        <div class="benefits-header">
+                            <ion-icon name="gift-outline" class="benefits-icon"></ion-icon>
+                            <h4>Free Trial Benefits</h4>
+                        </div>
+                        <div class="benefits-list">
+                            <div class="benefit-item">
+                                <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                                <span>2 months full access</span>
+                            </div>
+                            <div class="benefit-item">
+                                <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                                <span>Unlimited classes & members</span>
+                            </div>
+                            <div class="benefit-item">
+                                <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                                <span>Advanced analytics & reports</span>
+                            </div>
+                            <div class="benefit-item">
+                                <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                                <span>Priority support</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" class="submit-button">
+                            <span *ngIf="!isLoading">
+                                <ion-icon name="rocket-outline"></ion-icon>
+                               Create Church Account
+                            </span>
+                            <span *ngIf="isLoading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                           Creating Account...
+                            </span>
+                        </button>
+                    </div>
+
+
+                </form>
+
+                <!-- Login Link -->
+                <div class="login-link">
+                    <p>Already have an account?
+                        <a (click)="onLoginClick()" class="login-text">Sign in here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>

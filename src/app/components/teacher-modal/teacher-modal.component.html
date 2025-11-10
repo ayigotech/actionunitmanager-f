@@ -1,0 +1,40 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ mode === 'add' ? 'Add New Teacher' : 'Edit Teacher' }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="saveTeacher()" [strong]="true">
+                {{ mode === 'add' ? 'Create' : 'Update' }}
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="teacherForm" (ngSubmit)="saveTeacher()" class="class-form">
+        <!-- Teacher Name -->
+        <ion-item class="form-item">
+            <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" class="form-control form-input" placeholder="Teacher Name" formControlName="name" required>
+        </ion-item>
+
+        <!-- Teacher Phone -->
+        <ion-item class="form-item">
+            <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="tel" class="form-control form-input" placeholder="Phone Number" formControlName="phone" required>
+        </ion-item>
+
+        <!-- Teacher Email -->
+        <ion-item class="form-item">
+            <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="email" class="form-control form-input" placeholder="Email (Optional)" formControlName="email">
+        </ion-item>
+
+        <!-- Hidden submit -->
+        <button type="submit" style="display: none"></button>
+    </form>
+</ion-content>

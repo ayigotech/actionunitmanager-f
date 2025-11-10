@@ -1,2 +1,43 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* src/theme/variables.css */
+
+
+/* Ionic Variables and Theming */
+
+
+/* For more info, please see: http://ionicframework.com/docs/theming/ */
+
+
+/** Ionic CSS Variables **/
+
+:root {
+    /** Primary Teal Color **/
+    --ion-color-primary: #008080;
+    --ion-color-primary-rgb: 0, 128, 128;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #007171;
+    --ion-color-primary-tint: #1a8d8d;
+    /** Background & Text **/
+    --ion-background-color: #ffffff;
+    --ion-text-color: #333333;
+    /** Card & Item Backgrounds **/
+    --ion-item-background: #ffffff;
+    --ion-card-background: #ffffff;
+    /** Toolbar **/
+    --ion-toolbar-background: #008080;
+    --ion-toolbar-color: #ffffff;
+    /** Borders **/
+    --ion-border-color: #e0e0e0;
+}
+
+
+/* Force light theme */
+
+@media (prefers-color-scheme: dark) {
+     :root {
+        --ion-background-color: #ffffff;
+        --ion-text-color: #333333;
+        --ion-item-background: #ffffff;
+        --ion-card-background: #ffffff;
+    }
+}

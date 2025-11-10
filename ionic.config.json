@@ -1,7 +1,8 @@
 {
-  "name": "ActionUnitManager",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular-standalone"
+    "name": "ActionUnitManager",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "angular-standalone",
+    "theme": "light"
 }

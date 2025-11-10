@@ -1,3 +1,8 @@
+<!-- Remove any debug overlays and use proper Ionic structure -->
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+    <!-- Show preloader while loading -->
+    <app-preloader *ngIf="isLoading"></app-preloader>
+
+    <!-- Main app content when loaded -->
+    <ion-router-outlet *ngIf="!isLoading"></ion-router-outlet>
 </ion-app>

@@ -1,0 +1,262 @@
+// subscription-dashboard.component.scss
+ion-content {
+    --background: #f8f9fa;
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    ion-spinner {
+        margin-bottom: 16px;
+    }
+    p {
+        color: var(--ion-color-medium);
+        margin: 0;
+    }
+}
+
+.status-section {
+    margin-bottom: 24px;
+    // background: linear-gradient(165deg, #008080eb, #00a0a093);
+    .status-card {
+        text-align: center;
+        background: linear-gradient(165deg, #008080eb, #00a0a093);
+        .status-details {
+            .status-item {
+                display: flex;
+                align-items: center;
+                margin-bottom: 12px;
+                ion-icon {
+                    margin-right: 12px;
+                    font-size: 20px;
+                    color: #f8f9fa;
+                }
+                ion-label {
+                    text-align: left;
+                    color: white
+                }
+            }
+            .permission-message {
+                margin-top: 16px;
+                ion-badge {
+                    font-size: 14px;
+                    padding: 8px 12px;
+                }
+            }
+        }
+    }
+}
+
+.plans-section {
+    margin-bottom: 24px;
+    .plan-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 16px;
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr;
+        }
+        .plan-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-radius: 16px;
+            // background: linear-gradient(165deg, #008080eb, #00a0a093);
+            &:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            }
+            &.featured {
+                border: 2px solid var(--ion-color-primary);
+                position: relative;
+                &::before {
+                    content: 'Most Popular';
+                    position: absolute;
+                    top: 2px;
+                    right: 20px;
+                    background: var(--ion-color-primary);
+                    color: white;
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 12px;
+                    font-weight: 600;
+                }
+            }
+            .plan-price {
+                text-align: center;
+                margin: 20px 0;
+                h2 {
+                    font-size: 32px;
+                    font-weight: bold;
+                    color: var(--ion-color-dark);
+                    margin: 0 0 4px 0;
+                }
+                p {
+                    color: var(--ion-color-medium);
+                    margin: 0;
+                    font-size: 14px;
+                }
+                .savings {
+                    color: var(--ion-color-success);
+                    font-weight: 600;
+                    font-size: 12px;
+                    margin-top: 4px;
+                }
+            }
+            .plan-features {
+                margin: 20px 0;
+                ion-list {
+                    background: transparent;
+                }
+                ion-item {
+                    --background: transparent;
+                    --padding-start: 0;
+                    --inner-padding-end: 0;
+                    --min-height: 40px;
+                    ion-icon {
+                        font-size: 18px;
+                    }
+                    ion-label {
+                        font-size: 14px;
+                        color: var(--ion-color-dark);
+                    }
+                }
+            }
+            ion-button {
+                margin-top: 16px;
+            }
+        }
+    }
+}
+
+.payment-section {
+    margin-bottom: 24px;
+    .payment-summary {
+        background: var(--ion-color-light);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 20px 0;
+        h4 {
+            margin: 0 0 12px 0;
+            color: var(--ion-color-dark);
+            font-weight: 600;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ion-color-medium-shade);
+            &:last-child {
+                border-bottom: none;
+            }
+            &.total {
+                font-size: 18px;
+                font-weight: bold;
+                color: var(--ion-color-primary);
+                margin-top: 8px;
+                padding-top: 12px;
+                border-top: 2px solid var(--ion-color-primary);
+            }
+        }
+    }
+    ion-note {
+        display: block;
+        text-align: center;
+        margin-top: 16px;
+        p {
+            margin: 8px 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    }
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    text-align: center;
+    padding: 0 20px;
+    .empty-icon {
+        font-size: 64px;
+        color: var(--ion-color-medium);
+        margin-bottom: 16px;
+    }
+    h3 {
+        color: var(--ion-color-dark);
+        margin: 0 0 8px 0;
+        font-weight: 600;
+    }
+    p {
+        color: var(--ion-color-medium);
+        margin: 0 0 20px 0;
+        line-height: 1.4;
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 480px) {
+    .plan-cards {
+        gap: 16px !important;
+        .plan-card {
+            margin: 0 8px;
+            &.featured::before {
+                right: 10px;
+                font-size: 10px;
+                padding: 3px 8px;
+            }
+        }
+    }
+}
+
+// Animation for plan selection
+.plan-card {
+    transition: all 0.3s ease;
+    &[color="primary"] {
+        box-shadow: 0 4px 20px rgba(var(--ion-color-primary-rgb), 0.3);
+    }
+}
+
+// Status badge styling
+ion-badge {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+// Form styling enhancements
+ion-item {
+    --border-radius: 8px;
+    --background: white;
+    margin-bottom: 16px;
+}
+
+// Button loading state
+ion-button[disabled] {
+    --opacity: 0.7;
+}
+
+// Card header improvements
+ion-card-header {
+    padding-bottom: 8px;
+    ion-card-title {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+    ion-card-subtitle {
+        font-size: 0.9em;
+        opacity: 0.8;
+    }
+}
+
+.primary {
+    background: linear-gradient(165deg, #008080eb, #00a0a093);
+}
+
+--primary {
+    background: linear-gradient(165deg, #008080eb, #00a0a093);
+}

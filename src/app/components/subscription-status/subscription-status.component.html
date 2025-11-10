@@ -1,0 +1,23 @@
+<ion-item *ngIf="subscriptionStatus$ | async as status" [color]="getStatusColor(status)" class="subscription-banner">
+    <ion-icon [name]="subscriptionService.isPaid() ? 'checkmark-circle' : 
+            subscriptionService.isTrial() ? 'timer' :
+            subscriptionService.isGracePeriod() ? 'warning' : 'close-circle'" slot="start">
+    </ion-icon>
+
+    <ion-label class="ion-text-wrap">
+        <h3>{{ getStatusText(status) }}</h3>
+        <p *ngIf="subscriptionService.isTrial()">
+            Free trial ends {{ status.trial_end_date | date:'mediumDate' }}
+        </p>
+        <p *ngIf="subscriptionService.isGracePeriod() && status.grace_period_end">
+            Grace period ends {{ status.grace_period_end | date:'mediumDate' }}
+        </p>
+        <p *ngIf="subscriptionService.isExpired()">
+            Please subscribe to continue using all features
+        </p>
+    </ion-label>
+
+    <ion-button *ngIf="!subscriptionService.isPaid() && !subscriptionService.isTrial()" slot="end" size="small" color="primary" (click)="openPaymentModal()">
+        Subscribe Now
+    </ion-button>
+</ion-item>

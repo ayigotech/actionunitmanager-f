@@ -1,0 +1,44 @@
+<ion-content class="login-content" [fullscreen]="true">
+    <div class="background-container">
+        <div class="top-shape"></div>
+        <div class="bottom-shape"></div>
+    </div>
+
+    <div class="login-wrapper">
+        <div class="logo">
+            <div class="logo-circle">
+                <ion-icon name="school" class="logo-icon"></ion-icon>
+            </div>
+            <h1 class="app-title">ActionUnitManager</h1>
+            <p class="app-subtitle">Sabbath School Class Management</p>
+        </div>
+
+        <div class="login-card">
+            <div class="login-type-toggle">
+                <button class="toggle-btn" [class.active]="selectedLoginType === 'superintendent'" (click)="selectLoginType('superintendent')">
+          Superintendent
+        </button>
+                <button class="toggle-btn" [class.active]="selectedLoginType === 'teacher'" (click)="selectLoginType('teacher')">
+          Teacher
+        </button>
+                <button class="toggle-btn" [class.active]="selectedLoginType === 'member'" (click)="selectLoginType('member')">
+          Officer
+        </button>
+            </div>
+
+            <div class="login-form-container">
+                @if (selectedLoginType === 'superintendent') {
+                <app-superintendent-login></app-superintendent-login>
+                } @else if (selectedLoginType === 'teacher') {
+                <app-teacher-login></app-teacher-login>
+                } @else if (selectedLoginType === 'member') {
+                <app-member-login></app-member-login>
+                }
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by <a href="https://ayigotech.onrender.com/">Ayigotech</a></p>
+        </div>
+    </div>
+</ion-content>

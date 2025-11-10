@@ -1,0 +1,329 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 16px 0;
+}
+
+.input-text {
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #1c1f1f;
+    &:focus {
+        outline: none;
+        border-bottom: 1px solid #006666 !important;
+    }
+}
+
+.logo-wrapper {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.logo-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #008080 0%, #006666 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 15px;
+    box-shadow: 0 15px 35px rgba(0, 128, 128, 0.2), 0 5px 15px rgba(0, 128, 128, 0.1);
+    animation: bounceLogo 2s ease-in-out infinite;
+}
+
+.logo-icon {
+    font-size: 48px;
+    color: white;
+}
+
+.app-name {
+    font-size: 28px;
+    color: #2d3436;
+    margin: 0 0 8px 0;
+}
+
+// Header Section
+.header-section {
+    text-align: center;
+    margin-bottom: 32px;
+    .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+        .app-logo {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--ion-color-primary) 0%, #006666 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            .logo-icon {
+                font-size: 24px;
+                color: white;
+            }
+        }
+        .app-title {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--ion-color-primary);
+        }
+    }
+    .app-subtitle {
+        margin: 0;
+        color: var(--ion-color-medium);
+        font-size: 0.9em;
+    }
+}
+
+// Card Styling
+.signup-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 128, 128, 0.1);
+    margin: 0;
+    .card-header {
+        text-align: center;
+        padding-bottom: 8px;
+        .card-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: rgb(23, 29, 29);
+            margin-bottom: 4px;
+        }
+        .card-subtitle {
+            color: var(--ion-color-medium);
+            font-size: 0.9em;
+            color: rgba(23, 29, 29, 0.793);
+        }
+    }
+    .card-content {
+        padding: 8px 20px 20px;
+    }
+}
+
+// Form Sections
+.form-section {
+    margin-bottom: 24px;
+    .section-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--ion-color-light-shade);
+        .section-icon {
+            font-size: 1.2em;
+            color: var(--ion-color-primary);
+            margin-right: 8px;
+        }
+        .section-title {
+            margin: 0;
+            font-size: 1em;
+            font-weight: 300;
+            color: rgba(62, 57, 6, 0.793);
+        }
+    }
+}
+
+// Form Items
+.form-itemmm {
+    --padding-start: 0;
+    --inner-padding-end: 0;
+    margin-bottom: 10px;
+    .input-icon {
+        font-size: 1.2em;
+        color: var(--ion-color-medium);
+        margin-right: 12px;
+        min-width: 24px;
+    }
+    .custom-input {
+        --padding-start: 0;
+        font-size: 0.95em;
+        &::placeholder {
+            color: var(--ion-color-medium);
+        }
+    }
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.input-icon {
+    color: #008080;
+    font-size: 1.2rem;
+    margin-right: 12px;
+}
+
+// Benefits Section
+.benefits-section {
+    background: var(--ion-color-light);
+    border-radius: 12px;
+    padding: 16px;
+    margin: 24px 0;
+    .benefits-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+        .benefits-icon {
+            font-size: 1.1em;
+            color: var(--ion-color-primary);
+            margin-right: 8px;
+        }
+        h4 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: 600;
+            color: var(--ion-color-dark);
+        }
+    }
+    .benefits-list {
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            ion-icon {
+                font-size: 1em;
+                margin-right: 8px;
+            }
+            span {
+                font-size: 0.9em;
+                color: var(--ion-color-dark);
+            }
+        }
+    }
+}
+
+// Submit Button
+.submit-button {
+    --border-radius: 12px;
+    --padding-top: 20px;
+    --padding-bottom: 20px;
+    margin: 24px 0 16px;
+    font-weight: 600;
+    text-transform: none;
+    ion-icon {
+        font-size: 1.1em;
+    }
+}
+
+// Error Item
+.error-item {
+    --background: rgba(var(--ion-color-danger-rgb), 0.1);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    ion-icon {
+        color: var(--ion-color-danger);
+    }
+}
+
+// Login Link
+.login-link {
+    text-align: center;
+    margin-top: 5px;
+    p {
+        margin: 0;
+        color: var(--ion-color-medium);
+        font-size: 0.9em;
+    }
+    .login-text {
+        color: var(--ion-color-primary);
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Responsive Design
+@media (min-width: 768px) {
+    .form-container {
+        padding: 32px 0;
+    }
+    .signup-card {
+        margin: 0 auto;
+    }
+}
+
+// Animation for better UX
+.form-item {
+    transition: transform 0.2s ease;
+    &:focus-within {
+        transform: translateX(4px);
+        .input-icon {
+            color: var(--ion-color-primary);
+        }
+    }
+}
+
+// Loading state
+ion-button[disabled] {
+    opacity: 0.7;
+}
+
+// Submit Button
+.submit-button {
+    width: 100%;
+    background: #004d4d;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 24px 0 16px;
+    &:hover:not(:disabled) {
+        background: #004d4d;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 102, 102, 0.3);
+    }
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+    }
+    .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+        border-top: 2px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

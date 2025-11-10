@@ -1,0 +1,211 @@
+// officers-management.component.scss
+ion-content {
+    --background: #f8f9fa;
+}
+
+.search-container {
+    padding: 16px;
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #30584a !important;
+    background: transparent;
+    font-size: 16px;
+    background: white !important; // Force white background
+    color: #1f2937 !important; // Force dark text color
+    &:focus {
+        outline: none;
+    }
+}
+
+.loading-container {
+    text-align: center;
+    padding: 40px 20px;
+    .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f4f6;
+        border-top: 4px solid #3b82f6;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 16px;
+    }
+    p {
+        margin: 0;
+        color: #6b7280;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.officers-list {
+    padding: 16px;
+}
+
+.officer-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.officer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px;
+}
+
+.officer-info {
+    flex: 1;
+    h2 {
+        margin: 0 0 8px 0;
+        color: #1f2937;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    p {
+        margin: 0 0 8px 0;
+        color: #6b7280;
+        font-size: 14px;
+    }
+}
+
+.officer-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .join-date {
+        color: #9ca3af;
+        font-size: 12px;
+    }
+}
+
+.officer-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        &:checked+.slider {
+            background-color: #10b981;
+        }
+        &:checked+.slider:before {
+            transform: translateX(20px);
+        }
+    }
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #d1d5db;
+        transition: .4s;
+        border-radius: 24px;
+        &:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+    }
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    &.delete-btn {
+        background: #fef2f2;
+        color: #ef4444;
+        &:hover {
+            background: #fee2e2;
+        }
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    ion-icon {
+        font-size: 64px;
+        color: #d1d5db;
+        margin-bottom: 16px;
+    }
+    h3 {
+        margin: 0 0 8px 0;
+        color: #374151;
+    }
+    p {
+        margin: 0 0 24px 0;
+        color: #6b7280;
+    }
+}
+
+.add-officer-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    &:hover {
+        background: #2563eb;
+    }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+    .officer-content {
+        flex-direction: column;
+        gap: 16px;
+    }
+    .officer-actions {
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+}

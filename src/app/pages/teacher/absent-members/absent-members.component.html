@@ -1,0 +1,165 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Absent Members</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="generateReport()">
+                <ion-icon slot="icon-only" name="document"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+
+    <div class="absent-members-container">
+
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Absent Members</h1>
+            <p>Track and contact members who missed class</p>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="summary-cards">
+            <ion-card class="summary-card total">
+                <ion-card-content>
+                    <div class="stat">
+                        <ion-icon name="people-outline"></ion-icon>
+                        <div class="stat-info">
+                            <h3>{{ absentMembers.length }}</h3>
+                            <p>Total Absent</p>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <ion-card class="summary-card contacted">
+                <ion-card-content>
+                    <div class="stat">
+                        <ion-icon name="checkmark-done"></ion-icon>
+                        <div class="stat-info">
+                            <h3>2</h3>
+                            <p>Contacted</p>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+        </div>
+
+        <!-- Custom Filter Tabs -->
+        <div class="filter-section">
+            <div class="custom-tabs">
+                <button class="tab-button" [class.active]="selectedFilter === 'all'" (click)="filterMembers('all')">
+                    All ({{ getFilterCount('all') }})
+                </button>
+                <button class="tab-button" [class.active]="selectedFilter === 'sick'" (click)="filterMembers('sick')">
+                    Sick ({{ getFilterCount('sick') }})
+                </button>
+                <button class="tab-button" [class.active]="selectedFilter === 'traveling'" (click)="filterMembers('traveling')">
+                    Travel ({{ getFilterCount('traveling') }})
+                </button>
+                <button class="tab-button" [class.active]="selectedFilter === 'work'" (click)="filterMembers('work')">
+                    Work ({{ getFilterCount('work') }})
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading absent members...</p>
+        </div>
+
+        <!-- Members List -->
+        <div *ngIf="!isLoading" class="members-list">
+
+            <!-- Empty State -->
+            <div *ngIf="filteredMembers.length === 0" class="empty-state">
+                <div class="empty-icon">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                </div>
+                <h3>No Absent Members</h3>
+                <p>Great! All members attended class today.</p>
+            </div>
+
+            <!-- Absent Members List -->
+            <div *ngIf="filteredMembers.length > 0" class="absent-list">
+                <ion-card *ngFor="let member of filteredMembers" class="member-card">
+                    <ion-card-content>
+                        <!-- Member Header -->
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <ion-icon name="person-circle"></ion-icon>
+                            </div>
+                            <div class="member-info">
+                                <h3>{{ member.name }}</h3>
+                                <p class="member-location">
+                                    <ion-icon name="location-outline"></ion-icon>
+                                    {{ member.location }}
+                                </p>
+                                <p class="absence-count">
+                                    Missed {{ member.absenceCount }} time{{ member.absenceCount > 1 ? 's' : '' }}
+                                </p>
+                            </div>
+                            <div class="absence-reason" [class]="getAbsenceReasonClass(member.absenceReason)">
+                                {{ member.absenceReason || 'No reason' }}
+                            </div>
+                        </div>
+
+                        <!-- Member Details -->
+                        <div class="member-details">
+                            <div class="detail-row">
+                                <div class="detail-item">
+                                    <ion-icon name="calendar-outline"></ion-icon>
+                                    <span>Last attended: {{ member.lastAttendance | date:'MMM d' }}</span>
+                                </div>
+                                <div class="detail-item">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                    <span>{{ member.phone }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div *ngIf="member.notes" class="notes-section">
+                                <p class="notes-label">Notes:</p>
+                                <p class="notes-content">{{ member.notes }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <ion-button fill="outline" size="small" (click)="showContactOptions(member)">
+                                <ion-icon slot="start" name="call"></ion-icon>
+                                Contact
+                            </ion-button>
+
+                            <ion-button fill="outline" size="small" (click)="addNote(member)">
+                                <ion-icon slot="start" name="create-outline"></ion-icon>
+                                Note
+                            </ion-button>
+
+                            <ion-button fill="solid" size="small" color="success" (click)="markAsContacted(member)">
+                                <ion-icon slot="start" name="checkmark"></ion-icon>
+                                Contacted
+                            </ion-button>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+
+        </div>
+
+    </div>
+</ion-content>

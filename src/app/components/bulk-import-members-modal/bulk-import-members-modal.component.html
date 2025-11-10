@@ -1,0 +1,138 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Bulk Import Members</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="processFile()" [strong]="true" [disabled]="!selectedFile || isProcessing">
+                {{ isProcessing ? 'Processing...' : 'Import' }}
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <ion-refresher slot="fixed" (ionRefresh)="refreshPage($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <div class="import-guide">
+        <h3>Import Guide</h3>
+        <p>Organize your data in an Excel file with the following columns:</p>
+        <ul>
+            <li><strong>name</strong> (required) - Member's full name</li>
+            <li><strong>phone</strong> (required) - Phone number</li>
+            <li><strong>email</strong> (optional) - Email address</li>
+            <li><strong>location</strong> (optional) - where member stay</li>
+            <li><strong>class</strong> (required) - Class name</li>
+        </ul>
+        <p>Convert the excel file into CSV format and upload</p>
+        <p class="note">Rows with missing required fields will be skipped.</p>
+    </div>
+
+    <!-- File Selection -->
+    <div class="file-section">
+        <ion-item class="form-item">
+            <ion-label position="stacked">Select Excel File</ion-label>
+            <input type="file" #fileInput (change)="onFileSelected($event)" accept=".xlsx, .xls, .csv" style="display: none">
+            <ion-button expand="block" fill="outline" (click)="fileInput.click()">
+                <ion-icon slot="start" name="document-attach"></ion-icon>
+                Choose File
+            </ion-button>
+        </ion-item>
+
+        <!-- Selected File Info -->
+        <div *ngIf="selectedFile" class="file-info">
+            <ion-icon name="document" color="primary"></ion-icon>
+            <span class="file-name">{{ selectedFile.name }}</span>
+            <span class="file-size">({{ getFileSize(selectedFile.size) }})</span>
+            <ion-button fill="clear" color="warning" (click)="clearFile()" size="small">
+                <ion-icon name="close-circle"></ion-icon>
+            </ion-button>
+        </div>
+    </div>
+
+
+    <!-- Preview Section -->
+    <div *ngIf="previewData.length > 0" class="preview-section">
+        <h4>Preview ({{ previewData.length }} rows found)</h4>
+        <p class="note">First 10 rows shown below. {{ validRowsCount }} valid, {{ errorRowsCount }} with errors.</p>
+
+        <div class="preview-table">
+            <div class="table-header">
+                <div class="col">#</div>
+                <div class="col">Name</div>
+                <div class="col">Phone</div>
+                <div class="col">Class</div>
+                <div class="col">Status</div>
+            </div>
+            <div class="table-body">
+                <div *ngFor="let row of previewData.slice(0, 10); let i = index" class="table-row" [class.error-row]="row.hasError" [class.valid-row]="!row.hasError">
+                    <div class="col">{{ i + 1 }}</div>
+                    <div class="col" [class.missing]="!row.name">{{ row.name || '❌ Missing' }}</div>
+                    <div class="col" [class.missing]="!row.phone">{{ row.phone || '❌ Missing' }}</div>
+                    <div class="col" [class.missing]="!row.class">{{ row.class || '❌ Missing' }}</div>
+                    <div class="col">
+                        <span *ngIf="row.hasError" class="error-badge">❌ {{ row.errorMessage }}</span>
+                        <span *ngIf="!row.hasError" class="success-badge">✅ Valid</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="import-summary" [class.has-errors]="errorRowsCount > 0">
+            <p><strong>Import Summary:</strong></p>
+            <p>📊 Total rows: {{ previewData.length }}</p>
+            <p>✅ Valid rows: <strong>{{ validRowsCount }}</strong></p>
+            <p>❌ Rows with errors: <strong>{{ errorRowsCount }}</strong></p>
+
+            <div *ngIf="errorRowsCount > 0" class="error-details">
+                <p><strong>Common issues:</strong></p>
+                <ul>
+                    <li *ngIf="missingNameCount > 0">
+                        Missing names: {{ missingNameCount }}
+                    </li>
+                    <li *ngIf="missingPhoneCount > 0">
+                        Missing phones: {{ missingPhoneCount }}
+                    </li>
+                    <li *ngIf="missingClassCount > 0">
+                        Missing classes: {{ missingClassCount }}
+                    </li>
+                    <li *ngIf="invalidPhoneCount > 0">
+                        Invalid phone format: {{ invalidPhoneCount }}
+                    </li>
+                    <li *ngIf="duplicatePhones.length > 0">
+                        Duplicate phones: {{ duplicatePhones.length }}
+                    </li>
+                </ul>
+            </div>
+
+            <p class="note" *ngIf="validRowsCount > 0">
+                Ready to import {{ validRowsCount }} members. Only valid rows will be imported.
+            </p>
+        </div>
+    </div>
+
+    <!-- Processing State -->
+    <div *ngIf="isProcessing" class="processing-section">
+        <ion-spinner></ion-spinner>
+        <p>Processing file...</p>
+        <p class="note">Please don't close this modal</p>
+    </div>
+
+    <!-- Error Display -->
+    <div *ngIf="errorMessage" class="error-section">
+        <ion-item color="danger">
+            <ion-icon slot="start" name="warning"></ion-icon>
+            <ion-label class="ion-text-wrap">
+                <h3>Import Error</h3>
+                <p>{{ errorMessage }}</p>
+            </ion-label>
+        </ion-item>
+    </div>
+</ion-content>

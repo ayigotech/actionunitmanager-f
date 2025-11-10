@@ -17,6 +17,11 @@ log.txt
 /.versions
 /coverage
 
+#android
+/android
+/resources
+/icons
+
 # Ionic
 /.ionic
 /www

@@ -1,0 +1,145 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/superintendent"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Reports & Analytics</ion-title>
+    </ion-toolbar>
+
+    <ion-toolbar>
+        <!-- Custom Segment Control -->
+        <div class="custom-segment">
+            <button class="segment-button" [class.active]="selectedSegment === 'attendance'" (click)="onSegmentChange('attendance')">
+                Attendance
+            </button>
+            <button class="segment-button" [class.active]="selectedSegment === 'offerings'" (click)="onSegmentChange('offerings')">
+                Offerings
+            </button>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <!-- Date Filters -->
+    <ion-card>
+        <ion-card-content>
+            <form [formGroup]="filterForm" class="date-filters">
+                <div class="form-group">
+                    <label class="form-label">Start Date</label>
+                    <input type="date" class="form-input" formControlName="startDate">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">End Date</label>
+                    <input type="date" class="form-input" formControlName="endDate">
+                </div>
+            </form>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading reports...</p>
+    </div>
+
+    <!-- Attendance Reports -->
+    @if (selectedSegment === 'attendance') {
+    <div class="summary-cards">
+        <ion-card class="card-bg">
+            <ion-card-content>
+                <h2>{{ getAverageAttendance() | number:'1.1-1' }}%</h2>
+                <p>Average Attendance Rate</p>
+            </ion-card-content>
+        </ion-card>
+
+        <ion-card class="card-bg">
+            <ion-card-content>
+                <h2>{{ getTotalPresent() }}</h2>
+                <p>Total Present</p>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Class Attendance Details</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            @for (classData of attendanceData; track classData.className) {
+            <div class="class-group">
+                <div class="class-header">
+                    <span class="class-name">{{ classData.className }}</span>
+                    <ion-badge [color]="classData.attendanceRate >= 80 ? 'success' : 'warning'">
+                        {{ classData.attendanceRate }}%
+                    </ion-badge>
+                </div>
+
+                <div class="class-details">
+                    <p><strong>Teacher:</strong> {{ classData.teacherName }}</p>
+                    <p><strong>Present:</strong> {{ classData.presentCount }} | <strong>Absent:</strong> {{ classData.absentCount }}</p>
+                    @if (classData.absentReasons && objectKeys(classData.absentReasons).length > 0) {
+                    <p><strong>Absent Reasons:</strong></p>
+                    <div class="reasons-container">
+                        @for (reason of objectKeys(classData.absentReasons); track reason) {
+                        <span class="reason-chip">
+                            {{ reason }}: {{ classData.absentReasons[reason] }}
+                        </span> }
+                    </div>
+                    }
+                </div>
+            </div>
+            }
+        </ion-card-content>
+    </ion-card>
+    }
+
+    <!-- Offerings Reports -->
+    @if (selectedSegment === 'offerings') {
+    <div class="summary-cards">
+
+        <ion-card class="card-bg">
+            <ion-card-content>
+                <h2>GHS {{ getTotalOfferings() | number:'1.2-2' }}</h2>
+                <p>Total Offerings</p>
+            </ion-card-content>
+        </ion-card>
+
+
+
+        <ion-card class="card-bg">
+            <ion-card-content>
+                <h2>{{ offeringsData.length }}</h2>
+                <p>Classes Reported</p>
+            </ion-card-content>
+        </ion-card>
+
+
+    </div>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Class Offerings Breakdown</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            @for (offering of offeringsData; track offering.className) {
+            <div class="offering-item">
+                <div class="offering-info">
+                    <h3>{{ offering.className }}</h3>
+                    <p>Date: {{ offering.date }}</p>
+                </div>
+                <div class="offering-amount" [class]="getTrendColor(offering.trend)">
+                    <div class="trend-display">
+                        <ion-icon [name]="getTrendIcon(offering.trend)"></ion-icon>
+                        {{ offering.trendPercentage }}%
+                    </div>
+                    <div class="amount-display">
+                        <strong>GHS {{ offering.totalAmount | number:'1.2-2' }}</strong>
+                    </div>
+                </div>
+            </div>
+            }
+        </ion-card-content>
+    </ion-card>
+    }
+</ion-content>

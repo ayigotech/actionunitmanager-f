@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Manage Quarterly Books</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="openAddBookModal()">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search books..." class="search-input" (input)="filteredBooks">
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading books...</p>
+    </div>
+
+    <!-- Books List -->
+    <div *ngIf="!isLoading" class="books-list">
+        <div *ngFor="let book of filteredBooks" class="book-item">
+            <div class="book-content">
+                <div class="book-info">
+                    <h2>{{ book.title }}</h2>
+                    <p>Price: {{ book.price | currency:book.currency }}</p>
+                    <div class="book-meta">
+                        <ion-badge [color]="book.isActive ? 'success' : 'medium'">
+                            {{ book.isActive ? 'Active' : 'Inactive' }}
+                        </ion-badge>
+                        <span class="update-date">• Updated: {{ book.updatedAt | date:'mediumDate' }}</span>
+                    </div>
+                </div>
+                <div class="book-actions">
+                    <label class="toggle-switch">
+                        <input 
+                            type="checkbox" 
+                            [checked]="book.isActive" 
+                            (change)="toggleBookStatus(book)">
+                        <span class="slider"></span>
+                    </label>
+                    <div class="action-buttons">
+                        <button class="action-btn edit-btn" (click)="openEditBookModal(book)">
+                            <ion-icon name="create"></ion-icon>
+                        </button>
+                        <button class="action-btn delete-btn" (click)="deleteBook(book)">
+                            <ion-icon name="trash"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && filteredBooks.length === 0" class="empty-state">
+        <ion-icon name="library-outline"></ion-icon>
+        <h3>No Books Found</h3>
+        <p *ngIf="searchTerm">No books match your search criteria</p>
+        <p *ngIf="!searchTerm">Get started by adding your first quarterly book</p>
+        <button class="add-book-btn" (click)="openAddBookModal()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Add Book
+        </button>
+    </div>
+</ion-content>

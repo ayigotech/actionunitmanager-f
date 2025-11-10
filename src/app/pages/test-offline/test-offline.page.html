@@ -1,0 +1,106 @@
+<!-- src/app/pages/test-offline/test-offline.page.html -->
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Offline Capabilities Test</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <!-- Network Status -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>🌐 Network Status</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Online Status:</ion-label>
+                <ion-badge [color]="networkStatus?.connected ? 'success' : 'danger'">
+                    {{ networkStatus?.connected ? 'ONLINE' : 'OFFLINE' }}
+                </ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Connection Type:</ion-label>
+                <ion-text>{{ networkStatus?.connectionType }}</ion-text>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Storage Status -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>💾 Storage Status</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Pending Sync Operations:</ion-label>
+                <ion-badge>{{ storageStats?.pendingSyncOperations }}</ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Total Storage Size:</ion-label>
+                <ion-text>{{ storageStats?.storageSize }} bytes</ion-text>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Test Actions -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>🧪 Test Actions</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-button expand="block" (click)="testAttendanceRecording()" color="primary">
+                Record Test Attendance
+            </ion-button>
+
+            <ion-button expand="block" (click)="testOfferingRecording()" color="secondary">
+                Record Test Offering
+            </ion-button>
+
+            <ion-button expand="block" (click)="testManualSync()" color="tertiary">
+                Manual Sync
+            </ion-button>
+
+            <ion-button expand="block" (click)="clearTestData()" color="danger">
+                Clear Test Data
+            </ion-button>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Sync Results -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>🔄 Sync Results</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Last Sync:</ion-label>
+                <ion-text>{{ lastSyncResult?.timestamp | date:'medium' }}</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label>Status:</ion-label>
+                <ion-badge [color]="lastSyncResult?.success ? 'success' : 'danger'">
+                    {{ lastSyncResult?.success ? 'SUCCESS' : 'FAILED' }}
+                </ion-badge>
+            </ion-item>
+            <ion-item>
+                <ion-label>Synced Items:</ion-label>
+                <ion-text>{{ lastSyncResult?.syncedItems }}</ion-text>
+            </ion-item>
+            <ion-item>
+                <ion-label>Failed Items:</ion-label>
+                <ion-text>{{ lastSyncResult?.failedItems }}</ion-text>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <!-- Log Output -->
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>📝 Test Log</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-textarea rows="6" placeholder="Test logs will appear here..." [value]="testLog" readonly>
+            </ion-textarea>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

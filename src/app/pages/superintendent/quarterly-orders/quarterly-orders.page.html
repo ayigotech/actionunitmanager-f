@@ -1,0 +1,128 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/superintendent"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Quarterly Books Orders</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="exportToExcel()">
+                <ion-icon name="download" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-button (click)="exportToPDF()">
+                <ion-icon name="document" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <!-- Custom Pull to Refresh -->
+    <div class="refresh-indicator" *ngIf="isLoading">
+        <div class="spinner"></div>
+        <p>Loading orders...</p>
+    </div>
+
+    <div *ngIf="!isLoading">
+        <!-- Filter Section -->
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Filter Orders</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <form [formGroup]="filterForm">
+                    <div class="form-group">
+                        <label class="form-label">Select Quarter</label>
+                        <div class="select-wrapper">
+                            <select formControlName="selectedQuarter" class="form-select">
+                                <option value="">All Quarters</option>
+                                <option *ngFor="let quarter of availableQuarters" [value]="quarter">
+                                    {{ quarter }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Summary Cards -->
+        <div class="summary-cards">
+
+            <div class="card-bg">
+                <ion-card-content>
+                    <h2>{{ getClassesCount() }}</h2>
+                    <p>Classes Ordered</p>
+                </ion-card-content>
+            </div>
+
+            <div class="card-bg">
+                <ion-card-content>
+                    <h2>{{ getTotalBooks() }}</h2>
+                    <p>Total Qty (Books) </p>
+                </ion-card-content>
+            </div>
+
+            <div class="card-bg">
+                <ion-card-content>
+                    <h2>GHS {{ getTotalValue() | number:'1.2-2' }}</h2>
+                    <p>Total Value</p>
+                </ion-card-content>
+            </div>
+        </div>
+
+        <!-- Orders List -->
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Class Orders - {{ filterForm.get('selectedQuarter')?.value || 'All Quarters' }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                @for (classOrder of filteredData; track classOrder.classId) {
+                <div class="order-group">
+                    <div class="order-header">
+                        <div class="order-info">
+                            <h2>{{ classOrder.className }}</h2>
+                            <p>Teacher: {{ classOrder.teacherName }} | Order Date: {{ classOrder.orderDate }}</p>
+                        </div>
+                        <ion-badge class="getStatusColor(classOrder.status)">
+                            {{ classOrder.status }}
+                        </ion-badge>
+                    </div>
+
+                    @for (book of classOrder.books; track book.bookTitle) {
+                    <div class="book-item">
+                        <div class="book-info">
+                            <h3>{{ book.bookTitle }}</h3>
+                            <p>Quantity: {{ book.quantity }} × GHS {{ book.unitPrice | number:'1.2-2' }}</p>
+                        </div>
+                        <div class="book-price">
+                            GHS {{ book.totalPrice | number:'1.2-2' }}
+                        </div>
+                    </div>
+                    }
+
+                    <div class="order-total">
+                        <div class="total-label">
+                            <strong>Class Order Total (Qty)</strong>
+                        </div>
+                        <div class="total-value">
+                            {{ classOrder.totalOrderQty }}
+                        </div>
+                    </div>
+                    <div class="order-total">
+                        <div class="total-label">
+                            <strong>Class Order Total (Value)</strong>
+                        </div>
+                        <div class="total-value primary">
+                            <strong>GHS {{ classOrder.totalOrderValue | number:'1.2-2' }}</strong>
+                        </div>
+                    </div>
+                </div>
+                } @if (filteredData.length === 0) {
+                <div class="empty-state">
+                    <p>No orders found for {{ filterForm.get('selectedQuarter')?.value || 'selected quarter' }}</p>
+                </div>
+                }
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

@@ -1,0 +1,191 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>Superintendent Dashboard</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="logout()">
+                <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+    <div class="dashboard-container">
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Hi, {{ user?.name }}</h1>
+            <h1>{{ user?.church?.name }}</h1>
+            <p>Manage Sabbath School classes</p>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon classes">
+                    <ion-icon name="people"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ summaryStats.totalClasses }}</h3>
+                    <p>Total Classes</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon members">
+                    <ion-icon name="person"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ summaryStats.totalMembers }}</h3>
+                    <p>Total Members</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon teachers">
+                    <ion-icon name="school"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ summaryStats.totalTeachers }}</h3>
+                    <p>Teachers</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon attendance">
+                    <ion-icon name="calendar"></ion-icon>
+                </div>
+                <div class="stat-info">
+                    <h3>{{ summaryStats.todayAttendance }}</h3>
+                    <p>Today's Attendance</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Quick Actions -->
+        <div class="actions-section">
+            <h2>Quick Actions</h2>
+            <div class="actions-grid">
+                <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? navigateToClasses() : null">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="people-circle"></ion-icon>
+                        </div>
+                        <h3>Manage Classes</h3>
+                        <p>Create and manage action unit classes</p>
+                        <!-- Show lock icon when disabled -->
+                        <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+
+
+                <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? navigateToMembership() : null">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="people"></ion-icon>
+                        </div>
+                        <h3>Manage Membership</h3>
+                        <p>Create Class Membership</p>
+                        <!-- Show lock icon when disabled -->
+                        <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+
+
+                <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? navigateToTeachers() : null">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="person"></ion-icon>
+                        </div>
+                        <h3>Manage Teachers</h3>
+                        <p>Assign teachers to classes</p>
+                        <!-- Show lock icon when disabled -->
+                        <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+                <!-- Reports - Always accessible (read-only) -->
+                <ion-card class="action-card" (click)="navigateToReports()">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="document-text"></ion-icon>
+                        </div>
+                        <h3>View Reports</h3>
+                        <p>Attendance and offerings reports</p>
+                    </ion-card-content>
+                </ion-card>
+
+                <!-- Books Order - Always accessible (read-only) -->
+                <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? navigateToQuarterlyOrders() : null">
+
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="book"></ion-icon>
+                        </div>
+                        <h3>Quarterly Orders</h3>
+                        <p>View Orders Submitted</p>
+                        <!-- Show lock icon when disabled -->
+                        <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+
+
+                <!-- Manage books-->
+                <ion-card class="action-card" (click)="navigateToManageBooks()">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="add"></ion-icon>
+                        </div>
+                        <h3>Manage Books</h3>
+                        <p>Set books prices</p>
+                    </ion-card-content>
+                </ion-card>
+
+
+                <!-- Manage books-->
+                <ion-card class="action-card" (click)="navigateToManageOfficers()">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="shield-checkmark"></ion-icon>
+                        </div>
+                        <h3>Manage Officers</h3>
+                        <p>Access Absenteesm Info</p>
+                    </ion-card-content>
+                </ion-card>
+
+
+                <!-- Add to superintendent-dashboard.page.html -->
+                <ion-card class="action-card" (click)="navigateToSubscription()">
+                    <ion-card-content>
+                        <div class="action-icon">
+                            <ion-icon name="card"></ion-icon>
+                        </div>
+                        <h3>Subscription</h3>
+                        <p>Manage your church subscription</p>
+                    </ion-card-content>
+                </ion-card>
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</ion-content>

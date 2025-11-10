@@ -1,0 +1,52 @@
+.form-input {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    &:focus {
+        outline: none;
+    }
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+ion-spinner {
+    width: 16px;
+    height: 16px;
+}
+
+ion-button[disabled] {
+    opacity: 0.6;
+}
+
+.form-item.invalid {
+    --background: #fef2f2;
+    border: 1px solid #ef4444;
+    border-radius: 8px;
+}
+
+.officer-form {
+    .form-item {
+        --inner-padding-end: 0;
+        --padding-start: 0;
+        margin-bottom: 16px;
+    }
+    .input-icon {
+        color: #6b7280;
+        margin-right: 12px;
+    }
+}
+
+ion-note {
+    margin-top: 24px;
+    p {
+        margin: 8px 0;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}

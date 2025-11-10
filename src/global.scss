@@ -9,16 +9,92 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
+/* Basic global styles */
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    /* block global scroll */
+}
+
+ion-modal {
+    z-index: 99999 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+ion-app {
+    height: 100%;
+}
+
+ion-content {
+    --padding-bottom: env(safe-area-inset-bottom);
+    --padding-top: env(safe-area-inset-top);
+}
+
+ion-refresher,
+ion-refresher-content,
+ion-content,
+ion-card,
+ion-item,
+ion-item-group,
+ion-segment {
+    --background: #f8f9fa;
+}
+
+ion-item-divider {
+    --background: #f8f9fa;
+}
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #008080, #00a0a0)
+}
+
+ion-header {
+    --background: linear-gradient(135deg, #008080, #00a0a0);
+    --padding: 20px;
+}
+
+
+/* Fix for form labels globally */
+
+ion-label,
+ion-card-title {
+    color: rgb(63, 81, 78)
+}
+
+// ion-label {
+//     --background: #2d3436 !important;
+// }
+ion-label[position="stacked"] {
+    color: #636e72 !important;
+}
+
+ion-item {
+    --color: #2d3436;
+}
+
+
 /* Core CSS required for Ionic components to work properly */
+
 @import "@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
+
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
 @import "@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
+
 @import "@ionic/angular/css/padding.css";
 @import "@ionic/angular/css/float-elements.css";
 @import "@ionic/angular/css/text-alignment.css";
@@ -32,6 +108,10 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
+
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
+
+
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
+
 @import '@ionic/angular/css/palettes/dark.system.css';

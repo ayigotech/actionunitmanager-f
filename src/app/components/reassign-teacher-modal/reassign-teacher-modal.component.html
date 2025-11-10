@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Reassign Teacher</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="reassignTeacher()" [strong]="true" [disabled]="isLoading">
+                <div class="button-content">
+                    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+                    <span *ngIf="!isLoading">
+                    Reassign
+                </span>
+                </div>
+            </ion-button>
+
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="reassignmentForm" (ngSubmit)="reassignTeacher()" class="class-form">
+        <!-- Current Assignment Info -->
+        <ion-item class="form-item" lines="none">
+            <ion-label class="ion-text-wrap">
+                <h3>Current Assignment</h3>
+                <p>{{ currentTeacher?.name }} is currently assigned to {{ currentClass?.name }}</p>
+            </ion-label>
+        </ion-item>
+
+        <!-- New Class Selection -->
+        <ion-item class="form-item">
+            <ion-icon name="school" slot="start" class="input-icon"></ion-icon>
+            <div class="select-wrapper">
+                <select formControlName="newClassId" required>
+                    <option value="">Select New Class</option>
+                    <option *ngFor="let class of availableClasses" [value]="class.id">
+                        {{ class.name }} ({{ class.location }})
+                    </option>
+                </select>
+            </div>
+        </ion-item>
+
+        <!-- Hidden submit -->
+        <button type="submit" style="display: none"></button>
+    </form>
+</ion-content>

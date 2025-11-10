@@ -1,0 +1,29 @@
+<div class="login-form">
+    <div class="form-header">
+        <h2>Officer Login</h2>
+        <p>Get Insight on Absenteesm</p>
+    </div>
+
+    <form (ngSubmit)="onLogin()">
+        <!-- Phone number -->
+        <ion-item lines="none" class="form-item">
+            <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="tel" placeholder="Phone number" [(ngModel)]="phoneNumber" name="phoneNumber" required class="custom-input" />
+        </ion-item>
+
+        <!-- Submit Button -->
+        <div class="d-grid">
+            <button type="submit" class="btn main-btn-color" [disabled]="isLoading || !phoneNumber">
+      <span *ngIf="!isLoading">Login as Officer</span>
+      <span *ngIf="isLoading">
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+         connecting to server...
+      </span>
+    </button>
+        </div>
+    </form>
+
+    <div class="help-text">
+        <p>Contact your superintendent if you need to login as officer</p>
+    </div>
+</div>

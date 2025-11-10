@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ isEditMode ? 'Edit Book' : 'Add New Book' }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="saveBook()" [strong]="true" [disabled]="isSubmitting">
+                <div class="button-content">
+                    <div *ngIf="isSubmitting" class="spinner-small"></div>
+                    {{ isEditMode ? 'Update' : 'Create' }}
+                </div>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="bookForm" (ngSubmit)="saveBook()" class="book-form">
+        <!-- Book Title -->
+        <ion-item class="form-item" [class.invalid]="bookForm.get('title')?.invalid && bookForm.get('title')?.touched">
+            <ion-icon name="book-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" placeholder="Book Title" formControlName="title" class="form-input" required>
+        </ion-item>
+
+        <!-- Price -->
+        <ion-item class="form-item" [class.invalid]="bookForm.get('price')?.invalid && bookForm.get('price')?.touched">
+            <ion-icon name="pricetag-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="number" placeholder="Price" formControlName="price" class="form-input" min="0" step="0.01" required>
+        </ion-item>
+
+        <!-- Currency -->
+        <ion-item class="form-item">
+            <ion-icon name="cash-outline" slot="start" class="input-icon"></ion-icon>
+            <div class="select-wrapper">
+                <select formControlName="currency" class="form-select" required>
+                    <option value="">Select Currency</option>
+                    <option *ngFor="let currency of currencies" [value]="currency.code">
+                        {{ currency.name }} ({{ currency.symbol }})
+                    </option>
+                </select>
+            </div>
+        </ion-item>
+
+        <!-- Active Status -->
+        <ion-item class="form-item">
+            <ion-icon name="toggle-outline" slot="start" class="input-icon"></ion-icon>
+            <ion-label>Active</ion-label>
+            <label class="toggle-switch">
+                <input 
+                    type="checkbox" 
+                    formControlName="isActive">
+                <span class="slider"></span>
+            </label>
+        </ion-item>
+
+        <!-- Hidden submit -->
+        <button type="submit" style="display: none"></button>
+    </form>
+</ion-content>

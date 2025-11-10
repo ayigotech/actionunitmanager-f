@@ -1,0 +1,179 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>Teacher Dashboard</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="logout()">
+                <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+
+
+    <div class="dashboard-container">
+
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Hi, {{ user?.name }}</h1>
+            <h1>{{ user?.church?.name }}</h1>
+            <p>Manage your Action Unit class</p>
+        </div>
+
+        hello
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading class information...</p>
+        </div>
+
+        <!-- Class Information -->
+        <div *ngIf="!isLoading && classInfo" class="class-info-section">
+            <ion-card class="class-header-card">
+                <ion-card-content>
+                    <div class="class-header">
+                        <div class="class-avatar">
+                            <ion-icon name="people-circle"></ion-icon>
+                        </div>
+                        <div class="class-details">
+                            <h2>{{ classInfo.name }}</h2>
+                            <p class="location">
+                                <ion-icon name="location-outline"></ion-icon>
+                                {{ classInfo.location }}
+                            </p>
+                            <p class="member-count">{{ classInfo.memberCount }} members</p>
+                        </div>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- Quick Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon attendance">
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h3>{{ classInfo.todayAttendance }}/{{ classInfo.memberCount }}</h3>
+                        <p>Today's Attendance</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon offerings">
+                        <ion-icon name="cash"></ion-icon>
+                    </div>
+                    <div class="stat-info">
+                        <h3>GH₵{{ classInfo.totalOfferings }}</h3>
+                        <p>Total Offerings</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="actions-section">
+                <h2>Class Management</h2>
+                <div class="actions-grid">
+                    <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? markAttendance() : null">
+                        <ion-card-content>
+                            <div class="action-icon">
+                                <ion-icon name="checkmark-done"></ion-icon>
+                            </div>
+                            <h3>Mark Attendance</h3>
+                            <p>Record who attended class today</p>
+                            <!-- Show lock icon when disabled -->
+                            <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                                <ion-icon name="lock-closed"></ion-icon>
+                            </div>
+                            <div class="disabled-overlay">
+                                <ion-icon name="lock-closed"></ion-icon>
+                            </div>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card class="action-card" (click)="trackOfferings()">
+                        <!-- <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? trackOfferings() : null"> -->
+                        <ion-card-content>
+                            <div class="action-icon">
+                                <ion-icon name="wallet"></ion-icon>
+                            </div>
+                            <h3>Track Offerings</h3>
+                            <p>Record and manage class offerings</p>
+                            <!-- Show lock icon when disabled -->
+                            <!-- <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                                <ion-icon name="lock-closed"></ion-icon>
+                            </div> -->
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- Absent Members - Read-only access allowed -->
+                    <ion-card class="action-card" (click)="viewAbsentMembers()">
+                        <ion-card-content>
+                            <div class="action-icon">
+                                <ion-icon name="alert-circle"></ion-icon>
+                            </div>
+                            <h3>Absent Members</h3>
+                            <p>View and contact absent members</p>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <ion-card class="action-card" (click)="submitBookOrder()">
+                        <!-- <ion-card class="action-card" [class.disabled]="!featureGuard.canCreate()" (click)="featureGuard.canCreate() ? submitBookOrder() : null"> -->
+                        <ion-card-content>
+                            <div class="action-icon">
+                                <ion-icon name="book"></ion-icon>
+                            </div>
+                            <h3>Book Orders</h3>
+                            <p>Submit quarterly book orders</p>
+                            <!-- Show lock icon when disabled -->
+                            <!-- <div *ngIf="!featureGuard.canCreate()" class="disabled-overlay">
+                                <ion-icon name="lock-closed"></ion-icon>
+                            </div> -->
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </div>
+
+
+
+            <!-- Recent Activity -->
+            <!-- <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <ion-card>
+                    <ion-card-content>
+                        <div class="activity-item">
+                            <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                            <div class="activity-info">
+                                <p>Attendance marked for Sabbath, Oct 14</p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <ion-icon name="cash" color="primary"></ion-icon>
+                            <div class="activity-info">
+                                <p>Offerings recorded: GH₵45.50</p>
+                                <span class="activity-time">Yesterday</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <ion-icon name="call" color="medium"></ion-icon>
+                            <div class="activity-info">
+                                <p>Contacted 2 absent members</p>
+                                <span class="activity-time">Last week</span>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div> -->
+        </div>
+
+    </div>
+</ion-content>

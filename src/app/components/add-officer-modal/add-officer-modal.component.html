@@ -1,0 +1,52 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Add New Officer</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="saveOfficer()" [strong]="true" [disabled]="officerForm.invalid || isLoading">
+                <div class="button-content">
+                    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+                    <span *ngIf="!isLoading">
+        Create
+      </span>
+                </div>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form [formGroup]="officerForm" (ngSubmit)="saveOfficer()" class="officer-form">
+        <!-- Phone Input (Required) -->
+        <ion-item class="form-item" [class.invalid]="officerForm.get('phone')?.invalid && officerForm.get('phone')?.touched">
+            <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="tel" placeholder="Phone Number *" formControlName="phone" class="form-input" required>
+        </ion-item>
+
+        <!-- Name Input (Optional) -->
+        <ion-item class="form-item">
+            <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" placeholder="Full Name (Optional)" formControlName="name" class="form-input">
+        </ion-item>
+
+        <!-- Email Input (Optional) -->
+        <ion-item class="form-item">
+            <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="email" placeholder="Email (Optional)" formControlName="email" class="form-input">
+        </ion-item>
+
+        <!-- Information Note -->
+        <ion-note color="medium">
+            <p>• Phone number is required for officer login</p>
+            <p>• A random password will be generated automatically</p>
+            <p>• Officer will have access to member insights and attendance reports</p>
+        </ion-note>
+
+        <!-- Hidden submit -->
+        <button type="submit" style="display: none"></button>
+    </form>
+</ion-content>

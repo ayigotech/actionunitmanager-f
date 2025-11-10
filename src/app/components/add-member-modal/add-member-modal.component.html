@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{ mode === 'add' ? 'Add New Member' : 'Edit Member' }}</ion-title>
+        <ion-buttons slot="start">
+            <ion-button (click)="cancel()">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button (click)="saveMember()" [strong]="true" [disabled]="isLoading">
+                <div class="button-content">
+                    <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
+                    <span *ngIf="!isLoading">
+                    {{ mode === 'add' ? 'Create' : 'Update' }}
+                </span>
+                </div>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <form *ngIf="memberForm" [formGroup]="memberForm" (ngSubmit)="saveMember()" class="class-form">
+        <!-- Member Name -->
+        <ion-item class="form-item">
+            <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" class="form-control form-input" placeholder="Member Name" formControlName="name" required>
+        </ion-item>
+
+        <!-- Member Phone -->
+        <ion-item class="form-item">
+            <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="tel" class="form-control form-input" placeholder="Phone Number" formControlName="phone" required>
+        </ion-item>
+
+        <!-- Member Email -->
+        <ion-item class="form-item">
+            <ion-icon name="mail-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="email" class="form-control form-input" placeholder="Email (Optional)" formControlName="email">
+        </ion-item>
+
+        <!-- Location -->
+        <ion-item class="form-item">
+            <ion-icon name="location-outline" slot="start" class="input-icon"></ion-icon>
+            <input type="text" class="form-control form-input" placeholder="Member Location" formControlName="location">
+        </ion-item>
+
+        <!-- Class Selection -->
+        <ion-item class="form-item">
+            <ion-icon name="school" slot="start" class="input-icon"></ion-icon>
+            <div class="select-wrapper">
+                <!-- <label for="classId" class="select-label">Select Class</label> -->
+                <select id="classId" formControlName="classId" required>
+                    <option value="">Select Class</option>
+                    <option *ngFor="let classItem of availableClasses" [value]="classItem.id">
+                      {{ classItem.name }}
+                    </option>
+                </select>
+            </div>
+        </ion-item>
+
+        <!-- Hidden submit -->
+        <button type="submit" style="display: none"></button>
+    </form>
+</ion-content>

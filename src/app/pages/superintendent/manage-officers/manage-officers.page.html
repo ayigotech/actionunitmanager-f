@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Manage Officers</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="openAddOfficerModal()">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search officers..." class="search-input">
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading officers...</p>
+    </div>
+
+    <!-- Officers List -->
+    <div *ngIf="!isLoading" class="officers-list">
+        <div *ngFor="let officer of filteredOfficers" class="officer-item">
+            <div class="officer-content">
+                <div class="officer-info">
+                    <h2>{{ officer.name }}</h2>
+                    <p>Phone: {{ officer.phone }}</p>
+                    <p *ngIf="officer.email">Email: {{ officer.email }}</p>
+                    <div class="officer-meta">
+                        <ion-badge [color]="officer.is_active ? 'success' : 'medium'">
+                            {{ officer.is_active ? 'Active' : 'Inactive' }}
+                        </ion-badge>
+                        <span class="join-date">• Joined: {{ officer.date_joined | date:'mediumDate' }}</span>
+                    </div>
+                </div>
+                <div class="officer-actions">
+                    <label class="toggle-switch">
+                        <input 
+                            type="checkbox" 
+                            [checked]="officer.is_active" 
+                            (change)="toggleOfficerStatus(officer)">
+                        <span class="slider"></span>
+                    </label>
+                    <button class="action-btn delete-btn" (click)="deleteOfficer(officer)">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && filteredOfficers.length === 0" class="empty-state">
+        <ion-icon name="people-outline"></ion-icon>
+        <h3>No Officers Found</h3>
+        <p *ngIf="searchTerm">No officers match your search criteria</p>
+        <p *ngIf="!searchTerm">Get started by adding your first officer</p>
+        <button class="add-officer-btn" (click)="openAddOfficerModal()">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Add Officer
+        </button>
+    </div>
+</ion-content>

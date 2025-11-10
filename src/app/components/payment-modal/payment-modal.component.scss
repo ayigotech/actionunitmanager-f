@@ -1,0 +1,356 @@
+// payment-modal.component.scss
+ion-content {
+    --background: #f8f9fa;
+}
+
+.payment-content {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.payment-header {
+    text-align: center;
+    margin-bottom: 32px;
+    .payment-icon {
+        font-size: 64px;
+        color: var(--ion-color-primary);
+        margin-bottom: 16px;
+    }
+    h2 {
+        color: var(--ion-color-dark);
+        margin: 0 0 8px 0;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    .description {
+        color: var(--ion-color-medium);
+        margin: 0;
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
+
+.form-item {
+    --background: white;
+    --border-radius: 12px;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    .input-icon {
+        color: var(--ion-color-medium);
+        margin-right: 12px;
+        font-size: 20px;
+    }
+    .custom-input {
+        --padding-start: 0;
+        --padding-end: 0;
+        &::part(input),
+        &::part(placeholder) {
+            color: var(--ion-color-dark);
+            font-size: 16px;
+        }
+    }
+}
+
+.payment-summary {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    h4 {
+        color: var(--ion-color-dark);
+        margin: 0 0 16px 0;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    .summary-details {
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--ion-color-light-shade);
+            &:last-child {
+                border-bottom: none;
+            }
+            &.total {
+                font-size: 18px;
+                font-weight: bold;
+                color: var(--ion-color-primary);
+                margin-top: 8px;
+                padding-top: 12px;
+                border-top: 2px solid var(--ion-color-primary);
+            }
+        }
+    }
+}
+
+.payment-info {
+    margin: 20px 0;
+    ion-item {
+        --background: var(--ion-color-light);
+        --border-radius: 8px;
+        ion-icon {
+            color: var(--ion-color-primary);
+        }
+        ion-label small {
+            font-size: 14px;
+            line-height: 1.4;
+            color: var(--ion-color-medium);
+        }
+    }
+}
+
+.savings-note {
+    margin: 16px 0;
+    .savings-item {
+        --background: rgba(var(--ion-color-success-rgb), 0.1);
+        --border-radius: 8px;
+        ion-icon {
+            color: var(--ion-color-success);
+        }
+        ion-label small {
+            color: var(--ion-color-success);
+            font-weight: 500;
+        }
+    }
+}
+
+// Processing State
+.processing-state {
+    text-align: center;
+    padding: 40px 20px;
+    ion-spinner {
+        margin-bottom: 24px;
+        --color: var(--ion-color-primary);
+        width: 48px;
+        height: 48px;
+    }
+    h3 {
+        color: var(--ion-color-dark);
+        margin: 0 0 12px 0;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    p {
+        color: var(--ion-color-medium);
+        margin: 8px 0;
+        line-height: 1.4;
+        &.note {
+            color: var(--ion-color-warning);
+            font-weight: 500;
+            font-size: 14px;
+        }
+    }
+    .transaction-details {
+        margin-top: 24px;
+        ion-item {
+            --background: var(--ion-color-light);
+            --border-radius: 8px;
+            margin-bottom: 8px;
+            ion-icon {
+                color: var(--ion-color-primary);
+            }
+            ion-label small {
+                color: var(--ion-color-medium);
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+// Success State
+.success-state {
+    text-align: center;
+    padding: 40px 20px;
+    .success-icon {
+        font-size: 80px;
+        margin-bottom: 24px;
+    }
+    h3 {
+        color: var(--ion-color-success);
+        margin: 0 0 12px 0;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    p {
+        color: var(--ion-color-medium);
+        margin: 8px 0;
+        line-height: 1.4;
+        &.success-details {
+            color: var(--ion-color-dark);
+            font-weight: 500;
+        }
+    }
+    .success-features {
+        margin-top: 24px;
+        background: white;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        ion-item {
+            --background: transparent;
+            --padding-start: 0;
+            --inner-padding-end: 0;
+            --min-height: 40px;
+            ion-icon {
+                font-size: 18px;
+            }
+            ion-label {
+                color: var(--ion-color-dark);
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+// Error State
+.error-state {
+    text-align: center;
+    padding: 40px 20px;
+    .error-icon {
+        font-size: 80px;
+        margin-bottom: 24px;
+    }
+    h3 {
+        color: var(--ion-color-danger);
+        margin: 0 0 12px 0;
+        font-weight: 600;
+        font-size: 24px;
+    }
+    p {
+        color: var(--ion-color-medium);
+        margin: 8px 0 16px 0;
+        line-height: 1.4;
+    }
+    .error-reasons {
+        text-align: left;
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        li {
+            color: var(--ion-color-medium);
+            margin-bottom: 8px;
+            font-size: 14px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .error-actions {
+        margin-top: 24px;
+        ion-button {
+            margin-bottom: 12px;
+        }
+    }
+}
+
+// Button Styles
+ion-button {
+    --border-radius: 12px;
+    --box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.3);
+    &:hover {
+        --box-shadow: 0 6px 20px rgba(var(--ion-color-primary-rgb), 0.4);
+    }
+    &[disabled] {
+        --opacity: 0.6;
+        --box-shadow: none;
+    }
+}
+
+// Modal Header
+ion-toolbar[color="primary"] {
+    --background: var(--ion-color-primary);
+    --color: white;
+    ion-title {
+        font-weight: 600;
+    }
+    ion-button {
+        --color: white;
+        &:hover {
+            --background: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+// Responsive Design
+@media (max-width: 480px) {
+    .payment-content {
+        padding: 10px 0;
+    }
+    .payment-header {
+        margin-bottom: 24px;
+        .payment-icon {
+            font-size: 48px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+    }
+    .processing-state,
+    .success-state,
+    .error-state {
+        padding: 20px 10px;
+    }
+}
+
+// Animation for state transitions
+.payment-content>div {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Loading spinner animation
+ion-spinner {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+// Success icon animation
+.success-icon {
+    animation: bounceIn 0.6s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

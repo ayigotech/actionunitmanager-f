@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Members Management</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="loadMembers()">
+                <ion-icon slot="icon-only" name="refresh"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="refreshMembers($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <!-- Class Filter -->
+    <!-- <ion-toolbar>
+        <ion-segment [(ngModel)]="selectedClassId" (ionChange)="onClassFilterChange()">
+            <ion-segment-button value="all">
+                <ion-label>All Classes</ion-label>
+            </ion-segment-button>
+
+        </ion-segment>
+    </ion-toolbar> -->
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading && members.length === 0" class="loading-container">
+        <ion-spinner></ion-spinner>
+        <p>Loading members...</p>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && members.length === 0" class="empty-state">
+        <ion-icon name="people-outline" class="empty-icon"></ion-icon>
+        <h3>No Members Found</h3>
+        <p>Add members to your Action Unit classes</p>
+        <ion-button (click)="addMember()" color="primary">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Add First Member
+        </ion-button>
+        <ion-button (click)="bulkImportMembers()" color="primary">
+            <ion-icon slot="start" name="add"></ion-icon>
+            Bulk Load Members
+        </ion-button>
+    </div>
+
+    <div *ngIf="!isLoading && members.length > 0">
+        <div class="stat-card mb-4">
+            <div class="stat-icon members">
+                <ion-icon name="person"></ion-icon>
+            </div>
+            <div class="stat-info">
+                <h3>{{ members.length }}</h3>
+                <p>Total Members</p>
+            </div>
+        </div>
+
+        <ion-item *ngFor="let member of members" class="member-item">
+            <ion-avatar slot="start" class="input-icon">
+                <ion-icon name="person-circle" size="large"></ion-icon>
+            </ion-avatar>
+
+            <ion-label (click)="viewMemberDetails(member)">
+                <h2>{{ member.name }}</h2>
+                <p>
+                    <ion-icon name="call-outline"></ion-icon>
+                    {{ member.phone }}
+                </p>
+                <p>
+                    <ion-icon name="school"></ion-icon>
+                    {{ member.className }}
+                </p>
+                <p>
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    Joined: {{ member.joinDate | date:'mediumDate' }}
+                </p>
+                <ion-badge *ngIf="!member.isActive" color="warning">Inactive</ion-badge>
+            </ion-label>
+
+            <ion-buttons slot="end">
+                <ion-button fill="clear" color="primary" (click)="editMember(member)">
+                    <ion-icon name="create" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-button fill="clear" color="danger" (click)="deactivateMember(member)">
+                    <ion-icon name="person-remove" slot="icon-only"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+        </ion-item>
+    </div>
+
+    <!-- Fixed Action Button -->
+    <button *ngIf="members.length > 0" class="fixed-add-btn" shape="round" (click)="addBulkMember()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+    </button>
+
+
+    <!-- Fixed Action Button -->
+    <button *ngIf="members.length > 0" class="fixed-add-btn-2" shape="round" (click)="addMember()">
+        <ion-icon slot="icon-only" name="folder-outline"></ion-icon>
+    </button>
+
+</ion-content>

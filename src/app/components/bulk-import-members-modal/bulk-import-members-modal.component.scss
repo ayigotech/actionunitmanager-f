@@ -1,0 +1,320 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ion-content,
+ion-list-header,
+ion-item-sliding,
+ion-card {
+    --background: #f8f9fa;
+}
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #008080, #00a0a0)
+}
+
+.permission-note {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    font-size: 0.9em;
+    ion-icon {
+        margin-right: 8px;
+    }
+}
+
+// Style for disabled buttons
+ion-button[disabled] {
+    opacity: 0.5;
+}
+
+.classes-container {
+    padding: 20px;
+    background: #f8f9fa;
+    min-height: 100%;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 30px;
+    h1 {
+        font-size: 24px;
+        color: #2d3436;
+        margin: 0 0 8px 0;
+    }
+    p {
+        font-size: 16px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.loading-state {
+    text-align: center;
+    padding: 60px 20px;
+    ion-spinner {
+        margin-bottom: 16px;
+    }
+    p {
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    .empty-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(0, 128, 128, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        ion-icon {
+            font-size: 40px;
+            color: #008080;
+        }
+    }
+    h3 {
+        font-size: 20px;
+        color: #2d3436;
+        margin: 0 0 12px 0;
+    }
+    p {
+        font-size: 16px;
+        color: #636e72;
+        margin: 0 0 20px 0;
+    }
+}
+
+.classes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.class-card {
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ion-card-content {
+        padding: 20px;
+    }
+}
+
+.class-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    h3 {
+        font-size: 18px;
+        color: #2d3436;
+        margin: 0;
+        flex: 1;
+    }
+}
+
+.class-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.class-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    ion-icon {
+        font-size: 18px;
+        color: #008080;
+        min-width: 20px;
+    }
+    span {
+        font-size: 14px;
+        color: #636e72;
+    }
+}
+
+.class-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.import-guide {
+    background: linear-gradient(135deg, #008080, #0a3c3c43);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--ion-color-primary);
+    h3 {
+        margin: 0 0 12px 0;
+        color: rgba(7, 11, 11, 0.847);
+        font-weight: 400;
+        font-size: 16px;
+    }
+    p {
+        margin: 0 0 12px 0;
+        color: rgb(46, 47, 0);
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    ul {
+        margin: 0 0 12px 0;
+        padding-left: 20px;
+        li {
+            color: rgb(14, 22, 22);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 4px;
+            strong {
+                color: white;
+                font-weight: 300;
+            }
+        }
+    }
+    .note {
+        color: white;
+        background: var(--ion-color-danger-tint);
+        border-radius: 8px;
+        padding: 12px;
+        margin: 0;
+        border-left: 3px solid var(--ion-color-warning-tint);
+        &::before {
+            content: "💡 ";
+            margin-right: 4px;
+        }
+    }
+}
+
+.file-section {
+    margin-bottom: 20px;
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #008080, #00a0a0);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 8px;
+    border: 1px solid var(--ion-color-light-shade);
+    .file-name {
+        flex: 1;
+        margin: 0 8px;
+        color: var(--ion-color-dark);
+        font-weight: 500;
+    }
+    .file-size {
+        color: rgb(22, 27, 27);
+        font-size: 12px;
+    }
+}
+
+.preview-section {
+    margin-top: 20px;
+    h4 {
+        margin: 0 0 12px 0;
+        color: var(--ion-color-dark);
+        font-weight: 600;
+    }
+}
+
+.preview-table {
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    .table-header {
+        display: flex;
+        background: var(--ion-color-primary);
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        .col {
+            flex: 1;
+            padding: 8px;
+            text-align: left;
+        }
+    }
+    .table-body {
+        .table-row {
+            display: flex;
+            border-bottom: 1px solid var(--ion-color-light-shade);
+            &:last-child {
+                border-bottom: none;
+            }
+            &.error {
+                background: var(--ion-color-danger-tint);
+            }
+            .col {
+                flex: 1;
+                padding: 8px;
+                font-size: 12px;
+                color: var(--ion-color-dark);
+            }
+        }
+    }
+}
+
+.import-summary {
+    background: var(--ion-color-light);
+    border-radius: 8px;
+    padding: 12px;
+    margin-top: 12px;
+    p {
+        margin: 4px 0;
+        font-size: 14px;
+    }
+    .warning {
+        color: var(--ion-color-warning);
+        font-weight: 500;
+    }
+}
+
+.processing-section {
+    text-align: center;
+    padding: 20px;
+    ion-spinner {
+        margin-bottom: 12px;
+    }
+    p {
+        margin: 4px 0;
+        color: var(--ion-color-medium);
+    }
+}
+
+.error-section {
+    margin-top: 16px;
+}
+
+.note {
+    color: var(--ion-color-medium);
+    font-size: 12px;
+    font-style: italic;
+    margin: 4px 0;
+}
+
+
+/* Responsive */
+
+@media (min-width: 768px) {
+    .classes-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+}

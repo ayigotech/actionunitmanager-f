@@ -1,0 +1,148 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Mark Attendance</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="attendance-container">
+
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Class Attendance</h1>
+            <p>Record who attended class today</p>
+        </div>
+
+        <!-- Date Selection -->
+        <ion-card class="date-card">
+            <ion-card-content>
+                <form [formGroup]="dateForm" class="date-selection">
+                    <ion-icon name="calendar"></ion-icon>
+                    <div class="date-info">
+                        <h3>Attendance Date</h3>
+                        <input type="date" formControlName="selectedDate" class="date-input">
+                    </div>
+                </form>
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Summary Stats -->
+        <div class="summary-stats">
+            <div class="stat present">
+                <div class="stat-number">{{ getPresentCount() }}</div>
+                <div class="stat-label">Present</div>
+            </div>
+            <div class="stat absent">
+                <div class="stat-number">{{ getAbsentCount() }}</div>
+                <div class="stat-label">Absent</div>
+            </div>
+            <div class="stat total">
+                <div class="stat-number">{{ members.length }}</div>
+                <div class="stat-label">Total</div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading class members...</p>
+        </div>
+
+        <!-- Members List -->
+        <div *ngIf="!isLoading" class="members-list">
+
+            <!-- Empty State -->
+            <div *ngIf="members.length === 0" class="empty-state">
+                <div class="empty-icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </div>
+                <h3>No Members Found</h3>
+                <p>Contact your superintendent to add members to your class</p>
+            </div>
+
+            <!-- Members Attendance -->
+            <div *ngIf="members.length > 0" class="attendance-list">
+                <div *ngFor="let member of members" class="member-card" [class.absent]="!member.isPresent">
+                    <ion-card-content>
+                        <div class="member-header">
+                            <div class="member-info">
+                                <h3>{{ member.name }}</h3>
+                                <p class="member-location">
+                                    <ion-icon name="location-outline"></ion-icon>
+                                    {{ member.location }}
+                                </p>
+                            </div>
+
+                            <div class="attendance-toggle">
+                                <label class="custom-toggle">
+                                    <input 
+                                        type="checkbox" 
+                                        [checked]="member.isPresent" 
+                                        (change)="toggleAttendance(member)">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="status-label">
+                                    {{ member.isPresent ? 'Present' : 'Absent' }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Contact Actions -->
+                        <div class="contact-actions">
+                            <ion-button fill="clear" size="small" (click)="callMember(member.phone)">
+                                <ion-icon slot="start" name="call"></ion-icon>
+                                Call
+                            </ion-button>
+                            <ion-button fill="clear" size="small" (click)="messageMember(member.phone)">
+                                <ion-icon slot="start" name="chatbubble"></ion-icon>
+                                Message
+                            </ion-button>
+                        </div>
+
+                        <!-- Absence Reason -->
+                        <div *ngIf="!member.isPresent" class="absence-reason">
+                            <h4>Reason for Absence</h4>
+                            <div class="reason-buttons">
+                                <button *ngFor="let reason of absenceReasons" class="reason-btn" [class.active]="member.absenceReason === reason" (click)="setAbsenceReason(member, reason)">
+                                    {{ reason }}
+                                </button>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <div *ngIf="!isLoading && members.length > 0">
+        <button class="submit-button mb-5" size="large" (click)="submitAttendance()" [disabled]="isSubmitting">
+            <span *ngIf="isSubmitting">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> submitting ...
+            </span>
+            <span *ngIf="!isSubmitting">Submit Attendance</span>
+        </button>
+    </div>
+
+    <!-- <div class="d-grid">
+        <button *ngIf="!isLoading && members.length > 0" class="submit-button" (click)="submitAttendance()" [disabled]="isSubmitting">
+            <span *ngIf="!isSubmitting">
+                Submit Attendance
+            </span>
+            <span *ngIf="isSubmitting">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+           submitting ...
+            </span>
+        </button>
+    </div> -->
+
+
+
+</ion-content>

@@ -1,0 +1,268 @@
+<!-- subscription-dashboard.component.html -->
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Subscription Management</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-container">
+        <ion-spinner></ion-spinner>
+        <p>Loading subscription status...</p>
+    </div>
+
+    <!-- Subscription Status Card -->
+    <div *ngIf="!isLoading && subscriptionStatus" class="status-section">
+        <!-- <ion-card [color]="getStatusColor(subscriptionStatus.status)" class="status-card"> -->
+        <ion-card class="status-card">
+            <span class="text-info">
+                <span  class="text-info">
+                    Current Subscription: {{ getStatusText(subscriptionStatus.status) }}
+                </span>
+            <ion-card-subtitle class="text-info">
+                {{ subscriptionStatus.plan | titlecase }} Plan
+            </ion-card-subtitle>
+            </span>
+
+            <ion-card-content>
+                <div class="status-details">
+                    <div class="status-item">
+                        <ion-icon name="calendar" slot="start"></ion-icon>
+                        <ion-label>
+                            <strong>Current Period Ends:</strong> {{ subscriptionStatus.current_period_end | date:'mediumDate' }}
+                        </ion-label>
+                    </div>
+
+                    <div *ngIf="subscriptionStatus.days_remaining !== undefined" class="status-item">
+                        <ion-icon name="time" slot="start"></ion-icon>
+                        <ion-label>
+                            <strong>Days Remaining:</strong> {{ subscriptionStatus.days_remaining }} days
+                        </ion-label>
+                    </div>
+
+                    <div *ngIf="subscriptionStatus.status === 'trialing'" class="status-item">
+                        <ion-icon name="gift" slot="start"></ion-icon>
+                        <ion-label>
+                            <strong>Trial Ends:</strong> {{ subscriptionStatus.trial_end_date | date:'mediumDate' }}
+                        </ion-label>
+                    </div>
+
+                    <div *ngIf="featureGuard.getPermissionMessage()" class="permission-message">
+                        <ion-badge [color]="getStatusColor(subscriptionStatus.status)">
+                            {{ featureGuard.getPermissionMessage() }}
+                        </ion-badge>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <!-- Plan Comparison -->
+    <div *ngIf="!isLoading" class="plans-section">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Choose Your Plan</ion-card-title>
+                <ion-card-subtitle>Select the plan that works best for your church</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+                <!-- Plan Cards -->
+                <div class="plan-cards">
+                    <!-- Free Trial Plan -->
+                    <ion-card class="plan-card" [color]="subscriptionStatus?.plan === 'free_trial' ? 'light' : 'light'">
+
+                        <ion-card-header>
+                            <ion-card-title>Free Trial</ion-card-title>
+                            <ion-card-subtitle>Perfect for getting started</ion-card-subtitle>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <div class="plan-price">
+                                <h2>GHS 0</h2>
+                                <p>Valid for 3Months</p>
+                            </div>
+
+                            <div class="plan-features">
+                                <ion-list lines="none">
+                                    <ion-item *ngFor="let feature of planFeatures">
+                                        <ion-icon [name]="feature.free_trial ? 'checkmark-circle' : 'close-circle'" [color]="feature.free_trial ? 'success' : 'medium'" slot="start">
+                                        </ion-icon>
+                                        <ion-label>{{ feature.name }}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'free_trial'" expand="block" color="primary" fill="solid" disabled>
+                                Current Plan
+                            </ion-button>
+                        </ion-card-content>
+                    </ion-card>
+
+                    <!-- Monthly Plan -->
+                    <!-- <ion-card class="plan-card" [color]="subscriptionStatus?.plan === 'monthly' ? 'primary' : 'light'">
+                        <ion-card-header>
+                            <ion-card-title>Monthly</ion-card-title>
+                            <ion-card-subtitle>Flexible monthly billing</ion-card-subtitle>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <div class="plan-price">
+                                <h2>GHS 50</h2>
+                                <p>per month</p>
+                            </div>
+
+                            <div class="plan-features">
+                                <ion-list lines="none">
+                                    <ion-item *ngFor="let feature of planFeatures">
+                                        <ion-icon [name]="feature.monthly ? 'checkmark-circle' : 'close-circle'" [color]="feature.monthly ? 'success' : 'medium'" slot="start">
+                                        </ion-icon>
+                                        <ion-label>{{ feature.name }}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan !== 'monthly'" expand="block" color="primary" fill="outline" (click)="paymentForm.plan = 'monthly'">
+                                Select Monthly
+                            </ion-button>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'monthly'" expand="block" color="primary" fill="solid" disabled>
+                                Current Plan
+                            </ion-button>
+                        </ion-card-content>
+                    </ion-card> -->
+
+
+                    <!--  Quarterly-->
+                    <ion-card class="plan-card" [color]="subscriptionStatus?.plan === 'quarterly' ? 'primary' : 'light'">
+                        <ion-card-header>
+                            <ion-card-title>Quarterly</ion-card-title>
+                            <ion-card-subtitle>Flexible quarterly billing</ion-card-subtitle>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <div class="plan-price">
+                                <h2>GHS 100</h2>
+                                <p>per Quarter</p>
+                            </div>
+
+                            <div class="plan-features">
+                                <ion-list lines="none">
+                                    <ion-item *ngFor="let feature of planFeatures">
+                                        <ion-icon [name]="feature.quarterly ? 'checkmark-circle' : 'close-circle'" [color]="feature.quarterly ? 'success' : 'medium'" slot="start">
+                                        </ion-icon>
+                                        <ion-label>{{ feature.name }}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan !== 'quarterly'" expand="block" color="primary" fill="outline" (click)="paymentForm.plan = 'quarterly'">
+                                Select Quarterly
+                            </ion-button>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'quarterly'" expand="block" color="primary" fill="solid" disabled>
+                                Current Plan
+                            </ion-button>
+                        </ion-card-content>
+                    </ion-card>
+
+
+
+                    <!-- Annual Plan -->
+                    <ion-card class="plan-card featured" [color]="subscriptionStatus?.plan === 'annual' ? 'primary' : 'light'">
+                        <ion-card-header>
+                            <ion-card-title>Annual</ion-card-title>
+                            <ion-card-subtitle>Best value - save 12%</ion-card-subtitle>
+                        </ion-card-header>
+
+                        <ion-card-content>
+                            <div class="plan-price">
+                                <h2>GHS 350</h2>
+                                <p>per year</p>
+                                <!-- <p class="savings">{{ getPlanSavings('annual') }}</p> -->
+                            </div>
+
+                            <div class="plan-features">
+                                <ion-list lines="none">
+                                    <ion-item *ngFor="let feature of planFeatures">
+                                        <ion-icon [name]="feature.annual ? 'checkmark-circle' : 'close-circle'" [color]="feature.annual ? 'success' : 'medium'" slot="start">
+                                        </ion-icon>
+                                        <ion-label>{{ feature.name }}</ion-label>
+                                    </ion-item>
+                                </ion-list>
+                            </div>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan !== 'annual'" expand="block" color="primary" fill="solid" (click)="paymentForm.plan = 'annual'">
+                                Select Annual
+                            </ion-button>
+
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'annual'" expand="block" color="primary" fill="solid" disabled>
+                                Current Plan
+                            </ion-button>
+                        </ion-card-content>
+                    </ion-card>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <!-- Payment Form -->
+    <div *ngIf="!isLoading && paymentForm.plan && subscriptionStatus?.plan !== paymentForm.plan" class="payment-section">
+        <ion-card>
+            <ion-card-header>
+                <ion-card-title>Upgrade to {{ paymentForm.plan | titlecase }} Plan</ion-card-title>
+                <ion-card-subtitle>Complete your subscription upgrade</ion-card-subtitle>
+            </ion-card-header>
+
+            <ion-card-content>
+                <form (ngSubmit)="initiateUpgrade()">
+                    <!-- Phone Number Input -->
+                    <ion-item>
+                        <ion-label position="stacked">MTN Mobile Money Number</ion-label>
+                        <ion-input type="tel" placeholder="e.g., 0241234567" [(ngModel)]="paymentForm.phoneNumber" name="phoneNumber" required>
+                        </ion-input>
+                    </ion-item>
+
+                    <!-- Payment Summary -->
+                    <div class="payment-summary">
+                        <h4>Order Summary</h4>
+                        <div class="summary-row">
+                            <span>{{ paymentForm.plan | titlecase }} Plan</span>
+                            <span>GHS {{ getPlanPrice(paymentForm.plan) }}</span>
+                        </div>
+                        <div class="summary-row total">
+                            <strong>Total</strong>
+                            <strong>GHS {{ getPlanPrice(paymentForm.plan) }}</strong>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <ion-button type="submit" expand="block" color="primary" [disabled]="isProcessingPayment || !paymentForm.phoneNumber">
+                        <ion-spinner *ngIf="isProcessingPayment" slot="start"></ion-spinner>
+                        {{ isProcessingPayment ? 'Processing...' : 'Pay GHS ' + getPlanPrice(paymentForm.plan) }}
+                    </ion-button>
+
+                    <ion-note color="medium">
+                        <p>You will receive a payment request on your phone via MTN Mobile Money.</p>
+                    </ion-note>
+                </form>
+            </ion-card-content>
+        </ion-card>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && !subscriptionStatus" class="empty-state">
+        <ion-icon name="card-outline" class="empty-icon"></ion-icon>
+        <h3>No Subscription Found</h3>
+        <p>Your church doesn't have an active subscription yet.</p>
+        <ion-button (click)="loadSubscriptionStatus()" fill="solid">
+            <ion-icon slot="start" name="refresh"></ion-icon>
+            Retry
+        </ion-button>
+    </div>
+</ion-content>

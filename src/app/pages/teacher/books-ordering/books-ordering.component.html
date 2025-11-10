@@ -1,0 +1,171 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Books Ordering</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="books-ordering-container">
+
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Quarterly Books Order</h1>
+            <p>Order Sabbath School books for your class</p>
+        </div>
+
+        <!-- Order Summary -->
+        <ion-card *ngIf="currentOrder" class="order-summary-card">
+            <ion-card-content>
+                <div class="summary-header">
+                    <div class="order-info">
+                        <h2>{{ currentOrder.quarter }} {{ currentOrder.year }}</h2>
+                        <p class="order-status" [class]="currentOrder.status">
+                            {{ currentOrder.status | titlecase }}
+                        </p>
+                    </div>
+                    <div class="order-total">
+                        <h3>GH₵{{ currentOrder.totalAmount.toFixed(2) }}</h3>
+                        <p>Total Amount</p>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading books catalog...</p>
+        </div>
+
+        <!-- Books Catalog -->
+        <div *ngIf="!isLoading" class="books-catalog">
+
+            <!-- Empty Order State -->
+            <div *ngIf="getOrderedBooks().length === 0 && currentOrder?.status === 'draft'" class="empty-state">
+                <div class="empty-icon">
+                    <ion-icon name="book-outline"></ion-icon>
+                </div>
+                <h3>No Books Added</h3>
+                <p>Select books and quantities for your class</p>
+            </div>
+
+            <!-- Quarter and Year Selection -->
+            <ion-card *ngIf="currentOrder" class="selection-card">
+                <ion-card-content>
+                    <form [formGroup]="selectionForm" class="selection-fields">
+                        <!-- Quarter Selection -->
+                        <div class="form-group">
+                            <label class="form-label">Quarter</label>
+                            <div class="select-wrapper">
+                                <select formControlName="quarter" class="form-select">
+                                    <option value="">Select Quarter</option>
+                                    <option *ngFor="let quarter of quarters" [value]="quarter.value" >
+                                        {{ quarter.label }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Year Selection -->
+                        <div class="form-group">
+                            <label class="form-label">Year</label>
+                            <div class="select-wrapper">
+                                <select formControlName="year" class="form-select">
+                                    <option value="">Select Year</option>
+                                    <option *ngFor="let year of years" [value]="year">
+                                        {{ year }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Order Status -->
+                    <div class="order-status">
+                        <ion-badge [color]="currentOrder.status === 'submitted' ? 'success' : 'warning'">
+                            {{ currentOrder.status === 'submitted' ? 'Submitted' : 'Draft' }}
+                        </ion-badge>
+                        <span *ngIf="currentOrder.submittedDate" class="submitted-date">
+                            Submitted: {{ currentOrder.submittedDate | date:'mediumDate' }}
+                        </span>
+                    </div>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- Books List -->
+            <div *ngIf="currentOrder" class="books-list">
+                <ion-card *ngFor="let book of currentOrder.books" class="book-card">
+                    <ion-card-content>
+                        <div class="book-header">
+                            <div class="book-info">
+                                <h3>{{ book.title }}</h3>
+                                <p class="book-quarter">{{ selectedQuarter }} {{ selectedYear }}</p>
+                                <p class="book-price">{{ book.price | currency:book.currency }} each</p>
+                            </div>
+                        </div>
+
+                        <!-- Quantity Controls -->
+                        <div class="quantity-section">
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" (click)="updateQuantity(book, -1)" [disabled]="book.quantity === 0">
+                                    <ion-icon name="remove"></ion-icon>
+                                </button>
+
+                                <div class="quantity-display">
+                                    <span class="quantity">{{ book.quantity }}</span>
+                                    <span class="quantity-label">Qty</span>
+                                </div>
+
+                                <button class="quantity-btn" (click)="updateQuantity(book, 1)">
+                                    <ion-icon name="add"></ion-icon>
+                                </button>
+                            </div>
+
+                            <div class="book-total">
+                                <span class="total-amount">{{ book.total | currency:book.currency }}</span>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Submit Button -->
+    <button expand="block" (click)="submitOrder()" [disabled]="isSubmitting" class="submit-button  mb-4">
+        <div class="button-content">
+            <ion-spinner *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></ion-spinner>
+            {{ currentOrder?.status === 'submitted' ? 'Update Order' : 'Submit Order' }}
+        </div>
+    </button>
+
+
+
+
+    <!-- Submitted Order Message -->
+    <div *ngIf="!isLoading && currentOrder?.status === 'submitted'" class="submitted-message">
+        <ion-card class="success-card">
+            <ion-card-content>
+                <div class="success-content">
+                    <ion-icon name="checkmark-circle" color="success"></ion-icon>
+                    <div class="success-info">
+                        <h3>Order Submitted!</h3>
+                        <p>Your book order has been sent to the superintendent</p>
+                        <p class="submission-date">
+                            Submitted on {{ currentOrder?.submittedDate | date:'MMM d, yyyy' }}
+                            <ion-note>
+                                You can update this order if needed. Changes will be reflected immediately.
+                            </ion-note>
+                        </p>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

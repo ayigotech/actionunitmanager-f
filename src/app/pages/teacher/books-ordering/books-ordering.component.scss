@@ -1,0 +1,690 @@
+ion-content {
+    --background: #f8f9fa;
+    padding-bottom: 80px;
+}
+
+ion-select {
+    --background: #f8f9fa;
+    margin: 5px;
+    padding-left: 6px;
+    // padding: 80px;
+}
+
+ion-select-option {
+    --background: #f8f9fa;
+    --margin: 5px;
+    --padding-left: 6px;
+}
+
+.books-ordering-container {
+    padding: 20px;
+    background: #f8f9fa;
+    min-height: 100%;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+    h1 {
+        font-size: 24px;
+        color: #2d3436;
+        margin: 0 0 8px 0;
+    }
+    p {
+        font-size: 16px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.order-summary-card {
+    margin: 0 0 20px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ion-card-content {
+        padding: 20px;
+    }
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info {
+    h2 {
+        font-size: 18px;
+        color: #2d3436;
+        margin: 0 0 4px 0;
+    }
+}
+
+.order-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    &.draft {
+        background: rgba(255, 152, 0, 0.1);
+        color: #ff9800;
+    }
+    &.submitted {
+        background: rgba(76, 175, 80, 0.1);
+        color: #4caf50;
+    }
+    &.approved {
+        background: rgba(33, 150, 243, 0.1);
+        color: #2196f3;
+    }
+}
+
+.order-total {
+    text-align: right;
+    h3 {
+        font-size: 24px;
+        color: #008080;
+        margin: 0 0 4px 0;
+    }
+    p {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.loading-state,
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    ion-spinner {
+        margin-bottom: 16px;
+    }
+    p {
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.empty-state {
+    .empty-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(0, 128, 128, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        ion-icon {
+            font-size: 40px;
+            color: #008080;
+        }
+    }
+    h3 {
+        font-size: 20px;
+        color: #2d3436;
+        margin: 0 0 12px 0;
+    }
+}
+
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-card {
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    ion-card-content {
+        padding: 16px;
+    }
+}
+
+.book-header {
+    margin-bottom: 16px;
+}
+
+.book-info {
+    h3 {
+        font-size: 16px;
+        color: #2d3436;
+        margin: 0 0 6px 0;
+        line-height: 1.4;
+    }
+    .book-quarter {
+        font-size: 14px;
+        color: #008080;
+        margin: 0 0 4px 0;
+        font-weight: 500;
+    }
+    .book-price {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.quantity-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-display {
+    text-align: center;
+    min-width: 60px;
+    .quantity {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        color: #008080;
+    }
+    .quantity-label {
+        font-size: 12px;
+        color: #636e72;
+        text-transform: uppercase;
+    }
+}
+
+.book-total {
+    .total-amount {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2d3436;
+    }
+}
+
+.submit-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    ion-button {
+        --border-radius: 12px;
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+.submitted-message {
+    padding: 20px;
+}
+
+.success-card {
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4caf50;
+    ion-card-content {
+        padding: 20px;
+    }
+}
+
+.success-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    ion-icon {
+        font-size: 40px;
+        flex-shrink: 0;
+    }
+}
+
+.success-info {
+    flex: 1;
+    h3 {
+        font-size: 18px;
+        color: #2d3436;
+        margin: 0 0 8px 0;
+    }
+    p {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0 0 4px 0;
+    }
+    .submission-date {
+        font-size: 12px;
+        color: #008080;
+        font-weight: 500;
+    }
+}
+
+
+/* Fix for form labels */
+
+.book-card ion-label {
+    color: #2d3436 !important;
+}
+
+.selection-card {
+    margin: 16px;
+    .selection-fields {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+        .selection-item {
+            flex: 1;
+            --background: white;
+            --border-radius: 8px;
+        }
+    }
+    .order-status {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .submitted-date {
+            color: var(--ion-color-medium);
+            font-size: 14px;
+        }
+    }
+}
+
+
+/* Responsive */
+
+@media (min-width: 768px) {
+    .books-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+// Keep all your existing CSS and add these new styles:
+.form-group {
+    flex: 1;
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #374151;
+    font-size: 14px;
+}
+
+.form-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+    color: #1f2937;
+    cursor: pointer;
+    &:focus {
+        outline: none;
+        border-color: #008080;
+        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
+    }
+}
+
+.quantity-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover:not(:disabled) {
+        border-color: #008080;
+        background: rgba(0, 128, 128, 0.05);
+    }
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    ion-icon {
+        font-size: 16px;
+        color: #008080;
+    }
+}
+
+.button-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.spinner-small {
+    width: 16px;
+    height: 16px;
+}
+
+// Your existing CSS remains the same below this line
+ion-content {
+    --background: #f8f9fa;
+    padding-bottom: 80px;
+}
+
+.books-ordering-container {
+    padding: 20px;
+    background: #f8f9fa;
+    min-height: 100%;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 20px;
+    h1 {
+        font-size: 24px;
+        color: #2d3436;
+        margin: 0 0 8px 0;
+    }
+    p {
+        font-size: 16px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.order-summary-card {
+    margin: 0 0 20px 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    ion-card-content {
+        padding: 20px;
+    }
+}
+
+.summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-info {
+    h2 {
+        font-size: 18px;
+        color: #2d3436;
+        margin: 0 0 4px 0;
+    }
+}
+
+.order-status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    &.draft {
+        background: rgba(255, 152, 0, 0.1);
+        color: #ff9800;
+    }
+    &.submitted {
+        background: rgba(76, 175, 80, 0.1);
+        color: #4caf50;
+    }
+    &.approved {
+        background: rgba(33, 150, 243, 0.1);
+        color: #2196f3;
+    }
+}
+
+.order-total {
+    text-align: right;
+    h3 {
+        font-size: 24px;
+        color: #008080;
+        margin: 0 0 4px 0;
+    }
+    p {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.loading-state,
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    ion-spinner {
+        margin-bottom: 16px;
+    }
+    p {
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.empty-state {
+    .empty-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(0, 128, 128, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        ion-icon {
+            font-size: 40px;
+            color: #008080;
+        }
+    }
+    h3 {
+        font-size: 20px;
+        color: #2d3436;
+        margin: 0 0 12px 0;
+    }
+}
+
+.books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.book-card {
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    ion-card-content {
+        padding: 16px;
+    }
+}
+
+.book-header {
+    margin-bottom: 16px;
+}
+
+.book-info {
+    h3 {
+        font-size: 16px;
+        color: #2d3436;
+        margin: 0 0 6px 0;
+        line-height: 1.4;
+    }
+    .book-quarter {
+        font-size: 14px;
+        color: #008080;
+        margin: 0 0 4px 0;
+        font-weight: 500;
+    }
+    .book-price {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0;
+    }
+}
+
+.quantity-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.quantity-display {
+    text-align: center;
+    min-width: 60px;
+    .quantity {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        color: #008080;
+    }
+    .quantity-label {
+        font-size: 12px;
+        color: #636e72;
+        text-transform: uppercase;
+    }
+}
+
+.book-total {
+    .total-amount {
+        font-size: 18px;
+        font-weight: bold;
+        color: #2d3436;
+    }
+}
+
+.submit-button {
+    margin: 20px;
+    --border-radius: 12px;
+    height: 50px;
+    font-size: 16px;
+}
+
+.submitted-message {
+    padding: 20px;
+}
+
+.success-card {
+    margin: 0;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #4caf50;
+    ion-card-content {
+        padding: 20px;
+    }
+}
+
+.success-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    ion-icon {
+        font-size: 40px;
+        flex-shrink: 0;
+    }
+}
+
+.success-info {
+    flex: 1;
+    h3 {
+        font-size: 18px;
+        color: #2d3436;
+        margin: 0 0 8px 0;
+    }
+    p {
+        font-size: 14px;
+        color: #636e72;
+        margin: 0 0 4px 0;
+    }
+    .submission-date {
+        font-size: 12px;
+        color: #008080;
+        font-weight: 500;
+    }
+}
+
+.selection-card {
+    margin: 16px;
+    .selection-fields {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    .order-status {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .submitted-date {
+            color: var(--ion-color-medium);
+            font-size: 14px;
+        }
+    }
+}
+
+
+/* Responsive */
+
+@media (min-width: 768px) {
+    .books-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+}
+
+// Submit Button
+.submit-button {
+    width: 80%;
+    background: #004d4d;
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: auto;
+    &:hover:not(:disabled) {
+        background: #004d4d;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 102, 102, 0.3);
+    }
+    &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+    }
+    .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid transparent;
+        border-top: 2px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

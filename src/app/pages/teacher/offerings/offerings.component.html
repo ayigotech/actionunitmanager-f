@@ -1,0 +1,161 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Class Offerings</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+        <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+        </ion-refresher-content>
+    </ion-refresher>
+
+
+
+
+    <div class="offerings-container">
+
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Offerings Management</h1>
+            <p>Track and record class offerings</p>
+        </div>
+
+        <!-- Total Summary -->
+        <ion-card class="total-card">
+            <ion-card-content>
+                <div class="total-section">
+                    <div class="total-icon">
+                        <ion-icon name="wallet"></ion-icon>
+                    </div>
+                    <div class="total-info">
+                        <h2>Total Offerings</h2>
+                        <p class="total-amount">
+                            {{ getCurrencySymbol('GHS') }}{{ getTotalOfferings().toFixed(2) }}
+                        </p>
+                        <p class="total-count">{{ offerings.length }} records</p>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Add New Offering -->
+        <ion-card class="add-offering-card">
+            <ion-card-header>
+                <ion-card-title>Record New Offering</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+                <form [formGroup]="offeringForm" (ngSubmit)="submitOffering()">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Amount</label>
+                            <input type="number" placeholder="0.00" formControlName="amount" class="form-input" step="0.01" min="0.01" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Currency</label>
+                            <div class="select-wrapper">
+                                <select formControlName="currency" class="form-select" required>
+                                    <option value="">Select Currency</option>
+                                    <option *ngFor="let currency of currencies" [value]="currency.code">
+                                        {{ currency.symbol }} - {{ currency.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Date</label>
+                            <input type="date" formControlName="date" class="form-input" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Notes (Optional)</label>
+                        <textarea placeholder="Add any notes about this offering..." formControlName="notes" class="form-textarea" rows="3">
+                        </textarea>
+                    </div>
+
+                    <!-- <ion-button type="submit" expand="block" class="submit-btn" [disabled]="isSubmitting || offeringForm.invalid">
+                        <div class="button-content">
+                            <ion-spinner *ngIf="isSubmitting" class="spinner-small"></ion-spinner>
+                            <span *ngIf="!isSubmitting">Record Offering</span>
+                        </div>
+                    </ion-button> -->
+
+                    <div class="d-grid">
+                        <button type="submit" class="submit-button" [disabled]="isSubmitting || offeringForm.invalid">
+                            <span *ngIf="!isSubmitting">
+                                Record Offering
+                            </span>
+                            <span *ngIf="isSubmitting">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        submitting ...
+                            </span>
+                        </button>
+                    </div>
+
+
+                </form>
+            </ion-card-content>
+        </ion-card>
+
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading-state">
+            <ion-spinner></ion-spinner>
+            <p>Loading offerings history...</p>
+        </div>
+
+        <!-- Offerings History -->
+        <div *ngIf="!isLoading" class="offerings-history">
+            <h2>Offering History</h2>
+
+            <!-- Empty State -->
+            <div *ngIf="offerings.length === 0" class="empty-state">
+                <div class="empty-icon">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+                <h3>No Offerings Recorded</h3>
+                <p>Record your first class offering to get started</p>
+            </div>
+
+            <!-- Offerings List -->
+            <div *ngIf="offerings.length > 0" class="offerings-list">
+                <ion-card *ngFor="let offering of offerings" class="offering-card">
+                    <ion-card-content>
+                        <div class="offering-header">
+                            <div class="offering-amount">
+                                <h3>{{ getCurrencySymbol(offering.currency) }}{{ offering.amount.toFixed(2) }}</h3>
+                                <p class="offering-date">{{ offering.date | date:'MMM d, yyyy' }}</p>
+                            </div>
+                            <div class="offering-currency">
+                                <span class="currency-badge">{{ offering.currency }}</span>
+                            </div>
+                        </div>
+
+                        <div class="offering-details">
+                            <div class="detail-item">
+                                <ion-icon name="person-outline"></ion-icon>
+                                <span>Recorded by: {{ offering.recordedBy }}</span>
+                            </div>
+
+                            <div *ngIf="offering.notes" class="detail-item">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                                <span class="offering-notes">{{ offering.notes }}</span>
+                            </div>
+                        </div>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+        </div>
+
+    </div>
+</ion-content>

@@ -1,0 +1,284 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="elegant-header">
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()" class="back-btn">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title class="page-title">Member Insights</ion-title>
+        <ion-buttons slot="end">
+            <ion-button class="insight-btn">
+                <ion-icon name="analytics" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="analytics-content">
+    <!-- Custom Elegant Tabs -->
+
+
+    <ion-refresher slot="fixed" (ionRefresh)="refreshInsight($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <div class="welcome-section">
+        <h1>Hi, {{ user?.name }}</h1>
+        <h1>{{ user?.church?.name }}</h1>
+        <p>Manage Sabbath School classes</p>
+    </div>
+
+
+
+
+
+
+
+    <div class="elegant-tabs">
+        <button class="tab-btn" [class.active]="selectedSegment === 'at-risk'" (click)="onSegmentChange('at-risk')">
+            <ion-icon name="warning" class="tab-icon"></ion-icon>
+            <span class="tab-label">At-Risk</span>
+        </button>
+        <button class="tab-btn" [class.active]="selectedSegment === 'trends'" (click)="onSegmentChange('trends')">
+            <ion-icon name="trending-up" class="tab-icon"></ion-icon>
+            <span class="tab-label">Trends</span>
+        </button>
+        <button class="tab-btn" [class.active]="selectedSegment === 'follow-up'" (click)="onSegmentChange('follow-up')">
+            <ion-icon name="checkmark-done" class="tab-icon"></ion-icon>
+            <span class="tab-label">Follow-up</span>
+        </button>
+        <button class="tab-btn" [class.active]="selectedSegment === 'profiles'" (click)="onSegmentChange('profiles')">
+            <ion-icon name="people" class="tab-icon"></ion-icon>
+            <span class="tab-label">Profiles</span>
+        </button>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="analytics-loading">
+        <div class="loading-spinner">
+            <div class="spinner-ring"></div>
+            <ion-icon name="heart" class="spinner-heart"></ion-icon>
+        </div>
+        <p class="loading-text">Analyzing member attendance patterns...</p>
+    </div>
+
+    <!-- At-Risk Members Segment -->
+    @if (!isLoading && selectedSegment === 'at-risk') {
+    <div class="analytics-container">
+        <!-- Summary Cards with Elegant Design -->
+        <div class="analytics-summary">
+            <div class="summary-card high-risk">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="stat-icon">
+                        <ion-icon name="alert-circle"></ion-icon>
+                    </div>
+                    <div class="stat-data">
+                        <h3 class="stat-number">{{ getSummaryStats().highRisk }}</h3>
+                        <p class="stat-label">High Risk</p>
+                    </div>
+                    <div class="risk-indicator high"></div>
+                </div>
+            </div>
+
+            <div class="summary-card medium-risk">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="stat-icon">
+                        <ion-icon name="warning"></ion-icon>
+                    </div>
+                    <div class="stat-data">
+                        <h3 class="stat-number">{{ getSummaryStats().mediumRisk }}</h3>
+                        <p class="stat-label">Medium Risk</p>
+                    </div>
+                    <div class="risk-indicator medium"></div>
+                </div>
+            </div>
+
+            <div class="summary-card total-risk">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="stat-icon">
+                        <ion-icon name="people"></ion-icon>
+                    </div>
+                    <div class="stat-data">
+                        <h3 class="stat-number">{{ getSummaryStats().total }}</h3>
+                        <p class="stat-label">Need Attention</p>
+                    </div>
+                    <div class="risk-indicator total"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Risk Score Filter -->
+        <ion-card class="filter-card">
+            <div class="card-header-glow"></div>
+            <ion-card-header class="card-header-elegant">
+                <ion-card-title>Risk Level Filter</ion-card-title>
+                <ion-card-subtitle>Adjust to focus on specific risk ranges</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content class="filter-content">
+                <div class="range-container">
+                    <div class="range-labels">
+                        <span class="range-label">Min: {{ riskFilters.lower }}</span>
+                        <span class="range-label">Max: {{ riskFilters.upper }}</span>
+                    </div>
+
+                    <!-- Min Risk Slider -->
+                    <div class="range-group">
+                        <label>Minimum Risk:</label>
+                        <input type="range" min="1" max="10" step="1" [value]="riskFilters.lower" (input)="onMinRiskChange($event)">
+                        <span>{{ riskFilters.lower }}</span>
+                    </div>
+
+                    <!-- Max Risk Slider -->
+                    <div class="range-group">
+                        <label>Maximum Risk:</label>
+                        <input type="range" min="1" max="10" step="1" [value]="riskFilters.upper" (input)="onMaxRiskChange($event)">
+                        <span>{{ riskFilters.upper }}</span>
+                    </div>
+
+                    <div class="range-ticks">
+                        <span *ngFor="let tick of [1,2,3,4,5,6,7,8,9,10]" class="range-tick" [class.active]="tick >= riskFilters.lower && tick <= riskFilters.upper">
+                        {{ tick }}
+                    </span>
+                    </div>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+        <!-- Search Filter Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <ion-icon name="search-outline" class="search-icon"></ion-icon>
+                <input type="text" placeholder="Search members by name..." [value]="searchTerm" (input)="onMemberSearch($event)" class="search-input"> @if (searchTerm) {
+                <button class="clear-search" (click)="clearSearch()">
+                    <ion-icon name="close-circle"></ion-icon>
+                </button> }
+            </div>
+        </div>
+
+        <!-- At-Risk Members List -->
+        <ion-card class="members-card">
+            <div class="card-header-glow"></div>
+            <ion-card-header class="card-header-elegant">
+                <ion-card-title>Members Needing Attention</ion-card-title>
+                <ion-card-subtitle>Prioritized by spiritual care needs</ion-card-subtitle>
+            </ion-card-header>
+            <div class="members-content">
+                @for (member of filteredMembers; track member.member_id) {
+                <div class="member-card" [class]="'risk-level-' + getRiskColor(member.risk_score)">
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <div class="avatar-circle" [class]="'avatar-' + getRiskColor(member.risk_score)">
+                                {{ member.member_name.charAt(0) }}
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">{{ member.member_name }}</h3>
+                            <div class="member-meta">
+                                <span class="class-badge">{{ member.class_name }}</span>
+                                <span class="location-text">
+                                    <ion-icon name="location"></ion-icon>
+                                    {{ member.member_location || 'Location not set' }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="risk-score">
+                            <div class="score-circle" [class]="'score-' + getRiskColor(member.risk_score)">
+                                {{ member.risk_score }}
+                            </div>
+                            <span class="risk-level">{{ getRiskLevel(member.risk_score) }}</span>
+                        </div>
+                    </div>
+
+                    <div class="member-stats">
+                        <!-- <div class="stat-item"> -->
+                        <!-- <ion-icon name="calendar" class="stat-icon"></ion-icon> -->
+                        <!-- <span class="stat-value">{{ member.attendance_rate }}%</span> -->
+                        <!-- <span class="stat-label">Attendance</span> -->
+                        <!-- </div> -->
+                        <div class="stat-item">
+                            <!-- <ion-icon name="close-circle" class="stat-icon"></ion-icon> -->
+                            <span class="stat-label">Absences</span>
+                            <span class="stat-value">{{ member.total_absences }}</span>
+
+                        </div>
+                        <!-- <div class="stat-item"> -->
+                        <!-- <ion-icon name="time" class="stat-icon"></ion-icon> -->
+                        <!-- <span class="stat-value">{{ member.days_since_last_attendance }}d</span> -->
+                        <!-- <span class="stat-label">Last Seen</span> -->
+                        <!-- </div> -->
+                    </div>
+
+                    @if (member.risk_factors && member.risk_factors.length > 0) {
+                    <div class="risk-factors">
+                        <h4>Care Considerations:</h4>
+                        <div class="factors-list">
+                            @for (factor of member.risk_factors; track factor) {
+                            <span class="factor-tag">{{ factor }}</span> }
+                        </div>
+                    </div>
+                    }
+
+                    <div class="member-actions">
+                        <button class="action-btn contact" (click)="showContactOptions(member)">
+                            <ion-icon name="call"></ion-icon>
+                            Contact
+                        </button>
+                        <button class="action-btn message" (click)="sendEncouragementMessage(member)">
+                            <ion-icon name="chatbubble"></ion-icon>
+                            Message
+                        </button>
+                        <button class="action-btn visited" (click)="markAsContacted(member)">
+                            <ion-icon name="checkmark"></ion-icon>
+                            Visited
+                        </button>
+                    </div>
+                </div>
+                }
+
+                <!-- Empty State -->
+                @if (filteredMembers.length === 0) {
+                <div class="elegant-empty">
+                    <div class="empty-illustration">
+                        <ion-icon name="heart-circle" class="empty-icon"></ion-icon>
+                        <div class="empty-pulse"></div>
+                    </div>
+                    <h3 class="empty-title">All Members Active</h3>
+                    <p class="empty-text">No members match the current risk criteria. Praise God! 🙏</p>
+                    <p class="empty-hint">Try adjusting the risk score range for different insights.</p>
+                </div>
+                }
+            </div>
+        </ion-card>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions-panel">
+            <button class="quick-action-btn primary" (click)="contactAllHighRisk()" [disabled]="getSummaryStats().highRisk === 0">
+                <ion-icon name="call"></ion-icon>
+                Call High Risk ({{ getSummaryStats().highRisk }})
+            </button>
+            <button class="quick-action-btn secondary" (click)="messageAllAtRisk()" [disabled]="filteredMembers.length === 0">
+                <ion-icon name="chatbubbles"></ion-icon>
+                Message All ({{ filteredMembers.length }})
+            </button>
+        </div>
+    </div>
+    }
+
+    <!-- Placeholder for other segments -->
+    @if (!isLoading && selectedSegment !== 'at-risk') {
+    <div class="segment-coming-soon">
+        <div class="coming-soon-illustration">
+            <ion-icon name="construct" class="construct-icon"></ion-icon>
+            <div class="construction-line"></div>
+        </div>
+        <h3 class="coming-soon-title">{{ selectedSegment | titlecase }} Analytics</h3>
+        <p class="coming-soon-text">Deep insights and trend analysis are under development.</p>
+        <p class="coming-soon-hint">Focusing on immediate member care through At-Risk analysis.</p>
+    </div>
+    }
+</ion-content>
