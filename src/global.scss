@@ -12,6 +12,65 @@
 
 /* Basic global styles */
 
+:root {
+    /* Base font sizes for different screen sizes - decreased by ~1px */
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-base: 15px;
+    --font-size-lg: 17px;
+    --font-size-xl: 19px;
+    --font-size-2xl: 23px;
+    /* Mobile first - smaller fonts */
+    font-size: 13px;
+}
+
+
+/* Universal font size scaling */
+
+* {
+    font-size: inherit;
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+     :root {
+        font-size: 13px;
+        /* Was 14px */
+    }
+}
+
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 768px) {
+     :root {
+        font-size: 14px;
+        /* Was 15px */
+    }
+}
+
+
+/* Desktop */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+     :root {
+        font-size: 15px;
+        /* Was 16px */
+    }
+}
+
+
+/* Large Desktop */
+
+@media (min-width: 1025px) {
+     :root {
+        font-size: 16px;
+        /* Was 17px */
+    }
+}
+
 html,
 body {
     box-sizing: border-box;
