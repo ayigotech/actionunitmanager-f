@@ -21,9 +21,9 @@
     --font-size-xl: 19px;
     --font-size-2xl: 23px;
     /* Mobile first - smaller fonts */
-    font-size: 13px;
-    --font-weight: 200;
-    font-weight: 200;
+    --font-size: 13px;
+    --font-weight: 200 !important;
+    font-weight: 200 !important;
 }
 
 
@@ -141,6 +141,11 @@ ion-label[position="stacked"] {
 
 ion-item {
     --color: #2d3436;
+}
+
+ion-tile {
+    --font-size: 13px !important;
+    font-size: 13px !important
 }
 
 
