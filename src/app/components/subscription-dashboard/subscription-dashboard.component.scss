@@ -108,7 +108,7 @@ ion-content {
                 }
             }
             .permission-message {
-                background: moccasin;
+                // background: moccasin;
                 margin-top: 1rem;
                 @media (min-width: 481px) {
                     margin-top: 1.25rem;
@@ -232,7 +232,7 @@ ion-content {
                 h2 {
                     font-size: 2rem;
                     font-weight: bold;
-                    color: var(--ion-color-dark);
+                    color: rgba(0, 0, 0, 0.479);
                     margin: 0 0 0.25rem 0;
                     @media (min-width: 481px) {
                         font-size: 2.25rem;
@@ -243,7 +243,7 @@ ion-content {
                     }
                 }
                 p {
-                    color: var(--ion-color-medium);
+                    color: rgba(0, 0, 0, 0.479);
                     margin: 0;
                     font-size: 0.875rem;
                     @media (min-width: 481px) {

@@ -3,7 +3,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IonicModule, ModalController, AlertController } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SubscriptionService } from '../../services/subscription';
 import { FeatureGuard } from 'src/app/services/feature-guard';
@@ -23,7 +23,7 @@ export interface PlanFeature {
   templateUrl: './subscription-dashboard.component.html',
   styleUrls: ['./subscription-dashboard.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, ReactiveFormsModule, FormsModule]
 })
 export class SubscriptionDashboardComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
@@ -43,6 +43,8 @@ export class SubscriptionDashboardComponent implements OnInit, OnDestroy {
     { name: 'Data Export', free_trial: true, quarterly: true, annual: true },
   ];
 
+  sForm : FormGroup
+
   // Payment form
   paymentForm = {
     plan: 'quarterly' as 'quarterly' | 'annual',
@@ -57,8 +59,13 @@ export class SubscriptionDashboardComponent implements OnInit, OnDestroy {
     private notification: Notification,
     private modalController: ModalController,
     private alertController: AlertController,
-    private router: Router
-  ) {}
+    private router: Router,
+     private fb: FormBuilder,
+  ) {
+     this.sForm = this.fb.group({
+      phoneNumber: ['', Validators.required],
+    });
+  }
 
   ngOnInit() {
     this.loadSubscriptionStatus();

@@ -54,7 +54,7 @@
                     </div>
 
                     <div *ngIf="featureGuard.getPermissionMessage()" class="permission-message">
-                        <ion-badge [color]="getStatusColor(subscriptionStatus.status)">
+                        <ion-badge class="text-light">
                             {{ featureGuard.getPermissionMessage() }}
                         </ion-badge>
                     </div>
@@ -161,11 +161,11 @@
                                 </ion-list>
                             </div>
 
-                            <ion-button *ngIf="subscriptionStatus?.plan !== 'quarterly'" expand="block" color="primary" fill="outline" (click)="paymentForm.plan = 'quarterly'">
+                            <ion-button *ngIf="subscriptionStatus?.plan !== 'quarterly'" expand="block" fill="outline" (click)="paymentForm.plan = 'quarterly'">
                                 Select Quarterly
                             </ion-button>
 
-                            <ion-button *ngIf="subscriptionStatus?.plan === 'quarterly'" expand="block" color="primary" fill="solid" disabled>
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'quarterly'" expand="block" fill="solid" disabled>
                                 Current Plan
                             </ion-button>
                         </ion-card-content>
@@ -197,11 +197,11 @@
                                 </ion-list>
                             </div>
 
-                            <ion-button *ngIf="subscriptionStatus?.plan !== 'annual'" expand="block" color="primary" fill="solid" (click)="paymentForm.plan = 'annual'">
+                            <ion-button *ngIf="subscriptionStatus?.plan !== 'annual'" expand="block" fill="solid" (click)="paymentForm.plan = 'annual'">
                                 Select Annual
                             </ion-button>
 
-                            <ion-button *ngIf="subscriptionStatus?.plan === 'annual'" expand="block" color="primary" fill="solid" disabled>
+                            <ion-button *ngIf="subscriptionStatus?.plan === 'annual'" expand="block" fill="solid" disabled>
                                 Current Plan
                             </ion-button>
                         </ion-card-content>
@@ -222,11 +222,12 @@
             <ion-card-content>
                 <form (ngSubmit)="initiateUpgrade()">
                     <!-- Phone Number Input -->
-                    <ion-item>
+                    <ion-item class="form-item">
                         <ion-label position="stacked">MTN Mobile Money Number</ion-label>
-                        <input type="tel" placeholder="e.g., 0241234567" [(ngModel)]="paymentForm.phoneNumber" name="phoneNumber" required>
-
+                        <input type="tel" placeholder="e.g., 0241234567" [(ngModel)]="paymentForm.phoneNumber" name="phoneNumber" required class="custom-input">
                     </ion-item>
+
+
 
                     <!-- Payment Summary -->
                     <div class="payment-summary">
@@ -242,7 +243,7 @@
                     </div>
 
                     <!-- Submit Button -->
-                    <ion-button type="submit" expand="block" color="primary" [disabled]="isProcessingPayment || !paymentForm.phoneNumber">
+                    <ion-button type="submit" expand="block" [disabled]="isProcessingPayment || !paymentForm.phoneNumber">
                         <ion-spinner *ngIf="isProcessingPayment" slot="start"></ion-spinner>
                         {{ isProcessingPayment ? 'Processing...' : 'Pay GHS ' + getPlanPrice(paymentForm.plan) }}
                     </ion-button>
