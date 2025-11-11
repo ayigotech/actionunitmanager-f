@@ -9,6 +9,10 @@ ion-content {
     --background: #f8f9fa;
 }
 
+.ion-title {
+    font-size: 14px;
+}
+
 .absent-members-container {
     padding: clamp(20px, 3vw, 32px);
     background: #f8f9fa;
@@ -24,7 +28,7 @@ ion-content {
         font-size: clamp(24px, 3vw, 32px);
         color: #2d3436;
         margin: 0 0 clamp(8px, 1vw, 12px) 0;
-        font-weight: 700;
+        font-weight: 200;
         line-height: 1.3;
         background: linear-gradient(135deg, #2d3436, #008080);
         -webkit-background-clip: text;
@@ -51,7 +55,7 @@ ion-content {
 
 .summary-card {
     margin: 0;
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.8);
     background: white;
@@ -109,7 +113,7 @@ ion-content {
         font-size: clamp(20px, 2.2vw, 28px);
         color: #2d3436;
         margin: 0 0 clamp(4px, 0.5vw, 6px) 0;
-        font-weight: 700;
+        font-weight: 200;
         line-height: 1.2;
     }
     p {
@@ -170,7 +174,7 @@ ion-content {
     }
     &.active {
         color: white;
-        font-weight: 600;
+        font-weight: 200;
         &::before {
             opacity: 1;
         }
@@ -221,7 +225,7 @@ ion-content {
         font-size: clamp(20px, 2.5vw, 24px);
         color: #2d3436;
         margin: 0 0 clamp(12px, 1.5vw, 16px) 0;
-        font-weight: 600;
+        font-weight: 200;
     }
 }
 
@@ -233,7 +237,7 @@ ion-content {
 
 .member-card {
     margin: 0;
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
     border-left: 4px solid #f44336;
     border: 1px solid rgba(255, 255, 255, 0.8);
@@ -299,7 +303,7 @@ ion-content {
         font-size: clamp(16px, 1.5vw, 18px);
         color: #2d3436;
         margin: 0 0 clamp(4px, 0.5vw, 6px) 0;
-        font-weight: 600;
+        font-weight: 200;
         line-height: 1.3;
     }
     .member-location,
@@ -326,7 +330,7 @@ ion-content {
     padding: clamp(4px, 0.8vw, 6px) clamp(12px, 1.5vw, 16px);
     border-radius: 20px;
     font-size: clamp(12px, 1.1vw, 13px);
-    font-weight: 600;
+    font-weight: 200;
     text-transform: capitalize;
     display: inline-block;
     transition: var(--transition-smooth);
@@ -402,7 +406,7 @@ ion-content {
         font-size: clamp(12px, 1.1vw, 13px);
         color: #008080;
         margin: 0 0 clamp(4px, 0.5vw, 6px) 0;
-        font-weight: 600;
+        font-weight: 200;
         text-transform: uppercase;
         letter-spacing: 0.5px;
     }
