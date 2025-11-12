@@ -46,7 +46,7 @@
             </div>
 
             <!-- Members List -->
-            <ion-list *ngIf="!isLoading && filteredMembers.length > 0">
+            <div *ngIf="!isLoading && filteredMembers.length > 0">
                 <div class="list-header">
                     <span>Members Directory</span>
                     <span class="total-count">{{ filteredMembers.length }} member(s)</span>
@@ -83,7 +83,7 @@
                         </div>
                     </ion-avatar>
                 </ion-item>
-            </ion-list>
+            </div>
         </div>
     </div>
 </ion-content>
