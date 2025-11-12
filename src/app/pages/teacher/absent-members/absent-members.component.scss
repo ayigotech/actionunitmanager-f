@@ -121,7 +121,7 @@ ion-content {
         color: #636e72;
         margin: 0;
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 200;
         letter-spacing: 0.5px;
     }
 }
@@ -148,7 +148,7 @@ ion-content {
     background: transparent;
     border-radius: clamp(8px, 1vw, 12px);
     font-size: clamp(14px, 1.2vw, 16px);
-    font-weight: 500;
+    font-weight: 200;
     color: #636e72;
     cursor: pointer;
     transition: var(--transition-smooth);
@@ -319,7 +319,7 @@ ion-content {
     .absence-count {
         color: #f44336;
         font-size: clamp(12px, 1.1vw, 13px);
-        font-weight: 500;
+        font-weight: 200;
         &:hover {
             transform: translateX(4px);
         }
@@ -415,7 +415,7 @@ ion-content {
         color: #2d3436;
         margin: 0;
         line-height: 1.5;
-        font-weight: 400;
+        font-weight: 200;
     }
 }
 

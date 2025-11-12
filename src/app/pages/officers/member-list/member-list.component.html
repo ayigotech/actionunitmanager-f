@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Members Directory</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="loadMembers()">
+                <ion-icon slot="icon-only" name="refresh"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <div class="members-container">
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <div class="search-icon">
+                    <ion-icon name="search-outline"></ion-icon>
+                </div>
+                <input type="text" class="search-input" placeholder="Search members by name, phone, location, or class..." [value]="searchTerm" (input)="searchMembers($event)">
+            </div>
+        </div>
+
+        <!-- Members List -->
+        <div class="members-list">
+            <!-- Loading State -->
+            <div class="loading-state" *ngIf="isLoading">
+                <ion-spinner></ion-spinner>
+                <p>Loading members...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" *ngIf="!isLoading && filteredMembers.length === 0">
+                <div class="empty-icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </div>
+                <h3>No Members Found</h3>
+                <p *ngIf="searchTerm">No members match your search criteria</p>
+                <p *ngIf="!searchTerm">No members available in the directory</p>
+                <button class="primary-btn" (click)="loadMembers()">Refresh</button>
+            </div>
+
+            <!-- Members List -->
+            <ion-list *ngIf="!isLoading && filteredMembers.length > 0">
+                <div class="list-header">
+                    <span>Members Directory</span>
+                    <span class="total-count">{{ filteredMembers.length }} member(s)</span>
+                </div>
+
+                <ion-item *ngFor="let member of filteredMembers" class="member-item" [class.inactive]="!member.is_active">
+                    <ion-label class="member-info">
+                        <h3 class="member-name">{{ member.member_name }}</h3>
+                        <div class="member-details">
+                            <!-- Phone with tel: link -->
+                            <a *ngIf="member.member_phone" [href]="'tel:' + formatPhoneNumber(member.member_phone)" class="member-phone">
+                                <ion-icon name="call-outline"></ion-icon>
+                                {{ member.member_phone }}
+                            </a>
+
+                            <!-- Location -->
+                            <p *ngIf="member.location" class="member-location">
+                                <ion-icon name="location-outline"></ion-icon>
+                                {{ member.location }}
+                            </p>
+
+                            <!-- Class Name -->
+                            <p *ngIf="member.class_name" class="member-class">
+                                <ion-icon name="business-outline"></ion-icon>
+                                {{ member.class_name }}
+                            </p>
+                        </div>
+                    </ion-label>
+
+                    <!-- Avatar on the right -->
+                    <ion-avatar slot="end" class="member-avatar">
+                        <div class="avatar-content">
+                            {{ getInitials(member.member_name) }}
+                        </div>
+                    </ion-avatar>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

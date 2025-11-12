@@ -297,4 +297,9 @@ onMaxRiskChange(event: any) {
     this.authService.logout();
     this.isLoading = false;
   }
+
+
+  memberList() {
+   this.router.navigate(['/member-list'])
+  }
 }

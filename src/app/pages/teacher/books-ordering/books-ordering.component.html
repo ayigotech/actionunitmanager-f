@@ -91,7 +91,7 @@
                             {{ currentOrder.status === 'submitted' ? 'Submitted' : 'Draft' }}
                         </ion-badge>
                         <span *ngIf="currentOrder.submittedDate" class="submitted-date">
-                            Submitted: {{ currentOrder.submittedDate | date:'mediumDate' }}
+                            {{ currentOrder.submittedDate | date:'mediumDate' }}
                         </span>
                     </div>
                 </ion-card-content>

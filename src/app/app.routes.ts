@@ -84,6 +84,10 @@ export const routes: Routes = [
     path: 'officers-insight',
     loadComponent: () => import('./pages/officers/officers-insight/officers-insight.page').then( m => m.OfficersInsightsPage)
   },
+     {
+    path: 'member-list',
+    loadComponent: () => import('./pages/officers/member-list/member-list.component').then( m => m.MemberListComponent)
+  },
   {
     path: 'manage-officers',
     loadComponent: () => import('./pages/superintendent/manage-officers/manage-officers.page').then( m => m.ManageOfficersPage)

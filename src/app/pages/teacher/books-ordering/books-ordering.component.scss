@@ -91,8 +91,8 @@ ion-select-option {
         flex-wrap: wrap;
         .submitted-date {
             color: #636e72;
-            font-size: clamp(14px, 1.2vw, 16px);
-            font-weight: 500;
+            font-size: clamp(12px, 1.0vw, 14px);
+            font-weight: 200;
         }
     }
 }
@@ -207,7 +207,7 @@ ion-select-option {
         font-size: clamp(14px, 1.2vw, 16px);
         color: #636e72;
         margin: 0;
-        font-weight: 500;
+        font-weight: 200;
     }
 }
 
@@ -315,7 +315,7 @@ ion-select-option {
         font-size: clamp(14px, 1.2vw, 16px);
         color: #636e72;
         margin: 0;
-        font-weight: 500;
+        font-weight: 200;
     }
 }
 
@@ -377,7 +377,7 @@ ion-select-option {
         font-size: clamp(12px, 1.1vw, 14px);
         color: #636e72;
         text-transform: uppercase;
-        font-weight: 500;
+        font-weight: 200;
         letter-spacing: 0.5px;
     }
 }
