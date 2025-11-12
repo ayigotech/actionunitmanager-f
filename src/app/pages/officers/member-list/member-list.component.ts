@@ -112,6 +112,6 @@ export class MemberListComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['/officer-insight']);
+    this.router.navigate(['/officers-insight']);
   }
 }

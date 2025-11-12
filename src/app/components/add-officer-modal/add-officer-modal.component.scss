@@ -67,6 +67,7 @@ ion-button[disabled] {
     }
     .form-input {
         color: #dc2626;
+        font-size: 13px;
         &:focus {
             border-bottom-color: #ef4444;
             background: rgba(239, 68, 68, 0.02);
@@ -77,7 +78,7 @@ ion-button[disabled] {
 .form-item.valid {
     --background: #f0fdf4;
     border: 2px solid #10b981;
-    border-radius: var(--card-border-radius);
+    border-radius: 12px;
     padding: clamp(12px, 1.5vw, 16px);
     margin-bottom: clamp(16px, 2vw, 20px);
     transition: var(--transition-smooth);
@@ -97,6 +98,7 @@ ion-button[disabled] {
     }
     .form-input {
         color: #059669;
+        font-size: 13px;
         &:focus {
             border-bottom-color: #10b981;
             background: rgba(16, 185, 129, 0.02);
