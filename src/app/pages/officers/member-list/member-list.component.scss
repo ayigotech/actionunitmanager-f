@@ -87,9 +87,14 @@
     }
 }
 
+ion-list {
+    --background: #f8f9fa;
+}
+
 // Members List
 .members-list {
     padding: 0 1.5rem 2rem;
+    background: #f8f9fa;
     @media (min-width: 768px) {
         padding: 0 2rem 3rem;
     }
