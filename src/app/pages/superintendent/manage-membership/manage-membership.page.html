@@ -21,15 +21,16 @@
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
 
-    <!-- Class Filter -->
-    <!-- <ion-toolbar>
-        <ion-segment [(ngModel)]="selectedClassId" (ionChange)="onClassFilterChange()">
-            <ion-segment-button value="all">
-                <ion-label>All Classes</ion-label>
-            </ion-segment-button>
 
-        </ion-segment>
-    </ion-toolbar> -->
+
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <ion-icon name="search-outline"></ion-icon>
+            </div>
+            <input type="text" class="search-input" placeholder="Search members by name, phone, or class..." [value]="searchTerm" (input)="searchMembers($event)">
+        </div>
+    </div>
 
     <!-- Loading State -->
     <div *ngIf="isLoading && members.length === 0" class="loading-container">
@@ -42,38 +43,25 @@
         <ion-icon name="people-outline" class="empty-icon"></ion-icon>
         <h3>No Members Found</h3>
         <p>Add members to your Action Unit classes</p>
-        <!-- <ion-button (click)="addMember()">
-            <ion-icon slot="start" name="add"></ion-icon>
-            Add First Member
-        </ion-button>
-        <ion-button (click)="addBulkMember()">
-            <ion-icon slot="start" name="add"></ion-icon>
-            Bulk Load Members
-        </ion-button> -->
-
-        <button class="fixed-add-btn" shape="round" (click)="addBulkMember()">
-        <ion-icon slot="icon-only" name="add"></ion-icon>
-    </button>
-
-
-        <!-- Fixed Action Button -->
-        <button class="fixed-add-btn-2" shape="round" (click)="addMember()">
-        <ion-icon slot="icon-only" name="folder-outline"></ion-icon>
-    </button>
     </div>
 
-    <div *ngIf="!isLoading && members.length > 0">
+
+
+    <div *ngIf="!isLoading && filteredMembers.length > 0">
         <div class="stat-card mb-4">
             <div class="stat-icon members">
                 <ion-icon name="person"></ion-icon>
             </div>
-            <div class="stat-info">
-                <h3>{{ members.length }}</h3>
-                <p>Total Members</p>
+            <div class="list-header">
+                <span>Members Directory</span>
+                <span class="total-count">{{ filteredMembers.length }} member(s)</span>
             </div>
         </div>
 
-        <ion-item *ngFor="let member of members" class="member-item">
+
+
+
+        <ion-item *ngFor="let member of filteredMembers" class="member-item">
             <ion-avatar slot="start" class="input-icon">
                 <ion-icon name="person-circle" size="large"></ion-icon>
             </ion-avatar>

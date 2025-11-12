@@ -58,9 +58,10 @@ export class MemberListComponent implements OnInit {
   private notification = inject(Notification);
 
   searchTerm: string = '';
+  filteredMembers: Member[] = [];
   isLoading: boolean = false;
   members: Member[] = [];
-  filteredMembers: Member[] = [];
+  
 
   ngOnInit() {
     this.loadMembers();
@@ -80,6 +81,7 @@ export class MemberListComponent implements OnInit {
       this.isLoading = false;
     }
   }
+  
 
   searchMembers(event: any) {
     const term = event.target.value.toLowerCase();
@@ -97,6 +99,7 @@ export class MemberListComponent implements OnInit {
       member.class_name.toLowerCase().includes(term)
     );
   }
+
 
   formatPhoneNumber(phone: string): string {
     // Clean phone number for tel: link

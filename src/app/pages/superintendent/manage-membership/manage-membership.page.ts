@@ -38,6 +38,8 @@ export class ManageMembershipPage implements OnInit {
   classes: any[] = [];
   isLoading: boolean = false;
   selectedClassId: string = 'all';
+  searchTerm: string = '';
+  filteredMembers: Member[] = [];
 
   private notification = inject(Notification);
   private authService = inject(AuthService);
@@ -69,12 +71,13 @@ async loadMembers() {
   try {
     // Use real API when ready
     const classId = this.selectedClassId === 'all' ? undefined : this.selectedClassId;
-    const response = await this.apiService.getClassMembers(classId).toPromise();
+    const response = await this.apiService.getClassMembers().toPromise() || [];
     
     console.log('API Response:', response); // Debug log
+    this.filteredMembers = [...response];
     
     if (response && Array.isArray(response)) {
-      this.members = response.map(member => {
+      this.filteredMembers = response.map(member => {
         // Add null checks for all properties
         return {
           id: member?.id?.toString() || 'unknown',
@@ -89,46 +92,43 @@ async loadMembers() {
       });
     } else {
       console.warn('No response or invalid response format');
-      this.loadMockMembers(); // Fallback to mock data
     }
   } catch (error: any) {
     console.error('Error loading members:', error);
     console.error('Error details:', error.status, error.message);
     this.notification.error('Failed to load members');
-    this.loadMockMembers(); // Fallback to mock data
   } finally {
     this.isLoading = false;
   }
 }
 
-
-private loadMockMembers() {
-  // Your existing mock data loading logic
-  setTimeout(() => {
-    this.members = [
-      {
-        id: '1',
-        name: 'Brother Kofi',
-        phone: '+233123456789',
-        email: 'kofi@example.com',
-        classId: '1',
-        className: 'Youth Action Unit',
-        joinDate: new Date('2024-01-15'),
-        isActive: true
-      },
-      // ... other mock members
-    ];
-    this.isLoading = false;
-  }, 1000);
-}
-
-
-
-
-
-
   onClassFilterChange() {
     this.loadMembers();
+  }
+
+
+
+
+   searchMembers(event: any) {
+    const term = event.target.value.toLowerCase();
+    this.searchTerm = term;
+    
+    if (!term) {
+      this.filteredMembers = [...this.members];
+      return;
+    }
+
+    this.filteredMembers = this.members.filter(member => 
+      member.name.toLowerCase().includes(term) ||
+      member.phone.includes(term) ||
+      member.className.toLowerCase().includes(term)
+    );
+  }
+
+  
+  formatPhoneNumber(phone: string): string {
+    // Clean phone number for tel: link
+    return phone.replace(/\s+/g, '');
   }
 
 
