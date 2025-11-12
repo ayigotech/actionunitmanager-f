@@ -75,6 +75,7 @@ async loadMembers() {
     
     console.log('API Response:', response); // Debug log
     this.filteredMembers = [...response];
+    this.members = this.filteredMembers
     
     if (response && Array.isArray(response)) {
       this.filteredMembers = response.map(member => {
