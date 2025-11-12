@@ -65,21 +65,19 @@ export class ManageMembershipPage implements OnInit {
 
 
 
-async loadMembers() {
+  async loadMembers() {
   this.isLoading = true;
+   this.searchTerm = ''; // ✅ Reset search term
   
   try {
-    // Use real API when ready
     const classId = this.selectedClassId === 'all' ? undefined : this.selectedClassId;
     const response = await this.apiService.getClassMembers().toPromise() || [];
     
-    console.log('API Response:', response); // Debug log
-    this.filteredMembers = [...response];
-    this.members = this.filteredMembers
+    console.log('API Response:', response);
     
     if (response && Array.isArray(response)) {
+      // ✅ First map the data to both arrays
       this.filteredMembers = response.map(member => {
-        // Add null checks for all properties
         return {
           id: member?.id?.toString() || 'unknown',
           name: member?.member_name || 'Unknown Name',
@@ -88,20 +86,28 @@ async loadMembers() {
           classId: member?.action_unit_class?.id?.toString() || 'unknown',
           className: member?.class_name || 'Unknown Class',
           joinDate: member?.joined_date ? new Date(member.joined_date) : new Date(),
-          isActive: member?.is_active !== false // Default to true if undefined
+          isActive: member?.is_active !== false
         };
       });
+      
+      // ✅ Then assign to members
+      this.members = [...this.filteredMembers];
+      
     } else {
       console.warn('No response or invalid response format');
+      this.filteredMembers = [];
+      this.members = [];
     }
   } catch (error: any) {
     console.error('Error loading members:', error);
-    console.error('Error details:', error.status, error.message);
     this.notification.error('Failed to load members');
+    this.filteredMembers = [];
+    this.members = [];
   } finally {
     this.isLoading = false;
   }
 }
+
 
   onClassFilterChange() {
     this.loadMembers();
@@ -110,21 +116,21 @@ async loadMembers() {
 
 
 
-   searchMembers(event: any) {
-    const term = event.target.value.toLowerCase();
-    this.searchTerm = term;
-    
-    if (!term) {
-      this.filteredMembers = [...this.members];
-      return;
-    }
-
-    this.filteredMembers = this.members.filter(member => 
-      member.name.toLowerCase().includes(term) ||
-      member.phone.includes(term) ||
-      member.className.toLowerCase().includes(term)
-    );
+  searchMembers(event: any) {
+  const term = event.target.value.toLowerCase();
+  this.searchTerm = term;
+  
+  if (!term.trim()) {
+    this.filteredMembers = [...this.members];
+    return;
   }
+
+  this.filteredMembers = this.members.filter(member => 
+    (member.name?.toLowerCase().includes(term) || false) ||
+    (member.phone?.includes(term) || false) ||
+    (member.className?.toLowerCase().includes(term) || false)
+  );
+}
 
   
   formatPhoneNumber(phone: string): string {

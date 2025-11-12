@@ -28,7 +28,7 @@
             <div class="search-icon">
                 <ion-icon name="search-outline"></ion-icon>
             </div>
-            <input type="text" class="search-input" placeholder="Search members by name, phone, or class..." [value]="searchTerm" (input)="searchMembers($event)">
+            <input type="text" class="search-input" placeholder="Search members by name, phone, or class..." [(ngModel)]="searchTerm" (input)="searchMembers($event)">
         </div>
     </div>
 
