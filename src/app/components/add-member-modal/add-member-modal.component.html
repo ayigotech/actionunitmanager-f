@@ -7,7 +7,7 @@
             </ion-button>
         </ion-buttons>
         <ion-buttons slot="end">
-            <ion-button (click)="saveMember()" [strong]="true" [disabled]="isLoading">
+            <ion-button (click)="saveMember()" [strong]="true" [disabled]="isLoading || classesLoading">
                 <div class="button-content">
                     <ion-spinner *ngIf="isLoading" name="crescent"></ion-spinner>
                     <span *ngIf="!isLoading">
@@ -20,17 +20,30 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-    <form *ngIf="memberForm" [formGroup]="memberForm" (ngSubmit)="saveMember()" class="class-form">
+    <!-- Loading state for classes -->
+    <div *ngIf="classesLoading" class="loading-container">
+        <ion-spinner name="crescent"></ion-spinner>
+        <p>Loading classes...</p>
+    </div>
+
+    <!-- Form content -->
+    <form *ngIf="memberForm && !classesLoading" [formGroup]="memberForm" (ngSubmit)="saveMember()" class="class-form">
         <!-- Member Name -->
         <ion-item class="form-item">
             <ion-icon name="person-outline" slot="start" class="input-icon"></ion-icon>
             <input type="text" class="form-control form-input" placeholder="Member Name" formControlName="name" required>
+            <span color="danger" *ngIf="memberForm.get('name')?.invalid && memberForm.get('name')?.touched">
+                <small>Name is required</small>
+            </span>
         </ion-item>
 
         <!-- Member Phone -->
         <ion-item class="form-item">
             <ion-icon name="call-outline" slot="start" class="input-icon"></ion-icon>
             <input type="tel" class="form-control form-input" placeholder="Phone Number" formControlName="phone" required>
+            <span color="danger" *ngIf="memberForm.get('phone')?.invalid && memberForm.get('phone')?.touched">
+                <small>Phone is required</small>
+            </span>
         </ion-item>
 
         <!-- Member Email -->
@@ -49,17 +62,28 @@
         <ion-item class="form-item">
             <ion-icon name="school" slot="start" class="input-icon"></ion-icon>
             <div class="select-wrapper">
-                <!-- <label for="classId" class="select-label">Select Class</label> -->
                 <select id="classId" formControlName="classId" required>
                     <option value="">Select Class</option>
                     <option *ngFor="let classItem of availableClasses" [value]="classItem.id">
                       {{ classItem.name }}
                     </option>
                 </select>
+                <span color="danger" *ngIf="memberForm.get('classId')?.invalid && memberForm.get('classId')?.touched">
+                    <small>Class selection is required</small>
+                </span>
             </div>
         </ion-item>
 
         <!-- Hidden submit -->
         <button type="submit" style="display: none"></button>
     </form>
+
+    <!-- Error state if classes fail to load -->
+    <div *ngIf="classesError" class="error-container">
+        <ion-icon name="warning-outline" color="danger"></ion-icon>
+        <p>Failed to load classes. Please try again.</p>
+        <ion-button (click)="loadClasses()" fill="outline">
+            Retry
+        </ion-button>
+    </div>
 </ion-content>

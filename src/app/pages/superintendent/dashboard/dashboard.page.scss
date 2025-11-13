@@ -16,6 +16,10 @@ ion-toolbar {
     --min-height: 70px;
 }
 
+ion-title {
+    --font-size: 1.5rem;
+}
+
 .dashboard-container {
     padding: clamp(20px, 3vw, 32px);
     background: #f8f9fa;
