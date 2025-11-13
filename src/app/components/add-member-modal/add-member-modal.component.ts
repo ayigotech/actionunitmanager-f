@@ -36,11 +36,13 @@ export interface MemberFormData {
 ]
 })
 
-export class AddMemberModalComponent implements OnInit {
+
+export class AddMemberModalComponent {
   private apiService = inject(ApiService);
   private router = inject(Router);
   private notification = inject(Notification);
   private fb = inject(FormBuilder);
+  
   
   mode: 'add' | 'edit' = 'add';
   memberForm!: FormGroup;
@@ -62,7 +64,16 @@ export class AddMemberModalComponent implements OnInit {
       
       if (this.mode === 'edit' && state['memberData']) {
         this.originalMember = state['memberData'];
+        console.log('Editing member loaded', {
+          memberId: this.originalMember.id,
+          memberName: this.originalMember.name,
+          classId: this.originalMember.classId,
+          mode: this.mode
+        });
+        
         console.log('Editing member:', this.originalMember);
+        console.log('Member classId:', this.originalMember.classId);
+        console.log('Member classId type:', typeof this.originalMember.classId);
       }
     }
 
@@ -71,18 +82,33 @@ export class AddMemberModalComponent implements OnInit {
   }
 
   initializeForm() {
+    // Get the classId, but handle 'unknown' case
+    let classId = this.originalMember?.classId;
+    
+    // If classId is 'unknown' or invalid, set to empty string so it shows "Select Class"
+    if (classId === 'unknown' || !this.isValidClassId(classId)) {
+      classId = '';
+    }
+
     this.memberForm = this.fb.group({
       name: [this.originalMember?.name || '', Validators.required],
       phone: [this.originalMember?.phone || '', Validators.required],
       location: [this.originalMember?.location || ''],
       email: [this.originalMember?.email || ''],
-      classId: [this.originalMember?.classId || '', Validators.required]
+      classId: [classId, Validators.required]
     });
 
-    // Log form values for debugging
     console.log('Form initialized with values:', this.memberForm.value);
     console.log('Edit mode:', this.mode === 'edit');
     console.log('Original member:', this.originalMember);
+    console.log('Available classes:', this.availableClasses);
+  }
+
+  private isValidClassId(classId: any): boolean {
+    if (!classId || classId === 'unknown') return false;
+    
+    // Check if this classId exists in availableClasses
+    return this.availableClasses.some(cls => cls.id == classId);
   }
 
   async loadClasses() {
@@ -92,7 +118,23 @@ export class AddMemberModalComponent implements OnInit {
     try {
       const classes = await this.apiService.getClasses().toPromise();
       this.availableClasses = classes || [];
-      console.log('Loaded classes:', this.availableClasses.length);
+      console.log('Loaded classes:', this.availableClasses);
+      
+      // If we have the original member, log which class they belong to
+      if (this.originalMember) {
+        const memberClass = this.availableClasses.find(cls => cls.id == this.originalMember.classId);
+        console.log('Member class found:', memberClass);
+        console.log('Member classId:', this.originalMember.classId);
+        console.log('Available class IDs:', this.availableClasses.map(c => c.id));
+        
+        // TEMPORARY: Force select first class if classId is unknown and classes exist
+        if (this.originalMember.classId === 'unknown' && this.availableClasses.length > 0) {
+          setTimeout(() => {
+            this.memberForm?.patchValue({ classId: this.availableClasses[0].id });
+            console.log('Auto-selected class:', this.availableClasses[0]);
+          });
+        }
+      }
     } catch (error) {
       console.error('Error loading classes:', error);
       this.availableClasses = [];
@@ -131,9 +173,15 @@ export class AddMemberModalComponent implements OnInit {
       if (this.mode === 'add') {
         response = await this.apiService.createMember(payload).toPromise();
         this.notification.success('Member created successfully');
+       
       } else {
         // For edit mode, use the updateMember method
         const memberId = this.originalMember.id;
+        
+        // Log what we're sending for update
+        console.log('Updating member:', memberId, payload);
+        
+        
         response = await this.apiService.updateMember(memberId, payload).toPromise();
         this.notification.success('Member updated successfully');
       }
@@ -145,6 +193,7 @@ export class AddMemberModalComponent implements OnInit {
       const errorMessage = this.notification.extractErrorMessage(error);
       this.notification.error(errorMessage);
       console.error(`Failed to ${this.mode} member:`, error);
+      // this.logging.error(`Failed to ${this.mode} member`, error);
     } finally {
       this.isLoading = false;
     }

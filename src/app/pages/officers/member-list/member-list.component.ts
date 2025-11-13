@@ -44,7 +44,7 @@ interface Member {
     IonButtons,
     IonButton,
     IonIcon,
-    IonList,
+    // IonList,
     IonItem,
     IonLabel,
     IonAvatar,

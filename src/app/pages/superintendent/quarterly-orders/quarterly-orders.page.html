@@ -91,7 +91,7 @@
                     @for (book of classOrder.books; track book.bookTitle) {
                     <div class="book-item">
                         <div class="book-info">
-                            <h3>{{ book.bookTitle }}</h3>
+                            <h3 class="text-danger">{{ book.bookTitle }}</h3>
                             <p>Quantity: {{ book.quantity }} × GHS {{ book.unitPrice | number:'1.2-2' }}</p>
                         </div>
                         <div class="book-price">

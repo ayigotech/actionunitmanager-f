@@ -64,7 +64,7 @@ ion-button[disabled] {
     padding: clamp(12px, 1.5vw, 14px) 0;
     border: none;
     background: transparent;
-    font-size: clamp(16px, 1.5vw, 18px);
+    font-size: clamp(14px, 1.2vw, 16px);
     color: #2d3436;
     transition: var(--transition-smooth);
     &:focus {
