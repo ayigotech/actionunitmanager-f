@@ -104,39 +104,6 @@
                         </ion-card-content>
                     </ion-card>
 
-                    <!-- Monthly Plan -->
-                    <!-- <ion-card class="plan-card" [color]="subscriptionStatus?.plan === 'monthly' ? 'primary' : 'light'">
-                        <ion-card-header>
-                            <ion-card-title>Monthly</ion-card-title>
-                            <ion-card-subtitle>Flexible monthly billing</ion-card-subtitle>
-                        </ion-card-header>
-
-                        <ion-card-content>
-                            <div class="plan-price">
-                                <h2>GHS 50</h2>
-                                <p>per month</p>
-                            </div>
-
-                            <div class="plan-features">
-                                <ion-list lines="none">
-                                    <ion-item *ngFor="let feature of planFeatures">
-                                        <ion-icon [name]="feature.monthly ? 'checkmark-circle' : 'close-circle'" [color]="feature.monthly ? 'success' : 'medium'" slot="start">
-                                        </ion-icon>
-                                        <ion-label>{{ feature.name }}</ion-label>
-                                    </ion-item>
-                                </ion-list>
-                            </div>
-
-                            <ion-button *ngIf="subscriptionStatus?.plan !== 'monthly'" expand="block" color="primary" fill="outline" (click)="paymentForm.plan = 'monthly'">
-                                Select Monthly
-                            </ion-button>
-
-                            <ion-button *ngIf="subscriptionStatus?.plan === 'monthly'" expand="block" color="primary" fill="solid" disabled>
-                                Current Plan
-                            </ion-button>
-                        </ion-card-content>
-                    </ion-card> -->
-
 
                     <!--  Quarterly-->
                     <ion-card class="plan-card" [color]="subscriptionStatus?.plan === 'quarterly' ? 'primary' : 'light'">

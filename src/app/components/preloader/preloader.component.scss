@@ -1,24 +1,29 @@
-/* Preloader Specific Styles */
+/* Preloader Styles */
 
 .preloader-content {
     --background: #ffffff;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
 }
 
 .preloader-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    min-height: 100vh;
-    padding: 2rem 1rem;
     background: #ffffff;
+    padding: 1rem;
 }
 
 
-/* Logo Section with Bouncing Effect */
+/* Logo Section */
 
 .logo-section {
     text-align: center;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -29,24 +34,22 @@
 }
 
 .logo-circle {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #eb4523 0%, #b88115 50%, #ffffff 100%);
+    background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 2;
-    animation: logoBounce 2s ease-in-out infinite;
-    box-shadow: 0 8px 25px rgba(98, 46, 35, 0.3);
-    border: 3px solid #ffffff;
+    animation: bounce 2s infinite ease-in-out;
+    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
 }
 
 .logo-icon {
-    font-size: 3rem !important;
+    font-size: 2rem !important;
     color: #ffffff;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .logo-pulse {
@@ -54,55 +57,28 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #eb4523 0%, #b88115 100%);
-    opacity: 0.3;
+    border: 2px solid #b88115;
+    animation: pulse 2s infinite;
     z-index: 1;
-    animation: pulse 2s ease-out infinite;
-}
-
-@keyframes logoBounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: translate(-50%, -50%) scale(0.8);
-        opacity: 0.5;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.2;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.3);
-        opacity: 0;
-    }
 }
 
 .app-name {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 300;
-    color: #eb4523;
+    color: #a1350a;
     margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .app-tagline {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 300;
-    color: #b88115;
-    margin: 0.5rem 0 0 0;
-    opacity: 0.9;
+    color: #666666;
+    margin-top: 0.5rem;
 }
 
 
@@ -110,9 +86,9 @@
 
 .loading-section {
     text-align: center;
-    margin: 2rem 0;
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
+    margin: 2rem auto;
 }
 
 .progress-container {
@@ -123,51 +99,25 @@
 .progress-bar {
     width: 100%;
     height: 6px;
-    background: #f0f0f0;
-    border-radius: 10px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
     overflow: hidden;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #eb4523 0%, #b88115 100%);
-    border-radius: 10px;
-    animation: progressFill 2s ease-in-out infinite;
+    background: linear-gradient(90deg, #a1350a 0%, #b88115 100%);
+    border-radius: 3px;
+    animation: loading 2s infinite ease-in-out;
     transform-origin: left;
 }
 
-@keyframes progressFill {
-    0% {
-        transform: scaleX(0);
-        opacity: 0.7;
-    }
-    50% {
-        transform: scaleX(0.7);
-        opacity: 1;
-    }
-    100% {
-        transform: scaleX(1);
-        opacity: 0.7;
-    }
-}
-
 .loading-text {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 300;
-    color: #eb4523;
+    color: #666666;
     margin: 0;
-    animation: textFade 2s ease-in-out infinite;
-}
-
-@keyframes textFade {
-    0%,
-    100% {
-        opacity: 0.7;
-    }
-    50% {
-        opacity: 1;
-    }
 }
 
 
@@ -179,7 +129,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin: 2rem 0;
+    min-height: 100px;
 }
 
 
@@ -187,44 +137,120 @@
 
 .powered-by {
     text-align: center;
-    margin-top: auto;
+    margin-bottom: 1rem;
 }
 
 .company-logo {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-    border-radius: 25px;
-    box-shadow: 0 4px 15px rgba(98, 46, 35, 0.1);
-    border: 1px solid rgba(98, 46, 35, 0.1);
-    transition: all 0.3s ease;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #666666;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.company-logo span:first-child {
+    font-size: 1rem;
+}
+
+
+/* Animations */
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes loading {
+    0% {
+        transform: scaleX(0);
+    }
+    50% {
+        transform: scaleX(0.7);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
+
+/* Hover Effects */
+
+.logo-circle:hover {
+    animation: bounce 0.5s ease-in-out;
+    transform: scale(1.05);
 }
 
 .company-logo:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(98, 46, 35, 0.15);
-}
-
-.company-logo span:first-child {
-    font-size: 1.2rem;
-}
-
-.company-logo span:last-child {
-    font-size: 1rem;
-    font-weight: 300;
-    color: #eb4523;
-    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 
-/* Responsive Grid System */
+/* Responsive Design */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .preloader-container {
-        padding: 1rem;
+        padding: 0.5rem;
     }
+    .logo-circle {
+        width: 70px;
+        height: 70px;
+    }
+    .logo-icon {
+        font-size: 1.8rem !important;
+    }
+    .logo-pulse {
+        width: 90px;
+        height: 90px;
+    }
+    .app-name {
+        font-size: 1.1rem;
+    }
+    .loading-section {
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .logo-circle {
+        width: 90px;
+        height: 90px;
+    }
+    .logo-icon {
+        font-size: 2.2rem !important;
+    }
+    .logo-pulse {
+        width: 110px;
+        height: 110px;
+    }
+    .app-name {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 769px) {
     .logo-circle {
         width: 100px;
         height: 100px;
@@ -237,65 +263,25 @@
         height: 120px;
     }
     .app-name {
-        font-size: 1.3rem;
-    }
-    .loading-section {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-circle {
-        width: 80px;
-        height: 80px;
-    }
-    .logo-icon {
-        font-size: 2rem !important;
-    }
-    .logo-pulse {
-        width: 100px;
-        height: 100px;
-    }
-    .app-name {
-        font-size: 1.1rem;
-    }
-    .company-logo {
-        padding: 0.6rem 1.2rem;
+        font-size: 1.4rem;
     }
 }
 
 
-/* Input font sizes explicitly */
-
-input,
-textarea,
-select {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-}
-
-ion-input,
-ion-textarea,
-ion-select {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-}
-
-
-/* Utility classes for spacing */
+/* Utility Classes */
 
 .pt-5 {
     padding-top: 3rem !important;
-}
-
-.mb-4 {
-    margin-bottom: 2rem !important;
 }
 
 .text-center {
     text-align: center !important;
 }
 
+.mb-4 {
+    margin-bottom: 1.5rem !important;
+}
+
 .text-danger {
-    color: #eb4523 !important;
+    color: #a1350a !important;
 }

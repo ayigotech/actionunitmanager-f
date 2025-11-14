@@ -1,430 +1,458 @@
-ion-content,
-ion-card {
-    --background: #f8f9fa;
+/* Teacher Form Content Styles */
+
+ion-content {
+    --background: #ffffff;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
 }
 
 
-/* Enhanced Header with Responsive Gradient */
+/* Header Styles */
 
-ion-toolbar,
-ion-header {
-    --background: linear-gradient(135deg, #008080, #00a0a0);
-    /* Desktop enhancements */
-    @media (min-width: 769px) {
-        --background: linear-gradient(135deg, #008080, #00a0a0, #008080);
-        background-attachment: fixed;
-        box-shadow: 0 2px 12px rgba(0, 128, 128, 0.15);
-    }
+ion-toolbar {
+    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --color: #ffffff;
+    --border-width: 0;
+}
+
+ion-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
 }
 
 
-/* Responsive Form Container */
+/* Header Buttons */
+
+ion-button {
+    --color: #ffffff;
+    --background: transparent;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    --background-activated: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    font-weight: 300;
+    transition: all 0.3s ease;
+}
+
+ion-button:hover {
+    transform: translateY(-1px);
+}
+
+ion-icon {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+
+/* Save Button */
+
+ion-buttons[slot="end"] ion-button {
+    --background: rgba(255, 255, 255, 0.2);
+    --background-hover: rgba(255, 255, 255, 0.3);
+    --background-activated: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+ion-buttons[slot="end"] ion-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+
+/* Teacher Form Styles */
 
 .class-form {
     max-width: 600px;
     margin: 0 auto;
-    padding: 1rem;
-    /* Tablet scaling */
-    @media (min-width: 481px) and (max-width: 768px) {
-        max-width: 80%;
-        padding: 1.5rem;
-    }
-    /* Desktop scaling */
-    @media (min-width: 769px) {
-        max-width: 700px;
-        padding: 2rem;
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        margin: 2rem auto;
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        max-width: 750px;
-        margin: 3rem auto;
-    }
+    padding: 1rem 0;
+    animation: slideIn 0.5s ease;
 }
 
 
-/* Enhanced Form Items */
+/* Form Items */
 
 .form-item {
-    --background: transparent;
-    --border-color: #e0e0e0;
+    --background: #ffffff;
     --border-radius: 12px;
-    --padding-start: 0;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
     --inner-padding-end: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #e0e0e0;
     transition: all 0.3s ease;
-    /* Tablet scaling */
-    @media (min-width: 481px) {
-        margin-bottom: 1.25rem;
-        --border-color: #d0d7de;
-    }
-    /* Desktop enhancements */
-    @media (min-width: 769px) {
-        margin-bottom: 1.5rem;
-        --border-radius: 14px;
-        /* Add hover effect for desktop */
-        &:hover {
-            transform: translateX(4px);
-            --border-color: #008080;
-        }
-    }
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+}
+
+.form-item:hover {
+    border-color: #b88115;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-item:focus-within {
+    border-color: #a1350a;
+    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.15);
+    transform: translateY(-2px);
+    animation: gentleBounce 0.5s ease;
 }
 
 
-/* Enhanced Input Icons */
+/* Input Icons */
 
 .input-icon {
-    color: #008080;
-    font-size: 1.2rem;
-    margin-right: 0.75rem;
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 1.3rem;
-        margin-right: 0.875rem;
-    }
-    @media (min-width: 769px) {
-        font-size: 1.4rem;
-        margin-right: 1rem;
-        transition: color 0.3s ease;
-    }
-}
-
-
-/* Enhanced Custom Input */
-
-.custom-input {
-    width: 100%;
-    border: none;
-    outline: none;
-    border-bottom: 1px solid #008080;
-    background: transparent;
-    color: #0a0a0a;
-    font-size: 1rem;
-    padding: 0.625rem;
+    font-size: 1.3rem !important;
+    color: #a1350a;
+    margin-right: 0.5rem;
     transition: all 0.3s ease;
-    /* Remove duplicate box-shadow and use focus state instead */
-    &:focus {
-        outline: none;
-        border-bottom-width: 2px;
-        border-bottom-color: #006666;
-        background-color: rgba(0, 128, 128, 0.03);
-        transform: translateY(-1px);
-        box-shadow: 0 2px 4px rgba(0, 128, 128, 0.1);
-    }
-    /* Tablet scaling */
-    @media (min-width: 481px) {
-        font-size: 1.071rem;
-        padding: 0.75rem;
-    }
-    /* Desktop enhancements */
-    @media (min-width: 769px) {
-        font-size: 1.143rem;
-        padding: 0.875rem;
-        border-radius: 4px 4px 0 0;
-        /* Hover state for desktop */
-        &:hover {
-            background-color: rgba(0, 128, 128, 0.02);
-            border-bottom-color: #009999;
-        }
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        font-size: 1.214rem;
-        padding: 1rem;
-    }
+}
+
+.form-item:focus-within .input-icon {
+    color: #b88115;
+    transform: scale(1.1);
+}
+
+.form-item:hover .input-icon {
+    transform: scale(1.05);
 }
 
 
-/* Enhanced Form Input */
+/* Form Inputs */
 
 .form-input {
     width: 100%;
-    padding: 0.75rem 0;
     border: none;
+    outline: none;
     background: transparent;
-    font-size: 1rem;
+    padding: 1rem 0;
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+    min-height: 50px;
     transition: all 0.3s ease;
-    &:focus {
-        outline: none;
-        transform: translateY(-1px);
-        background-color: rgba(0, 128, 128, 0.03);
-    }
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 1.071rem;
-        padding: 0.875rem 0;
-    }
-    @media (min-width: 769px) {
-        font-size: 1.143rem;
-        padding: 1rem 0;
-        /* Desktop hover state */
-        &:hover {
-            background-color: rgba(0, 128, 128, 0.02);
-        }
-    }
+}
+
+.form-input::placeholder {
+    color: #999999;
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    color: #333333;
+}
+
+.form-input:focus::placeholder {
+    transform: translateX(5px);
+    opacity: 0.7;
 }
 
 
-/* Enhanced Select Wrapper */
+/* Form Control Styles */
 
-.select-wrapper {
-    position: relative;
+.form-control {
     width: 100%;
-    margin: 0.75rem 0;
-    @media (min-width: 481px) {
-        margin: 1rem 0;
+}
+
+
+/* Input Type Specific Styling */
+
+input[type="tel"] {
+    letter-spacing: 0.05em;
+}
+
+input[type="email"] {
+    text-transform: lowercase;
+}
+
+
+/* Hidden Submit Button */
+
+button[type="submit"] {
+    display: none !important;
+}
+
+
+/* Animations */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    @media (min-width: 769px) {
-        margin: 1.25rem 0;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gentleBounce {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes iconPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
 
-/* Responsive Select Label */
+/* Input Validation States */
 
-.select-label {
-    display: block;
-    margin-bottom: 0.375rem;
-    font-weight: 600;
-    color: #333;
-    font-size: 0.875rem;
-    @media (min-width: 481px) {
-        font-size: 0.9375rem;
-        margin-bottom: 0.5rem;
+.form-item.invalid {
+    border-color: #e53935;
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.15);
+    animation: shake 0.5s ease;
+}
+
+.form-item.invalid .input-icon {
+    color: #e53935;
+    animation: iconPulse 0.5s ease;
+}
+
+.form-item.invalid .form-input {
+    color: #e53935;
+}
+
+.form-item.invalid .form-input::placeholder {
+    color: #e53935;
+    opacity: 0.7;
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
     }
-    @media (min-width: 769px) {
-        font-size: 1rem;
-        margin-bottom: 0.625rem;
-        transition: color 0.3s ease;
+    25% {
+        transform: translateX(-3px);
+    }
+    75% {
+        transform: translateX(3px);
     }
 }
 
 
-/* Enhanced Select Box */
+/* Focus Effects */
 
-select {
-    width: 100%;
-    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    appearance: none;
-    background-color: #fff;
-    color: #333;
+.form-input:focus {
+    background: transparent;
+}
+
+
+/* Placeholder Animation Enhancement */
+
+.form-input::placeholder {
     transition: all 0.3s ease;
-    cursor: pointer;
-    /* Focus effect */
-    &:focus {
-        border-color: #008080;
-        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.15);
-        outline: none;
-        transform: translateY(-1px);
-    }
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 1.071rem;
-        padding: 0.875rem 2.75rem 0.875rem 0.875rem;
-        border-radius: 10px;
-    }
-    @media (min-width: 769px) {
-        font-size: 1.143rem;
-        padding: 1rem 3rem 1rem 1rem;
-        border-radius: 12px;
-        /* Desktop hover state */
-        &:hover {
-            border-color: #009999;
-            background-color: rgba(0, 128, 128, 0.02);
-            box-shadow: 0 2px 8px rgba(0, 128, 128, 0.1);
-        }
-    }
-    @media (min-width: 1025px) {
-        font-size: 1.214rem;
-    }
 }
 
 
-/* Enhanced Custom Dropdown Arrow */
+/* Responsive Design */
 
-.select-wrapper::after {
-    content: '▼';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: #555;
-    font-size: 0.75rem;
-    transition: all 0.3s ease;
-    @media (min-width: 481px) {
-        right: 1.125rem;
-        font-size: 0.8rem;
+@media (max-width: 480px) {
+    .class-form {
+        padding: 0.5rem 0;
     }
-    @media (min-width: 769px) {
-        right: 1.25rem;
+    .form-item {
+        margin-bottom: 1.2rem;
+        --padding-start: 0.8rem;
+        --padding-end: 0.8rem;
+    }
+    .form-input {
+        font-size: 0.9rem !important;
+        padding: 0.9rem 0;
+        min-height: 45px;
+    }
+    ion-title {
+        font-size: 1.1rem;
+    }
+    .input-icon {
+        font-size: 1.2rem !important;
+        margin-right: 0.4rem;
+    }
+    ion-buttons[slot="end"] ion-button {
+        padding: 0.4rem 0.8rem;
         font-size: 0.85rem;
     }
 }
 
-
-/* Animate arrow on focus */
-
-select:focus+.select-wrapper::after {
-    transform: translateY(-50%) rotate(180deg);
-    color: #008080;
-}
-
-
-/* Enhanced option styling */
-
-select option {
-    padding: 0.75rem;
-    font-size: 1rem;
-    cursor: pointer;
-    @media (min-width: 481px) {
-        font-size: 1.071rem;
-        padding: 0.875rem;
-    }
-    @media (min-width: 769px) {
-        font-size: 1.143rem;
-        padding: 1rem;
-        /* Better hover for modern browsers */
-        &:hover {
-            background-color: rgba(0, 128, 128, 0.1);
-        }
-    }
-}
-
-
-/* Additional Desktop-only Enhancements */
-
-@media (min-width: 769px) {
-    /* Smooth scrolling for desktop */
-    ion-content {
-        --overflow: auto;
-    }
-    /* Enhanced form container interactions */
-    .class-form {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        &:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-    }
-    /* Better focus management for keyboard users */
-    .custom-input:focus,
-    .form-input:focus,
-    select:focus {
-        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1);
-    }
-    /* Enhanced form item focus states */
-    .form-item:focus-within {
-        transform: translateY(-2px);
-        --border-color: #008080;
-    }
-}
-
-
-/* Mobile optimizations */
-
-@media (max-width: 480px) {
-    .class-form {
-        padding: 0.75rem;
-    }
-    .form-item {
-        margin-bottom: 0.875rem;
-    }
-    .input-icon {
-        font-size: 1.1rem;
-        margin-right: 0.625rem;
-    }
-    .custom-input {
-        font-size: 0.9375rem;
-        padding: 0.5rem;
-        &:focus {
-            box-shadow: 0 1px 2px rgba(0, 128, 128, 0.1);
-        }
-    }
-    .form-input {
-        font-size: 0.9375rem;
-        padding: 0.625rem 0;
-    }
-    .select-wrapper {
-        margin: 0.5rem 0;
-    }
-    .select-label {
-        font-size: 0.8125rem;
-        margin-bottom: 0.25rem;
-    }
-    select {
-        font-size: 0.9375rem;
-        padding: 0.625rem 2.25rem 0.625rem 0.625rem;
-    }
-    .select-wrapper::after {
-        right: 0.75rem;
-        font-size: 0.7rem;
-    }
-}
-
-
-/* Tablet-specific optimizations */
-
 @media (min-width: 481px) and (max-width: 768px) {
     .class-form {
-        background: white;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        margin: 1.5rem auto;
+        padding: 1.5rem 0;
+    }
+    .form-item {
+        margin-bottom: 1.8rem;
+    }
+    .form-input {
+        font-size: 1rem !important;
+        padding: 1.1rem 0;
+    }
+    ion-title {
+        font-size: 1.3rem;
+    }
+    ion-buttons[slot="end"] ion-button {
+        font-size: 0.95rem;
     }
 }
 
-
-/* High-density screen optimizations */
-
-@media (min-width: 769px) and (max-resolution: 120dpi) {
-    .custom-input,
-    .form-input,
-    select,
-    .select-label {
-        font-weight: 400;
-    }
-}
-
-
-/* Reduced motion support */
-
-@media (prefers-reduced-motion: reduce) {
-    .form-item,
-    .custom-input,
-    .form-input,
-    select,
-    .select-wrapper::after {
-        transition: none;
-        animation: none;
-    }
-}
-
-
-/* Print styles */
-
-@media print {
+@media (min-width: 769px) {
     .class-form {
-        max-width: none;
-        box-shadow: none;
-        background: white;
-        margin: 0;
-        padding: 0;
+        padding: 2rem 0;
     }
-    .custom-input,
-    .form-input,
-    select {
-        border-color: #000;
-        color: #000;
+    .form-item {
+        margin-bottom: 2rem;
     }
-    ion-toolbar,
-    ion-header {
-        --background: #008080 !important;
+    .form-input {
+        font-size: 1rem !important;
     }
+    ion-title {
+        font-size: 1.4rem;
+    }
+    ion-buttons[slot="end"] ion-button {
+        font-size: 1rem;
+    }
+}
+
+
+/* Grid System for Form Layout */
+
+@media (min-width: 768px) {
+    .class-form {
+        display: grid;
+        gap: 1.5rem;
+    }
+}
+
+
+/* Explicit Font Sizes Enforcement */
+
+ion-content,
+ion-item,
+ion-button,
+ion-title,
+input,
+button,
+span {
+    font-size: inherit !important;
+    font-weight: 300 !important;
+}
+
+
+/* Ensure minimum font size */
+
+* {
+    font-size: 0.8rem !important;
+}
+
+
+/* Icon Color Variations Based on Input Type */
+
+.form-item:has(input[type="tel"]) .input-icon {
+    color: #a1350a;
+}
+
+.form-item:has(input[type="email"]) .input-icon {
+    color: #a1350a;
+}
+
+.form-item:has(input[type="text"]) .input-icon {
+    color: #a1350a;
+}
+
+
+/* Hover State Enhancements */
+
+.form-item:hover .input-icon {
+    animation: iconPulse 0.3s ease;
+}
+
+
+/* Loading State for Form */
+
+.class-form:disabled {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+
+/* Success State Animation */
+
+.form-item.valid {
+    border-color: #4caf50;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.15);
+}
+
+.form-item.valid .input-icon {
+    color: #4caf50;
+}
+
+
+/* Focus Ring Removal for Better Aesthetics */
+
+.form-input:focus {
+    box-shadow: none;
+}
+
+
+/* Smooth Transitions for All Interactive Elements */
+
+.form-item,
+.form-input,
+.input-icon,
+ion-button {
+    transition: all 0.3s ease;
+}
+
+
+/* Enhanced Button States */
+
+ion-button[strong="true"] {
+    position: relative;
+    overflow: hidden;
+}
+
+ion-button[strong="true"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+ion-button[strong="true"]:hover::before {
+    left: 100%;
+}
+
+
+/* Form Section Spacing */
+
+.class-form>* {
+    margin-bottom: 1.5rem;
+}
+
+.class-form>*:last-child {
+    margin-bottom: 0;
 }

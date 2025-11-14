@@ -1,612 +1,468 @@
-// payment-modal.component.scss
+/* Subscription Content Styles */
+
 ion-content {
-    --background: #f8f9fa;
-    /* Desktop scrollbar styling */
-    @media (min-width: 769px) {
-        &::part(scroll) {
-            padding: 1rem;
-        }
-    }
+    --background: #ffffff;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
 }
 
-.payment-content {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 1.25rem 0;
-    /* Tablet scaling */
-    @media (min-width: 481px) and (max-width: 768px) {
-        max-width: 450px;
-        padding: 1.5rem 0;
-    }
-    /* Desktop scaling */
-    @media (min-width: 769px) {
-        max-width: 500px;
-        padding: 2rem 0;
-        margin: 1rem auto;
-        /* Enhanced desktop appearance */
-        background: white;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        padding: 2rem;
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        max-width: 550px;
-        padding: 2.5rem;
-    }
+
+/* Header Styles */
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --color: #ffffff;
+    --border-width: 0;
 }
+
+ion-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* Header Buttons */
+
+ion-button {
+    --color: #ffffff;
+    --background: transparent;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    --background-activated: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+ion-icon {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+
+/* Payment Content */
+
+.payment-content {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem 0;
+    animation: slideInUp 0.5s ease;
+}
+
+
+/* Payment Header */
 
 .payment-header {
     text-align: center;
     margin-bottom: 2rem;
-    .payment-icon {
-        font-size: 4rem;
-        color: var(--ion-color-primary);
-        margin-bottom: 1rem;
-        /* Responsive scaling */
-        @media (min-width: 481px) {
-            font-size: 4.5rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-        }
-    }
-    h2 {
-        color: var(--ion-color-dark);
-        margin: 0 0 0.5rem 0;
-        font-weight: 600;
-        font-size: 1.5rem;
-        @media (min-width: 481px) {
-            font-size: 1.625rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.75rem;
-            margin-bottom: 0.75rem;
-        }
-    }
-    .description {
-        color: var(--ion-color-medium);
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.4;
-        @media (min-width: 481px) {
-            font-size: 1.071rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.143rem;
-            line-height: 1.5;
-        }
-    }
+    padding: 1rem;
 }
 
+.payment-icon {
+    font-size: 3rem !important;
+    color: #a1350a;
+    margin-bottom: 1rem;
+    animation: bounce 2s infinite ease-in-out;
+}
+
+.payment-header h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0 0 0.5rem 0;
+}
+
+.description {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #666666;
+    margin: 0;
+    line-height: 1.4;
+}
+
+
+/* Form Items */
+
 .form-item {
-    --background: white;
+    --background: #ffffff;
     --border-radius: 12px;
     --padding-start: 1rem;
     --padding-end: 1rem;
-    --inner-padding-end: 1rem;
-    margin-bottom: 1rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --inner-padding-end: 0;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #e0e0e0;
     transition: all 0.3s ease;
-    /* Desktop enhancements */
-    @media (min-width: 769px) {
-        margin-bottom: 1.25rem;
-        &:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-        }
-    }
-    .input-icon {
-        color: var(--ion-color-medium);
-        margin-right: 0.75rem;
-        font-size: 1.25rem;
-        @media (min-width: 481px) {
-            font-size: 1.375rem;
-            margin-right: 0.875rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-        }
-    }
-    .custom-input {
-        --padding-start: 0;
-        --padding-end: 0;
-        &::part(input),
-        &::part(placeholder) {
-            color: var(--ion-color-dark);
-            font-size: 1rem;
-            @media (min-width: 481px) {
-                font-size: 1.071rem;
-            }
-            @media (min-width: 769px) {
-                font-size: 1.143rem;
-            }
-        }
-    }
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
 }
+
+.form-item:hover {
+    border-color: #b88115;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-item:focus-within {
+    border-color: #a1350a;
+    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.15);
+    transform: translateY(-2px);
+}
+
+
+/* Input Icons */
+
+.input-icon {
+    font-size: 1.3rem !important;
+    color: #a1350a;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.form-item:focus-within .input-icon {
+    color: #b88115;
+    transform: scale(1.1);
+}
+
+
+/* Custom Inputs */
+
+.custom-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 1rem 0;
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+    min-height: 50px;
+}
+
+.custom-input::placeholder {
+    color: #999999;
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+}
+
+
+/* Select Styling */
+
+ion-select {
+    width: 100%;
+    --padding-start: 0;
+    --padding-end: 0;
+}
+
+
+/* Payment Summary */
 
 .payment-summary {
-    background: white;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     border-radius: 12px;
-    padding: 1.25rem;
-    margin: 1.5rem 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    @media (min-width: 481px) {
-        padding: 1.5rem;
-        margin: 2rem 0;
-    }
-    @media (min-width: 769px) {
-        padding: 1.75rem;
-        margin: 2.5rem 0;
-        border-radius: 14px;
-    }
-    h4 {
-        color: var(--ion-color-dark);
-        margin: 0 0 1rem 0;
-        font-weight: 600;
-        font-size: 1.125rem;
-        @media (min-width: 481px) {
-            font-size: 1.25rem;
-            margin-bottom: 1.25rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.375rem;
-        }
-    }
-    .summary-details {
-        .summary-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem 0;
-            border-bottom: 1px solid var(--ion-color-light-shade);
-            font-size: 1rem;
-            @media (min-width: 481px) {
-                font-size: 1.071rem;
-                padding: 0.625rem 0;
-            }
-            @media (min-width: 769px) {
-                font-size: 1.143rem;
-                padding: 0.75rem 0;
-            }
-            &:last-child {
-                border-bottom: none;
-            }
-            &.total {
-                font-size: 1.125rem;
-                font-weight: bold;
-                color: var(--ion-color-primary);
-                margin-top: 0.5rem;
-                padding-top: 0.75rem;
-                border-top: 2px solid var(--ion-color-primary);
-                @media (min-width: 481px) {
-                    font-size: 1.25rem;
-                    margin-top: 0.75rem;
-                    padding-top: 1rem;
-                }
-                @media (min-width: 769px) {
-                    font-size: 1.375rem;
-                    margin-top: 1rem;
-                }
-            }
-        }
-    }
+    padding: 1.5rem;
+    margin: 2rem 0;
+    border-left: 4px solid #a1350a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.payment-info {
-    margin: 1.25rem 0;
-    @media (min-width: 481px) {
-        margin: 1.5rem 0;
-    }
-    @media (min-width: 769px) {
-        margin: 2rem 0;
-    }
-    ion-item {
-        --background: var(--ion-color-light);
-        --border-radius: 8px;
-        @media (min-width: 769px) {
-            --border-radius: 10px;
-            transition: transform 0.2s ease;
-            &:hover {
-                transform: translateX(4px);
-            }
-        }
-        ion-icon {
-            color: var(--ion-color-primary);
-        }
-        ion-label small {
-            font-size: 0.875rem;
-            line-height: 1.4;
-            color: var(--ion-color-medium);
-            @media (min-width: 481px) {
-                font-size: 0.9375rem;
-            }
-            @media (min-width: 769px) {
-                font-size: 1rem;
-            }
-        }
-    }
+.payment-summary h4 {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0 0 1rem 0;
 }
+
+.summary-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+}
+
+.summary-row.total {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.summary-row.total strong {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+}
+
+
+/* Payment Info */
+
+.payment-info {
+    margin: 1.5rem 0;
+}
+
+.payment-info ion-item {
+    --background: rgba(161, 53, 10, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(161, 53, 10, 0.2);
+}
+
+.payment-info ion-icon {
+    color: #a1350a;
+    font-size: 1.2rem;
+}
+
+.payment-info small {
+    font-size: 0.8rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    line-height: 1.4;
+}
+
+
+/* Payment Button */
+
+ion-button[expand="block"] {
+    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --background-hover: linear-gradient(135deg, #b88115 0%, #a1350a 100%);
+    --background-activated: linear-gradient(135deg, #8a2e08 0%, #9c6e12 100%);
+    --border-radius: 12px;
+    --box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
+    height: 3.5rem;
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+ion-button[expand="block"]:hover {
+    transform: translateY(-2px);
+    --box-shadow: 0 8px 25px rgba(161, 53, 10, 0.4);
+}
+
+ion-button[expand="block"]:active {
+    transform: translateY(0);
+}
+
+ion-button[expand="block"]:disabled {
+    --background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
+    transform: none;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Button Shine Effect */
+
+ion-button[expand="block"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+ion-button[expand="block"]:not(:disabled):hover::before {
+    left: 100%;
+}
+
+
+/* Savings Note */
 
 .savings-note {
     margin: 1rem 0;
-    @media (min-width: 481px) {
-        margin: 1.25rem 0;
-    }
-    .savings-item {
-        --background: rgba(var(--ion-color-success-rgb), 0.1);
-        --border-radius: 8px;
-        @media (min-width: 769px) {
-            --border-radius: 10px;
-        }
-        ion-icon {
-            color: var(--ion-color-success);
-        }
-        ion-label small {
-            color: var(--ion-color-success);
-            font-weight: 500;
-            font-size: 0.875rem;
-            @media (min-width: 481px) {
-                font-size: 0.9375rem;
-            }
-            @media (min-width: 769px) {
-                font-size: 1rem;
-            }
-        }
-    }
 }
 
-// Processing State - Enhanced
+.savings-item {
+    --background: rgba(76, 175, 80, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.savings-item ion-icon {
+    color: #4caf50;
+}
+
+
+/* Processing State */
+
 .processing-state {
     text-align: center;
-    padding: 2.5rem 1.25rem;
-    @media (min-width: 481px) {
-        padding: 3rem 1.5rem;
-    }
-    @media (min-width: 769px) {
-        padding: 3.5rem 2rem;
-    }
-    ion-spinner {
-        margin-bottom: 1.5rem;
-        --color: var(--ion-color-primary);
-        width: 3rem;
-        height: 3rem;
-        @media (min-width: 481px) {
-            width: 3.5rem;
-            height: 3.5rem;
-            margin-bottom: 2rem;
-        }
-    }
-    h3 {
-        color: var(--ion-color-dark);
-        margin: 0 0 0.75rem 0;
-        font-weight: 600;
-        font-size: 1.25rem;
-        @media (min-width: 481px) {
-            font-size: 1.375rem;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.5rem;
-        }
-    }
-    p {
-        color: var(--ion-color-medium);
-        margin: 0.5rem 0;
-        line-height: 1.4;
-        font-size: 1rem;
-        @media (min-width: 481px) {
-            font-size: 1.071rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.143rem;
-            margin: 0.75rem 0;
-        }
-        &.note {
-            color: var(--ion-color-warning);
-            font-weight: 500;
-            font-size: 0.875rem;
-            @media (min-width: 481px) {
-                font-size: 0.9375rem;
-            }
-        }
-    }
-    .transaction-details {
-        margin-top: 1.5rem;
-        @media (min-width: 481px) {
-            margin-top: 2rem;
-        }
-        ion-item {
-            --background: var(--ion-color-light);
-            --border-radius: 8px;
-            margin-bottom: 0.5rem;
-            @media (min-width: 769px) {
-                --border-radius: 10px;
-                margin-bottom: 0.75rem;
-            }
-            ion-icon {
-                color: var(--ion-color-primary);
-            }
-            ion-label small {
-                color: var(--ion-color-medium);
-                font-size: 0.875rem;
-                @media (min-width: 481px) {
-                    font-size: 0.9375rem;
-                }
-            }
-        }
-    }
+    padding: 2rem 1rem;
 }
 
-// Success State - Enhanced
+.processing-state ion-spinner {
+    width: 4rem;
+    height: 4rem;
+    --color: #a1350a;
+    margin-bottom: 1.5rem;
+}
+
+.processing-state h3 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0 0 1rem 0;
+}
+
+.processing-state p {
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin: 0.5rem 0;
+}
+
+.note {
+    font-size: 0.8rem !important;
+    font-weight: 300 !important;
+    color: #999999;
+    font-style: italic;
+}
+
+.transaction-details {
+    margin-top: 2rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.transaction-details ion-item {
+    --background: transparent;
+    --inner-padding-end: 0;
+}
+
+.transaction-details ion-icon {
+    color: #a1350a;
+    font-size: 1.1rem;
+}
+
+
+/* Success State */
+
 .success-state {
     text-align: center;
-    padding: 2.5rem 1.25rem;
-    @media (min-width: 481px) {
-        padding: 3rem 1.5rem;
-    }
-    @media (min-width: 769px) {
-        padding: 3.5rem 2rem;
-    }
-    .success-icon {
-        font-size: 5rem;
-        margin-bottom: 1.5rem;
-        @media (min-width: 481px) {
-            font-size: 5.5rem;
-            margin-bottom: 2rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 6rem;
-        }
-    }
-    h3 {
-        color: var(--ion-color-success);
-        margin: 0 0 0.75rem 0;
-        font-weight: 600;
-        font-size: 1.5rem;
-        @media (min-width: 481px) {
-            font-size: 1.625rem;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.75rem;
-        }
-    }
-    p {
-        color: var(--ion-color-medium);
-        margin: 0.5rem 0;
-        line-height: 1.4;
-        font-size: 1rem;
-        @media (min-width: 481px) {
-            font-size: 1.071rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.143rem;
-            margin: 0.75rem 0;
-        }
-        &.success-details {
-            color: var(--ion-color-dark);
-            font-weight: 500;
-        }
-    }
-    .success-features {
-        margin-top: 1.5rem;
-        background: white;
-        border-radius: 12px;
-        padding: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        @media (min-width: 481px) {
-            margin-top: 2rem;
-            padding: 1.25rem;
-        }
-        @media (min-width: 769px) {
-            margin-top: 2.5rem;
-            padding: 1.5rem;
-            border-radius: 14px;
-        }
-        ion-item {
-            --background: transparent;
-            --padding-start: 0;
-            --inner-padding-end: 0;
-            --min-height: 2.5rem;
-            @media (min-width: 769px) {
-                --min-height: 3rem;
-            }
-            ion-icon {
-                font-size: 1.125rem;
-                @media (min-width: 481px) {
-                    font-size: 1.25rem;
-                }
-            }
-            ion-label {
-                color: var(--ion-color-dark);
-                font-size: 0.875rem;
-                @media (min-width: 481px) {
-                    font-size: 0.9375rem;
-                }
-                @media (min-width: 769px) {
-                    font-size: 1rem;
-                }
-            }
-        }
-    }
+    padding: 2rem 1rem;
 }
 
-// Error State - Enhanced
+.success-icon {
+    font-size: 4rem !important;
+    margin-bottom: 1.5rem;
+    animation: bounceIn 0.6s ease;
+}
+
+.success-state h3 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0 0 1rem 0;
+}
+
+.success-state p {
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin: 0.5rem 0;
+}
+
+.success-details {
+    font-size: 0.9rem !important;
+    color: #4caf50 !important;
+}
+
+.success-features {
+    margin: 2rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.success-features ion-item {
+    --background: transparent;
+    --inner-padding-end: 0;
+}
+
+.success-features ion-icon {
+    color: #4caf50;
+    font-size: 1.1rem;
+}
+
+
+/* Error State */
+
 .error-state {
     text-align: center;
-    padding: 2.5rem 1.25rem;
-    @media (min-width: 481px) {
-        padding: 3rem 1.5rem;
-    }
-    @media (min-width: 769px) {
-        padding: 3.5rem 2rem;
-    }
-    .error-icon {
-        font-size: 5rem;
-        margin-bottom: 1.5rem;
-        @media (min-width: 481px) {
-            font-size: 5.5rem;
-            margin-bottom: 2rem;
-        }
-    }
-    h3 {
-        color: var(--ion-color-danger);
-        margin: 0 0 0.75rem 0;
-        font-weight: 600;
-        font-size: 1.5rem;
-        @media (min-width: 481px) {
-            font-size: 1.625rem;
-            margin-bottom: 1rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.75rem;
-        }
-    }
-    p {
-        color: var(--ion-color-medium);
-        margin: 0.5rem 0 1rem 0;
-        line-height: 1.4;
-        font-size: 1rem;
-        @media (min-width: 481px) {
-            font-size: 1.071rem;
-            margin-bottom: 1.25rem;
-        }
-        @media (min-width: 769px) {
-            font-size: 1.143rem;
-            margin: 0.75rem 0 1.5rem 0;
-        }
-    }
-    .error-reasons {
-        text-align: left;
-        background: white;
-        border-radius: 12px;
-        padding: 1.25rem;
-        margin: 1.25rem 0;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        @media (min-width: 481px) {
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-        }
-        @media (min-width: 769px) {
-            padding: 1.75rem;
-            margin: 2rem 0;
-            border-radius: 14px;
-        }
-        li {
-            color: var(--ion-color-medium);
-            margin-bottom: 0.5rem;
-            font-size: 0.875rem;
-            line-height: 1.4;
-            @media (min-width: 481px) {
-                font-size: 0.9375rem;
-                margin-bottom: 0.625rem;
-            }
-            @media (min-width: 769px) {
-                font-size: 1rem;
-                margin-bottom: 0.75rem;
-            }
-            &:last-child {
-                margin-bottom: 0;
-            }
-        }
-    }
-    .error-actions {
-        margin-top: 1.5rem;
-        @media (min-width: 481px) {
-            margin-top: 2rem;
-        }
-        ion-button {
-            margin-bottom: 0.75rem;
-            @media (min-width: 481px) {
-                margin-bottom: 1rem;
-            }
-        }
-    }
+    padding: 2rem 1rem;
 }
 
-// Enhanced Button Styles
-ion-button {
-    --border-radius: 12px;
-    --box-shadow: 0 4px 16px rgba(var(--ion-color-primary-rgb), 0.3);
-    transition: all 0.3s ease;
-    @media (min-width: 769px) {
-        --border-radius: 14px;
-        &:hover {
-            --box-shadow: 0 6px 20px rgba(var(--ion-color-primary-rgb), 0.4);
-            transform: translateY(-2px);
-        }
-        &:active {
-            transform: translateY(0);
-        }
-    }
-    &[disabled] {
-        --opacity: 0.6;
-        --box-shadow: none;
-        @media (min-width: 769px) {
-            transform: none !important;
-        }
-    }
+.error-icon {
+    font-size: 4rem !important;
+    margin-bottom: 1.5rem;
+    animation: shake 0.5s ease;
 }
 
-// Enhanced Modal Header
-ion-toolbar[color="primary"] {
-    --background: var(--ion-color-primary);
-    --color: white;
-    @media (min-width: 769px) {
-        border-radius: 16px 16px 0 0;
-    }
-    ion-title {
-        font-weight: 600;
-        font-size: 1.125rem;
-        @media (min-width: 481px) {
-            font-size: 1.25rem;
-        }
-    }
-    ion-button {
-        --color: white;
-        @media (min-width: 769px) {
-            &:hover {
-                --background: rgba(255, 255, 255, 0.15);
-                --border-radius: 8px;
-            }
-        }
-    }
+.error-state h3 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #e53935;
+    margin: 0 0 1rem 0;
 }
 
-// Enhanced Responsive Design
-@media (max-width: 480px) {
-    .payment-content {
-        padding: 0.625rem 0;
-    }
-    .payment-header {
-        margin-bottom: 1.5rem;
-        .payment-icon {
-            font-size: 3rem;
-        }
-        h2 {
-            font-size: 1.25rem;
-        }
-    }
-    .processing-state,
-    .success-state,
-    .error-state {
-        padding: 1.25rem 0.625rem;
-    }
+.error-state p {
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin: 0.5rem 0 1.5rem 0;
 }
 
-// Enhanced Animation for state transitions
-.payment-content>div {
-    animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.error-reasons {
+    text-align: left;
+    margin: 1.5rem 0;
+    padding: 0 1rem;
 }
 
-@keyframes fadeIn {
+.error-reasons li {
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin-bottom: 0.5rem;
+    list-style-type: none;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.error-reasons li::before {
+    content: '•';
+    color: #e53935;
+    position: absolute;
+    left: 0;
+}
+
+.error-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+
+/* Animations */
+
+@keyframes slideInUp {
     from {
         opacity: 0;
-        transform: translateY(15px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -614,61 +470,119 @@ ion-toolbar[color="primary"] {
     }
 }
 
-// Enhanced Loading spinner animation
-ion-spinner {
-    animation: pulse 1.5s ease-in-out infinite;
-    @media (min-width: 769px) {
-        animation: pulse 1.5s ease-in-out infinite, rotate 2s linear infinite;
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
     }
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
+    50% {
+        transform: translateY(-5px);
     }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-// Enhanced Success icon animation
-.success-icon {
-    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @keyframes bounceIn {
     0% {
         opacity: 0;
-        transform: scale(0.3) rotate(-30deg);
+        transform: scale(0.3);
     }
     50% {
         opacity: 1;
-        transform: scale(1.1) rotate(10deg);
-    }
-    70% {
-        transform: scale(0.9) rotate(-5deg);
+        transform: scale(1.05);
     }
     100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
+        transform: scale(1);
     }
 }
 
-// Desktop-specific enhancements
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+    .payment-content {
+        padding: 0.5rem 0;
+    }
+    .payment-header {
+        margin-bottom: 1.5rem;
+        padding: 0.5rem;
+    }
+    .payment-icon {
+        font-size: 2.5rem !important;
+    }
+    .payment-header h2 {
+        font-size: 1.3rem;
+    }
+    .form-item {
+        margin-bottom: 1.2rem;
+    }
+    .payment-summary {
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
+    .processing-state,
+    .success-state,
+    .error-state {
+        padding: 1rem 0.5rem;
+    }
+    .success-icon,
+    .error-icon {
+        font-size: 3rem !important;
+    }
+}
+
 @media (min-width: 769px) {
-    // Smooth modal backdrop
-    .modal-wrapper {
-        border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    .payment-content {
+        padding: 2rem 0;
     }
-    // Better focus management
-    ion-button:focus {
-        transform: translateY(-1px);
-        box-shadow: 0 0 0 3px rgba(var(--ion-color-primary-rgb), 0.2);
+    .payment-header {
+        padding: 2rem;
     }
-    // Enhanced form interactions
-    .form-item:focus-within {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    }
+}
+
+
+/* Explicit Font Sizes */
+
+ion-content,
+ion-item,
+ion-button,
+ion-title,
+ion-label,
+h2,
+h3,
+h4,
+p,
+span,
+small,
+li {
+    font-size: inherit !important;
+    font-weight: 300 !important;
+}
+
+
+/* Ensure minimum font size */
+
+* {
+    font-size: 0.8rem !important;
 }
