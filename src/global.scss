@@ -14,16 +14,16 @@
 
 :root {
     /* Base font sizes for different screen sizes - decreased by ~1px */
-    --font-size-xs: 11px;
-    --font-size-sm: 13px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
     --font-size-base: 15px;
     --font-size-lg: 17px;
     --font-size-xl: 19px;
     --font-size-2xl: 23px;
     /* Mobile first - smaller fonts */
-    --font-size: 13px;
-    --font-weight: 200 !important;
-    font-weight: 200 !important;
+    font-size: 14px;
+    --font-weight: 300;
+    font-weight: 300;
 }
 
 
@@ -31,6 +31,8 @@
 
 * {
     font-size: inherit;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
@@ -39,7 +41,6 @@
 @media (max-width: 480px) {
      :root {
         font-size: 13px;
-        /* Was 14px */
     }
 }
 
@@ -49,7 +50,6 @@
 @media (min-width: 481px) and (max-width: 768px) {
      :root {
         font-size: 14px;
-        /* Was 15px */
     }
 }
 
@@ -59,7 +59,6 @@
 @media (min-width: 769px) and (max-width: 1024px) {
      :root {
         font-size: 15px;
-        /* Was 16px */
     }
 }
 
@@ -69,21 +68,10 @@
 @media (min-width: 1025px) {
      :root {
         font-size: 16px;
-        /* Was 17px */
     }
 }
 
-html,
-body {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    overflow: hidden;
-    /* block global scroll */
-}
-
+@import '@ionic/angular/css/palettes/dark.system.css';
 ion-modal {
     z-index: 99999 !important;
     display: block !important;
@@ -98,14 +86,13 @@ ion-app {
 ion-content {
     --padding-bottom: env(safe-area-inset-bottom);
     --padding-top: env(safe-area-inset-top);
+    --background: #ffffff;
 }
 
 ion-refresher,
 ion-refresher-content,
-ion-content,
 ion-card,
 ion-item,
-ion-list,
 ion-item-group,
 ion-segment {
     --background: #f8f9fa;
@@ -115,38 +102,9 @@ ion-item-divider {
     --background: #f8f9fa;
 }
 
-ion-toolbar {
-    --background: linear-gradient(135deg, #008080, #00a0a0);
-    --font-size: 13px;
-}
-
+ion-toolbar,
 ion-header {
-    --background: linear-gradient(135deg, #008080, #00a0a0);
-    --padding: 20px;
-}
-
-
-/* Fix for form labels globally */
-
-ion-label,
-ion-card-title {
-    color: rgb(63, 81, 78)
-}
-
-// ion-label {
-//     --background: #2d3436 !important;
-// }
-ion-label[position="stacked"] {
-    color: #636e72 !important;
-}
-
-ion-item {
-    --color: #2d3436;
-}
-
-ion-tile {
-    --font-size: 13px !important;
-    font-size: 13px !important
+    --background: linear-gradient(135deg, #622e23 0%, #b88115 100%);
 }
 
 

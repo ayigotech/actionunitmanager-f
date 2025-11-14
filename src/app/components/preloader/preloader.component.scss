@@ -1,475 +1,301 @@
-* {
-    box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
+/* Preloader Specific Styles */
 
 .preloader-content {
     --background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .preloader-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
-    padding: 2.5rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 50%, #f1f3f4 100%);
-    text-align: center;
-    /* Tablet scaling */
-    @media (min-width: 481px) and (max-width: 768px) {
-        padding: 3rem;
-    }
-    /* Desktop enhancements */
-    @media (min-width: 769px) {
-        padding: 4rem;
-        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 45%, #f1f3f4 100%);
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        padding: 5rem;
-    }
-}
-
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
-    @media (min-width: 481px) {
-        padding: 1.25rem;
-    }
-    @media (min-width: 769px) {
-        padding: 1.5rem;
-    }
-}
-
-.custom-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 0.5rem;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background: #ffffff;
 }
 
 
-/* Enhanced Professional Logo Styling */
+/* Logo Section with Bouncing Effect */
 
 .logo-section {
-    margin-bottom: 3.125rem;
-    @media (min-width: 481px) {
-        margin-bottom: 3.5rem;
-    }
-    @media (min-width: 769px) {
-        margin-bottom: 4rem;
-    }
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .logo-wrapper {
+    position: relative;
     display: inline-block;
-    margin-bottom: 1.5625rem;
-    @media (min-width: 481px) {
-        margin-bottom: 1.75rem;
-    }
-    @media (min-width: 769px) {
-        margin-bottom: 2rem;
-    }
+    margin-bottom: 1.5rem;
 }
 
 .logo-circle {
-    width: 6.25rem;
-    height: 6.25rem;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #008080 0%, #006666 100%);
+    background: linear-gradient(135deg, #622e23 0%, #b88115 50%, #ffffff 100%);
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin: 0 auto 1.25rem;
-    box-shadow: 0 0.9375rem 2.1875rem rgba(0, 128, 128, 0.2), 0 0.3125rem 0.9375rem rgba(0, 128, 128, 0.1);
-    animation: bounceLogo 2s ease-in-out infinite;
-    transition: all 0.3s ease;
-    /* Tablet scaling */
-    @media (min-width: 481px) {
-        width: 7rem;
-        height: 7rem;
-        margin-bottom: 1.5rem;
-    }
-    /* Desktop scaling */
-    @media (min-width: 769px) {
-        width: 8rem;
-        height: 8rem;
-        margin-bottom: 1.75rem;
-        box-shadow: 0 1.25rem 2.5rem rgba(0, 128, 128, 0.25), 0 0.5rem 1.25rem rgba(0, 128, 128, 0.15);
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        width: 9rem;
-        height: 9rem;
-        margin-bottom: 2rem;
-    }
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    animation: logoBounce 2s ease-in-out infinite;
+    box-shadow: 0 8px 25px rgba(98, 46, 35, 0.3);
+    border: 3px solid #ffffff;
 }
 
 .logo-icon {
-    font-size: 3rem;
-    color: white;
-    transition: transform 0.3s ease;
-    /* Responsive icon scaling */
-    @media (min-width: 481px) {
-        font-size: 3.25rem;
+    font-size: 3rem !important;
+    color: #ffffff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.logo-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #622e23 0%, #b88115 100%);
+    opacity: 0.3;
+    z-index: 1;
+    animation: pulse 2s ease-out infinite;
+}
+
+@keyframes logoBounce {
+    0%,
+    100% {
+        transform: translateY(0);
     }
-    @media (min-width: 769px) {
-        font-size: 3.5rem;
-    }
-    @media (min-width: 1025px) {
-        font-size: 4rem;
+    50% {
+        transform: translateY(-10px);
     }
 }
 
-
-/* Enhanced App Name Styling */
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
+    }
+}
 
 .app-name {
-    font-size: 1.875rem;
-    font-weight: 100;
-    margin-bottom: -1.875rem;
-    color: #2d3436;
-    letter-spacing: 0.05em;
-    /* Tablet scaling */
-    @media (min-width: 481px) {
-        font-size: 2.25rem;
-        margin-bottom: -2rem;
-    }
-    /* Desktop scaling */
-    @media (min-width: 769px) {
-        font-size: 2.625rem;
-        margin-bottom: -2.25rem;
-        font-weight: 200;
-        letter-spacing: 0.08em;
-    }
-    /* Large desktop */
-    @media (min-width: 1025px) {
-        font-size: 3rem;
-        margin-bottom: -2.5rem;
-    }
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #622e23;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
 }
 
 .app-tagline {
     font-size: 1rem;
-    color: #636e72;
-    margin: 0;
-    line-height: 1.4;
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 1.125rem;
-    }
-    @media (min-width: 769px) {
-        font-size: 1.25rem;
-        line-height: 1.5;
-    }
+    font-weight: 300;
+    color: #b88115;
+    margin: 0.5rem 0 0 0;
+    opacity: 0.9;
 }
 
 
-/* Enhanced Loading Animation Section */
+/* Loading Section */
 
 .loading-section {
-    margin-bottom: 3.125rem;
-    @media (min-width: 481px) {
-        margin-bottom: 3.5rem;
-    }
-    @media (min-width: 769px) {
-        margin-bottom: 4rem;
-    }
+    text-align: center;
+    margin: 2rem 0;
+    width: 100%;
+    max-width: 400px;
 }
 
 .progress-container {
-    margin-bottom: 1.25rem;
-    @media (min-width: 481px) {
-        margin-bottom: 1.5rem;
-    }
-    @media (min-width: 769px) {
-        margin-bottom: 1.75rem;
-    }
+    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .progress-bar {
-    width: 15.625rem;
-    height: 0.375rem;
-    background: #e9ecef;
-    border-radius: 0.625rem;
+    width: 100%;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 10px;
     overflow: hidden;
-    margin: 0 auto;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        width: 18.75rem;
-        height: 0.4375rem;
-    }
-    @media (min-width: 769px) {
-        width: 21.875rem;
-        height: 0.5rem;
-        border-radius: 0.75rem;
-    }
-    @media (min-width: 1025px) {
-        width: 25rem;
-    }
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #008080, #00a0a0, #008080);
-    border-radius: 0.625rem;
-    animation: loadingProgress 2s ease-in-out infinite;
-    background-size: 200% 100%;
-    @media (min-width: 769px) {
-        border-radius: 0.75rem;
-        animation: loadingProgress 1.8s ease-in-out infinite;
+    background: linear-gradient(90deg, #622e23 0%, #b88115 100%);
+    border-radius: 10px;
+    animation: progressFill 2s ease-in-out infinite;
+    transform-origin: left;
+}
+
+@keyframes progressFill {
+    0% {
+        transform: scaleX(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scaleX(0.7);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(1);
+        opacity: 0.7;
     }
 }
 
 .loading-text {
-    font-size: 0.875rem;
-    color: #6c757d;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #622e23;
     margin: 0;
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 0.9375rem;
+    animation: textFade 2s ease-in-out infinite;
+}
+
+@keyframes textFade {
+    0%,
+    100% {
+        opacity: 0.7;
     }
-    @media (min-width: 769px) {
-        font-size: 1rem;
+    50% {
+        opacity: 1;
     }
 }
 
 
-/* Enhanced Professional Footer */
+/* Image Container */
 
-.powered-by {
-    margin-top: 1.875rem;
-    @media (min-width: 481px) {
-        margin-top: 2.25rem;
-    }
-    @media (min-width: 769px) {
-        margin-top: 2.625rem;
-    }
-}
-
-.company-logo {
+.image-container {
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+}
+
+
+/* Powered By Section */
+
+.powered-by {
+    text-align: center;
+    margin-top: auto;
+}
+
+.company-logo {
+    display: inline-flex;
+    align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
-    color: #495057;
-    padding: 0.75rem 1.25rem;
-    background: rgba(0, 128, 128, 0.05);
-    border-radius: 1.5625rem;
-    border: 1px solid rgba(0, 128, 128, 0.1);
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(98, 46, 35, 0.1);
+    border: 1px solid rgba(98, 46, 35, 0.1);
     transition: all 0.3s ease;
-    /* Responsive scaling */
-    @media (min-width: 481px) {
-        font-size: 0.9375rem;
-        padding: 0.875rem 1.5rem;
-        gap: 0.625rem;
-    }
-    @media (min-width: 769px) {
-        font-size: 1rem;
-        padding: 1rem 1.75rem;
-        gap: 0.75rem;
-        border-radius: 1.75rem;
-        /* Desktop hover effect */
-        &:hover {
-            background: rgba(0, 128, 128, 0.08);
-            border-color: rgba(0, 128, 128, 0.2);
-            transform: translateY(-1px);
-        }
-    }
+}
+
+.company-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(98, 46, 35, 0.15);
+}
+
+.company-logo span:first-child {
+    font-size: 1.2rem;
+}
+
+.company-logo span:last-child {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #622e23;
+    letter-spacing: 0.5px;
 }
 
 
-/* Enhanced Animations */
+/* Responsive Grid System */
 
-@keyframes bounceLogo {
-    0%,
-    100% {
-        transform: translateY(0) scale(1);
-    }
-    25% {
-        transform: translateY(-0.9375rem) scale(1.05);
-    }
-    50% {
-        transform: translateY(-0.625rem) scale(1.02);
-    }
-    75% {
-        transform: translateY(-0.3125rem) scale(1.01);
-    }
-}
-
-@keyframes loadingProgress {
-    0% {
-        transform: translateX(-100%);
-        background-position: 200% 0;
-    }
-    50% {
-        transform: translateX(0);
-        background-position: -200% 0;
-    }
-    100% {
-        transform: translateX(100%);
-        background-position: -200% 0;
-    }
-}
-
-
-/* Enhanced Typing Animation */
-
-.typing-animations {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 2px solid #008080;
-    width: 0;
-    animation: typing 2.5s steps(30, end) forwards, blink 0.8s step-end infinite;
-    margin: 0 auto;
-    @media (min-width: 769px) {
-        border-right-width: 3px;
-        animation: typing 3s steps(40, end) forwards, blink 0.8s step-end infinite;
-    }
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 20ch;
-    }
-}
-
-@keyframes blink {
-    0%,
-    50% {
-        border-color: #008080;
-    }
-    51%,
-    100% {
-        border-color: transparent;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-1.25rem);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* Enhanced Mobile Responsiveness */
-
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .preloader-container {
-        padding: 1.5rem;
+        padding: 1rem;
     }
     .logo-circle {
-        width: 5rem;
-        height: 5rem;
-        margin-bottom: 1rem;
+        width: 100px;
+        height: 100px;
     }
     .logo-icon {
-        font-size: 2.5rem;
+        font-size: 2.5rem !important;
+    }
+    .logo-pulse {
+        width: 120px;
+        height: 120px;
     }
     .app-name {
-        font-size: 1.5rem;
-        margin-bottom: -1.5rem;
-        font-weight: 300;
-    }
-    .app-tagline {
-        font-size: 0.875rem;
-    }
-    .progress-bar {
-        width: 12.5rem;
-    }
-    .company-logo {
-        font-size: 0.8125rem;
-        padding: 0.625rem 1rem;
-    }
-}
-
-
-/* Tablet Optimizations */
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .preloader-container {
-        padding: 2.5rem;
-    }
-    .logo-circle {
-        width: 6.5rem;
-        height: 6.5rem;
-    }
-    .logo-icon {
-        font-size: 3rem;
-    }
-    .app-name {
-        font-size: 2rem;
-        margin-bottom: -1.75rem;
-    }
-}
-
-
-/* Desktop-specific Enhancements */
-
-@media (min-width: 769px) {
-    .preloader-container {
-        /* Add subtle background pattern for desktop */
-        background-image: radial-gradient(circle at 10% 20%, rgba(0, 128, 128, 0.03) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(0, 128, 128, 0.03) 0%, transparent 20%);
-    }
-    .logo-circle {
-        /* Enhanced shadow on desktop */
-        filter: drop-shadow(0 10px 25px rgba(0, 128, 128, 0.15));
-    }
-    /* Smooth entrance animation for desktop */
-    .preloader-container>* {
-        animation: fadeIn 0.8s ease-out forwards;
-    }
-    .logo-section {
-        animation-delay: 0.1s;
+        font-size: 1.3rem;
     }
     .loading-section {
-        animation-delay: 0.3s;
-    }
-    .powered-by {
-        animation-delay: 0.5s;
+        max-width: 300px;
     }
 }
 
-
-/* Large screen optimizations */
-
-@media (min-width: 1200px) {
-    .preloader-container {
-        max-width: 1200px;
-        margin: 0 auto;
+@media (max-width: 480px) {
+    .logo-circle {
+        width: 80px;
+        height: 80px;
     }
-}
-
-
-/* Reduced motion support for accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-    .logo-circle,
-    .progress-fill,
-    .typing-animations,
+    .logo-icon {
+        font-size: 2rem !important;
+    }
+    .logo-pulse {
+        width: 100px;
+        height: 100px;
+    }
+    .app-name {
+        font-size: 1.1rem;
+    }
     .company-logo {
-        animation: none;
-        transition: none;
+        padding: 0.6rem 1.2rem;
     }
-    .typing-animations {
-        border-right: none;
-        width: auto;
-        white-space: normal;
-    }
+}
+
+
+/* Input font sizes explicitly */
+
+input,
+textarea,
+select {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+}
+
+ion-input,
+ion-textarea,
+ion-select {
+    font-size: 1rem !important;
+    font-weight: 300 !important;
+}
+
+
+/* Utility classes for spacing */
+
+.pt-5 {
+    padding-top: 3rem !important;
+}
+
+.mb-4 {
+    margin-bottom: 2rem !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-danger {
+    color: #622e23 !important;
 }
