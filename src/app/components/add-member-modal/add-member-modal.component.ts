@@ -160,11 +160,11 @@ export class AddMemberModalComponent {
     console.log("Form values:", formValues);
 
     const payload = {
-      name: formValues.name,
+      member_name: formValues.name,
       phone: formValues.phone,
       email: formValues.email,
       location: formValues.location,
-      class_id: Number(formValues.classId)
+      action_unit_class: Number(formValues.classId)
     };
 
     try {
