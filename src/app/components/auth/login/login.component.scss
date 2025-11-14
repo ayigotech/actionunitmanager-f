@@ -70,7 +70,7 @@
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #622e23 0%, #b88115 50%, #ffffff 100%);
+    background: linear-gradient(135deg, #eb4523 0%, #b88115 50%, #ffffff 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -89,7 +89,7 @@
 .welcome-title {
     font-size: 1.8rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     margin: 0 0 0.8rem 0;
     line-height: 1.3;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -144,7 +144,7 @@
 
 .btn-icon {
     font-size: 1.8rem !important;
-    color: #622e23;
+    color: #eb4523;
     transition: all 0.3s ease;
 }
 
@@ -157,7 +157,7 @@
     display: block;
     font-size: 1.2rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     margin-bottom: 0.3rem;
 }
 
@@ -182,7 +182,7 @@
 
 .action-btn:hover .btn-arrow {
     transform: translateX(5px);
-    color: #622e23;
+    color: #eb4523;
 }
 
 
@@ -197,7 +197,7 @@
 .footer p {
     font-size: 0.9rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     margin: 0;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .footer a:hover {
-    color: #622e23;
+    color: #eb4523;
     text-decoration: underline;
 }
 

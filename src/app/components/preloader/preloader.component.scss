@@ -32,7 +32,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #622e23 0%, #b88115 50%, #ffffff 100%);
+    background: linear-gradient(135deg, #eb4523 0%, #b88115 50%, #ffffff 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,7 +57,7 @@
     width: 140px;
     height: 140px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #622e23 0%, #b88115 100%);
+    background: linear-gradient(135deg, #eb4523 0%, #b88115 100%);
     opacity: 0.3;
     z-index: 1;
     animation: pulse 2s ease-out infinite;
@@ -91,7 +91,7 @@
 .app-name {
     font-size: 1.5rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     margin: 0;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     letter-spacing: 0.5px;
@@ -131,7 +131,7 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #622e23 0%, #b88115 100%);
+    background: linear-gradient(90deg, #eb4523 0%, #b88115 100%);
     border-radius: 10px;
     animation: progressFill 2s ease-in-out infinite;
     transform-origin: left;
@@ -155,7 +155,7 @@
 .loading-text {
     font-size: 1rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     margin: 0;
     animation: textFade 2s ease-in-out infinite;
 }
@@ -214,7 +214,7 @@
 .company-logo span:last-child {
     font-size: 1rem;
     font-weight: 300;
-    color: #622e23;
+    color: #eb4523;
     letter-spacing: 0.5px;
 }
 
@@ -297,5 +297,5 @@ ion-select {
 }
 
 .text-danger {
-    color: #622e23 !important;
+    color: #eb4523 !important;
 }
