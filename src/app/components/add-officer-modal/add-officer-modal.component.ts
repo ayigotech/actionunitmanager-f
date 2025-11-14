@@ -23,7 +23,7 @@ import { IonHeader, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, IonCon
     FormsModule,
     ReactiveFormsModule,
     IonHeader, IonToolbar, IonTitle, IonButtons,
-    IonButton, IonIcon, IonContent, IonItem, IonNote,
+    IonButton, IonIcon, IonContent, IonItem, 
     IonSpinner
 ]
 })

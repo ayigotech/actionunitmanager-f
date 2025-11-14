@@ -9,8 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api';
 import { Notification } from 'src/app/services/notification';
 
-import { SubscriptionStatusComponent } from 'src/app/components/subscription-status/subscription-status.component';
-import { SubscriptionPromptComponent } from "src/app/components/subscription-prompt/subscription-prompt.component";
+
 import { FeatureGuard } from 'src/app/services/feature-guard';
 import { filter, Subject, takeUntil } from 'rxjs';
 
