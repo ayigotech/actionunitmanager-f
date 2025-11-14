@@ -1,55 +1,58 @@
-/* Preloader Styles */
+/* Preloader Component Styles */
 
 .preloader-content {
     --background: #ffffff;
-    --padding-start: 1rem;
-    --padding-end: 1rem;
-    --padding-top: 1rem;
-    --padding-bottom: 1rem;
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --padding-top: 16px;
+    --padding-bottom: 16px;
 }
 
 .preloader-container {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
     background: #ffffff;
-    padding: 1rem;
 }
 
 
-/* Logo Section */
+/* Professional Logo Section */
 
 .logo-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
     text-align: center;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
 }
 
 .logo-wrapper {
     position: relative;
-    display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
 }
 
 .logo-circle {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 2;
-    animation: bounce 2s infinite ease-in-out;
-    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
+    animation: logoBounce 3s ease-in-out infinite;
+    box-shadow: 0 8px 30px rgba(15, 68, 70, 0.3);
+    border: 3px solid #ffffff;
 }
 
 .logo-icon {
-    font-size: 2rem !important;
+    font-size: 3rem;
     color: #ffffff;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .logo-pulse {
@@ -57,67 +60,79 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 2px solid #b88115;
-    animation: pulse 2s infinite;
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    opacity: 0.3;
     z-index: 1;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .app-name {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    color: #a1350a;
+    color: #0f4446;
     margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(15, 68, 70, 0.1);
 }
 
 .app-tagline {
     font-size: 0.9rem;
     font-weight: 300;
     color: #666666;
-    margin-top: 0.5rem;
+    margin: 8px 0 0 0;
+    text-align: center;
 }
 
 
-/* Loading Section */
+/* Enhanced Loading Animation */
 
 .loading-section {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 0;
     width: 100%;
     max-width: 300px;
-    margin: 2rem auto;
 }
 
 .progress-container {
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
 .progress-bar {
     width: 100%;
     height: 6px;
-    background-color: #f0f0f0;
+    background: #f0f0f0;
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #a1350a 0%, #b88115 100%);
+    background: linear-gradient(90deg, #0f4446 0%, #5d2a08 100%);
     border-radius: 3px;
-    animation: loading 2s infinite ease-in-out;
-    transform-origin: left;
+    width: 0%;
+    animation: loadingProgress 2s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(15, 68, 70, 0.4);
 }
 
 .loading-text {
     font-size: 0.9rem;
     font-weight: 300;
     color: #666666;
+    text-align: center;
     margin: 0;
+    animation: textPulse 1.5s ease-in-out infinite;
 }
 
 
@@ -128,83 +143,117 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     min-height: 100px;
+    margin: 20px 0;
 }
 
 
-/* Powered By Section */
+/* Professional Footer */
 
 .powered-by {
-    text-align: center;
-    margin-bottom: 1rem;
+    margin-top: auto;
+    padding-top: 30px;
 }
 
 .company-logo {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 20px;
-    font-size: 0.8rem;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem;
     font-weight: 300;
     color: #666666;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px 24px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.company-logo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .company-logo span:first-child {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    animation: subtleBounce 2s ease-in-out infinite;
 }
 
 
 /* Animations */
 
-@keyframes bounce {
+@keyframes logoBounce {
     0%,
     100% {
-        transform: translateY(0);
+        transform: scale(1) rotate(0deg);
+        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    }
+    25% {
+        transform: scale(1.05) rotate(5deg);
+        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
     }
     50% {
-        transform: translateY(-10px);
+        transform: scale(1.1) rotate(0deg);
+        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
+    }
+    75% {
+        transform: scale(1.05) rotate(-5deg);
+        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 50%, #5d2a08 100%);
     }
 }
 
 @keyframes pulse {
     0% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.2);
-        opacity: 0;
-    }
-}
-
-@keyframes loading {
-    0% {
-        transform: scaleX(0);
+        opacity: 0.3;
     }
     50% {
-        transform: scaleX(0.7);
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 0.2;
     }
     100% {
-        transform: scaleX(1);
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
     }
 }
 
-
-/* Hover Effects */
-
-.logo-circle:hover {
-    animation: bounce 0.5s ease-in-out;
-    transform: scale(1.05);
+@keyframes loadingProgress {
+    0% {
+        width: 0%;
+        transform: translateX(-100%);
+    }
+    50% {
+        width: 60%;
+        transform: translateX(0%);
+    }
+    100% {
+        width: 100%;
+        transform: translateX(0%);
+    }
 }
 
-.company-logo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+@keyframes textPulse {
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes subtleBounce {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 
@@ -212,76 +261,109 @@
 
 @media (max-width: 480px) {
     .preloader-container {
-        padding: 0.5rem;
+        padding: 30px 16px;
     }
-    .logo-circle {
-        width: 70px;
-        height: 70px;
-    }
-    .logo-icon {
-        font-size: 1.8rem !important;
-    }
-    .logo-pulse {
-        width: 90px;
-        height: 90px;
-    }
-    .app-name {
-        font-size: 1.1rem;
-    }
-    .loading-section {
-        max-width: 250px;
-    }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .logo-circle {
-        width: 90px;
-        height: 90px;
-    }
-    .logo-icon {
-        font-size: 2.2rem !important;
-    }
-    .logo-pulse {
-        width: 110px;
-        height: 110px;
-    }
-    .app-name {
-        font-size: 1.3rem;
-    }
-}
-
-@media (min-width: 769px) {
     .logo-circle {
         width: 100px;
         height: 100px;
     }
     .logo-icon {
-        font-size: 2.5rem !important;
+        font-size: 2.5rem;
     }
     .logo-pulse {
         width: 120px;
         height: 120px;
     }
     .app-name {
-        font-size: 1.4rem;
+        font-size: 1.25rem;
+    }
+    .loading-section {
+        max-width: 280px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .preloader-container {
+        padding: 50px 30px;
+    }
+    .logo-circle {
+        width: 140px;
+        height: 140px;
+    }
+    .logo-icon {
+        font-size: 3.5rem;
+    }
+    .logo-pulse {
+        width: 160px;
+        height: 160px;
+    }
+    .app-name {
+        font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .preloader-container {
+        padding: 60px 40px;
+    }
+    .logo-circle {
+        width: 160px;
+        height: 160px;
+    }
+    .logo-icon {
+        font-size: 4rem;
+    }
+    .logo-pulse {
+        width: 180px;
+        height: 180px;
+    }
+    .app-name {
+        font-size: 2rem;
     }
 }
 
 
-/* Utility Classes */
+/* Utility Classes for Ionic Padding */
 
 .pt-5 {
-    padding-top: 3rem !important;
-}
-
-.text-center {
-    text-align: center !important;
+    padding-top: 3rem;
 }
 
 .mb-4 {
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1.5rem;
 }
 
-.text-danger {
-    color: #a1350a !important;
+.text-center {
+    text-align: center;
+}
+
+
+/* Ensure proper contrast and accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .logo-circle,
+    .logo-pulse,
+    .progress-fill,
+    .loading-text,
+    .company-logo span:first-child {
+        animation: none;
+    }
+    .logo-circle {
+        animation: logoBounce 6s ease-in-out infinite;
+    }
+}
+
+
+/* High contrast mode support */
+
+@media (prefers-contrast: high) {
+    .logo-circle {
+        border: 4px solid #ffffff;
+    }
+    .progress-bar {
+        border: 1px solid #333333;
+    }
+    .company-logo {
+        border: 1px solid #666666;
+    }
 }

@@ -11,26 +11,26 @@
 
 :root {
     /** Primary Theme Colors **/
-    --ion-color-primary: #a1350a;
-    --ion-color-primary-rgb: 161, 53, 10;
+    --ion-color-primary: #0f4446;
+    --ion-color-primary-rgb: 15, 68, 70;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
-    --ion-color-primary-shade: #8e2e09;
-    --ion-color-primary-tint: #aa4923;
+    --ion-color-primary-shade: #0d3c3e;
+    --ion-color-primary-tint: #275759;
     /** Secondary Theme Colors **/
-    --ion-color-secondary: #b88115;
-    --ion-color-secondary-rgb: 184, 129, 21;
+    --ion-color-secondary: #5d2a08;
+    --ion-color-secondary-rgb: 93, 42, 8;
     --ion-color-secondary-contrast: #ffffff;
     --ion-color-secondary-contrast-rgb: 255, 255, 255;
-    --ion-color-secondary-shade: #a27212;
-    --ion-color-secondary-tint: #bf8e2c;
+    --ion-color-secondary-shade: #522507;
+    --ion-color-secondary-tint: #6d3f21;
     /** Tertiary Colors **/
-    --ion-color-tertiary: #6a45b2;
-    --ion-color-tertiary-rgb: 106, 69, 178;
+    --ion-color-tertiary: #2c7873;
+    --ion-color-tertiary-rgb: 44, 120, 115;
     --ion-color-tertiary-contrast: #ffffff;
     --ion-color-tertiary-contrast-rgb: 255, 255, 255;
-    --ion-color-tertiary-shade: #5d3d9d;
-    --ion-color-tertiary-tint: #7958ba;
+    --ion-color-tertiary-shade: #276a66;
+    --ion-color-tertiary-tint: #418681;
     /** Success Colors **/
     --ion-color-success: #2dd36f;
     --ion-color-success-rgb: 45, 211, 111;
@@ -78,6 +78,7 @@
     --ion-background-color-rgb: 255, 255, 255;
     --ion-text-color: #333333;
     --ion-text-color-rgb: 51, 51, 51;
+    /** Text Color Steps **/
     --ion-text-color-step-50: #0d0d0d;
     --ion-text-color-step-100: #1a1a1a;
     --ion-text-color-step-150: #262626;
@@ -99,25 +100,25 @@
     --ion-text-color-step-950: #f2f2f2;
     /** Item & Card Backgrounds **/
     --ion-item-background: #ffffff;
-    --ion-item-background-activated: rgba(161, 53, 10, 0.08);
+    --ion-item-background-activated: rgba(15, 68, 70, 0.08);
     --ion-item-background-activated-opacity: 0.08;
-    --ion-item-background-focused: rgba(161, 53, 10, 0.12);
+    --ion-item-background-focused: rgba(15, 68, 70, 0.12);
     --ion-item-background-focused-opacity: 0.12;
-    --ion-item-background-hover: rgba(161, 53, 10, 0.04);
+    --ion-item-background-hover: rgba(15, 68, 70, 0.04);
     --ion-item-background-hover-opacity: 0.04;
     --ion-card-background: #ffffff;
     --ion-card-color: #333333;
     /** Toolbar Colors **/
-    --ion-toolbar-background: #a1350a;
+    --ion-toolbar-background: #0f4446;
     --ion-toolbar-color: #ffffff;
-    --ion-toolbar-border-color: #8e2e09;
-    --ion-toolbar-background-rgb: 161, 53, 10;
+    --ion-toolbar-border-color: #0d3c3e;
+    --ion-toolbar-background-rgb: 15, 68, 70;
     --ion-toolbar-color-rgb: 255, 255, 255;
     /** Tab Bar Colors **/
     --ion-tab-bar-background: #ffffff;
     --ion-tab-bar-background-focused: #f8f9fa;
     --ion-tab-bar-color: #666666;
-    --ion-tab-bar-color-selected: #a1350a;
+    --ion-tab-bar-color-selected: #0f4446;
     --ion-tab-bar-border-color: #e0e0e0;
     /** Border Colors **/
     --ion-border-color: #e0e0e0;
@@ -135,23 +136,23 @@
     --ion-input-color: #333333;
     --ion-input-placeholder-color: #999999;
     --ion-toggle-background: #e0e0e0;
-    --ion-toggle-background-checked: #a1350a;
+    --ion-toggle-background-checked: #0f4446;
     --ion-toggle-handle-background: #ffffff;
     --ion-toggle-handle-background-checked: #ffffff;
     /** Segment Colors **/
     --ion-segment-background: #f8f9fa;
-    --ion-segment-background-checked: #a1350a;
+    --ion-segment-background-checked: #0f4446;
     --ion-segment-color: #666666;
     --ion-segment-color-checked: #ffffff;
     --ion-segment-border-color: #e0e0e0;
     /** Loading & Spinner Colors **/
     --ion-loading-background: rgba(255, 255, 255, 0.9);
-    --ion-loading-color: #a1350a;
-    --ion-spinner-color: #a1350a;
-    --ion-spinner-color-1: #a1350a;
-    --ion-spinner-color-2: #b88115;
-    --ion-spinner-color-3: #a1350a;
-    --ion-spinner-color-4: #b88115;
+    --ion-loading-color: #0f4446;
+    --ion-spinner-color: #0f4446;
+    --ion-spinner-color-1: #0f4446;
+    --ion-spinner-color-2: #5d2a08;
+    --ion-spinner-color-3: #0f4446;
+    --ion-spinner-color-4: #5d2a08;
     /** Alert & Modal Colors **/
     --ion-alert-background: #ffffff;
     --ion-alert-color: #333333;
@@ -160,7 +161,7 @@
     /** Action Sheet Colors **/
     --ion-action-sheet-background: #ffffff;
     --ion-action-sheet-color: #333333;
-    --ion-action-sheet-button-color: #a1350a;
+    --ion-action-sheet-button-color: #0f4446;
     /** Popover Colors **/
     --ion-popover-background: #ffffff;
     --ion-popover-color: #333333;
@@ -173,32 +174,32 @@
     /** Toast Colors **/
     --ion-toast-background: #333333;
     --ion-toast-color: #ffffff;
-    --ion-toast-button-color: #b88115;
+    --ion-toast-button-color: #5d2a08;
     /** Refresher Colors **/
     --ion-refresher-background: transparent;
-    --ion-refresher-color: #a1350a;
+    --ion-refresher-color: #0f4446;
     /** Searchbar Colors **/
     --ion-searchbar-background: #f8f9fa;
     --ion-searchbar-color: #333333;
-    --ion-searchbar-cancel-button-color: #a1350a;
+    --ion-searchbar-cancel-button-color: #0f4446;
     --ion-searchbar-clear-button-color: #999999;
     /** Reorder Colors **/
-    --ion-reorder-background: #a1350a;
-    --ion-reorder-background-rgb: 161, 53, 10;
+    --ion-reorder-background: #0f4446;
+    --ion-reorder-background-rgb: 15, 68, 70;
     --ion-reorder-color: #ffffff;
     --ion-reorder-color-rgb: 255, 255, 255;
     /** Skeleton Text Colors **/
-    --ion-skeleton-text-background: rgba(161, 53, 10, 0.1);
+    --ion-skeleton-text-background: rgba(15, 68, 70, 0.1);
     /** Step Colors **/
     --ion-step-background: #ffffff;
-    --ion-step-background-active: #a1350a;
-    --ion-step-background-completed: #b88115;
+    --ion-step-background-active: #0f4446;
+    --ion-step-background-completed: #5d2a08;
     --ion-step-color: #666666;
     --ion-step-color-active: #ffffff;
     --ion-step-color-completed: #ffffff;
     --ion-step-border-color: #e0e0e0;
     /** Font Stack **/
-    --ion-font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --ion-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     /** Safe Area Padding **/
     --ion-safe-area-top: 20px;
     --ion-safe-area-bottom: 20px;
@@ -218,16 +219,16 @@
         --ion-text-color-rgb: 51, 51, 51;
         --ion-item-background: #ffffff;
         --ion-card-background: #ffffff;
-        --ion-toolbar-background: #a1350a;
+        --ion-toolbar-background: #0f4446;
         --ion-toolbar-color: #ffffff;
         --ion-border-color: #e0e0e0;
         --ion-input-background: #ffffff;
         --ion-input-color: #333333;
         --ion-tab-bar-background: #ffffff;
         --ion-tab-bar-color: #666666;
-        --ion-tab-bar-color-selected: #a1350a;
+        --ion-tab-bar-color-selected: #0f4446;
         --ion-segment-background: #f8f9fa;
-        --ion-segment-background-checked: #a1350a;
+        --ion-segment-background-checked: #0f4446;
         --ion-segment-color: #666666;
         --ion-segment-color-checked: #ffffff;
         --ion-alert-background: #ffffff;
@@ -245,13 +246,14 @@
 /** Custom Gradient Variables **/
 
 :root {
-    --ion-gradient-primary: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
-    --ion-gradient-primary-reverse: linear-gradient(135deg, #b88115 0%, #a1350a 100%);
-    --ion-gradient-secondary: linear-gradient(135deg, #b88115 0%, #d4ac4a 100%);
+    --ion-gradient-primary: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    --ion-gradient-primary-reverse: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
+    --ion-gradient-secondary: linear-gradient(135deg, #5d2a08 0%, #8a4a2b 100%);
     --ion-gradient-light: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     --ion-gradient-success: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
     --ion-gradient-warning: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);
     --ion-gradient-danger: linear-gradient(135deg, #e53935 0%, #f44336 100%);
+    --ion-gradient-logo: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
 }
 
 
@@ -262,8 +264,8 @@
     --ion-shadow-md: 0 4px 15px rgba(0, 0, 0, 0.12);
     --ion-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
     --ion-shadow-xl: 0 15px 40px rgba(0, 0, 0, 0.2);
-    --ion-shadow-primary: 0 4px 15px rgba(161, 53, 10, 0.3);
-    --ion-shadow-primary-hover: 0 8px 25px rgba(161, 53, 10, 0.4);
+    --ion-shadow-primary: 0 4px 15px rgba(15, 68, 70, 0.3);
+    --ion-shadow-primary-hover: 0 8px 25px rgba(15, 68, 70, 0.4);
 }
 
 
@@ -285,4 +287,157 @@
     --ion-transition-normal: 0.3s ease;
     --ion-transition-slow: 0.5s ease;
     --ion-transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+
+/** Global Base Styles **/
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+
+/** Typography Scale **/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.75rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+}
+
+h5 {
+    font-size: 1.125rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 0.85rem;
+    font-weight: 300;
+    margin: 0 0 1rem 0;
+}
+
+small {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+
+/** Input Base Styles **/
+
+input,
+textarea,
+select {
+    font-size: 0.85rem !important;
+    font-weight: 300 !important;
+}
+
+
+/** Logo Bouncing Animation **/
+
+@keyframes logoBounce {
+    0%,
+    100% {
+        transform: scale(1);
+        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
+    }
+    25% {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 50%, #5d2a08 100%);
+    }
+    50% {
+        transform: scale(1.1);
+        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    }
+    75% {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
+    }
+}
+
+.logo-bounce {
+    animation: logoBounce 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
+    background-size: 200% 200%;
+    border-radius: var(--ion-border-radius-md);
+}
+
+
+/** Responsive Grid Base ***/
+
+ion-grid {
+    --ion-grid-columns: 12;
+    --ion-grid-padding: 16px;
+    --ion-grid-width: 100%;
+}
+
+
+/** Mobile First Media Queries **/
+
+@media (max-width: 576px) {
+    ion-grid {
+        --ion-grid-columns: 6;
+    }
+    .responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .responsive-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .responsive-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .responsive-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+    }
 }

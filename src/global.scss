@@ -13,15 +13,15 @@
 /* Basic global styles */
 
 :root {
-    /* Base font sizes for different screen sizes - decreased by ~1px */
-    --font-size-xs: 12px;
-    --font-size-sm: 14px;
-    --font-size-base: 15px;
-    --font-size-lg: 17px;
-    --font-size-xl: 19px;
-    --font-size-2xl: 23px;
+    /* Base font sizes for different screen sizes - minimum 0.85rem */
+    --font-size-xs: 0.8rem;
+    --font-size-sm: 0.85rem;
+    --font-size-base: 0.9rem;
+    --font-size-lg: 1rem;
+    --font-size-xl: 1.1rem;
+    --font-size-2xl: 1.25rem;
     /* Mobile first - smaller fonts */
-    font-size: 14px;
+    font-size: 0.85rem;
     --font-weight: 300;
     font-weight: 300;
 }
@@ -32,7 +32,8 @@
 * {
     font-size: inherit;
     box-sizing: border-box;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
 }
 
 
@@ -40,7 +41,7 @@
 
 @media (max-width: 480px) {
      :root {
-        font-size: 13px;
+        font-size: 0.85rem;
     }
 }
 
@@ -49,7 +50,7 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
      :root {
-        font-size: 14px;
+        font-size: 0.9rem;
     }
 }
 
@@ -58,7 +59,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
      :root {
-        font-size: 15px;
+        font-size: 0.95rem;
     }
 }
 
@@ -67,44 +68,8 @@
 
 @media (min-width: 1025px) {
      :root {
-        font-size: 16px;
+        font-size: 1rem;
     }
-}
-
-@import '@ionic/angular/css/palettes/dark.system.css';
-ion-modal {
-    z-index: 99999 !important;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
-ion-app {
-    height: 100%;
-}
-
-ion-content {
-    --padding-bottom: env(safe-area-inset-bottom);
-    --padding-top: env(safe-area-inset-top);
-    --background: #ffffff;
-}
-
-ion-refresher,
-ion-refresher-content,
-ion-card,
-ion-item,
-ion-item-group,
-ion-segment {
-    --background: #f8f9fa;
-}
-
-ion-item-divider {
-    --background: #f8f9fa;
-}
-
-ion-toolbar,
-ion-header {
-    --background: linear-gradient(135deg, #a1350a 0%, #eed920 100%);
 }
 
 
@@ -141,3 +106,278 @@ ion-header {
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Custom Global Styles */
+
+ion-modal {
+    z-index: 99999 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+ion-app {
+    height: 100%;
+}
+
+ion-content {
+    --padding-bottom: env(safe-area-inset-bottom);
+    --padding-top: env(safe-area-inset-top);
+    --background: #ffffff;
+}
+
+
+/* Header with new theme gradient */
+
+ion-toolbar,
+ion-header {
+    --background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    --color: #ffffff;
+    --border-color: #0d3c3e;
+}
+
+
+/* Card and item backgrounds */
+
+ion-refresher,
+ion-refresher-content,
+ion-card,
+ion-item,
+ion-item-group,
+ion-segment {
+    --background: #ffffff;
+}
+
+ion-item-divider {
+    --background: #f8f9fa;
+}
+
+
+/* Input styles with explicit font sizes */
+
+ion-input,
+ion-textarea,
+ion-select,
+ion-searchbar {
+    font-size: 0.85rem !important;
+    font-weight: 300 !important;
+}
+
+ion-input::part(input),
+ion-textarea::part(textarea),
+ion-select::part(text) {
+    font-size: 0.85rem !important;
+    font-weight: 300 !important;
+}
+
+
+/* Logo bouncing effects */
+
+.app-logo,
+.logo-container,
+[class*="logo"] {
+    animation: logoBounce 3s ease-in-out infinite;
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
+    background-size: 200% 200%;
+    border-radius: 12px;
+}
+
+@keyframes logoBounce {
+    0%,
+    100% {
+        transform: scale(1);
+        background-position: 0% 50%;
+    }
+    25% {
+        transform: scale(1.05);
+        background-position: 50% 50%;
+    }
+    50% {
+        transform: scale(1.1);
+        background-position: 100% 50%;
+    }
+    75% {
+        transform: scale(1.05);
+        background-position: 50% 50%;
+    }
+}
+
+
+/* Professional hover effects */
+
+ion-card,
+.clickable-item,
+[tappable] {
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+ion-card:hover,
+.clickable-item:hover,
+[tappable]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(15, 68, 70, 0.15);
+}
+
+
+/* Button hover effects */
+
+ion-button {
+    transition: all 0.3s ease;
+}
+
+ion-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.3);
+}
+
+
+/* Grid system for responsiveness */
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 16px;
+}
+
+
+/* Tablet */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .responsive-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+}
+
+
+/* Desktop */
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .responsive-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}
+
+
+/* Large Desktop */
+
+@media (min-width: 1025px) {
+    .responsive-grid {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 24px;
+    }
+}
+
+
+/* Typography hierarchy */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+    color: #0f4446;
+}
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.35rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    font-size: 0.9rem;
+}
+
+p,
+span,
+div {
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+small,
+.text-small {
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+
+/* Form elements with explicit styling */
+
+input,
+textarea,
+select {
+    font-size: 0.85rem !important;
+    font-weight: 300 !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+}
+
+
+/* Custom scrollbar */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
+}
+
+
+/* Loading and spinner customization */
+
+ion-loading,
+ion-spinner {
+    --spinner-color: #0f4446;
+}
+
+
+/* Toast customization */
+
+ion-toast {
+    --background: #0f4446;
+    --color: #ffffff;
+    --button-color: #ffffff;
+}
+
+
+/* Alert customization */
+
+ion-alert {
+    --background: #ffffff;
+    --color: #333333;
+}
