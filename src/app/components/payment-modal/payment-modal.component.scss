@@ -1,4 +1,4 @@
-/* Subscription Content Styles */
+/* Subscribe Now Payment Modal Styles */
 
 ion-content {
     --background: #ffffff;
@@ -12,7 +12,7 @@ ion-content {
 /* Header Styles */
 
 ion-toolbar {
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     --color: #ffffff;
     --border-width: 0;
 }
@@ -48,7 +48,6 @@ ion-icon {
     max-width: 500px;
     margin: 0 auto;
     padding: 1rem 0;
-    animation: slideInUp 0.5s ease;
 }
 
 
@@ -57,29 +56,26 @@ ion-icon {
 .payment-header {
     text-align: center;
     margin-bottom: 2rem;
-    padding: 1rem;
 }
 
 .payment-icon {
-    font-size: 3rem !important;
-    color: #a1350a;
+    font-size: 3rem;
+    color: #0f4446;
     margin-bottom: 1rem;
-    animation: bounce 2s infinite ease-in-out;
 }
 
 .payment-header h2 {
     font-size: 1.5rem;
     font-weight: 300;
-    color: #333333;
+    color: #0f4446;
     margin: 0 0 0.5rem 0;
 }
 
 .description {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 300;
     color: #666666;
     margin: 0;
-    line-height: 1.4;
 }
 
 
@@ -99,15 +95,16 @@ ion-icon {
 }
 
 .form-item:hover {
-    border-color: #b88115;
+    border-color: #1a6b6e;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-item:focus-within {
-    border-color: #a1350a;
-    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.15);
+    border-color: #0f4446;
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.15);
     transform: translateY(-2px);
+    animation: gentleBounce 0.5s ease;
 }
 
 
@@ -115,13 +112,13 @@ ion-icon {
 
 .input-icon {
     font-size: 1.3rem !important;
-    color: #a1350a;
+    color: #0f4446;
     margin-right: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .form-item:focus-within .input-icon {
-    color: #b88115;
+    color: #1a6b6e;
     transform: scale(1.1);
 }
 
@@ -147,58 +144,43 @@ ion-icon {
 }
 
 
-/* Select Styling */
-
-ion-select {
-    width: 100%;
-    --padding-start: 0;
-    --padding-end: 0;
-}
-
-
 /* Payment Summary */
 
 .payment-summary {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #f8fdfd 0%, #f0f7f7 100%);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 2rem 0;
-    border-left: 4px solid #a1350a;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0f0f0;
 }
 
 .payment-summary h4 {
     font-size: 1.1rem;
     font-weight: 300;
-    color: #333333;
+    color: #0f4446;
     margin: 0 0 1rem 0;
 }
 
 .summary-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    appearance: 0.5rem;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
-    color: #666666;
+    padding: 0.5rem 0;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #333333;
 }
 
 .summary-row.total {
     border-top: 1px solid #e0e0e0;
-    padding-top: 0.8rem;
     margin-top: 0.5rem;
-}
-
-.summary-row.total strong {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    color: #333333;
+    padding-top: 1rem;
+    font-size: 1.1rem;
+    color: #0f4446;
 }
 
 
@@ -209,72 +191,48 @@ ion-select {
 }
 
 .payment-info ion-item {
-    --background: rgba(161, 53, 10, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(161, 53, 10, 0.2);
+    --background: #f8fdfd;
+    --border-radius: 8px;
+    border: 1px solid #e0f0f0;
 }
 
 .payment-info ion-icon {
-    color: #a1350a;
     font-size: 1.2rem;
+    color: #0f4446;
 }
 
 .payment-info small {
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
+    font-size: 0.85rem;
+    font-weight: 300;
     color: #666666;
-    line-height: 1.4;
 }
 
 
-/* Payment Button */
+/* Submit Button */
 
 ion-button[expand="block"] {
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
-    --background-hover: linear-gradient(135deg, #b88115 0%, #a1350a 100%);
-    --background-activated: linear-gradient(135deg, #8a2e08 0%, #9c6e12 100%);
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --background-hover: linear-gradient(135deg, #1a6b6e 0%, #0f4446 100%);
+    --background-activated: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
     --border-radius: 12px;
-    --box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
-    height: 3.5rem;
-    font-size: 1rem !important;
-    font-weight: 300 !important;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 300;
     margin: 1.5rem 0;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    height: 50px;
 }
 
 ion-button[expand="block"]:hover {
     transform: translateY(-2px);
-    --box-shadow: 0 8px 25px rgba(161, 53, 10, 0.4);
-}
-
-ion-button[expand="block"]:active {
-    transform: translateY(0);
+    box-shadow: 0 6px 20px rgba(15, 68, 70, 0.3);
 }
 
 ion-button[expand="block"]:disabled {
     --background: linear-gradient(135deg, #cccccc 0%, #999999 100%);
     transform: none;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Button Shine Effect */
-
-ion-button[expand="block"]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
-}
-
-ion-button[expand="block"]:not(:disabled):hover::before {
-    left: 100%;
+    box-shadow: none;
 }
 
 
@@ -285,14 +243,19 @@ ion-button[expand="block"]:not(:disabled):hover::before {
 }
 
 .savings-item {
-    --background: rgba(76, 175, 80, 0.1);
-    border-radius: 8px;
-    border: 1px solid rgba(76, 175, 80, 0.3);
-    animation: pulse 2s infinite;
+    --background: #f0f9f0;
+    --border-radius: 8px;
+    border: 1px solid #4caf50;
 }
 
 .savings-item ion-icon {
     color: #4caf50;
+}
+
+.savings-item small {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #2e7d32;
 }
 
 
@@ -300,52 +263,49 @@ ion-button[expand="block"]:not(:disabled):hover::before {
 
 .processing-state {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
 }
 
 .processing-state ion-spinner {
     width: 4rem;
     height: 4rem;
-    --color: #a1350a;
     margin-bottom: 1.5rem;
 }
 
 .processing-state h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 300;
-    color: #333333;
+    color: #0f4446;
     margin: 0 0 1rem 0;
 }
 
 .processing-state p {
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
+    font-size: 0.95rem;
+    font-weight: 300;
     color: #666666;
     margin: 0.5rem 0;
 }
 
-.note {
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
+.processing-state .note {
+    font-size: 0.85rem;
     color: #999999;
     font-style: italic;
 }
 
 .transaction-details {
     margin-top: 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    padding: 1rem;
+    appearance: 0.5rem;
 }
 
 .transaction-details ion-item {
-    --background: transparent;
-    --inner-padding-end: 0;
+    --background: #f8fdfd;
+    --border-radius: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .transaction-details ion-icon {
-    color: #a1350a;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #0f4446;
 }
 
 
@@ -353,49 +313,53 @@ ion-button[expand="block"]:not(:disabled):hover::before {
 
 .success-state {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem 0;
 }
 
 .success-icon {
-    font-size: 4rem !important;
+    font-size: 4rem;
     margin-bottom: 1.5rem;
-    animation: bounceIn 0.6s ease;
 }
 
 .success-state h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    color: #333333;
+    color: #0f4446;
     margin: 0 0 1rem 0;
 }
 
 .success-state p {
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
+    font-size: 0.95rem;
+    font-weight: 300;
     color: #666666;
     margin: 0.5rem 0;
 }
 
 .success-details {
-    font-size: 0.9rem !important;
-    color: #4caf50 !important;
+    font-size: 1rem;
+    color: #0f4446;
+    font-weight: 300;
 }
 
 .success-features {
     margin: 2rem 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    padding: 1rem;
+    appearance: 0.5rem;
 }
 
 .success-features ion-item {
     --background: transparent;
-    --inner-padding-end: 0;
+    --padding-start: 0;
 }
 
 .success-features ion-icon {
     color: #4caf50;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+}
+
+.success-features ion-label {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #333333;
 }
 
 
@@ -403,66 +367,63 @@ ion-button[expand="block"]:not(:disabled):hover::before {
 
 .error-state {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 1rem 0;
 }
 
 .error-icon {
-    font-size: 4rem !important;
+    font-size: 4rem;
     margin-bottom: 1.5rem;
-    animation: shake 0.5s ease;
 }
 
 .error-state h3 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 300;
-    color: #e53935;
+    color: #f44336;
     margin: 0 0 1rem 0;
 }
 
 .error-state p {
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
+    font-size: 0.95rem;
+    font-weight: 300;
     color: #666666;
-    margin: 0.5rem 0 1.5rem 0;
+    margin: 0 0 1rem 0;
 }
 
 .error-reasons {
     text-align: left;
     margin: 1.5rem 0;
-    padding: 0 1rem;
-}
-
-.error-reasons li {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
-    color: #666666;
-    margin-bottom: 0.5rem;
-    list-style-type: none;
-    position: relative;
     padding-left: 1.5rem;
 }
 
-.error-reasons li::before {
-    content: '•';
-    color: #e53935;
-    position: absolute;
-    left: 0;
+.error-reasons li {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #666666;
+    margin-bottom: 0.5rem;
 }
 
 .error-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    appearance: 0.8rem;
     margin-top: 2rem;
 }
 
 
 /* Animations */
 
-@keyframes slideInUp {
+@keyframes gentleBounce {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -470,51 +431,11 @@ ion-button[expand="block"]:not(:disabled):hover::before {
     }
 }
 
-@keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-5px);
-    }
-}
 
-@keyframes bounceIn {
-    0% {
-        opacity: 0;
-        transform: scale(0.3);
-    }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    100% {
-        transform: scale(1);
-    }
-}
+/* Form Entry Animation */
 
-@keyframes pulse {
-    0%,
-    100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.7;
-    }
-}
-
-@keyframes shake {
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px);
-    }
-    75% {
-        transform: translateX(5px);
-    }
+.payment-content {
+    animation: slideIn 0.5s ease;
 }
 
 
@@ -524,58 +445,44 @@ ion-button[expand="block"]:not(:disabled):hover::before {
     .payment-content {
         padding: 0.5rem 0;
     }
-    .payment-header {
-        margin-bottom: 1.5rem;
-        padding: 0.5rem;
-    }
-    .payment-icon {
-        font-size: 2.5rem !important;
-    }
     .payment-header h2 {
         font-size: 1.3rem;
     }
+    .payment-icon {
+        font-size: 2.5rem;
+    }
     .form-item {
         margin-bottom: 1.2rem;
+        --padding-start: 0.8rem;
+        --padding-end: 0.8rem;
+    }
+    .custom-input {
+        font-size: 0.9rem !important;
+        padding: 0.9rem 0;
+        min-height: 45px;
     }
     .payment-summary {
         padding: 1rem;
-        margin: 1.5rem 0;
     }
-    .processing-state,
-    .success-state,
-    .error-state {
-        padding: 1rem 0.5rem;
-    }
-    .success-icon,
-    .error-icon {
-        font-size: 3rem !important;
-    }
-}
-
-@media (min-width: 769px) {
-    .payment-content {
-        padding: 2rem 0;
-    }
-    .payment-header {
-        padding: 2rem;
+    ion-button[expand="block"] {
+        height: 45px;
+        font-size: 0.95rem;
     }
 }
 
 
-/* Explicit Font Sizes */
+/* Explicit Font Sizes Enforcement */
 
 ion-content,
 ion-item,
 ion-button,
 ion-title,
 ion-label,
-h2,
-h3,
-h4,
-p,
+input,
+select,
+button,
 span,
-small,
-li {
+small {
     font-size: inherit !important;
     font-weight: 300 !important;
 }

@@ -1,178 +1,119 @@
 /* Subscription Banner Styles */
 
 .subscription-banner {
-    --background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --background: linear-gradient(135deg, #f8fdfd 0%, #f0f7f7 100%);
     --border-radius: 12px;
     --padding-start: 1rem;
     --padding-end: 1rem;
     --inner-padding-end: 0;
     margin: 1rem;
-    border: 2px solid transparent;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid #e0f0f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     animation: slideInDown 0.5s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.subscription-banner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
-    transition: all 0.3s ease;
 }
 
 .subscription-banner:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-}
-
-.subscription-banner:hover::before {
-    width: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-color: #1a6b6e;
 }
 
 
-/* Status Color Variations */
+/* Status Colors */
 
 .subscription-banner[color="success"] {
-    --background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
-    border-color: rgba(76, 175, 80, 0.3);
+    --background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
+    border-color: #4caf50;
 }
 
 .subscription-banner[color="warning"] {
-    --background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0.05) 100%);
-    border-color: rgba(255, 152, 0, 0.3);
+    --background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-color: #ff9800;
 }
 
 .subscription-banner[color="danger"] {
-    --background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(244, 67, 54, 0.05) 100%);
-    border-color: rgba(244, 67, 54, 0.3);
+    --background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    border-color: #f44336;
 }
 
 .subscription-banner[color="primary"] {
-    --background: linear-gradient(135deg, rgba(161, 53, 10, 0.1) 0%, rgba(184, 129, 21, 0.05) 100%);
-    border-color: rgba(161, 53, 10, 0.3);
+    --background: linear-gradient(135deg, #e8f4f8 0%, #d4edf5 100%);
+    border-color: #0f4446;
 }
 
 
 /* Icon Styles */
 
 .subscription-banner ion-icon {
-    font-size: 1.8rem !important;
-    margin-right: 0.8rem;
-    transition: all 0.3s ease;
-    animation: iconPulse 2s infinite ease-in-out;
+    font-size: 1.5rem;
+    margin-right: 0.75rem;
 }
-
-.subscription-banner:hover ion-icon {
-    transform: scale(1.1);
-}
-
-
-/* Success State Icon */
 
 .subscription-banner[color="success"] ion-icon {
     color: #4caf50;
 }
 
-
-/* Warning State Icon */
-
 .subscription-banner[color="warning"] ion-icon {
     color: #ff9800;
 }
 
-
-/* Danger State Icon */
-
 .subscription-banner[color="danger"] ion-icon {
-    color: #e53935;
+    color: #f44336;
 }
 
-
-/* Primary State Icon */
-
 .subscription-banner[color="primary"] ion-icon {
-    color: #a1350a;
+    color: #0f4446;
 }
 
 
 /* Label Styles */
 
-.subscription-banner ion-label {
-    flex: 1;
-    margin: 0.8rem 0;
+.subscription-banner ion-label h3 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0 0 0.25rem 0;
 }
 
-.subscription-banner h3 {
-    font-size: 1.1rem !important;
-    font-weight: 300 !important;
-    color: #333333;
-    margin: 0 0 0.3rem 0;
-    line-height: 1.3;
-}
-
-.subscription-banner p {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
+.subscription-banner ion-label p {
+    font-size: 0.85rem;
+    font-weight: 300;
     color: #666666;
     margin: 0;
     line-height: 1.4;
 }
 
 
-/* Subscribe Button */
+/* Button Styles */
 
 .subscription-banner ion-button {
-    --border-radius: 8px;
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
-    --background-hover: linear-gradient(135deg, #b88115 0%, #a1350a 100%);
-    --background-activated: linear-gradient(135deg, #8a2e08 0%, #9c6e12 100%);
-    --box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important;
     font-weight: 300 !important;
-    height: 2.5rem;
-    margin-left: 1rem;
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --background-hover: linear-gradient(135deg, #1a6b6e 0%, #0f4446 100%);
+    --background-activated: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
+    --border-radius: 6px;
+    --padding-start: 0.75rem;
+    --padding-end: 0.75rem;
+    height: 32px;
+    margin: 0;
     transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.subscription-banner ion-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
-}
-
-.subscription-banner ion-button:hover::before {
-    left: 100%;
 }
 
 .subscription-banner ion-button:hover {
-    transform: translateY(-2px);
-    --box-shadow: 0 6px 20px rgba(161, 53, 10, 0.4);
-}
-
-.subscription-banner ion-button:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(15, 68, 70, 0.3);
 }
 
 
-/* Animations */
+/* Animation */
 
 @keyframes slideInDown {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
     to {
         opacity: 1;
@@ -180,126 +121,55 @@
     }
 }
 
-@keyframes iconPulse {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-@keyframes gentleGlow {
-    0%,
-    100% {
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-    50% {
-        box-shadow: 0 4px 20px rgba(161, 53, 10, 0.2);
-    }
-}
-
-
-/* Urgent State Animation */
-
-.subscription-banner[color="danger"] {
-    animation: gentleGlow 2s infinite ease-in-out;
-}
-
-.subscription-banner[color="warning"] {
-    animation: gentleGlow 3s infinite ease-in-out;
-}
-
 
 /* Responsive Design */
 
 @media (max-width: 768px) {
     .subscription-banner {
-        margin: 0.8rem;
-        --padding-start: 0.8rem;
-        --padding-end: 0.8rem;
+        margin: 0.75rem;
+        --padding-start: 0.75rem;
+        --padding-end: 0.75rem;
     }
     .subscription-banner ion-icon {
-        font-size: 1.5rem !important;
-        margin-right: 0.6rem;
+        font-size: 1.3rem;
+        margin-right: 0.5rem;
     }
-    .subscription-banner h3 {
-        font-size: 1rem !important;
+    .subscription-banner ion-label h3 {
+        font-size: 0.95rem;
     }
-    .subscription-banner p {
-        font-size: 0.85rem !important;
+    .subscription-banner ion-label p {
+        font-size: 0.8rem;
     }
     .subscription-banner ion-button {
-        font-size: 0.8rem !important;
-        height: 2.2rem;
-        margin-left: 0.5rem;
+        font-size: 0.75rem !important;
+        --padding-start: 0.5rem;
+        --padding-end: 0.5rem;
+        height: 28px;
     }
 }
 
 @media (max-width: 480px) {
     .subscription-banner {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
+        margin: 0.5rem;
+        --padding-start: 0.5rem;
+        --padding-end: 0.5rem;
     }
-    .subscription-banner ion-icon {
-        margin-right: 0;
-        margin-bottom: 0.5rem;
+    .subscription-banner ion-label h3 {
+        font-size: 0.9rem;
     }
-    .subscription-banner ion-button {
-        margin-left: 0;
-        margin-top: 0.8rem;
-        width: 100%;
+    .subscription-banner ion-label p {
+        font-size: 0.75rem;
     }
-    .subscription-banner::before {
-        width: 100%;
-        height: 4px;
-        top: 0;
-        left: 0;
-    }
-    .subscription-banner:hover::before {
-        width: 100%;
-        height: 6px;
-    }
-}
-
-
-/* Compact Version for Smaller Spaces */
-
-.subscription-banner.compact {
-    margin: 0.5rem;
-    --padding-start: 0.8rem;
-    --padding-end: 0.8rem;
-}
-
-.subscription-banner.compact ion-icon {
-    font-size: 1.3rem !important;
-    margin-right: 0.5rem;
-}
-
-.subscription-banner.compact h3 {
-    font-size: 0.95rem !important;
-    margin-bottom: 0.2rem;
-}
-
-.subscription-banner.compact p {
-    font-size: 0.8rem !important;
-}
-
-.subscription-banner.compact ion-button {
-    font-size: 0.75rem !important;
-    height: 2rem;
-    margin-left: 0.5rem;
 }
 
 
 /* Explicit Font Sizes Enforcement */
 
 .subscription-banner,
+.subscription-banner ion-label,
+.subscription-banner ion-button,
 .subscription-banner h3,
-.subscription-banner p,
-.subscription-banner ion-button {
+.subscription-banner p {
     font-size: inherit !important;
     font-weight: 300 !important;
 }
@@ -309,50 +179,4 @@
 
 .subscription-banner * {
     font-size: 0.8rem !important;
-}
-
-
-/* Status-specific Enhancements */
-
-.subscription-banner[color="success"]:hover {
-    border-color: rgba(76, 175, 80, 0.5);
-}
-
-.subscription-banner[color="warning"]:hover {
-    border-color: rgba(255, 152, 0, 0.5);
-}
-
-.subscription-banner[color="danger"]:hover {
-    border-color: rgba(244, 67, 54, 0.5);
-}
-
-.subscription-banner[color="primary"]:hover {
-    border-color: rgba(161, 53, 10, 0.5);
-}
-
-
-/* Button Focus States */
-
-.subscription-banner ion-button:focus {
-    --box-shadow: 0 0 0 3px rgba(161, 53, 10, 0.3);
-}
-
-
-/* Accessibility Improvements */
-
-.subscription-banner:focus-within {
-    outline: 2px solid #a1350a;
-    outline-offset: 2px;
-}
-
-
-/* High Contrast Mode Support */
-
-@media (prefers-contrast: high) {
-    .subscription-banner {
-        border-width: 3px;
-    }
-    .subscription-banner::before {
-        display: none;
-    }
 }

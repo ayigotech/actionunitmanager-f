@@ -1,4 +1,4 @@
-/* Bulk Import Members Styles */
+/* Bulk Import Members Modal Styles */
 
 ion-content {
     --background: #ffffff;
@@ -12,7 +12,7 @@ ion-content {
 /* Header Styles */
 
 ion-toolbar {
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     --color: #ffffff;
     --border-width: 0;
 }
@@ -23,9 +23,6 @@ ion-title {
     color: #ffffff;
     text-align: center;
 }
-
-
-/* Header Buttons */
 
 ion-button {
     --color: #ffffff;
@@ -42,7 +39,7 @@ ion-icon {
 }
 
 
-/* Import Button */
+/* Save Button Styles */
 
 ion-buttons[slot="end"] ion-button {
     --background: rgba(255, 255, 255, 0.2);
@@ -51,38 +48,44 @@ ion-buttons[slot="end"] ion-button {
     border-radius: 8px;
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
+    transition: all 0.3s ease;
 }
 
 ion-buttons[slot="end"] ion-button:disabled {
     --background: rgba(255, 255, 255, 0.1);
     --color: rgba(255, 255, 255, 0.5);
     cursor: not-allowed;
+    transform: none !important;
+}
+
+ion-buttons[slot="end"] ion-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 
-/* Import Guide Section */
+/* Import Guide */
 
 .import-guide {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #f8fdfd 0%, #f0f7f7 100%);
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    border-left: 4px solid #b88115;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0f0f0;
 }
 
 .import-guide h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 300;
-    color: #333333;
+    color: #0f4446;
     margin: 0 0 1rem 0;
 }
 
 .import-guide p {
     font-size: 0.9rem;
     font-weight: 300;
-    color: #666666;
-    margin: 0 0 1rem 0;
+    color: #333333;
+    margin: 0.5rem 0;
     line-height: 1.5;
 }
 
@@ -92,24 +95,22 @@ ion-buttons[slot="end"] ion-button:disabled {
 }
 
 .import-guide li {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 300;
-    color: #666666;
+    color: #333333;
     margin-bottom: 0.5rem;
     line-height: 1.4;
 }
 
 .import-guide strong {
-    color: #a1350a;
     font-weight: 300;
+    color: #0f4446;
 }
 
-.note {
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
-    color: #999999;
+.import-guide .note {
+    font-size: 0.85rem;
+    color: #666666;
     font-style: italic;
-    margin: 0.5rem 0 0 0;
 }
 
 
@@ -133,16 +134,37 @@ ion-buttons[slot="end"] ion-button:disabled {
 }
 
 .form-item:hover {
-    border-color: #b88115;
+    border-color: #1a6b6e;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-ion-label[position="stacked"] {
-    font-size: 0.95rem !important;
-    font-weight: 300 !important;
-    color: #333333;
+.form-item ion-label {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #0f4446;
     margin-bottom: 0.5rem;
+}
+
+
+/* File Selection Button */
+
+ion-button[expand="block"] {
+    --background: transparent;
+    --color: #0f4446;
+    --border-color: #0f4446;
+    --border-width: 1px;
+    --border-style: solid;
+    --border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    height: 44px;
+    margin: 0.5rem 0;
+}
+
+ion-button[expand="block"]:hover {
+    --background: rgba(15, 68, 70, 0.1);
+    transform: translateY(-1px);
 }
 
 
@@ -151,154 +173,165 @@ ion-label[position="stacked"] {
 .file-info {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 1rem;
-    background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+    background: linear-gradient(135deg, #f0f9f0 0%, #e8f5e8 100%);
     border-radius: 8px;
-    border: 1px solid #a1350a;
+    padding: 0.75rem 1rem;
     margin-top: 1rem;
-    animation: slideIn 0.3s ease;
-}
-
-.file-name {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
-    color: #333333;
-    flex: 1;
-}
-
-.file-size {
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
-    color: #666666;
+    border: 1px solid #4caf50;
 }
 
 .file-info ion-icon {
-    color: #a1350a;
     font-size: 1.2rem;
+    color: #4caf50;
+    margin-right: 0.5rem;
+}
+
+.file-name {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #333333;
+    margin-right: 0.5rem;
+}
+
+.file-size {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #666666;
+    margin-right: auto;
+}
+
+.file-info ion-button {
+    --color: #ff9800;
+    --background-hover: rgba(255, 152, 0, 0.1);
+    margin: 0;
 }
 
 
 /* Preview Section */
 
 .preview-section {
-    margin-top: 2rem;
-    animation: fadeIn 0.5s ease;
+    margin-bottom: 2rem;
 }
 
 .preview-section h4 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 300;
-    color: #333333;
-    margin: 0 0 1rem 0;
+    color: #0f4446;
+    margin: 0 0 0.5rem 0;
 }
 
 
 /* Preview Table */
 
 .preview-table {
-    border: 1px solid #e0e0e0;
+    background: #ffffff;
     border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    margin: 1rem 0;
     overflow: hidden;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .table-header {
     display: grid;
-    grid-template-columns: 60px 1fr 1fr 1fr 1fr;
-    background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr;
+    background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 300;
     color: #ffffff;
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
-    padding: 1rem;
 }
 
 .table-body {
-    background: #ffffff;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .table-row {
     display: grid;
-    grid-template-columns: 60px 1fr 1fr 1fr 1fr;
-    padding: 0.8rem 1rem;
+    grid-template-columns: 50px 1fr 1fr 1fr 1fr;
+    padding: 0.75rem 1rem;
     border-bottom: 1px solid #f0f0f0;
     transition: all 0.3s ease;
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
 }
 
 .table-row:hover {
-    background: #f8f9fa;
-    transform: translateX(2px);
+    background: #f8fdfd;
 }
 
 .table-row:last-child {
     border-bottom: none;
 }
 
-.col {
-    display: flex;
-    align-items: center;
-    padding: 0.2rem;
-}
-
 .valid-row {
-    background: rgba(76, 175, 80, 0.05);
+    background: #f8fdfd;
 }
 
 .error-row {
-    background: rgba(244, 67, 54, 0.05);
+    background: #ffebee;
 }
 
-.missing {
-    color: #e53935;
+.col {
+    font-size: 0.85rem;
     font-weight: 300;
+    color: #333333;
+    display: flex;
+    align-items: center;
 }
+
+.col.missing {
+    color: #f44336;
+    font-style: italic;
+}
+
+
+/* Badges */
 
 .error-badge {
-    color: #e53935;
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
-    background: rgba(244, 67, 54, 0.1);
-    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #f44336;
+    background: #ffebee;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
+    border: 1px solid #f44336;
 }
 
 .success-badge {
+    font-size: 0.8rem;
+    font-weight: 300;
     color: #4caf50;
-    font-size: 0.8rem !important;
-    font-weight: 300 !important;
-    background: rgba(76, 175, 80, 0.1);
-    padding: 0.2rem 0.5rem;
+    background: #f0f9f0;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
+    border: 1px solid #4caf50;
 }
 
 
 /* Import Summary */
 
 .import-summary {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, #f8fdfd 0%, #f0f7f7 100%);
     border-radius: 12px;
     padding: 1.5rem;
-    border-left: 4px solid #4caf50;
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #e0f0f0;
 }
 
 .import-summary.has-errors {
-    border-left-color: #e53935;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-color: #ff9800;
 }
 
 .import-summary p {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
-    color: #666666;
-    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #333333;
+    margin: 0.25rem 0;
 }
 
 .import-summary strong {
-    color: #333333;
     font-weight: 300;
+    color: #0f4446;
 }
 
 .error-details {
@@ -313,10 +346,10 @@ ion-label[position="stacked"] {
 }
 
 .error-details li {
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
-    color: #e53935;
-    margin-bottom: 0.3rem;
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #666666;
+    margin-bottom: 0.25rem;
 }
 
 
@@ -324,23 +357,20 @@ ion-label[position="stacked"] {
 
 .processing-section {
     text-align: center;
-    padding: 3rem 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    border-radius: 12px;
-    margin: 2rem 0;
+    padding: 2rem 1rem;
 }
 
 .processing-section ion-spinner {
-    --color: #a1350a;
     width: 3rem;
     height: 3rem;
     margin-bottom: 1rem;
+    color: #0f4446;
 }
 
 .processing-section p {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    color: #666666;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #333333;
     margin: 0.5rem 0;
 }
 
@@ -348,46 +378,32 @@ ion-label[position="stacked"] {
 /* Error Section */
 
 .error-section {
-    margin: 1.5rem 0;
-    animation: shake 0.5s ease;
+    margin: 1rem 0;
 }
 
 .error-section ion-item {
-    --background: rgba(244, 67, 54, 0.1);
+    --background: #ffebee;
     --border-radius: 8px;
-    border: 1px solid #e53935;
+    border: 1px solid #f44336;
 }
 
 .error-section ion-icon {
-    color: #e53935;
+    color: #f44336;
+    font-size: 1.5rem;
 }
 
 .error-section h3 {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    color: #e53935;
-    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #f44336;
+    margin: 0 0 0.25rem 0;
 }
 
 .error-section p {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
+    font-size: 0.9rem;
+    font-weight: 300;
     color: #666666;
     margin: 0;
-}
-
-
-/* Button Styles */
-
-ion-button {
-    --border-radius: 8px;
-    --box-shadow: 0 2px 8px rgba(161, 53, 10, 0.2);
-    transition: all 0.3s ease;
-}
-
-ion-button:hover {
-    transform: translateY(-2px);
-    --box-shadow: 0 4px 15px rgba(161, 53, 10, 0.3);
 }
 
 
@@ -396,7 +412,7 @@ ion-button:hover {
 @keyframes slideIn {
     from {
         opacity: 0;
-        transform: translateY(-10px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -404,49 +420,30 @@ ion-button:hover {
     }
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes shake {
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-5px);
-    }
-    75% {
-        transform: translateX(5px);
-    }
+.preview-section,
+.file-section,
+.import-guide {
+    animation: slideIn 0.5s ease;
 }
 
 
 /* Responsive Design */
 
 @media (max-width: 768px) {
+    .preview-table {
+        font-size: 0.8rem;
+    }
     .table-header,
     .table-row {
-        grid-template-columns: 40px 1fr 1fr 1fr 1.2fr;
-        padding: 0.6rem 0.8rem;
-        font-size: 0.8rem !important;
-    }
-    .col {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        grid-template-columns: 40px 1fr 1fr 1fr 1fr;
+        padding: 0.5rem 0.75rem;
     }
     .import-guide,
     .import-summary {
         padding: 1rem;
     }
-    .preview-section h4 {
-        font-size: 1.1rem;
+    .file-info {
+        padding: 0.5rem 0.75rem;
     }
 }
 
@@ -454,7 +451,7 @@ ion-button:hover {
     .table-header,
     .table-row {
         grid-template-columns: 30px 1fr 1fr;
-        font-size: 0.75rem !important;
+        gap: 0.5rem;
     }
     .table-header .col:nth-child(4),
     .table-header .col:nth-child(5),
@@ -468,27 +465,19 @@ ion-button:hover {
 }
 
 
-/* Grid System */
-
-@media (min-width: 769px) {
-    .file-section {
-        display: grid;
-        gap: 1.5rem;
-    }
-}
-
-
-/* Explicit Font Sizes */
+/* Explicit Font Sizes Enforcement */
 
 ion-content,
 ion-item,
 ion-button,
 ion-title,
 ion-label,
+input,
+button,
+span,
+p,
 h3,
 h4,
-p,
-span,
 li {
     font-size: inherit !important;
     font-weight: 300 !important;
@@ -499,15 +488,4 @@ li {
 
 * {
     font-size: 0.8rem !important;
-}
-
-
-/* Refresher Styles */
-
-ion-refresher {
-    --color: #a1350a;
-}
-
-ion-refresher-content {
-    --color: #a1350a;
 }

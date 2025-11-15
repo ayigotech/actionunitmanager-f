@@ -1,4 +1,4 @@
-/* Reassign Teacher Content Styles */
+/* Assign Teacher to Class Page Styles */
 
 ion-content {
     --background: #ffffff;
@@ -12,7 +12,7 @@ ion-content {
 /* Header Styles */
 
 ion-toolbar {
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     --color: #ffffff;
     --border-width: 0;
 }
@@ -34,11 +34,6 @@ ion-button {
     --background-activated: rgba(255, 255, 255, 0.2);
     font-size: 0.9rem;
     font-weight: 300;
-    transition: all 0.3s ease;
-}
-
-ion-button:hover {
-    transform: translateY(-1px);
 }
 
 ion-icon {
@@ -47,7 +42,7 @@ ion-icon {
 }
 
 
-/* Reassign Button */
+/* Save Button Styles */
 
 ion-buttons[slot="end"] ion-button {
     --background: rgba(255, 255, 255, 0.2);
@@ -56,8 +51,7 @@ ion-buttons[slot="end"] ion-button {
     border-radius: 8px;
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 300;
+    transition: all 0.3s ease;
 }
 
 ion-buttons[slot="end"] ion-button:disabled {
@@ -90,48 +84,12 @@ ion-spinner {
 }
 
 
-/* Reassignment Form Styles */
+/* Class Form Styles */
 
 .class-form {
     max-width: 600px;
     margin: 0 auto;
     padding: 1rem 0;
-    animation: slideIn 0.5s ease;
-}
-
-
-/* Current Assignment Info */
-
-.form-item[lines="none"] {
-    --background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    --border-radius: 12px;
-    --padding-start: 1rem;
-    --padding-end: 1rem;
-    border: 1.5px solid #e0e0e0;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-}
-
-.form-item[lines="none"]:hover {
-    border-color: #b88115;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.form-item[lines="none"] h3 {
-    font-size: 1rem !important;
-    font-weight: 300 !important;
-    color: #333333;
-    margin: 0 0 0.3rem 0;
-}
-
-.form-item[lines="none"] p {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
-    color: #666666;
-    margin: 0;
-    line-height: 1.4;
 }
 
 
@@ -151,14 +109,14 @@ ion-spinner {
 }
 
 .form-item:hover {
-    border-color: #b88115;
+    border-color: #1a6b6e;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-item:focus-within {
-    border-color: #a1350a;
-    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.15);
+    border-color: #0f4446;
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.15);
     transform: translateY(-2px);
     animation: gentleBounce 0.5s ease;
 }
@@ -168,18 +126,14 @@ ion-spinner {
 
 .input-icon {
     font-size: 1.3rem !important;
-    color: #a1350a;
+    color: #0f4446;
     margin-right: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .form-item:focus-within .input-icon {
-    color: #b88115;
+    color: #1a6b6e;
     transform: scale(1.1);
-}
-
-.form-item:hover .input-icon {
-    transform: scale(1.05);
 }
 
 
@@ -188,6 +142,15 @@ ion-spinner {
 .select-wrapper {
     width: 100%;
     position: relative;
+    padding: 1rem 0;
+}
+
+.select-wrapper label {
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 select {
@@ -195,14 +158,13 @@ select {
     border: none;
     outline: none;
     background: transparent;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     font-size: 0.95rem !important;
     font-weight: 300 !important;
     color: #333333;
-    min-height: 50px;
+    min-height: 40px;
     appearance: none;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .select-wrapper::after {
@@ -212,41 +174,40 @@ select {
     top: 50%;
     transform: translateY(-50%);
     font-size: 1.2rem;
-    color: #a1350a;
+    color: #0f4446;
     pointer-events: none;
-    transition: all 0.3s ease;
 }
 
 .form-item:focus-within .select-wrapper::after {
-    color: #b88115;
-    transform: translateY(-50%) scale(1.1);
+    color: #1a6b6e;
 }
 
 
-/* Select Options Styling */
+/* Form Control Styles */
 
-select option {
-    font-size: 0.9rem !important;
-    font-weight: 300 !important;
-    color: #333333;
-    padding: 0.5rem;
-    background: #ffffff;
-}
-
-select option:first-child {
-    color: #999999;
-    font-style: italic;
+.form-control {
+    width: 100%;
 }
 
 
 /* Hidden Submit Button */
 
-button[type="submit"] {
+.d-none {
     display: none !important;
 }
 
 
 /* Animations */
+
+@keyframes gentleBounce {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
 
 @keyframes slideIn {
     from {
@@ -259,27 +220,30 @@ button[type="submit"] {
     }
 }
 
-@keyframes gentleBounce {
-    0%,
-    100% {
-        transform: translateY(-2px);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
+
+/* Form Entry Animation */
+
+.class-form {
+    animation: slideIn 0.5s ease;
 }
 
-@keyframes iconPulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+
+/* Focus States Enhancement */
+
+select:focus {
+    background: transparent;
 }
+
+
+/* Button Hover Effects */
+
+ion-button:hover {
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+
+/* Loading State Animation */
 
 @keyframes pulse {
     0% {
@@ -293,60 +257,43 @@ button[type="submit"] {
     }
 }
 
-
-/* Input Validation States */
-
-.form-item.invalid {
-    border-color: #e53935;
-    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.15);
-    animation: shake 0.5s ease;
-}
-
-.form-item.invalid .input-icon {
-    color: #e53935;
-    animation: iconPulse 0.5s ease;
-}
-
-.form-item.invalid select {
-    color: #e53935;
-}
-
-@keyframes shake {
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-3px);
-    }
-    75% {
-        transform: translateX(3px);
-    }
-}
-
-
-/* Loading State Animation */
-
 .button-content:has(ion-spinner) {
     animation: pulse 1.5s infinite;
 }
 
 
-/* Button Shine Effect */
+/* Icon Hover Effects */
 
-ion-buttons[slot="end"] ion-button:not(:disabled)::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
+.input-icon {
+    transition: all 0.3s ease;
 }
 
-ion-buttons[slot="end"] ion-button:not(:disabled):hover::before {
-    left: 100%;
+.form-item:hover .input-icon {
+    transform: scale(1.05);
+}
+
+
+/* Select Option Styling */
+
+select option {
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+    padding: 0.5rem;
+    background: #ffffff;
+}
+
+
+/* Disabled State Styling */
+
+select:disabled {
+    color: #999999;
+    cursor: not-allowed;
+    background: #f5f5f5;
+}
+
+select:disabled+.select-wrapper::after {
+    color: #999999;
 }
 
 
@@ -361,14 +308,13 @@ ion-buttons[slot="end"] ion-button:not(:disabled):hover::before {
         --padding-start: 0.8rem;
         --padding-end: 0.8rem;
     }
-    .form-item[lines="none"] {
-        --padding-start: 0.8rem;
-        --padding-end: 0.8rem;
-    }
     select {
         font-size: 0.9rem !important;
-        padding: 0.9rem 0;
-        min-height: 45px;
+        padding: 0.4rem 0;
+        min-height: 35px;
+    }
+    .select-wrapper {
+        padding: 0.8rem 0;
     }
     ion-title {
         font-size: 1.1rem;
@@ -383,12 +329,6 @@ ion-buttons[slot="end"] ion-button:not(:disabled):hover::before {
     ion-buttons[slot="end"] ion-button {
         padding: 0.4rem 0.8rem;
     }
-    .form-item[lines="none"] h3 {
-        font-size: 0.95rem !important;
-    }
-    .form-item[lines="none"] p {
-        font-size: 0.85rem !important;
-    }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
@@ -400,6 +340,9 @@ ion-buttons[slot="end"] ion-button:not(:disabled):hover::before {
     }
     select {
         font-size: 1rem !important;
+        padding: 0.6rem 0;
+    }
+    .select-wrapper {
         padding: 1.1rem 0;
     }
     ion-title {
@@ -429,16 +372,6 @@ ion-buttons[slot="end"] ion-button:not(:disabled):hover::before {
 }
 
 
-/* Grid System for Form Layout */
-
-@media (min-width: 768px) {
-    .class-form {
-        display: grid;
-        gap: 1.5rem;
-    }
-}
-
-
 /* Explicit Font Sizes Enforcement */
 
 ion-content,
@@ -447,11 +380,8 @@ ion-button,
 ion-title,
 ion-label,
 select,
-option,
 button,
-span,
-h3,
-p {
+span {
     font-size: inherit !important;
     font-weight: 300 !important;
 }
@@ -461,69 +391,4 @@ p {
 
 * {
     font-size: 0.8rem !important;
-}
-
-
-/* Focus States Enhancement */
-
-select:focus {
-    background: transparent;
-}
-
-
-/* Hover State for Select */
-
-select:hover {
-    cursor: pointer;
-}
-
-
-/* Current Assignment Highlight */
-
-.form-item[lines="none"] {
-    border-left: 4px solid #a1350a;
-}
-
-
-/* Success State Animation */
-
-.form-item.valid {
-    border-color: #4caf50;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.15);
-}
-
-.form-item.valid .input-icon {
-    color: #4caf50;
-}
-
-
-/* Smooth Transitions for All Interactive Elements */
-
-.form-item,
-select,
-.input-icon,
-ion-button {
-    transition: all 0.3s ease;
-}
-
-
-/* Form Section Spacing */
-
-.class-form>* {
-    margin-bottom: 1.5rem;
-}
-
-.class-form>*:last-child {
-    margin-bottom: 0;
-}
-
-
-/* Select Dropdown Enhancement */
-
-select:required:invalid {
-    color: #999999;
-}
-
-select:focus {
-    color: #333333;
 }

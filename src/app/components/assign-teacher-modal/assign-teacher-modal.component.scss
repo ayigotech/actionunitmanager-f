@@ -1,422 +1,394 @@
-:root {
-    --spacing-unit: 1rem;
-    --max-content-width: 800px;
-    --card-border-radius: 16px;
-    --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+/* Assign Teacher to Class Page Styles */
+
+ion-content {
+    --background: #ffffff;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
 }
 
-ion-content,
-ion-card {
-    --background: #f8f9fa;
-}
 
-ion-toolbar,
-ion-header {
-    --background: linear-gradient(135deg, #008080, #00a0a0);
+/* Header Styles */
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
     --border-width: 0;
-    --min-height: 70px;
-    ion-title {
-        font-weight: 600;
-        font-size: clamp(18px, 2vw, 20px);
-        letter-spacing: 0.5px;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+}
+
+ion-title {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* Header Buttons */
+
+ion-button {
+    --color: #ffffff;
+    --background: transparent;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    --background-activated: rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+ion-icon {
+    font-size: 1.3rem;
+    color: #ffffff;
+}
+
+
+/* Save Button Styles */
+
+ion-buttons[slot="end"] ion-button {
+    --background: rgba(255, 255, 255, 0.2);
+    --background-hover: rgba(255, 255, 255, 0.3);
+    --background-activated: rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+ion-buttons[slot="end"] ion-button:disabled {
+    --background: rgba(255, 255, 255, 0.1);
+    --color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+ion-buttons[slot="end"] ion-button:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .button-content {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: clamp(8px, 1vw, 12px);
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 300;
 }
+
+
+/* Spinner Styles */
 
 ion-spinner {
-    width: clamp(16px, 1.5vw, 18px);
-    height: clamp(16px, 1.5vw, 18px);
+    --color: #ffffff;
+    width: 1rem;
+    height: 1rem;
 }
 
-ion-button[disabled] {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none !important;
-}
+
+/* Class Form Styles */
 
 .class-form {
-    max-width: var(--max-content-width);
+    max-width: 600px;
     margin: 0 auto;
-    padding: clamp(20px, 3vw, 32px);
-    background: white;
-    border-radius: var(--card-border-radius);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    transition: var(--transition-smooth);
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 16px 48px rgba(0, 128, 128, 0.12), 0 4px 16px rgba(0, 0, 0, 0.08);
-    }
+    padding: 1rem 0;
 }
 
-.form-item2 {
-    --background: transparent;
-    --border-color: #e0e0e0;
-    --padding-start: 0;
+
+/* Form Items */
+
+.form-item {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --padding-start: 1rem;
+    --padding-end: 1rem;
     --inner-padding-end: 0;
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-    transition: var(--transition-smooth);
-    position: relative;
-    &:focus-within {
-        --border-color: #008080;
-        transform: translateY(-2px);
-        .input-icon {
-            color: #006666;
-            transform: scale(1.1);
-        }
-        .custom-input2 {
-            border-bottom-color: #006666;
-            background: rgba(0, 128, 128, 0.03);
-        }
-    }
-    &.invalid {
-        .input-icon {
-            color: #ef4444;
-        }
-        .custom-input2 {
-            border-bottom-color: #ef4444;
-            background: rgba(239, 68, 68, 0.03);
-        }
-    }
-    &.valid {
-        .input-icon {
-            color: #10b981;
-        }
-        .custom-input2 {
-            border-bottom-color: #10b981;
-            background: rgba(16, 185, 129, 0.03);
-        }
-    }
+    margin-bottom: 1.5rem;
+    border: 1.5px solid #e0e0e0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: #ffffff;
 }
+
+.form-item:hover {
+    border-color: #1a6b6e;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-item:focus-within {
+    border-color: #0f4446;
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.15);
+    transform: translateY(-2px);
+    animation: gentleBounce 0.5s ease;
+}
+
+
+/* Input Icons */
 
 .input-icon {
-    color: #008080;
-    font-size: clamp(1.2rem, 1.5vw, 1.3rem);
-    margin-right: clamp(12px, 1.5vw, 16px);
-    transition: var(--transition-smooth);
+    font-size: 1.3rem !important;
+    color: #0f4446;
+    margin-right: 0.5rem;
+    transition: all 0.3s ease;
 }
 
-.custom-input2 {
-    width: 100%;
-    border: none;
-    outline: none;
-    border-bottom: 2px solid #e5e7eb;
-    background: transparent;
-    color: #1f2937;
-    font-size: clamp(16px, 1.5vw, 18px);
-    padding: clamp(10px, 1.2vw, 12px);
-    transition: var(--transition-smooth);
-    border-radius: 4px 4px 0 0;
-    &:focus {
-        border-bottom-color: #008080;
-        background: rgba(0, 128, 128, 0.02);
-        box-shadow: 0 2px 8px rgba(0, 128, 128, 0.1), inset 0 1px 2px rgba(255, 255, 255, 0.8);
-    }
-    &:hover:not(:focus) {
-        border-bottom-color: #9ca3af;
-        background: rgba(0, 128, 128, 0.01);
-    }
-    &::placeholder {
-        color: #9ca3af;
-        font-weight: 400;
-    }
+.form-item:focus-within .input-icon {
+    color: #1a6b6e;
+    transform: scale(1.1);
 }
 
 
-/* Enhanced Wrapper for custom select */
+/* Select Wrapper */
 
 .select-wrapper {
-    position: relative;
     width: 100%;
-    margin: clamp(12px, 1.5vw, 16px) 0;
-    transition: var(--transition-smooth);
-    color: #1f2937;
-    &:hover {
-        transform: translateY(-2px);
-    }
-    &:focus-within {
-        transform: translateY(-2px);
-        .select-label {
-            color: #008080;
-        }
-        select {
-            border-color: #008080;
-            box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1), 0 4px 12px rgba(0, 128, 128, 0.15);
-            background: rgba(0, 128, 128, 0.02);
-        }
-        &::after {
-            color: #008080;
-            transform: translateY(-50%) rotate(180deg);
-        }
-    }
-    &.invalid {
-        .select-label {
-            color: #ef4444;
-        }
-        select {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.02);
-        }
-    }
-    &.valid {
-        .select-label {
-            color: #10b981;
-        }
-        select {
-            border-color: #10b981;
-            background: rgba(16, 185, 129, 0.02);
-        }
-    }
+    position: relative;
+    padding: 1rem 0;
 }
 
-
-/* Enhanced Label styling */
-
-.select-label {
+.select-wrapper label {
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: #666666;
+    margin-bottom: 0.5rem;
     display: block;
-    margin-bottom: clamp(6px, 0.8vw, 8px);
-    font-weight: 600;
-    color: #374151;
-    font-size: clamp(14px, 1.2vw, 16px);
-    transition: var(--transition-smooth);
 }
-
-
-/* Enhanced Style the select box */
 
 select {
     width: 100%;
-    padding: clamp(12px, 1.5vw, 14px) clamp(40px, 4vw, 48px) clamp(12px, 1.5vw, 14px) clamp(12px, 1.5vw, 14px);
-    border: 2px solid #e5e7eb;
-    border-radius: var(--card-border-radius);
-    font-size: clamp(16px, 1.5vw, 18px);
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0.5rem 0;
+    font-size: 0.95rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+    min-height: 40px;
     appearance: none;
-    background-color: transparent;
-    color: #1f2937;
-    transition: var(--transition-smooth);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.08);
     cursor: pointer;
-    background-image: linear-gradient(45deg, transparent 50%, #6b7280 50%), linear-gradient(135deg, #6b7280 50%, transparent 50%);
-    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px);
-    background-size: 5px 5px, 5px 5px;
-    background-repeat: no-repeat;
-    /* Focus effect */
-    &:focus {
-        border-color: #008080;
-        box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.1), 0 4px 12px rgba(0, 128, 128, 0.15);
-        outline: none;
-        background: rgba(0, 128, 128, 0.02);
-        color: #1f2937;
-    }
-    /* Hover effect */
-    &:hover:not(:focus) {
-        border-color: #9ca3af;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.12);
-        background: rgba(0, 128, 128, 0.01);
-    }
-    /* Disabled state */
-    &:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-        background-color: #f3f4f6;
-        border-color: #d1d5db;
-        color: #6b7280;
-    }
 }
-
-
-/* Custom dropdown arrow enhancement */
 
 .select-wrapper::after {
+    content: '⌄';
     position: absolute;
-    right: clamp(12px, 1.5vw, 16px);
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #0f4446;
     pointer-events: none;
-    color: #6b7280;
-    font-size: clamp(12px, 1.1vw, 13px);
-    transition: var(--transition-smooth);
-    z-index: 2;
+}
+
+.form-item:focus-within .select-wrapper::after {
+    color: #1a6b6e;
 }
 
 
-/* Enhanced option styling */
+/* Form Control Styles */
+
+.form-control {
+    width: 100%;
+}
+
+
+/* Hidden Submit Button */
+
+.d-none {
+    display: none !important;
+}
+
+
+/* Animations */
+
+@keyframes gentleBounce {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Form Entry Animation */
+
+.class-form {
+    animation: slideIn 0.5s ease;
+}
+
+
+/* Focus States Enhancement */
+
+select:focus {
+    background: transparent;
+}
+
+
+/* Button Hover Effects */
+
+ion-button:hover {
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+
+/* Loading State Animation */
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.button-content:has(ion-spinner) {
+    animation: pulse 1.5s infinite;
+}
+
+
+/* Icon Hover Effects */
+
+.input-icon {
+    transition: all 0.3s ease;
+}
+
+.form-item:hover .input-icon {
+    transform: scale(1.05);
+}
+
+
+/* Select Option Styling */
 
 select option {
-    padding: clamp(12px, 1.5vw, 14px);
-    font-size: clamp(14px, 1.2vw, 16px);
-    color: #1f2937;
-    background: white;
-    border: none;
-    transition: var(--transition-smooth);
-    &:hover {
-        background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
-        color: #008080;
-    }
-    &:checked {
-        background: linear-gradient(135deg, #008080, #00a0a0);
-        color: white;
-        font-weight: 600;
-    }
-    &:focus {
-        background: #f0fdfa;
-        color: #008080;
-    }
+    font-size: 0.9rem !important;
+    font-weight: 300 !important;
+    color: #333333;
+    padding: 0.5rem;
+    background: #ffffff;
 }
 
 
-/* Form actions section */
+/* Disabled State Styling */
 
-.form-actions {
-    display: flex;
-    gap: clamp(12px, 1.5vw, 16px);
-    justify-content: flex-end;
-    margin-top: clamp(24px, 3vw, 32px);
-    padding-top: clamp(20px, 2.5vw, 28px);
-    border-top: 1px solid #f3f4f6;
-    &.center {
-        justify-content: center;
-    }
-    &.space-between {
-        justify-content: space-between;
-    }
-    ion-button {
-        --border-radius: #{clamp(12px, 1.5vw, 16px)};
-        --padding-start: #{clamp(20px, 2.5vw, 24px)};
-        --padding-end: #{clamp(20px, 2.5vw, 24px)};
-        height: clamp(48px, 5vw, 52px);
-        font-size: clamp(16px, 1.5vw, 18px);
-        font-weight: 600;
-        transition: var(--transition-smooth);
-        &:hover:not([disabled]) {
-            transform: translateY(-2px);
-        }
-        &.submit-btn {
-            --background: linear-gradient(135deg, #008080, #00a0a0);
-            --box-shadow: 0 4px 16px rgba(0, 128, 128, 0.3);
-            &:hover:not([disabled]) {
-                --background: linear-gradient(135deg, #006666, #008080);
-                --box-shadow: 0 8px 25px rgba(0, 102, 102, 0.4);
-            }
-        }
-        &.cancel-btn {
-            --background: #f3f4f6;
-            --color: #6b7280;
-            --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-            &:hover:not([disabled]) {
-                --background: #e5e7eb;
-                --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-            }
-        }
-    }
+select:disabled {
+    color: #999999;
+    cursor: not-allowed;
+    background: #f5f5f5;
 }
 
-
-/* Validation messages */
-
-.validation-message {
-    font-size: clamp(12px, 1.1vw, 13px);
-    margin-top: clamp(6px, 0.8vw, 8px);
-    padding: clamp(6px, 0.8vw, 8px) clamp(8px, 1vw, 10px);
-    border-radius: clamp(6px, 0.8vw, 8px);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: clamp(6px, 0.8vw, 8px);
-    &.invalid {
-        color: #dc2626;
-        background: rgba(239, 68, 68, 0.08);
-        border: 1px solid rgba(239, 68, 68, 0.2);
-        &::before {
-            content: '⚠';
-            font-size: clamp(14px, 1.3vw, 15px);
-        }
-    }
-    &.valid {
-        color: #059669;
-        background: rgba(16, 185, 129, 0.08);
-        border: 1px solid rgba(16, 185, 129, 0.2);
-        &::before {
-            content: '✓';
-            font-size: clamp(14px, 1.3vw, 15px);
-            font-weight: bold;
-        }
-    }
+select:disabled+.select-wrapper::after {
+    color: #999999;
 }
 
 
 /* Responsive Design */
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
     .class-form {
-        padding: 16px;
-        margin: 16px;
+        padding: 0.5rem 0;
     }
-    .form-actions {
-        flex-direction: column;
-        ion-button {
-            width: 100%;
-        }
+    .form-item {
+        margin-bottom: 1.2rem;
+        --padding-start: 0.8rem;
+        --padding-end: 0.8rem;
+    }
+    select {
+        font-size: 0.9rem !important;
+        padding: 0.4rem 0;
+        min-height: 35px;
+    }
+    .select-wrapper {
+        padding: 0.8rem 0;
+    }
+    ion-title {
+        font-size: 1.1rem;
+    }
+    .button-content {
+        font-size: 0.85rem;
+    }
+    .input-icon {
+        font-size: 1.2rem !important;
+        margin-right: 0.4rem;
+    }
+    ion-buttons[slot="end"] ion-button {
+        padding: 0.4rem 0.8rem;
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .class-form {
-        padding: 32px 40px;
-        margin: 32px auto;
+        padding: 1.5rem 0;
+    }
+    .form-item {
+        margin-bottom: 1.8rem;
+    }
+    select {
+        font-size: 1rem !important;
+        padding: 0.6rem 0;
+    }
+    .select-wrapper {
+        padding: 1.1rem 0;
+    }
+    ion-title {
+        font-size: 1.3rem;
+    }
+    .button-content {
+        font-size: 0.95rem;
     }
 }
 
-
-/* Touch device optimizations */
-
-@media (hover: none) and (pointer: coarse) {
-    .class-form:hover,
-    .form-item2:hover,
-    .select-wrapper:hover {
-        transform: none;
-    }
-    select:hover:not(:focus) {
-        border-color: #e5e7eb;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-        background: transparent;
-    }
-    ion-button:hover:not([disabled]) {
-        transform: none;
-    }
-}
-
-
-/* High-density displays */
-
-@media (min-resolution: 192dpi) {
+@media (min-width: 769px) {
     .class-form {
-        border-width: 0.5px;
+        padding: 2rem 0;
+    }
+    .form-item {
+        margin-bottom: 2rem;
+    }
+    select {
+        font-size: 1rem !important;
+    }
+    ion-title {
+        font-size: 1.4rem;
+    }
+    .button-content {
+        font-size: 1rem;
     }
 }
 
 
-/* Reduced motion support */
+/* Explicit Font Sizes Enforcement */
 
-@media (prefers-reduced-motion: reduce) {
-    .class-form,
-    .form-item2,
-    .input-icon,
-    .custom-input2,
-    .select-wrapper,
-    select,
-    ion-button,
-    .select-label {
-        transition: none;
-    }
-    .select-wrapper::after {
-        transition: none;
-    }
+ion-content,
+ion-item,
+ion-button,
+ion-title,
+ion-label,
+select,
+button,
+span {
+    font-size: inherit !important;
+    font-weight: 300 !important;
+}
+
+
+/* Ensure minimum font size */
+
+* {
+    font-size: 0.8rem !important;
 }

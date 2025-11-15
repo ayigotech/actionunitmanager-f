@@ -124,6 +124,11 @@
 
 /* Orders List Styles */
 
+ion-card {
+    margin: 24px;
+    --margin: 24px;
+}
+
 .orders-card {
     background: linear-gradient(135deg, #ffffff 0%, #f8fdfd 100%);
     border-radius: 12px;

@@ -1,4 +1,4 @@
-/* Teacher Form Content Styles */
+/* Add/Edit Teacher Page Styles */
 
 ion-content {
     --background: #ffffff;
@@ -12,7 +12,7 @@ ion-content {
 /* Header Styles */
 
 ion-toolbar {
-    --background: linear-gradient(135deg, #a1350a 0%, #b88115 100%);
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     --color: #ffffff;
     --border-width: 0;
 }
@@ -34,11 +34,6 @@ ion-button {
     --background-activated: rgba(255, 255, 255, 0.2);
     font-size: 0.9rem;
     font-weight: 300;
-    transition: all 0.3s ease;
-}
-
-ion-button:hover {
-    transform: translateY(-1px);
 }
 
 ion-icon {
@@ -47,7 +42,7 @@ ion-icon {
 }
 
 
-/* Save Button */
+/* Save Button Styles */
 
 ion-buttons[slot="end"] ion-button {
     --background: rgba(255, 255, 255, 0.2);
@@ -56,23 +51,28 @@ ion-buttons[slot="end"] ion-button {
     border-radius: 8px;
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 300;
+    transition: all 0.3s ease;
 }
 
-ion-buttons[slot="end"] ion-button:hover {
+ion-buttons[slot="end"] ion-button:disabled {
+    --background: rgba(255, 255, 255, 0.1);
+    --color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+ion-buttons[slot="end"] ion-button:not(:disabled):hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 
-/* Teacher Form Styles */
+/* Class Form Styles */
 
 .class-form {
     max-width: 600px;
     margin: 0 auto;
     padding: 1rem 0;
-    animation: slideIn 0.5s ease;
 }
 
 
@@ -92,14 +92,14 @@ ion-buttons[slot="end"] ion-button:hover {
 }
 
 .form-item:hover {
-    border-color: #b88115;
+    border-color: #1a6b6e;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .form-item:focus-within {
-    border-color: #a1350a;
-    box-shadow: 0 4px 15px rgba(161, 53, 10, 0.15);
+    border-color: #0f4446;
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.15);
     transform: translateY(-2px);
     animation: gentleBounce 0.5s ease;
 }
@@ -109,18 +109,14 @@ ion-buttons[slot="end"] ion-button:hover {
 
 .input-icon {
     font-size: 1.3rem !important;
-    color: #a1350a;
+    color: #0f4446;
     margin-right: 0.5rem;
     transition: all 0.3s ease;
 }
 
 .form-item:focus-within .input-icon {
-    color: #b88115;
+    color: #1a6b6e;
     transform: scale(1.1);
-}
-
-.form-item:hover .input-icon {
-    transform: scale(1.05);
 }
 
 
@@ -136,23 +132,16 @@ ion-buttons[slot="end"] ion-button:hover {
     font-weight: 300 !important;
     color: #333333;
     min-height: 50px;
-    transition: all 0.3s ease;
 }
 
 .form-input::placeholder {
     color: #999999;
     font-size: 0.9rem !important;
     font-weight: 300 !important;
-    transition: all 0.3s ease;
 }
 
 .form-input:focus {
     color: #333333;
-}
-
-.form-input:focus::placeholder {
-    transform: translateX(5px);
-    opacity: 0.7;
 }
 
 
@@ -163,25 +152,17 @@ ion-buttons[slot="end"] ion-button:hover {
 }
 
 
-/* Input Type Specific Styling */
-
-input[type="tel"] {
-    letter-spacing: 0.05em;
-}
-
-input[type="email"] {
-    text-transform: lowercase;
-}
-
-
-/* Hidden Submit Button */
-
-button[type="submit"] {
-    display: none !important;
-}
-
-
 /* Animations */
+
+@keyframes gentleBounce {
+    0%,
+    100% {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
 
 @keyframes slideIn {
     from {
@@ -194,26 +175,11 @@ button[type="submit"] {
     }
 }
 
-@keyframes gentleBounce {
-    0%,
-    100% {
-        transform: translateY(-2px);
-    }
-    50% {
-        transform: translateY(-3px);
-    }
-}
 
-@keyframes iconPulse {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        transform: scale(1);
-    }
+/* Form Entry Animation */
+
+.class-form {
+    animation: slideIn 0.5s ease;
 }
 
 
@@ -222,12 +188,10 @@ button[type="submit"] {
 .form-item.invalid {
     border-color: #e53935;
     box-shadow: 0 4px 15px rgba(229, 57, 53, 0.15);
-    animation: shake 0.5s ease;
 }
 
 .form-item.invalid .input-icon {
     color: #e53935;
-    animation: iconPulse 0.5s ease;
 }
 
 .form-item.invalid .form-input {
@@ -239,31 +203,42 @@ button[type="submit"] {
     opacity: 0.7;
 }
 
-@keyframes shake {
-    0%,
-    100% {
-        transform: translateX(0);
-    }
-    25% {
-        transform: translateX(-3px);
-    }
-    75% {
-        transform: translateX(3px);
-    }
-}
 
-
-/* Focus Effects */
+/* Focus States Enhancement */
 
 .form-input:focus {
     background: transparent;
 }
 
 
-/* Placeholder Animation Enhancement */
+/* Placeholder Animation */
 
 .form-input::placeholder {
     transition: all 0.3s ease;
+}
+
+.form-input:focus::placeholder {
+    transform: translateX(5px);
+    opacity: 0.7;
+}
+
+
+/* Button Hover Effects */
+
+ion-button:hover {
+    transform: translateY(-1px);
+    transition: all 0.3s ease;
+}
+
+
+/* Icon Hover Effects */
+
+.input-icon {
+    transition: all 0.3s ease;
+}
+
+.form-item:hover .input-icon {
+    transform: scale(1.05);
 }
 
 
@@ -286,13 +261,15 @@ button[type="submit"] {
     ion-title {
         font-size: 1.1rem;
     }
+    ion-button {
+        font-size: 0.85rem !important;
+    }
     .input-icon {
         font-size: 1.2rem !important;
         margin-right: 0.4rem;
     }
     ion-buttons[slot="end"] ion-button {
         padding: 0.4rem 0.8rem;
-        font-size: 0.85rem;
     }
 }
 
@@ -310,8 +287,8 @@ button[type="submit"] {
     ion-title {
         font-size: 1.3rem;
     }
-    ion-buttons[slot="end"] ion-button {
-        font-size: 0.95rem;
+    ion-button {
+        font-size: 0.95rem !important;
     }
 }
 
@@ -328,18 +305,8 @@ button[type="submit"] {
     ion-title {
         font-size: 1.4rem;
     }
-    ion-buttons[slot="end"] ion-button {
-        font-size: 1rem;
-    }
-}
-
-
-/* Grid System for Form Layout */
-
-@media (min-width: 768px) {
-    .class-form {
-        display: grid;
-        gap: 1.5rem;
+    ion-button {
+        font-size: 1rem !important;
     }
 }
 
@@ -362,97 +329,4 @@ span {
 
 * {
     font-size: 0.8rem !important;
-}
-
-
-/* Icon Color Variations Based on Input Type */
-
-.form-item:has(input[type="tel"]) .input-icon {
-    color: #a1350a;
-}
-
-.form-item:has(input[type="email"]) .input-icon {
-    color: #a1350a;
-}
-
-.form-item:has(input[type="text"]) .input-icon {
-    color: #a1350a;
-}
-
-
-/* Hover State Enhancements */
-
-.form-item:hover .input-icon {
-    animation: iconPulse 0.3s ease;
-}
-
-
-/* Loading State for Form */
-
-.class-form:disabled {
-    opacity: 0.7;
-    pointer-events: none;
-}
-
-
-/* Success State Animation */
-
-.form-item.valid {
-    border-color: #4caf50;
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.15);
-}
-
-.form-item.valid .input-icon {
-    color: #4caf50;
-}
-
-
-/* Focus Ring Removal for Better Aesthetics */
-
-.form-input:focus {
-    box-shadow: none;
-}
-
-
-/* Smooth Transitions for All Interactive Elements */
-
-.form-item,
-.form-input,
-.input-icon,
-ion-button {
-    transition: all 0.3s ease;
-}
-
-
-/* Enhanced Button States */
-
-ion-button[strong="true"] {
-    position: relative;
-    overflow: hidden;
-}
-
-ion-button[strong="true"]::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.5s;
-}
-
-ion-button[strong="true"]:hover::before {
-    left: 100%;
-}
-
-
-/* Form Section Spacing */
-
-.class-form>* {
-    margin-bottom: 1.5rem;
-}
-
-.class-form>*:last-child {
-    margin-bottom: 0;
 }
