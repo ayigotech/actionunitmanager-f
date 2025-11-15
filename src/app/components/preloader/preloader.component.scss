@@ -1,4 +1,4 @@
-/* Preloader Component Styles */
+/* Preloader Content Styles */
 
 .preloader-content {
     --background: #ffffff;
@@ -13,6 +13,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
     min-height: 100vh;
     padding: 40px 20px;
     background: #ffffff;
@@ -26,7 +27,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
-    text-align: center;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .logo-wrapper {
@@ -35,24 +36,23 @@
 }
 
 .logo-circle {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
+    background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 8px 25px rgba(15, 68, 70, 0.3);
     position: relative;
     z-index: 2;
-    animation: logoBounce 3s ease-in-out infinite;
-    box-shadow: 0 8px 30px rgba(15, 68, 70, 0.3);
-    border: 3px solid #ffffff;
+    animation: bounce 2s ease-in-out infinite;
 }
 
 .logo-icon {
-    font-size: 3rem;
+    font-size: 2.5rem;
     color: #ffffff;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .logo-pulse {
@@ -60,13 +60,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 140px;
-    height: 140px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
-    opacity: 0.3;
+    border: 2px solid #0f4446;
+    animation: pulse 2s ease-out infinite;
     z-index: 1;
-    animation: pulse 2s ease-in-out infinite;
 }
 
 .app-name {
@@ -76,31 +75,29 @@
     margin: 0;
     text-align: center;
     letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 2px 4px rgba(15, 68, 70, 0.1);
+    animation: fadeIn 1s ease-out 0.3s both;
 }
 
 .app-tagline {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: #666666;
+    color: #5d2a08;
     margin: 8px 0 0 0;
     text-align: center;
+    opacity: 0.8;
+    animation: fadeIn 1s ease-out 0.5s both;
 }
 
 
-/* Enhanced Loading Animation */
+/* Enhanced Loading Section */
 
 .loading-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px 0;
     width: 100%;
     max-width: 300px;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .progress-container {
@@ -119,140 +116,156 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #0f4446 0%, #5d2a08 100%);
+    background: linear-gradient(90deg, #0f4446 0%, #1a6b6e 50%, #5d2a08 100%);
     border-radius: 3px;
     width: 0%;
     animation: loadingProgress 2s ease-in-out infinite;
-    box-shadow: 0 0 10px rgba(15, 68, 70, 0.4);
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 1.5s ease-in-out infinite;
 }
 
 .loading-text {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: #666666;
-    text-align: center;
+    color: #0f4446;
     margin: 0;
-    animation: textPulse 1.5s ease-in-out infinite;
+    text-align: center;
+    animation: pulseText 2s ease-in-out infinite;
 }
 
 
 /* Image Container */
 
 .image-container {
-    flex-grow: 1;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100px;
+    width: 100%;
     margin: 20px 0;
+    animation: fadeIn 1s ease-out 0.7s both;
 }
 
 
 /* Professional Footer */
 
 .powered-by {
-    margin-top: auto;
-    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    animation: fadeInUp 0.8s ease-out 0.9s both;
 }
 
 .company-logo {
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 8px;
-    font-size: 0.85rem;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-radius: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    font-size: 0.9rem;
     font-weight: 300;
-    color: #666666;
-    padding: 12px 24px;
-    background: #f8f9fa;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    color: #5d2a08;
     transition: all 0.3s ease;
 }
 
 .company-logo:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    box-shadow: 0 6px 20px rgba(93, 42, 8, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 }
 
 .company-logo span:first-child {
     font-size: 1.1rem;
-    animation: subtleBounce 2s ease-in-out infinite;
+    animation: bounce 2s ease-in-out infinite;
 }
 
 
 /* Animations */
 
-@keyframes logoBounce {
+@keyframes bounce {
     0%,
     100% {
-        transform: scale(1) rotate(0deg);
-        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
-    }
-    25% {
-        transform: scale(1.05) rotate(5deg);
-        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
+        transform: translateY(0);
     }
     50% {
-        transform: scale(1.1) rotate(0deg);
-        background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
-    }
-    75% {
-        transform: scale(1.05) rotate(-5deg);
-        background: linear-gradient(135deg, #5d2a08 0%, #0f4446 50%, #5d2a08 100%);
+        transform: translateY(-10px);
     }
 }
 
 @keyframes pulse {
     0% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 0.3;
-    }
-    50% {
-        transform: translate(-50%, -50%) scale(1.1);
-        opacity: 0.2;
+        opacity: 1;
     }
     100% {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 0.3;
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0;
     }
 }
 
 @keyframes loadingProgress {
     0% {
         width: 0%;
-        transform: translateX(-100%);
     }
     50% {
-        width: 60%;
-        transform: translateX(0%);
+        width: 70%;
     }
     100% {
         width: 100%;
-        transform: translateX(0%);
     }
 }
 
-@keyframes textPulse {
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseText {
     0%,
     100% {
         opacity: 1;
-        transform: scale(1);
     }
     50% {
         opacity: 0.7;
-        transform: scale(0.98);
-    }
-}
-
-@keyframes subtleBounce {
-    0%,
-    100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
     }
 }
 
@@ -264,21 +277,21 @@
         padding: 30px 16px;
     }
     .logo-circle {
+        width: 80px;
+        height: 80px;
+    }
+    .logo-icon {
+        font-size: 2rem;
+    }
+    .logo-pulse {
         width: 100px;
         height: 100px;
     }
-    .logo-icon {
-        font-size: 2.5rem;
-    }
-    .logo-pulse {
-        width: 120px;
-        height: 120px;
-    }
     .app-name {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
     }
     .loading-section {
-        max-width: 280px;
+        max-width: 250px;
     }
 }
 
@@ -287,18 +300,11 @@
         padding: 50px 30px;
     }
     .logo-circle {
-        width: 140px;
-        height: 140px;
+        width: 90px;
+        height: 90px;
     }
     .logo-icon {
-        font-size: 3.5rem;
-    }
-    .logo-pulse {
-        width: 160px;
-        height: 160px;
-    }
-    .app-name {
-        font-size: 1.75rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -307,63 +313,33 @@
         padding: 60px 40px;
     }
     .logo-circle {
-        width: 160px;
-        height: 160px;
+        width: 120px;
+        height: 120px;
     }
     .logo-icon {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     .logo-pulse {
-        width: 180px;
-        height: 180px;
-    }
-    .app-name {
-        font-size: 2rem;
+        width: 140px;
+        height: 140px;
     }
 }
 
 
-/* Utility Classes for Ionic Padding */
+/* Utility Classes */
 
 .pt-5 {
-    padding-top: 3rem;
+    padding-top: 3rem !important;
 }
 
 .mb-4 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem !important;
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
 
-
-/* Ensure proper contrast and accessibility */
-
-@media (prefers-reduced-motion: reduce) {
-    .logo-circle,
-    .logo-pulse,
-    .progress-fill,
-    .loading-text,
-    .company-logo span:first-child {
-        animation: none;
-    }
-    .logo-circle {
-        animation: logoBounce 6s ease-in-out infinite;
-    }
-}
-
-
-/* High contrast mode support */
-
-@media (prefers-contrast: high) {
-    .logo-circle {
-        border: 4px solid #ffffff;
-    }
-    .progress-bar {
-        border: 1px solid #333333;
-    }
-    .company-logo {
-        border: 1px solid #666666;
-    }
+.text-danger {
+    color: #5d2a08 !important;
 }

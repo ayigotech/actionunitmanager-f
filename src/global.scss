@@ -1,27 +1,15 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
-
 /* Basic global styles */
 
 :root {
-    /* Base font sizes for different screen sizes - minimum 0.85rem */
-    --font-size-xs: 0.8rem;
-    --font-size-sm: 0.85rem;
-    --font-size-base: 0.9rem;
-    --font-size-lg: 1rem;
-    --font-size-xl: 1.1rem;
-    --font-size-2xl: 1.25rem;
+    /* Base font sizes for different screen sizes - decreased by ~1px */
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-base: 15px;
+    --font-size-lg: 17px;
+    --font-size-xl: 19px;
+    --font-size-2xl: 23px;
     /* Mobile first - smaller fonts */
-    font-size: 0.85rem;
+    font-size: 14px;
     --font-weight: 300;
     font-weight: 300;
 }
@@ -31,9 +19,22 @@
 
 * {
     font-size: inherit;
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+/* Minimum font size enforcement */
+
+body {
+    font-size: 0.85rem;
+    font-weight: 300;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -41,7 +42,7 @@
 
 @media (max-width: 480px) {
      :root {
-        font-size: 0.85rem;
+        font-size: 13px;
     }
 }
 
@@ -50,7 +51,7 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
      :root {
-        font-size: 0.9rem;
+        font-size: 14px;
     }
 }
 
@@ -59,7 +60,7 @@
 
 @media (min-width: 769px) and (max-width: 1024px) {
      :root {
-        font-size: 0.95rem;
+        font-size: 15px;
     }
 }
 
@@ -68,46 +69,13 @@
 
 @media (min-width: 1025px) {
      :root {
-        font-size: 1rem;
+        font-size: 16px;
     }
 }
 
-
-/* Core CSS required for Ionic components to work properly */
-
-@import "@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
-
-/* Optional CSS utils that can be commented out */
-
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
-
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-
-
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-
 @import '@ionic/angular/css/palettes/dark.system.css';
 
-/* Custom Global Styles */
+/* Ionic Component Overrides */
 
 ion-modal {
     z-index: 99999 !important;
@@ -126,26 +94,13 @@ ion-content {
     --background: #ffffff;
 }
 
-
-/* Header with new theme gradient */
-
-ion-toolbar,
-ion-header {
-    --background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
-    --color: #ffffff;
-    --border-color: #0d3c3e;
-}
-
-
-/* Card and item backgrounds */
-
 ion-refresher,
 ion-refresher-content,
 ion-card,
 ion-item,
 ion-item-group,
 ion-segment {
-    --background: #ffffff;
+    --background: #f8f9fa;
 }
 
 ion-item-divider {
@@ -153,231 +108,231 @@ ion-item-divider {
 }
 
 
-/* Input styles with explicit font sizes */
+/* Header with swapped colors - now using #0f4446 as primary */
 
-ion-input,
-ion-textarea,
-ion-select,
-ion-searchbar {
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
-}
-
-ion-input::part(input),
-ion-textarea::part(textarea),
-ion-select::part(text) {
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
+ion-toolbar,
+ion-header {
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
 }
 
 
-/* Logo bouncing effects */
+/* Logo bouncing effect */
 
 .app-logo,
-.logo-container,
+.logo,
 [class*="logo"] {
-    animation: logoBounce 3s ease-in-out infinite;
-    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 50%, #0f4446 100%);
-    background-size: 200% 200%;
-    border-radius: 12px;
+    animation: bounce 2s ease-in-out infinite;
+    display: inline-block;
 }
 
-@keyframes logoBounce {
+@keyframes bounce {
     0%,
     100% {
-        transform: scale(1);
-        background-position: 0% 50%;
-    }
-    25% {
-        transform: scale(1.05);
-        background-position: 50% 50%;
+        transform: translateY(0);
     }
     50% {
-        transform: scale(1.1);
-        background-position: 100% 50%;
-    }
-    75% {
-        transform: scale(1.05);
-        background-position: 50% 50%;
+        transform: translateY(-8px);
     }
 }
 
 
-/* Professional hover effects */
-
-ion-card,
-.clickable-item,
-[tappable] {
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-ion-card:hover,
-.clickable-item:hover,
-[tappable]:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(15, 68, 70, 0.15);
-}
-
-
-/* Button hover effects */
-
-ion-button {
-    transition: all 0.3s ease;
-}
-
-ion-button:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.3);
-}
-
-
-/* Grid system for responsiveness */
-
-.responsive-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    padding: 16px;
-}
-
-
-/* Tablet */
-
-@media (min-width: 481px) and (max-width: 768px) {
-    .responsive-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-}
-
-
-/* Desktop */
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .responsive-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-}
-
-
-/* Large Desktop */
-
-@media (min-width: 1025px) {
-    .responsive-grid {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 24px;
-    }
-}
-
-
-/* Typography hierarchy */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 300;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.2;
-    color: #0f4446;
-}
-
-h1 {
-    font-size: 1.5rem;
-}
-
-h2 {
-    font-size: 1.35rem;
-}
-
-h3 {
-    font-size: 1.2rem;
-}
-
-h4 {
-    font-size: 1.1rem;
-}
-
-h5 {
-    font-size: 1rem;
-}
-
-h6 {
-    font-size: 0.9rem;
-}
-
-p,
-span,
-div {
-    font-size: 0.85rem;
-    font-weight: 300;
-    line-height: 1.5;
-}
-
-small,
-.text-small {
-    font-size: 0.8rem;
-    font-weight: 300;
-}
-
-
-/* Form elements with explicit styling */
+/* Input styles with explicit font sizes */
 
 input,
 textarea,
 select {
-    font-size: 0.85rem !important;
+    font-size: 0.9rem !important;
     font-weight: 300 !important;
-    background: #ffffff !important;
-    border: 1px solid #e0e0e0 !important;
-    border-radius: 8px !important;
-    padding: 8px 12px !important;
+    min-height: 44px;
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #ffffff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #0f4446;
+    box-shadow: 0 0 0 2px rgba(15, 68, 70, 0.1);
 }
 
 
-/* Custom scrollbar */
+/* Button styles */
 
-::-webkit-scrollbar {
-    width: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #0f4446 0%, #5d2a08 100%);
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #5d2a08 0%, #0f4446 100%);
+ion-button,
+button {
+    font-weight: 300 !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease;
 }
 
 
-/* Loading and spinner customization */
+/* Hover effects */
 
-ion-loading,
-ion-spinner {
-    --spinner-color: #0f4446;
+ion-card:hover,
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+ion-item:hover {
+    --background: #f0f0f0;
+    transition: background-color 0.3s ease;
 }
 
 
-/* Toast customization */
+/* Grid system - minimum 2 columns */
 
-ion-toast {
-    --background: #0f4446;
-    --color: #ffffff;
-    --button-color: #ffffff;
+.grid-2-col {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    padding: 16px;
 }
 
 
-/* Alert customization */
+/* Professional gradient backgrounds */
 
-ion-alert {
-    --background: #ffffff;
-    --color: #333333;
+.gradient-bg-primary {
+    background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%) !important;
+}
+
+.gradient-bg-secondary {
+    background: linear-gradient(135deg, #5d2a08 0%, #8a3e12 100%) !important;
+}
+
+.gradient-bg-accent {
+    background: linear-gradient(135deg, #1a6b6e 0%, #5d2a08 100%) !important;
+}
+
+
+/* Text colors */
+
+.text-primary {
+    color: #0f4446 !important;
+}
+
+.text-secondary {
+    color: #5d2a08 !important;
+}
+
+.text-white {
+    color: #ffffff !important;
+}
+
+
+/* Background colors */
+
+.bg-primary {
+    background-color: #0f4446 !important;
+}
+
+.bg-secondary {
+    background-color: #5d2a08 !important;
+}
+
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+
+/* Responsive typography */
+
+h1,
+.h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+}
+
+h2,
+.h2 {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 0.875rem;
+}
+
+h3,
+.h3 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+}
+
+h4,
+.h4 {
+    font-size: 1.1rem;
+    font-weight: 300;
+    margin-bottom: 0.625rem;
+}
+
+p,
+.p {
+    font-size: 0.95rem;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+}
+
+.small-text {
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+
+/* Utility classes for spacing and layout */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.padding-sm {
+    padding: 8px;
+}
+
+.padding-md {
+    padding: 16px;
+}
+
+.padding-lg {
+    padding: 24px;
+}
+
+.margin-sm {
+    margin: 8px;
+}
+
+.margin-md {
+    margin: 16px;
+}
+
+.margin-lg {
+    margin: 24px;
+}
+
+
+/* Mobile-first responsive adjustments */
+
+@media (max-width: 768px) {
+    .grid-2-col {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+    }
+    .container {
+        padding: 0 12px;
+    }
+}
+
+
+/* Smooth transitions for all interactive elements */
+
+* {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
