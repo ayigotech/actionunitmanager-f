@@ -1,337 +1,508 @@
-:root {
-    --font-scale-mobile: 13px;
-    --font-scale-tablet: 14px;
-    --font-scale-desktop: 15px;
-    --font-scale-large: 16px;
-    --spacing-unit: 1rem;
-    --max-content-width: 1200px;
-}
-
-ion-content {
-    --background: #f8f9fa;
-}
+/* Manage Teachers Styles */
 
 .teachers-container {
-    padding: clamp(16px, 3vw, 32px);
-    background: #f8f9fa;
+    padding: 16px;
+    background: #ffffff;
     min-height: 100%;
-    max-width: var(--max-content-width);
-    margin: 0 auto;
 }
+
+
+/* Page Header */
 
 .page-header {
     text-align: center;
-    margin-bottom: clamp(20px, 4vw, 40px);
-    h1 {
-        font-size: clamp(20px, 3vw, 32px);
-        color: #2d3436;
-        margin: 0 0 clamp(6px, 1vw, 12px) 0;
-        font-weight: 600;
-        line-height: 1.3;
-    }
-    p {
-        font-size: clamp(14px, 1.5vw, 18px);
-        color: #636e72;
-        margin: 0;
-        line-height: 1.5;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+    margin-bottom: 24px;
+    padding: 20px 0;
+    animation: fadeInDown 0.6s ease-out;
 }
 
-.loading-state,
-.empty-state {
-    text-align: center;
-    padding: clamp(40px, 8vw, 80px) 20px;
-    ion-spinner {
-        margin-bottom: clamp(12px, 2vw, 20px);
-        width: clamp(32px, 4vw, 48px);
-        height: clamp(32px, 4vw, 48px);
-    }
-    p {
-        color: #636e72;
-        margin: 0 0 clamp(16px, 3vw, 24px) 0;
-        font-size: clamp(14px, 1.5vw, 18px);
-    }
+.page-header h1 {
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
 }
 
-.empty-state {
-    .empty-icon {
-        width: clamp(60px, 8vw, 100px);
-        height: clamp(60px, 8vw, 100px);
-        border-radius: 50%;
-        background: rgba(0, 128, 128, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto clamp(16px, 3vw, 24px);
-        transition: all 0.3s ease;
-        &:hover {
-            transform: scale(1.05);
-            background: rgba(0, 128, 128, 0.15);
-        }
-        ion-icon {
-            font-size: clamp(32px, 4vw, 48px);
-            color: #008080;
-        }
-    }
-    h3 {
-        font-size: clamp(18px, 2.5vw, 28px);
-        color: #2d3436;
-        margin: 0 0 clamp(8px, 1.5vw, 16px) 0;
-        font-weight: 600;
-    }
-    p {
-        font-size: clamp(14px, 1.5vw, 18px);
-        line-height: 1.5;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+.page-header p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0;
+    opacity: 0.9;
 }
 
-.teachers-grid {
+
+/* Loading State */
+
+.loading-state {
     display: flex;
     flex-direction: column;
-    gap: clamp(12px, 2vw, 20px);
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.teacher-card {
-    margin: 0;
-    border-radius: clamp(12px, 2vw, 20px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    overflow: hidden;
-    &:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    }
-    ion-card-content {
-        padding: clamp(16px, 2.5vw, 24px);
-    }
+.loading-state ion-spinner {
+    width: 48px;
+    height: 48px;
+    --color: #0f4446;
+    margin-bottom: 16px;
 }
+
+.loading-state p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0;
+}
+
+
+/* Teachers List */
+
+.teachers-list {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+
+/* Empty State */
+
+.empty-state {
+    text-align: center;
+    padding: 80px 20px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.empty-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(15, 68, 70, 0.15) 0%, rgba(15, 68, 70, 0.05) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+}
+
+.empty-icon ion-icon {
+    font-size: 2.5rem;
+    color: #0f4446;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0 0 12px 0;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0 0 24px 0;
+    opacity: 0.9;
+}
+
+.empty-state ion-button {
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --background-hover: linear-gradient(135deg, #125356 0%, #1f7a7d 100%);
+    --color: #ffffff;
+    --border-radius: 12px;
+    font-weight: 300;
+}
+
+
+/* Teachers Grid - 2 Column System */
+
+.teachers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    animation: fadeInUp 0.8s ease-out 0.3s both;
+}
+
+
+/* Teacher Card */
+
+.teacher-card {
+    --background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.teacher-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(15, 68, 70, 0.15);
+    border-color: #0f4446;
+}
+
+ion-card-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+/* Teacher Header */
 
 .teacher-header {
     display: flex;
-    align-items: flex-start;
-    gap: clamp(12px, 2vw, 20px);
-    margin-bottom: clamp(12px, 2vw, 20px);
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
 .teacher-avatar {
-    width: clamp(44px, 5vw, 60px);
-    height: clamp(44px, 5vw, 60px);
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #008080, #00a0a0);
+    background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: all 0.3s ease;
-    &:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 16px rgba(0, 128, 128, 0.3);
-    }
-    ion-icon {
-        font-size: clamp(20px, 2.5vw, 32px);
-        color: white;
-    }
+}
+
+.teacher-avatar ion-icon {
+    font-size: 1.8rem;
+    color: #ffffff;
 }
 
 .teacher-info {
     flex: 1;
-    min-width: 0; // Prevent text overflow
-    h3 {
-        font-size: clamp(16px, 1.8vw, 22px);
-        color: #2d3436;
-        margin: 0 0 clamp(4px, 0.8vw, 8px) 0;
-        font-weight: 600;
-        line-height: 1.3;
-    }
-    .teacher-class {
-        font-size: clamp(13px, 1.2vw, 16px);
-        color: #008080;
-        margin: 0;
-        font-weight: 500;
-        line-height: 1.4;
-    }
+}
+
+.teacher-info h3 {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+}
+
+.teacher-class {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0;
 }
 
 .teacher-status {
-    padding: clamp(4px, 0.8vw, 8px) clamp(8px, 1.5vw, 16px);
-    border-radius: 20px;
-    font-size: clamp(11px, 1vw, 14px);
-    font-weight: 500;
-    white-space: nowrap;
-    flex-shrink: 0;
-    &.active {
-        background: rgba(76, 175, 80, 0.1);
-        color: #4caf50;
-        border: 1px solid rgba(76, 175, 80, 0.2);
-    }
-    &:not(.active) {
-        background: rgba(244, 67, 54, 0.1);
-        color: #f44336;
-        border: 1px solid rgba(244, 67, 54, 0.2);
-    }
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 300;
+    background: rgba(235, 68, 90, 0.1);
+    color: #eb445a;
 }
 
+.teacher-status.active {
+    background: rgba(45, 211, 111, 0.1);
+    color: #2dd36f;
+}
+
+
+/* Teacher Details */
+
 .teacher-details {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: clamp(8px, 1.5vw, 16px);
-    margin-bottom: clamp(16px, 3vw, 24px);
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .detail-item {
     display: flex;
     align-items: center;
-    gap: clamp(8px, 1.5vw, 16px);
-    transition: all 0.2s ease;
-    &:hover {
-        transform: translateX(4px);
-    }
-    ion-icon {
-        font-size: clamp(16px, 1.5vw, 20px);
-        color: #008080;
-        min-width: clamp(18px, 2vw, 24px);
-        flex-shrink: 0;
-    }
-    span {
-        font-size: clamp(13px, 1.2vw, 16px);
-        color: #636e72;
-        line-height: 1.4;
-    }
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #666666;
 }
+
+.detail-item ion-icon {
+    font-size: 1rem;
+    color: #0f4446;
+    flex-shrink: 0;
+    width: 16px;
+}
+
+.detail-item span {
+    line-height: 1.4;
+}
+
+
+/* Teacher Actions */
 
 .teacher-actions {
     display: flex;
-    justify-content: space-between;
-    gap: clamp(6px, 1vw, 12px);
-    ion-button {
-        flex: 1;
-        --padding-start: clamp(6px, 1vw, 12px);
-        --padding-end: clamp(6px, 1vw, 12px);
-        --border-radius: clamp(6px, 1vw, 10px);
-        min-height: clamp(40px, 4vw, 48px);
-        font-size: clamp(12px, 1.1vw, 14px);
-        ion-icon {
-            font-size: clamp(14px, 1.5vw, 18px);
-        }
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.teacher-actions ion-button {
+    --padding-start: 8px;
+    --padding-end: 8px;
+    --border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 300;
+    min-height: 32px;
+    flex: 1;
+    min-width: 80px;
+}
+
+.teacher-actions ion-button:first-child {
+    --color: #0f4446;
+}
+
+.teacher-actions ion-button:nth-child(2) {
+    --color: #ffc409;
+}
+
+.teacher-actions ion-button:last-child {
+    --color: #eb445a;
+}
+
+
+/* Header Styling */
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
+}
+
+ion-title {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+ion-button {
+    --color: #ffffff;
+    --background-hover: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+ion-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* Refresher Styling */
+
+ion-refresher {
+    --ion-text-color: #0f4446;
+}
+
+ion-refresher-content {
+    --color: #0f4446;
+}
+
+
+/* Animations */
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-// Enhanced Responsive Design
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Loading Spinner */
+
+ion-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Responsive Design */
+
 @media (max-width: 480px) {
-    .teacher-header {
-        flex-direction: column;
-        align-items: flex-start;
+    .teachers-container {
+        padding: 12px;
+    }
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    .teachers-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
     }
-    .teacher-status {
-        align-self: flex-start;
+    .teacher-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    .teacher-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    .teacher-avatar ion-icon {
+        font-size: 2rem;
     }
     .teacher-actions {
         flex-direction: column;
-        ion-button {
-            width: 100%;
-        }
+        gap: 6px;
     }
-    .detail-item {
-        align-items: flex-start;
-        span {
-            word-break: break-word;
-        }
+    .teacher-actions ion-button {
+        flex: none;
+        min-width: auto;
+    }
+    .empty-state {
+        padding: 60px 16px;
+    }
+    .empty-icon {
+        width: 70px;
+        height: 70px;
+    }
+    .empty-icon ion-icon {
+        font-size: 2rem;
     }
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
     .teachers-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    .teacher-header {
-        align-items: center;
-    }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-    .teachers-grid {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    .teacher-card {
-        margin: 0;
     }
 }
 
-@media (min-width: 1025px) {
-    .teachers-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 24px;
-    }
+@media (min-width: 769px) {
     .teachers-container {
-        padding: 32px 24px;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
     }
-    .page-header {
-        margin-bottom: 40px;
-    }
-}
-
-// Large desktop screens
-@media (min-width: 1440px) {
     .teachers-grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 28px;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
     }
 }
 
-// Touch device optimizations
-@media (hover: none) and (pointer: coarse) {
-    .teacher-card:hover,
-    .teacher-avatar:hover,
-    .detail-item:hover {
-        transform: none;
-    }
-    .teacher-card:hover {
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
+
+/* Focus States for Accessibility */
+
+.teacher-card:focus {
+    outline: 2px solid #0f4446;
+    outline-offset: 2px;
 }
 
-// High-density displays
-@media (min-resolution: 192dpi) {
-    .teacher-card {
-        border-width: 0.5px;
-    }
+ion-button:focus {
+    outline: 2px solid #0f4446;
+    outline-offset: 2px;
 }
 
-// Reduced motion support
-@media (prefers-reduced-motion: reduce) {
-    .teacher-card,
-    .teacher-avatar,
-    .detail-item,
-    .empty-icon {
-        transition: none;
-    }
+
+/* Card content centering and spacing improvements */
+
+.teacher-card {
+    display: flex;
+    flex-direction: column;
 }
 
-// Print styles
-@media print {
-    .teachers-container {
-        padding: 20px;
-        background: white;
-    }
-    .teacher-card {
-        box-shadow: none !important;
-        border: 1px solid #ccc !important;
-        break-inside: avoid;
-    }
-    .teacher-actions {
-        display: none;
-    }
+ion-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+/* Ensure consistent card heights */
+
+.teachers-grid .teacher-card {
+    min-height: 280px;
+}
+
+
+/* Hover effects for interactive elements */
+
+.teacher-actions ion-button:hover {
+    transform: translateY(-1px);
+}
+
+
+/* Stagger animation for teacher cards */
+
+.teachers-grid .teacher-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.teachers-grid .teacher-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.teachers-grid .teacher-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.teachers-grid .teacher-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.teachers-grid .teacher-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.teachers-grid .teacher-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+
+/* Professional spacing for details */
+
+.detail-item {
+    padding: 4px 0;
+}
+
+
+/* Enhanced empty state */
+
+.empty-state ion-button {
+    margin-top: 8px;
 }

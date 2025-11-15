@@ -1,449 +1,540 @@
-ion-toolbar {
-    --background: linear-gradient(135deg, #008080, #00a0a0)
+/* Manage Quarterly Books Styles */
+
+.books-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 16px;
+    padding: 16px;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 
-/* Base styles */
+/* Book Item - Card Style */
 
-ion-content {
-    --background: #f8f9fa;
+.book-item {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
+
+.book-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(15, 68, 70, 0.15);
+    border-color: #0f4446;
+}
+
+
+/* Book Content - Centered Layout */
+
+.book-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Book Info - Centered Content */
+
+.book-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.book-info h2 {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.book-info p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0;
+    text-align: center;
+}
+
+.book-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.update-date {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #666666;
+    text-align: center;
+}
+
+
+/* Book Actions - Centered Layout */
+
+.book-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #f0f0f0;
+}
+
+
+/* Toggle Switch - Centered */
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #cccccc;
+    border-radius: 34px;
+    transition: all 0.3s ease;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+input:checked+.slider {
+    background: linear-gradient(135deg, #2dd36f 0%, #4cd96f 100%);
+}
+
+input:checked+.slider:before {
+    transform: translateX(24px);
+}
+
+
+/* Action Buttons - Centered */
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.edit-btn {
+    background: rgba(15, 68, 70, 0.1);
+    color: #0f4446;
+}
+
+.edit-btn:hover {
+    background: rgba(15, 68, 70, 0.2);
+    transform: scale(1.1);
+}
+
+.delete-btn {
+    background: rgba(235, 68, 90, 0.1);
+    color: #eb445a;
+}
+
+.delete-btn:hover {
+    background: rgba(235, 68, 90, 0.2);
+    transform: scale(1.1);
+}
+
+.action-btn ion-icon {
+    font-size: 1.1rem;
+}
+
+
+/* Search Container */
+
+.search-container {
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: #333333;
+    background: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #0f4446;
+    box-shadow: 0 0 0 2px rgba(15, 68, 70, 0.1);
+}
+
+.search-input::placeholder {
+    color: #999999;
+    font-weight: 300;
+}
+
+
+/* Loading Container */
 
 .loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 12.5rem;
+    padding: 60px 20px;
     text-align: center;
-    padding: 2rem;
-    ion-spinner {
-        margin-bottom: 1rem;
-    }
-    p {
-        color: var(--ion-color-medium);
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.4;
-    }
 }
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(15, 68, 70, 0.1);
+    border-top: 3px solid #0f4446;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 16px;
+}
+
+.loading-container p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0;
+}
+
+
+/* Empty State */
 
 .empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 40vh;
+    padding: 80px 20px;
     text-align: center;
-    padding: 2rem;
-    ion-icon {
-        font-size: 4rem;
-        color: var(--ion-color-medium);
-        margin-bottom: 1rem;
-    }
-    h3 {
-        color: var(--ion-color-dark);
-        margin: 0 0 0.5rem 0;
-        font-weight: 600;
-        font-size: 1.25rem;
-        line-height: 1.3;
-    }
-    p {
-        color: var(--ion-color-medium);
-        margin: 0 0 1.25rem 0;
-        line-height: 1.4;
-        font-size: 1rem;
-    }
+    animation: fadeIn 0.8s ease-out;
 }
 
-
-/* Search and container */
-
-.search-container {
-    padding: 1rem;
-    background: white;
-    border-bottom: 1px solid #e5e7eb;
+.empty-state ion-icon {
+    font-size: 4rem;
+    color: #0f4446;
+    margin-bottom: 20px;
+    opacity: 0.7;
 }
 
-ion-searchbar {
-    --background: white;
-    --border-radius: 0.75rem;
-    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --color: rgba(0, 0, 0, 0.758);
-    margin: 0;
+.empty-state h3 {
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #0f4446;
+    margin: 0 0 12px 0;
 }
 
-.search-input {
-    width: 100%;
-    padding: 0.75rem 0;
-    border: none;
-    border-bottom: 1px solid #30584a !important;
-    background: transparent;
+.empty-state p {
     font-size: 1rem;
-    background: white !important;
-    color: #1f2937 !important;
-    &:focus {
-        outline: none;
-    }
+    font-weight: 300;
+    color: #5d2a08;
+    margin: 0 0 20px 0;
+    opacity: 0.9;
 }
-
-
-/* Books list */
-
-.books-list {
-    padding: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.book-item {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    margin-bottom: 0.75rem;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    }
-}
-
-.book-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 1.25rem;
-    gap: 1rem;
-}
-
-.book-info {
-    flex: 1;
-    h2 {
-        margin: 0 0 0.5rem 0;
-        color: #1f2937;
-        font-size: 1rem;
-        font-weight: 500;
-        line-height: 1.3;
-    }
-    p {
-        margin: 0 0 0.5rem 0;
-        color: #6b7280;
-        font-size: 0.875rem;
-        line-height: 1.4;
-    }
-}
-
-.book-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    .update-date {
-        color: #9ca3af;
-        font-size: 0.75rem;
-    }
-}
-
-.book-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.75rem;
-    flex-shrink: 0;
-}
-
-
-/* Toggle switch */
-
-.toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 2.75rem;
-    height: 1.5rem;
-    input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-        &:checked+.slider {
-            background-color: #10b981;
-        }
-        &:checked+.slider:before {
-            transform: translateX(1.25rem);
-        }
-    }
-    .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #d1d5db;
-        transition: .4s;
-        border-radius: 1.5rem;
-        &:before {
-            position: absolute;
-            content: "";
-            height: 1.125rem;
-            width: 1.125rem;
-            left: 0.1875rem;
-            bottom: 0.1875rem;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-    }
-}
-
-
-/* Action buttons */
-
-.action-buttons {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.action-btn {
-    width: 2.25rem;
-    height: 2.25rem;
-    border: none;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    &.edit-btn {
-        background: #eff6ff;
-        color: #3b82f6;
-        &:hover {
-            background: #dbeafe;
-        }
-    }
-    &.delete-btn {
-        background: #fef2f2;
-        color: #ef4444;
-        &:hover {
-            background: #fee2e2;
-        }
-    }
-}
-
-
-/* Add book button */
 
 .add-book-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: #3b82f6;
-    color: white;
+    gap: 8px;
+    padding: 12px 20px;
     border: none;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    font-weight: 500;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 300;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    &:hover {
-        background: #2563eb;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(15, 68, 70, 0.3);
+}
+
+.add-book-btn:hover {
+    background: linear-gradient(135deg, #125356 0%, #1f7a7d 100%);
+    box-shadow: 0 6px 20px rgba(15, 68, 70, 0.4);
+    transform: translateY(-2px);
+}
+
+
+/* Header Styling */
+
+ion-toolbar {
+    --background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
+    --color: #ffffff;
+}
+
+ion-title {
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+ion-button {
+    --color: #ffffff;
+    --background-hover: rgba(255, 255, 255, 0.1);
+}
+
+
+/* Refresher Styling */
+
+ion-refresher {
+    --ion-text-color: #0f4446;
+}
+
+ion-refresher-content {
+    --color: #0f4446;
+}
+
+
+/* Animations */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-
-/* Badge */
-
-ion-badge {
-    font-size: 0.6875rem;
-    font-weight: 500;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
-
-
-/* Date input */
-
-input[type="date"].form-input {
-    background: white !important;
-    color: #171a1e !important;
-    border: 1px solid #d1d5db;
-    border-radius: 0.5rem;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-}
-
-
-/* Loading spinner animation */
 
 @keyframes spin {
-    0% {
+    from {
         transform: rotate(0deg);
     }
-    100% {
+    to {
         transform: rotate(360deg);
     }
 }
 
 
-/* Responsive Design */
-
-
-/* Mobile (default) */
+/* Responsive Design - 2 Column Grid */
 
 @media (max-width: 480px) {
     .books-list {
-        padding: 0.75rem;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
     }
     .book-content {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 16px;
     }
-    .book-actions {
-        flex-direction: row;
-        align-items: center;
-        width: 100%;
-        justify-content: space-between;
+    .book-info h2 {
+        font-size: 1.1rem;
+    }
+    .action-buttons {
+        gap: 6px;
+    }
+    .action-btn {
+        width: 36px;
+        height: 36px;
     }
     .empty-state {
-        padding: 1.5rem;
-        ion-icon {
-            font-size: 3rem;
-        }
-        h3 {
-            font-size: 1.125rem;
-        }
-        p {
-            font-size: 0.9rem;
-        }
+        padding: 60px 16px;
     }
-    .search-container {
-        padding: 0.75rem;
+    .empty-state ion-icon {
+        font-size: 3rem;
     }
 }
-
-
-/* Tablet */
 
 @media (min-width: 481px) and (max-width: 768px) {
     .books-list {
-        padding: 1.5rem;
-    }
-    .book-content {
-        padding: 1.5rem;
-    }
-    .empty-state {
-        padding: 3rem 2rem;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-
-/* Desktop */
-
-@media (min-width: 769px) {
+@media (min-width: 769px) and (max-width: 1024px) {
     .books-list {
-        padding: 2rem;
-    }
-    .book-content {
-        padding: 1.5rem;
-    }
-    .book-info h2 {
-        font-size: 1.125rem;
-    }
-    .book-info p {
-        font-size: 0.9rem;
-    }
-    .empty-state {
-        padding: 4rem 2rem;
-        h3 {
-            font-size: 1.5rem;
-        }
-        p {
-            font-size: 1.125rem;
-        }
-    }
-    .search-container {
-        padding: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin: 0 auto;
     }
 }
 
-
-/* Large Desktop */
-
-@media (min-width: 1200px) {
+@media (min-width: 1025px) {
     .books-list {
-        padding: 3rem;
-    }
-    .book-item {
-        margin-bottom: 1rem;
-    }
-    .book-content {
-        padding: 1.75rem;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 1000px;
+        margin: 0 auto;
     }
 }
 
 
-/* Reduced motion support */
+/* Focus States for Accessibility */
 
-@media (prefers-reduced-motion: reduce) {
-    .book-item {
-        transition: none;
+.search-input:focus,
+.action-btn:focus,
+.add-book-btn:focus {
+    outline: 2px solid #0f4446;
+    outline-offset: 2px;
+}
+
+.toggle-switch input:focus+.slider {
+    outline: 2px solid #0f4446;
+    outline-offset: 2px;
+}
+
+
+/* Badge Styling */
+
+ion-badge {
+    font-size: 0.75rem;
+    font-weight: 300;
+}
+
+
+/* Ensure proper card height consistency */
+
+.book-item {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-content {
+    flex: 1;
+}
+
+
+/* Container for the entire page */
+
+.books-container {
+    background: #ffffff;
+    min-height: 100%;
+}
+
+
+/* Stagger animation for book items */
+
+.book-item {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.book-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.book-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.book-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.book-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.book-item:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.book-item:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    .book-item:hover {
-        transform: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-    }
-    .toggle-switch .slider,
-    .toggle-switch .slider:before {
-        transition: none;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 
-/* High contrast support */
+/* Enhanced hover effects */
 
-@media (prefers-contrast: high) {
-    .book-item {
-        border: 2px solid #1f2937;
-    }
-    .search-input {
-        border-bottom: 2px solid #30584a !important;
-    }
+.book-item:hover .book-info h2 {
+    color: #1a6b6e;
+}
+
+.book-item:hover .book-info p {
+    color: #8a3e12;
 }
 
 
-/* Ionic list overrides */
+/* Professional spacing improvements */
 
-ion-list {
-    background: transparent;
-    ion-item-sliding {
-        margin-bottom: 0.5rem;
-        ion-item {
-            --background: white;
-            --border-radius: 0.75rem;
-            --padding-start: 1rem;
-            --padding-end: 1rem;
-            --inner-padding-end: 0;
-            margin: 0 1rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            ion-label {
-                h2 {
-                    font-weight: 500;
-                    color: rgba(20, 25, 25, 0.8);
-                    margin-bottom: 0.25rem;
-                    font-size: 1rem;
-                    line-height: 1.3;
-                }
-                p {
-                    color: var(--ion-color-medium);
-                    margin: 0.25rem 0;
-                    font-size: 0.875rem;
-                    line-height: 1.4;
-                }
-            }
-            ion-toggle {
-                margin-right: 0.5rem;
-            }
-        }
-    }
+.book-meta {
+    margin-top: 8px;
+}
+
+.book-actions {
+    margin-top: auto;
+}
+
+
+/* Centered badge styling */
+
+ion-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
 }
