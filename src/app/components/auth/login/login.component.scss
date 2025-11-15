@@ -52,56 +52,57 @@
     z-index: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     min-height: 100vh;
-    padding: 40px 0;
 }
 
 
-/* Welcome Section */
+/* Welcome Section - Fixed Position */
 
 .welcome-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: 30px;
+    z-index: 10;
     text-align: center;
-    margin-bottom: 40px;
+    padding: 40px 20px 20px;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.95) 80%, transparent 100%);
+    pointer-events: none;
     animation: fadeInDown 0.8s ease-out;
 }
 
 .logo-circle {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, #0f4446 0%, #1a6b6e 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 16px auto;
     box-shadow: 0 8px 25px rgba(15, 68, 70, 0.3);
-    animation: bounce 3s ease-in-out infinite;
-    transition: all 0.3s ease;
-}
-
-.logo-circle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 35px rgba(15, 68, 70, 0.4);
+    animation: bounce 2s ease-in-out infinite;
+    pointer-events: auto;
 }
 
 .logo-icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #ffffff;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
 
 .welcome-title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 300;
     color: #0f4446;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
     line-height: 1.3;
 }
 
 .welcome-subtitle {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 300;
     color: #5d2a08;
     margin: 0;
@@ -110,26 +111,29 @@
 }
 
 
-/* Actions Section */
+/* Actions Section - Scrollable Content */
 
 .actions-section {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-bottom: 40px;
+    justify-content: center;
+    padding-top: 180px;
+    /* Space for fixed welcome section */
+    padding-bottom: 40px;
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
 .action-btn {
     width: 100%;
     padding: 0;
-    // border: 1px solid #e0e0e0;
+    border: 1px solid #e0e0e0;
     border-radius: 12px;
     background: #ffffff;
     transition: all 0.3s ease;
     cursor: pointer;
     overflow: hidden;
-    border: none;
+    margin-bottom: 16px;
 }
 
 .action-btn:hover {
@@ -207,7 +211,9 @@
 .footer {
     text-align: center;
     padding: 20px 0;
-    animation: fadeIn 1s ease-out 0.4s both;
+    animation: fadeInUp 0.8s ease-out 0.9s both;
+    position: relative;
+    z-index: 5;
 }
 
 .footer p {
@@ -222,6 +228,7 @@
     text-decoration: none;
     font-weight: 300;
     transition: all 0.3s ease;
+    pointer-events: auto;
 }
 
 .footer a:hover {
@@ -269,7 +276,7 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
     }
 }
 
@@ -287,21 +294,25 @@
 /* Responsive Design */
 
 @media (max-width: 480px) {
-    .login-wrapper {
-        padding: 30px 0;
+    .welcome-section {
+        padding: 30px 16px 16px;
     }
     .logo-circle {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
     .logo-icon {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .welcome-title {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
     .welcome-subtitle {
         font-size: 0.9rem;
+    }
+    .actions-section {
+        padding-top: 160px;
+        padding-bottom: 30px;
     }
     .btn-content {
         padding: 16px;
@@ -319,28 +330,31 @@
 }
 
 @media (min-width: 481px) and (max-width: 768px) {
-    .login-wrapper {
-        padding: 50px 0;
+    .actions-section {
         max-width: 400px;
         margin: 0 auto;
+        padding-top: 170px;
     }
 }
 
 @media (min-width: 769px) {
-    .login-wrapper {
-        padding: 60px 0;
+    .actions-section {
         max-width: 450px;
         margin: 0 auto;
+        padding-top: 180px;
+    }
+    .welcome-section {
+        padding: 50px 20px 20px;
     }
     .logo-circle {
-        width: 120px;
-        height: 120px;
+        width: 100px;
+        height: 100px;
     }
     .logo-icon {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
     .welcome-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
     .welcome-subtitle {
         font-size: 1.1rem;
@@ -364,10 +378,27 @@
 /* Focus states for accessibility */
 
 .action-btn:focus {
-    outline: 1px solid #0f4446;
+    outline: 2px solid #0f4446;
     outline-offset: 2px;
 }
 
 .action-btn:focus .btn-content {
     outline: none;
+}
+
+
+/* Ensure the login wrapper takes full height */
+
+.login-wrapper {
+    min-height: 100vh;
+}
+
+
+/* Add a subtle backdrop blur for modern browsers */
+
+@supports (backdrop-filter: blur(10px)) {
+    .welcome-section {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.9) 80%, transparent 100%);
+        backdrop-filter: blur(10px);
+    }
 }

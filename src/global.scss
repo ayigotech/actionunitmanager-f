@@ -1,3 +1,44 @@
+/* Add to global.scss or your component CSS */
+
+ion-app {
+    background: #ffffff !important;
+}
+
+ion-router-outlet {
+    background: #ffffff;
+}
+
+
+/* Ensure pages are properly displayed */
+
+.ion-page {
+    background: #ffffff;
+}
+
+
+/* Fix for login pages not showing */
+
+.login-content {
+    --background: #ffffff;
+    background: #ffffff;
+}
+
+
+/* Ensure content areas are visible */
+
+ion-content {
+    --background: #ffffff;
+}
+
+
+/* Fix for overlapping white page */
+
+.ion-page-hidden {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+
 /* Basic global styles */
 
 :root {

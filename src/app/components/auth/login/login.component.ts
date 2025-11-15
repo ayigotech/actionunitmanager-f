@@ -37,17 +37,51 @@ export class LoginComponent {
 
 
 
+  // navigateToSuperintendentLogin() {
+  //   this.router.navigate(['/auth/superintendent-login']);
+  // }
+
+  // navigateToTeacherLogin() {
+  //   this.router.navigate(['/auth/teacher-login']);
+  // }
+
+  // navigateToOfficerLogin() {
+  //   this.router.navigate(['/auth/officer-login']);
+  // }
+
+
   navigateToSuperintendentLogin() {
-    this.router.navigate(['/auth/superintendent-login']);
-  }
+  // Remove focus from the current button before navigation
+  this.clearActiveFocus();
+  setTimeout(() => {
+    this.router.navigate(['/superintendent-login']);
+  }, 10);
+}
 
-  navigateToTeacherLogin() {
-    this.router.navigate(['/auth/teacher-login']);
-  }
+navigateToTeacherLogin() {
+  this.clearActiveFocus();
+  setTimeout(() => {
+    this.router.navigate(['/teacher-login']);
+  }, 10);
+}
 
-  navigateToOfficerLogin() {
-    this.router.navigate(['/auth/officer-login']);
+navigateToOfficerLogin() {
+  this.clearActiveFocus();
+  setTimeout(() => {
+    this.router.navigate(['/officer-login']);
+  }, 10);
+}
+
+// Helper method to clear active focus
+private clearActiveFocus(): void {
+  // Check if there's an active element and blur it
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
   }
+  
+  // Optional: Also focus on body to ensure no element retains focus
+  document.body.focus();
+}
 }
 
 

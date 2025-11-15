@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthService } from 'src/app/services/auth';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     IonItem, IonIcon,
     FormsModule, ReactiveFormsModule, IonButtons, IonBackButton, IonContent]
 })
-export class SuperintendentLoginComponent {
+export class SuperintendentLoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   isLoading: boolean = false;
@@ -36,6 +36,22 @@ export class SuperintendentLoginComponent {
       password: ['', Validators.required],
     });
   }
+
+
+
+  ngOnInit() {
+    console.log('🎯 SuperintendentLoginComponent ngOnInit fired!');
+  }
+  
+  ionViewWillEnter() {
+    console.log('🎯 SuperintendentLoginComponent ionViewWillEnter fired!');
+  }
+  
+  ionViewDidEnter() {
+    console.log('🎯 SuperintendentLoginComponent ionViewDidEnter fired!');
+  }
+
+
 
  onLogin(): void {
   if (!this.email || !this.password) {
