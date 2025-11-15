@@ -377,3 +377,172 @@ p,
 * {
     transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
+
+
+/* Global Fix for Phone Bottom Navigation Bar Clash */
+
+ion-content[fullscreen] {
+    --padding-bottom: calc(env(safe-area-inset-bottom) + 20px) !important;
+}
+
+
+/* Additional safe area handling for iOS */
+
+ion-content {
+    --padding-bottom: calc(var(--ion-safe-area-bottom, 0px) + 20px) !important;
+}
+
+
+/* Ensure content has proper bottom spacing */
+
+.main-content {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Fix for pages with ion-padding */
+
+ion-content.ion-padding {
+    --padding-bottom: calc(env(safe-area-inset-bottom) + 16px + 20px) !important;
+}
+
+
+/* Specific fix for list pages that might have items at the bottom */
+
+ion-list {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Fix for buttons at the bottom of pages */
+
+.fixed-bottom-button {
+    margin-bottom: env(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Additional safety margin for any element that might be at the bottom */
+
+.bottom-safe-area {
+    margin-bottom: calc(env(safe-area-inset-bottom) + 10px) !important;
+    padding-bottom: calc(env(safe-area-inset-bottom) + 10px) !important;
+}
+
+
+/* Fix for forms with submit buttons at the bottom */
+
+.form-container {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 20px);
+}
+
+
+/* Ensure modals and overlays also respect safe areas */
+
+ion-modal ion-content {
+    --padding-bottom: calc(env(safe-area-inset-bottom) + 20px) !important;
+}
+
+
+/* Fix for pages with ion-refresher */
+
+ion-refresher {
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Additional utility classes for specific spacing needs */
+
+.safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+.safe-area-bottom-large {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 20px) !important;
+}
+
+
+/* Ensure footer elements have proper spacing */
+
+ion-footer {
+    padding-bottom: env(safe-area-inset-bottom) !important;
+}
+
+
+/* Fix for infinite scroll loading */
+
+ion-infinite-scroll {
+    margin-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Enhanced safe area detection and handling */
+
+@media screen and (max-width: 768px) {
+    ion-content {
+        --padding-bottom: calc(max(env(safe-area-inset-bottom), 20px) + 20px) !important;
+    }
+    /* Additional protection for very small screens */
+    @media screen and (max-height: 700px) {
+        ion-content {
+            --padding-bottom: calc(max(env(safe-area-inset-bottom), 30px) + 20px) !important;
+        }
+    }
+}
+
+
+/* Android specific fixes */
+
+.platform-android ion-content {
+    --padding-bottom: calc(var(--ion-safe-area-bottom, 20px) + 20px) !important;
+}
+
+
+/* iOS specific fixes */
+
+.platform-ios ion-content {
+    --padding-bottom: calc(env(safe-area-inset-bottom) + 20px) !important;
+}
+
+
+/* Fallback for browsers that don't support env() */
+
+@supports not (padding-bottom: env(safe-area-inset-bottom)) {
+    ion-content {
+        --padding-bottom: 40px !important;
+    }
+    ion-content.ion-padding {
+        --padding-bottom: 56px !important;
+    }
+}
+
+
+/* Ensure the padding is applied to the inner scroll container */
+
+ion-content::part(scroll) {
+    padding-bottom: var(--padding-bottom) !important;
+}
+
+
+/* Additional protection for specific page types */
+
+.dashboard-page ion-content,
+.list-page ion-content,
+.form-page ion-content {
+    --padding-bottom: calc(env(safe-area-inset-bottom) + 30px) !important;
+}
+
+
+/* Make sure the safe area is visible during development */
+
+.debug-safe-areas ion-content::after {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: env(safe-area-inset-bottom);
+    background: rgba(255, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 9999;
+}
