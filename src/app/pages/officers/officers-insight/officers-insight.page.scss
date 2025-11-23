@@ -577,6 +577,7 @@
 
 .member-avatar {
     flex-shrink: 0;
+    color: #051f1f;
 }
 
 .avatar-circle {
@@ -586,7 +587,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    color: #233333;
     font-size: 1.1rem;
     font-weight: 300;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -663,12 +664,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    // color: #ffffff;
     font-size: 0.9rem;
     font-weight: 300;
     margin-bottom: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
+    color: #0f4446;
 }
 
 .score-high {

@@ -1,5 +1,9 @@
 /* Reports & Analytics Page Styles */
 
+ion-content {
+    --padding-button: 80px;
+}
+
 .custom-segment {
     display: flex;
     background: linear-gradient(135deg, #f8fdfd 0%, #ffffff 100%);
@@ -64,6 +68,7 @@
     border-radius: 8px;
     background: linear-gradient(135deg, #ffffff 0%, #f8fdfd 100%);
     transition: all 0.3s ease;
+    color: #2c3030;
 }
 
 .form-input:focus {
